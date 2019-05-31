@@ -1,0 +1,100 @@
+/* login and register */
+.container-fluid{
+    background-color: #f7f7f7;
+}
+
+.container-inner{
+    font-family:"Nunito";
+    font-style: normal;
+    line-height: 50px;
+    padding: 20px;
+    background: white;
+}
+
+/* Welcome to TPA Makara UI! */
+.title{
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 10px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #384F7D;
+}
+
+.sign-in{
+    margin: 50px 0 50px;
+    background: linear-gradient(227.43deg, rgba(45, 238, 249, 0.15) -34.42%, rgba(224, 132, 241, 0.15) 127.18%);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 110px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #384F7D;
+}
+
+.container-inner label{
+    font-size: 19px;
+    line-height: 19px;
+    letter-spacing: 0.04em;
+    color: #414752;
+    text-align:left;
+}
+
+
+.btn-primary{
+    padding:10px 20px 10px 20px;
+    margin: 30px auto 30px;
+    background: #2F80ED;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.form-control{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font-size: 19px;
+    background-color: rgba(0,0,0,0);
+
+}
+
+.bottom-auth{
+    font-size: 21px;
+    line-height: 22px;
+    text-align: center;
+    color: #445984;
+    margin-bottom: 40px;
+}
+
+.picture-logo{
+    text-align: center;
+}
+
+.button-section{
+    text-align: center;
+}
+
+/* register-anak */
+
+.register-anak h2{
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #414752;
+
+}
+
+
+
+
+
+
