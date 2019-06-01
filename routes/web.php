@@ -19,6 +19,7 @@ Route::get('/', 'PageController@index')->name('index');
 // Route::get('/test', 'PageController@test')->name('test');
 Route::get('/login', 'PageController@login')->name('login');
 Route::get('/register', 'PageController@register')->name('register');
+Route::get('/success', 'PageController@success')->name('success');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
