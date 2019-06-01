@@ -12,8 +12,6 @@
 */
 
 Route::get('/', 'PageController@index')->name('index');
-Route::get('/login', 'PageController@login')->name('login');
-Route::get('/register', 'PageController@register')->name('register');
 Route::get('/success', 'PageController@success')->name('success');
 
 Auth::routes();
