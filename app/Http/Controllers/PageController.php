@@ -11,7 +11,7 @@ class PageController extends Controller
         return view('pages.index');
     }
 
-    public function success(){
+    public function success() {
         return view('pages.success');
     }
 }

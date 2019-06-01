@@ -16,13 +16,18 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('dashboard.home');
+    public function teacherHome(Request $request) {
+        $request->user()->authorizeRoles(['teacher']);
+        return view('dashboard.teacherHome');
+    }
+
+    public function headmasterHome(Request $request) {
+        $request->user()->authorizeRoles(['headmaster']);
+        return view('dashboard.headmasterHome');
+    }
+
+    public function parentHome(Request $request) {
+        $request->user()->authorizeRoles(['parent']);
+        return view('dashboard.parentHome');
     }
 }
