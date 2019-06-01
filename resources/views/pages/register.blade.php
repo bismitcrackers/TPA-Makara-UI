@@ -14,8 +14,8 @@
                 <div class="col-sm-12 col-md-8"> --}}
 
                     <div class="container-inner">
-                        <div class="picture-logo">
-                       <img src="{{asset('svg/logo.svg')}}" alt="">
+                    <div class="picture-logo">
+                       <img src="{{asset('picture/logoTPAM.png')}}" alt="Logo TPAM">
                     </div>
                     <h1 class = "title">Welcome to TPA Makara UI!</h1>
                     <div class="register-anak">
@@ -95,7 +95,10 @@
                                 <input type="anakDari" class="form-control col-sm-4" id="anakDari" placeholder="dari">
                             </div>
                             <div class=button-section>
-                                <a class="halo btn-primary btn" onclick = "toRegistrasiAnakSecond()" href="#">Next</a>
+                                <a class="halo btn-primary btn" onclick = "toRegistrasiAnakSecond()" href="#">
+                                    <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+                                    Next
+                                </a>
                             </div>
                         </div>
                         <div class="registrasi-anak-second">
@@ -130,7 +133,10 @@
                                 <input type="sifatPerhatian" class="form-control" id="sifatPerhatian">
                             </div>
                             <div class=button-section>
-                                <a class="halo btn-primary btn" onclick = "toRegistrasiIbu()" href="#">Next</a>
+                                <a class="halo btn-primary btn" onclick = "toRegistrasiIbu()" href="#">
+                                    <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+                                    Next
+                                </a>
                             </div>
                         </div>
                         <div class="registrasi-ibu">
@@ -188,7 +194,10 @@
                                 <input type="nomorHpIbu" class="form-control" id="nomorHpIbu" placeholder="+628...">
                             </div>
                             <div class=button-section>
-                                <a class="halo btn-primary btn" onclick = "toRegistrasiAyah()" href="#">Next</a>
+                                <a class="halo btn-primary btn" onclick = "toRegistrasiAyah()" href="#">
+                                    <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+                                    Next
+                                </a>
                             </div>
                         </div>
                         <div class="registrasi-ayah">
@@ -246,7 +255,10 @@
                                 <input type="nomorHpAyah" class="form-control" id="nomorHpAyah" placeholder="+628...">
                             </div>
                             <div class=button-section>
-                                <a class="halo btn-primary btn" onclick = "toRegistrasiWali()" href="#">Next</a>
+                                <a class="halo btn-primary btn" onclick = "toRegistrasiWali()" href="#">
+                                    <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+                                    Next
+                                </a>
                             </div>
                         </div>
                         <div class="registrasi-wali">
@@ -304,7 +316,10 @@
                                 <input type="nomorHpWali" class="form-control" id="nomorHpWali" placeholder="+628...">
                             </div>
                             <div class=button-section>
-                                <a class="halo btn-primary btn" onclick = "toRegistrasiNonWali()" href="#">Next</a>
+                                <a class="halo btn-primary btn" onclick = "toRegistrasiNonWali()" href="#">
+                                    <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+                                    Next
+                                </a>
                             </div>
                         </div>
                         <div class="registrasi-non-wali">
@@ -329,7 +344,8 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id = "final-button">
-                            Sign Up
+                            <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+                            Save
                         </button>
                     </form>
                     <p class="bottom-auth">Already have an account? <a href="{{ route('login') }}">Login</a></p>

@@ -8,8 +8,8 @@
 
 @section('content')          
     <div class="picture-logo">
-        <img src="{{asset('svg/logo.svg')}}" alt="">
-    </div>
+        <img src="{{asset('picture/logoTPAM.png')}}" alt="Logo TPAM">
+     </div>
     <h1 class = "title">Welcome to TPA Makara UI!</h1>
     <h1 class = "sign-in">Sign In</h1>
     <form>
