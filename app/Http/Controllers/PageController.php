@@ -17,7 +17,12 @@ class PageController extends Controller
     public function login(){
         return view('pages.login');
     }
+
     public function register(){
         return view('pages.register');
+    }
+
+    public function success(){
+        return view('pages.success');
     }
 }
