@@ -1,6 +1,6 @@
 @extends('layout/master')
 
-@section('title', 'Homepage') yang ini
+@section('title', 'Homepage')
 
 @section('extra-css')
 @endsection
