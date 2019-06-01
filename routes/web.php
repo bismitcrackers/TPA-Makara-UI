@@ -16,4 +16,14 @@ Route::get('/success', 'PageController@success')->name('success');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix'=>'parent','as'=>'parent.'], function(){
+    Route::get('/home', 'HomeController@parentHome')->name('home');
+});
+
+Route::group(['prefix'=>'teacher','as'=>'teacher.'], function(){
+    Route::get('/home', 'HomeController@teacherHome')->name('home');
+});
+
+Route::group(['prefix'=>'headmaster','as'=>'headmaster.'], function(){
+    Route::get('/home', 'HomeController@headmasterHome')->name('home');
+});
