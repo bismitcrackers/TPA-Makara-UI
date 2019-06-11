@@ -27,15 +27,15 @@
                         <div class="register">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required />
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required />
                             </div>
                             <div class="form-group">
                                 <label for="exampleRepeatPassword1">Repeat Password</label>
-                                <input type="password" class="form-control" id="exampleRepeatPassword1" placeholder="Repeat Password">
+                                <input type="password" class="form-control" id="exampleRepeatPassword1" placeholder="Repeat Password" required />
                             </div>
                             <div class=button-section>
                                 <a class="halo btn-primary btn" onclick = "toRegistrasiAnakFirst()" href="#">Sign Up</a>
@@ -65,10 +65,6 @@
                             <div class="form-group row">
                                 <label for="tempatTanggalLahir" class="col-sm-10 col-form-label">Tempat tanggal lahir:</label>
                                 <div class="col-sm-2">
-                                    <select class="form-control" id="tempatTanggalLahir">
-                                        <option>1</option>
-                                        <option>2</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
