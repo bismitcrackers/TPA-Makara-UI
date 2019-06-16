@@ -16,14 +16,22 @@ Route::get('/success', 'PageController@success')->name('success');
 
 Auth::routes();
 
-Route::group(['prefix'=>'parent','as'=>'parent.'], function(){
+Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
+    Route::get('/home', 'HomeController@administratorHome')->name('home');
+});
+
+Route::group(['prefix'=>'orangtua','as'=>'orangtua.'], function(){
     Route::get('/home', 'HomeController@parentHome')->name('home');
 });
 
-Route::group(['prefix'=>'teacher','as'=>'teacher.'], function(){
+Route::group(['prefix'=>'guru','as'=>'guru.'], function(){
     Route::get('/home', 'HomeController@teacherHome')->name('home');
 });
 
-Route::group(['prefix'=>'headmaster','as'=>'headmaster.'], function(){
-    Route::get('/home', 'HomeController@headmasterHome')->name('home');
+Route::group(['prefix'=>'fasilitator','as'=>'fasilitator.'], function(){
+    Route::get('/home', 'HomeController@fasilitatorHome')->name('home');
+});
+
+Route::group(['prefix'=>'cofasilitator','as'=>'cofasilitator.'], function(){
+    Route::get('/home', 'HomeController@cofasilitatorHome')->name('home');
 });
