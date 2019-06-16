@@ -174,7 +174,7 @@
 .registrasi-wali,
 .registrasi-non-wali{
     transform: scale(0,0);
-    height: 0;  
+    height: 0;
 }
 
 .picture-logo,
@@ -205,12 +205,7 @@
     display: none;
 }
 
-
-
-
-
-
-
-
-
-
+.form-check-input {
+    position: relative;
+    margin-left: 0;
+}

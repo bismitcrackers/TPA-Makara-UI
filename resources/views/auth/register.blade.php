@@ -69,11 +69,11 @@
                     @endif
                 </div>
                 <div class="form-group row shorter">
-                    <label for="jenisKelamin" class="col-sm-10 col-form-label">Jenis Kelamin:</label>
-                    <div class="col-sm-2">
+                    <label for="jenisKelamin" class="col-sm-5 col-form-label">Jenis Kelamin:</label>
+                    <div class="col-sm-7">
                         <select class="form-control{{ $errors->has('jenisKelamin') ? ' is-invalid' : '' }}" id="jenisKelamin" name="jenisKelamin" required>
-                            <option>1</option>
-                            <option>2</option>
+                            <option value="laki-laki">Laki-laki</option>
+                            <option value="perempuan">Perempuan</option>
                         </select>
                         @if ($errors->has('jenisKelamin'))
                             <span class="invalid-feedback" role="alert">
@@ -82,18 +82,24 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="tempatTanggalLahir" class="col-sm-10 col-form-label">Tempat tanggal lahir:</label>
-                    <div class="col-sm-2">
-                        <select class="form-control{{ $errors->has('tempatTanggalLahir') ? ' is-invalid' : '' }}" id="tempatTanggalLahir" name="tempatTanggalLahir" required>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                        @if ($errors->has('tempatTanggalLahir'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('tempatTanggalLahir') }}</strong>
-                            </span>
-                        @endif
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-5">
+                            <label for="tempatLahir" class="col-form-label">Tempat tanggal lahir:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="date" class="form-control{{ $errors->has('tanggalLahir') ? ' is-invalid' : '' }}" id="tanggalLahir" name="tanggalLahir" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control{{ $errors->has('tempatLahir') ? ' is-invalid' : '' }}" id="tempatLahir" name="tempatLahir" placeholder="Tempat Lahir" required>
+                            @if ($errors->has('tanggalLahir'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('tanggalLahir') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -162,21 +168,33 @@
                 </div>
                 <div class="form-check">
                     <p class="font-basic">Catatan Khusus Medis:</p>
-                    <input class="form-control{{ $errors->has('catatanMedis') ? ' is-invalid' : '' }} form-check-input correcting" type="radio" name="catatanMedis" id="tidakAda" value="option1" required>
-                    <label class="form-check-label" for="tidakAda">
-                        Tidak ada
-                    </label>
+                    <div class="row">
+                        <div class="col-3">
+                            <input class="form-control{{ $errors->has('catatanMedis') ? ' is-invalid' : '' }} form-check-input correcting" type="radio" name="catatanMedis" id="tidakAda" value="option1" required>
+                        </div>
+                        <div class="col-9">
+                            <label class="form-check-label" for="tidakAda">
+                                Tidak ada
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-check">
-                    <input class="form-control{{ $errors->has('catatanMedis') ? ' is-invalid' : '' }} form-check-input correcting" type="radio" name="catatanMedis" id="ada" value="option2" required>
-                    @if ($errors->has('catatanMedis'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('catatanMedis') }}</strong>
-                        </span>
-                    @endif
-                    <label class="form-check-label" for="ada">
-                        Ada, keterangan:
-                    </label>
+                    <div class="row">
+                        <div class="col-3">
+                            <input class="form-control{{ $errors->has('catatanMedis') ? ' is-invalid' : '' }} form-check-input correcting" type="radio" name="catatanMedis" id="ada" value="option2" required>
+                            @if ($errors->has('catatanMedis'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('catatanMedis') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="col-9">
+                            <label class="form-check-label" for="ada">
+                                Ada, keterangan:
+                            </label>
+                        </div>
+                    </div>
                     {{-- belum jalan validation radio buttonnya --}}
                     <input type="text" class="form-control" id="keteranganMedis" name="keteranganMedis">
                 </div>
@@ -195,6 +213,15 @@
                     @if ($errors->has('keadaan'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('keadaan') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="sifatBaik">Sifat-sifat baik/positif yang paling menonjol:</label>
+                    <input type="text" class="form-control{{ $errors->has('sifatBaik') ? ' is-invalid' : '' }}" id="sifatBaik" name="sifatBaik" required>
+                    @if ($errors->has('sifatBaik'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('sifatBaik') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -227,25 +254,25 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group row">
-                    <label for="tempatTanggalLahirIbu" class="col-sm-10 col-form-label">Tempat tanggal lahir:</label>
-                    <div class="col-sm-2">
-                        <select class="form-control{{ $errors->has('tempatTanggalLahirIbu') ? ' is-invalid' : '' }}" id="tempatTanggalLahirIbu" name="tempatTanggalLahirIbu" required>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                        @if ($errors->has('tempatTanggalLahirIbu'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('tempatTanggalLahirIbu') }}</strong>
-                            </span>
-                        @endif
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-5">
+                            <label for="tempatLahirIbu" class="col-form-label">Tempat tanggal lahir:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="date" class="form-control{{ $errors->has('tanggalLahirIbu') ? ' is-invalid' : '' }}" id="tanggalLahirIbu" name="tanggalLahirIbu" required>
+                        </div>
                     </div>
-                    <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="" required>
-                    @if ($errors->has('tempatLahirIbu'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('tempatLahirIbu') }}</strong>
-                        </span>
-                    @endif
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="Tempat Lahir" required>
+                            @if ($errors->has('tanggalLahir'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('tanggalLahirIbu') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="agamaIbu">Agama: </label>
@@ -348,20 +375,25 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group row">
-                    <label for="tempatTanggalLahirAyah" class="col-sm-10 col-form-label">Tempat tanggal lahir:</label>
-                    <div class="col-sm-2">
-                        <select class="form-control{{ $errors->has('tempatTanggalLahirAyah') ? ' is-invalid' : '' }}" id="tempatTanggalLahirAyah" name="tempatTanggalLahirAyah" required>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-5">
+                            <label for="tempatLahirAyah" class="col-form-label">Tempat tanggal lahir:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="date" class="form-control{{ $errors->has('tanggalLahirAyah') ? ' is-invalid' : '' }}" id="tanggalLahirAyah" name="tanggalLahirAyah" required>
+                        </div>
                     </div>
-                    <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="" required>
-                    @if ($errors->has('tempatLahirAyah'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('tempatLahirAyah') }}</strong>
-                        </span>
-                    @endif
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="Tempat Lahir" required>
+                            @if ($errors->has('tanggalLahirAyah'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('tanggalLahirAyah') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="agamaAyah">Agama: </label>
@@ -459,25 +491,25 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group row">
-                    <label for="tempatTanggalLahirWali" class="col-sm-10 col-form-label">Tempat tanggal lahir:</label>
-                    <div class="col-sm-2">
-                        <select class="form-control{{ $errors->has('tempatTanggalLahirWali') ? ' is-invalid' : '' }}" id="tempatTanggalLahirWali" name="tempatTanggalLahirWali" required>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                        @if ($errors->has('tempatTanggalLahirWali'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('tempatTanggalLahirWali') }}</strong>
-                            </span>
-                        @endif
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-5">
+                            <label for="tempatLahirWali" class="col-form-label">Tempat tanggal lahir:</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="date" class="form-control{{ $errors->has('tanggalLahirWali') ? ' is-invalid' : '' }}" id="tanggalLahirWali" name="tanggalLahirWali" required>
+                        </div>
                     </div>
-                    <input type="text" class="form-control{{ $errors->has('tempatLahirWali') ? ' is-invalid' : '' }}" id="tempatLahirWali" name="tempatLahirWali" placeholder="" required>
-                    @if ($errors->has('tempatLahirWali'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('tempatLahirWali') }}</strong>
-                        </span>
-                    @endif
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control{{ $errors->has('tempatLahirWali') ? ' is-invalid' : '' }}" id="tempatLahirWali" name="tempatLahirWali" placeholder="Tempat Lahir" required>
+                            @if ($errors->has('tanggalLahirWali'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('tanggalLahirWali') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="agamaWali">Agama: </label>
