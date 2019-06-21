@@ -18,7 +18,7 @@
         </div>
         <h1 class = "sign-in">Sign Up</h1>
         <form method="POST" action="{{ route('register') }}">
-            @csrf
+             {{ csrf_field() }}
             <div class="register">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -200,7 +200,7 @@
                 </div>
                 <div class="form-group">
                     <label for="penyakit">Penyakit Berat yang Pernah Dialami Anak: </label>
-                    <input type="text" class="form-control{{ $errors->has('penyakit') ? ' is-invalid' : '' }}" id="penyakit" name="penyakit" required>
+                    <input type="text" class="form-control{{ $errors->has('penyakit') ? ' is-invalid' : '' }}" id="penyakit" name="penyakit">
                     @if ($errors->has('penyakit'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('penyakit') }}</strong>
@@ -209,7 +209,7 @@
                 </div>
                 <div class="form-group">
                     <label for="keadaan">Keadaan yang Perlu Mendapat Perhatian Khusus TPAM: </label>
-                    <input type="text" class="form-control{{ $errors->has('keadaan') ? ' is-invalid' : '' }}" id="keadaan" name="keadaan" required>
+                    <input type="text" class="form-control{{ $errors->has('keadaan') ? ' is-invalid' : '' }}" id="keadaan" name="keadaan">
                     @if ($errors->has('keadaan'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('keadaan') }}</strong>
@@ -218,7 +218,7 @@
                 </div>
                 <div class="form-group">
                     <label for="sifatBaik">Sifat-sifat baik/positif yang paling menonjol:</label>
-                    <input type="text" class="form-control{{ $errors->has('sifatBaik') ? ' is-invalid' : '' }}" id="sifatBaik" name="sifatBaik" required>
+                    <input type="text" class="form-control{{ $errors->has('sifatBaik') ? ' is-invalid' : '' }}" id="sifatBaik" name="sifatBaik">
                     @if ($errors->has('sifatBaik'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('sifatBaik') }}</strong>
@@ -227,7 +227,7 @@
                 </div>
                 <div class="form-group">
                     <label for="sifatPerhatian">Sifat-sifat anak yang masih perlu mendapatkan perhatian:</label>
-                    <input type="text" class="form-control{{ $errors->has('sifatPerhatian') ? ' is-invalid' : '' }}" id="sifatPerhatian" name="sifatPerhatian" required>
+                    <input type="text" class="form-control{{ $errors->has('sifatPerhatian') ? ' is-invalid' : '' }}" id="sifatPerhatian" name="sifatPerhatian">
                     @if ($errors->has('sifatPerhatian'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('sifatPerhatian') }}</strong>
@@ -247,7 +247,7 @@
                 </div>
                 <div class="form-group">
                     <label for="namaLengkapIbu">Nama Lengkap: </label>
-                    <input type="text" class="form-control{{ $errors->has('namaLengkapIbu') ? ' is-invalid' : '' }}" id="namaLengkapIbu" name="namaLengkapIbu" placeholder="Nama Lengkap" required>
+                    <input type="text" class="form-control{{ $errors->has('namaLengkapIbu') ? ' is-invalid' : '' }}" id="namaLengkapIbu" name="namaLengkapIbu" placeholder="Nama Lengkap">
                     @if ($errors->has('namaLengkapIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('namaLengkapIbu') }}</strong>
@@ -260,12 +260,12 @@
                             <label for="tempatLahirIbu" class="col-form-label">Tempat tanggal lahir:</label>
                         </div>
                         <div class="col-7">
-                            <input type="date" class="form-control{{ $errors->has('tanggalLahirIbu') ? ' is-invalid' : '' }}" id="tanggalLahirIbu" name="tanggalLahirIbu" required>
+                            <input type="date" class="form-control{{ $errors->has('tanggalLahirIbu') ? ' is-invalid' : '' }}" id="tanggalLahirIbu" name="tanggalLahirIbu">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="Tempat Lahir" required>
+                            <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="Tempat Lahir">
                             @if ($errors->has('tanggalLahir'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('tanggalLahirIbu') }}</strong>
@@ -276,7 +276,7 @@
                 </div>
                 <div class="form-group">
                     <label for="agamaIbu">Agama: </label>
-                    <input type="text" class="form-control{{ $errors->has('agamaIbu') ? ' is-invalid' : '' }}" id="agamaIbu" name="agamaIbu" placeholder="Agama" required>
+                    <input type="text" class="form-control{{ $errors->has('agamaIbu') ? ' is-invalid' : '' }}" id="agamaIbu" name="agamaIbu" placeholder="Agama">
                     @if ($errors->has('agamaIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('agamaIbu') }}</strong>
@@ -285,7 +285,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pendidikanTerakhirIbu">Pendidikan terkahir: </label>
-                    <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirIbu') ? ' is-invalid' : '' }}" id="pendidikanTerakhirIbu" name="pendidikanTerakhirIbu" placeholder="Pendidikan Terakhir" required>
+                    <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirIbu') ? ' is-invalid' : '' }}" id="pendidikanTerakhirIbu" name="pendidikanTerakhirIbu" placeholder="Pendidikan Terakhir">
                     @if ($errors->has('pendidikanTerakhirIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('pendidikanTerakhirIbu') }}</strong>
@@ -294,7 +294,7 @@
                 </div>
                 <div class="form-group">
                     <label for="jurusanIbu">Jurusan: </label>
-                    <input type="text" class="form-control{{ $errors->has('jurusanIbu') ? ' is-invalid' : '' }}" id="jurusanIbu" name="jurusanIbu" placeholder="Jurusan" required>
+                    <input type="text" class="form-control{{ $errors->has('jurusanIbu') ? ' is-invalid' : '' }}" id="jurusanIbu" name="jurusanIbu" placeholder="Jurusan">
                     @if ($errors->has('jurusanIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('jurusanIbu') }}</strong>
@@ -303,7 +303,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pekerjaanIbu">Pekerjaan: </label>
-                    <input type="text" class="form-control{{ $errors->has('pekerjaanIbu') ? ' is-invalid' : '' }}" id="pekerjaanIbu" name="pekerjaanIbu" placeholder="Pekerjaan" required>
+                    <input type="text" class="form-control{{ $errors->has('pekerjaanIbu') ? ' is-invalid' : '' }}" id="pekerjaanIbu" name="pekerjaanIbu" placeholder="Pekerjaan">
                     @if ($errors->has('pekerjaanIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('pekerjaanIbu') }}</strong>
@@ -312,7 +312,7 @@
                 </div>
                 <div class="form-group">
                     <label for="alamatKerjaIbu">Alamat Kerja: </label>
-                    <input type="text" class="form-control{{ $errors->has('alamatKerjaIbu') ? ' is-invalid' : '' }}" id="alamatKerjaIbu" name="alamatKerjaIbu" placeholder="Alamat Kerja" required>
+                    <input type="text" class="form-control{{ $errors->has('alamatKerjaIbu') ? ' is-invalid' : '' }}" id="alamatKerjaIbu" name="alamatKerjaIbu" placeholder="Alamat Kerja">
                     @if ($errors->has('alamatKerjaIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamatKerjaIbu') }}</strong>
@@ -321,7 +321,7 @@
                 </div>
                 <div class="form-group">
                     <label for="teleponKantorIbu">Telepon Kantor: </label>
-                    <input type="text" class="form-control{{ $errors->has('teleponKantorIbu') ? ' is-invalid' : '' }}" id="teleponKantorIbu" name="teleponKantorIbu" placeholder="Telepon Kantor" required>
+                    <input type="text" class="form-control{{ $errors->has('teleponKantorIbu') ? ' is-invalid' : '' }}" id="teleponKantorIbu" name="teleponKantorIbu" placeholder="Telepon Kantor">
                     @if ($errors->has('teleponKantorIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('teleponKantorIbu') }}</strong>
@@ -330,7 +330,7 @@
                 </div>
                 <div class="form-group">
                     <label for="emailIbu">Email: </label>
-                    <input type="email" class="form-control{{ $errors->has('emailIbu') ? ' is-invalid' : '' }}" id="emailIbu" name="emailIbu" placeholder="Email" required>
+                    <input type="email" class="form-control{{ $errors->has('emailIbu') ? ' is-invalid' : '' }}" id="emailIbu" name="emailIbu" placeholder="Email">
                     @if ($errors->has('emailIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('emailIbu') }}</strong>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="form-group">
                     <label for="alamatRumahIbu">Alamat Rumah: </label>
-                    <input type="text" class="form-control{{ $errors->has('alamatRumahIbu') ? ' is-invalid' : '' }}" id="alamatRumahIbu" name="alamatRumahIbu" placeholder="Alamat Rumah" required>
+                    <input type="text" class="form-control{{ $errors->has('alamatRumahIbu') ? ' is-invalid' : '' }}" id="alamatRumahIbu" name="alamatRumahIbu" placeholder="Alamat Rumah">
                     @if ($errors->has('alamatRumahIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamatRumahIbu') }}</strong>
@@ -348,7 +348,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nomorHpIbu">Nomor Handphone: </label>
-                    <input type="text" class="form-control{{ $errors->has('nomorHpIbu') ? ' is-invalid' : '' }}" id="nomorHpIbu" name="nomorHpIbu" placeholder="+628..." required>
+                    <input type="text" class="form-control{{ $errors->has('nomorHpIbu') ? ' is-invalid' : '' }}" id="nomorHpIbu" name="nomorHpIbu" placeholder="+628...">
                     @if ($errors->has('nomorHpIbu'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('nomorHpIbu') }}</strong>
@@ -368,7 +368,7 @@
                 </div>
                 <div class="form-group">
                     <label for="namaLengkapAyah">Nama Lengkap: </label>
-                    <input type="text" class="form-control{{ $errors->has('namaLengkapAyah') ? ' is-invalid' : '' }}" id="namaLengkapAyah" name="namaLengkapAyah" placeholder="Nama Lengkap" required>
+                    <input type="text" class="form-control{{ $errors->has('namaLengkapAyah') ? ' is-invalid' : '' }}" id="namaLengkapAyah" name="namaLengkapAyah" placeholder="Nama Lengkap">
                     @if ($errors->has('namaLengkapAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('namaLengkapAyah') }}</strong>
@@ -381,12 +381,12 @@
                             <label for="tempatLahirAyah" class="col-form-label">Tempat tanggal lahir:</label>
                         </div>
                         <div class="col-7">
-                            <input type="date" class="form-control{{ $errors->has('tanggalLahirAyah') ? ' is-invalid' : '' }}" id="tanggalLahirAyah" name="tanggalLahirAyah" required>
+                            <input type="date" class="form-control{{ $errors->has('tanggalLahirAyah') ? ' is-invalid' : '' }}" id="tanggalLahirAyah" name="tanggalLahirAyah">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="Tempat Lahir" required>
+                            <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="Tempat Lahir">
                             @if ($errors->has('tanggalLahirAyah'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('tanggalLahirAyah') }}</strong>
@@ -397,7 +397,7 @@
                 </div>
                 <div class="form-group">
                     <label for="agamaAyah">Agama: </label>
-                    <input type="text" class="form-control{{ $errors->has('agamaAyah') ? ' is-invalid' : '' }}" id="agamaAyah" name="agamaAyah" placeholder="Agama" required>
+                    <input type="text" class="form-control{{ $errors->has('agamaAyah') ? ' is-invalid' : '' }}" id="agamaAyah" name="agamaAyah" placeholder="Agama">
                     @if ($errors->has('agamaAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('agamaAyah') }}</strong>
@@ -406,7 +406,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pendidikanTerakhirAyah">Pendidikan terkahir: </label>
-                    <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirAyah') ? ' is-invalid' : '' }}" id="pendidikanTerakhirAyah" name="pendidikanTerakhirAyah" placeholder="Pendidikan Terakhir" required>
+                    <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirAyah') ? ' is-invalid' : '' }}" id="pendidikanTerakhirAyah" name="pendidikanTerakhirAyah" placeholder="Pendidikan Terakhir">
                     @if ($errors->has('pendidikanTerakhirAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('pendidikanTerakhirAyah') }}</strong>
@@ -415,7 +415,7 @@
                 </div>
                 <div class="form-group">
                     <label for="jurusanAyah">Jurusan: </label>
-                    <input type="text" class="form-control{{ $errors->has('jurusanAyah') ? ' is-invalid' : '' }}" id="jurusanAyah" name="jurusanAyah" placeholder="Jurusan" required>
+                    <input type="text" class="form-control{{ $errors->has('jurusanAyah') ? ' is-invalid' : '' }}" id="jurusanAyah" name="jurusanAyah" placeholder="Jurusan">
                     @if ($errors->has('jurusanAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('jurusanAyah') }}</strong>
@@ -424,11 +424,11 @@
                 </div>
                 <div class="form-group">
                     <label for="pekerjaanAyah">Pekerjaan: </label>
-                    <input type="text" class="form-control{{ $errors->has('pekerjaanAyah') ? ' is-invalid' : '' }}" id="pekerjaanAyah" name="pekerjaanAyah" placeholder="Pekerjaan" required>
+                    <input type="text" class="form-control{{ $errors->has('pekerjaanAyah') ? ' is-invalid' : '' }}" id="pekerjaanAyah" name="pekerjaanAyah" placeholder="Pekerjaan">
                 </div>
                 <div class="form-group">
                     <label for="alamatKerjaAyah" >Alamat Kerja: </label>
-                    <input type="text" class="form-control{{ $errors->has('alamatKerjaAyah') ? ' is-invalid' : '' }}" id="alamatKerjaAyah" name="alamatKerjaAyah" placeholder="Alamat Kerja" required>
+                    <input type="text" class="form-control{{ $errors->has('alamatKerjaAyah') ? ' is-invalid' : '' }}" id="alamatKerjaAyah" name="alamatKerjaAyah" placeholder="Alamat Kerja">
                     @if ($errors->has('alamatKerjaAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamatKerjaAyah') }}</strong>
@@ -437,7 +437,7 @@
                 </div>
                 <div class="form-group">
                     <label for="teleponKantorAyah">Telepon Kantor: </label>
-                    <input type="text" class="form-control{{ $errors->has('teleponKantorAyah') ? ' is-invalid' : '' }}" id="teleponKantorAyah" name="teleponKantorAyah" placeholder="Telepon Kantor" required>
+                    <input type="text" class="form-control{{ $errors->has('teleponKantorAyah') ? ' is-invalid' : '' }}" id="teleponKantorAyah" name="teleponKantorAyah" placeholder="Telepon Kantor">
                     @if ($errors->has('teleponKantorAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('teleponKantorAyah') }}</strong>
@@ -446,7 +446,7 @@
                 </div>
                 <div class="form-group">
                     <label for="emailAyah">Email: </label>
-                    <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="emailAyah" name="emailAyah" placeholder="Email" required>
+                    <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="emailAyah" name="emailAyah" placeholder="Email">
                     @if ($errors->has('emailAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('emailAyah') }}</strong>
@@ -455,7 +455,7 @@
                 </div>
                 <div class="form-group">
                     <label for="alamatRumahAyah">Alamat Rumah: </label>
-                    <input type="text" class="form-control{{ $errors->has('alamatRumahAyah') ? ' is-invalid' : '' }}" id="alamatRumahAyah" name="alamatRumahAyah" placeholder="Alamat Rumah" required>
+                    <input type="text" class="form-control{{ $errors->has('alamatRumahAyah') ? ' is-invalid' : '' }}" id="alamatRumahAyah" name="alamatRumahAyah" placeholder="Alamat Rumah">
                     @if ($errors->has('alamatRumahAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamatRumahAyah') }}</strong>
@@ -464,7 +464,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nomorHpAyah">Nomor Handphone: </label>
-                    <input type="text" class="form-control{{ $errors->has('nomorHpAyah') ? ' is-invalid' : '' }}" id="nomorHpAyah" name="nomorHpAyah" placeholder="+628..." required>
+                    <input type="text" class="form-control{{ $errors->has('nomorHpAyah') ? ' is-invalid' : '' }}" id="nomorHpAyah" name="nomorHpAyah" placeholder="+628...">
                     @if ($errors->has('nomorHpAyah'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('nomorHpAyah') }}</strong>
@@ -484,7 +484,7 @@
                 </div>
                 <div class="form-group">
                     <label for="namaLengkapWali">Nama Lengkap: </label>
-                    <input type="text" class="form-control{{ $errors->has('namaLengkapWali') ? ' is-invalid' : '' }}" id="namaLengkapWali" name="namaLengkapWali" placeholder="Nama Lengkap" required>
+                    <input type="text" class="form-control{{ $errors->has('namaLengkapWali') ? ' is-invalid' : '' }}" id="namaLengkapWali" name="namaLengkapWali" placeholder="Nama Lengkap">
                     @if ($errors->has('namaLengkapWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('namaLengkapWali') }}</strong>
@@ -497,12 +497,12 @@
                             <label for="tempatLahirWali" class="col-form-label">Tempat tanggal lahir:</label>
                         </div>
                         <div class="col-7">
-                            <input type="date" class="form-control{{ $errors->has('tanggalLahirWali') ? ' is-invalid' : '' }}" id="tanggalLahirWali" name="tanggalLahirWali" required>
+                            <input type="date" class="form-control{{ $errors->has('tanggalLahirWali') ? ' is-invalid' : '' }}" id="tanggalLahirWali" name="tanggalLahirWali">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" class="form-control{{ $errors->has('tempatLahirWali') ? ' is-invalid' : '' }}" id="tempatLahirWali" name="tempatLahirWali" placeholder="Tempat Lahir" required>
+                            <input type="text" class="form-control{{ $errors->has('tempatLahirWali') ? ' is-invalid' : '' }}" id="tempatLahirWali" name="tempatLahirWali" placeholder="Tempat Lahir">
                             @if ($errors->has('tanggalLahirWali'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('tanggalLahirWali') }}</strong>
@@ -513,7 +513,7 @@
                 </div>
                 <div class="form-group">
                     <label for="agamaWali">Agama: </label>
-                    <input type="text" class="form-control{{ $errors->has('agamaWali') ? ' is-invalid' : '' }}" id="agamaWali" name="agamaWali" placeholder="Agama" required>
+                    <input type="text" class="form-control{{ $errors->has('agamaWali') ? ' is-invalid' : '' }}" id="agamaWali" name="agamaWali" placeholder="Agama">
                     @if ($errors->has('agamaWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('agamaWali') }}</strong>
@@ -522,7 +522,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pendidikanTerakhirWali">Pendidikan terkahir: </label>
-                    <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirWali') ? ' is-invalid' : '' }}" id="pendidikanTerakhirWali" name="pendidikanTerakhirWali" placeholder="Pendidikan Terakhir" required>
+                    <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirWali') ? ' is-invalid' : '' }}" id="pendidikanTerakhirWali" name="pendidikanTerakhirWali" placeholder="Pendidikan Terakhir">
                     @if ($errors->has('pendidikanTerakhirWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('pendidikanTerakhirWali') }}</strong>
@@ -531,7 +531,7 @@
                 </div>
                 <div class="form-group">
                     <label for="jurusanWali">Jurusan: </label>
-                    <input type="text" class="form-control{{ $errors->has('jurusanWali') ? ' is-invalid' : '' }}" id="jurusanWali" name="jurusanWali" placeholder="Jurusan" required>
+                    <input type="text" class="form-control{{ $errors->has('jurusanWali') ? ' is-invalid' : '' }}" id="jurusanWali" name="jurusanWali" placeholder="Jurusan">
                     @if ($errors->has('jurusanWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('jurusanWali') }}</strong>
@@ -540,7 +540,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pekerjaanWali">Pekerjaan: </label>
-                    <input type="text" class="form-control{{ $errors->has('pekerjaanWali') ? ' is-invalid' : '' }}" id="pekerjaanWali" name="pekerjaanWali" placeholder="Pekerjaan" required>
+                    <input type="text" class="form-control{{ $errors->has('pekerjaanWali') ? ' is-invalid' : '' }}" id="pekerjaanWali" name="pekerjaanWali" placeholder="Pekerjaan">
                     @if ($errors->has('pekerjaanWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('pekerjaanWali') }}</strong>
@@ -549,7 +549,7 @@
                 </div>
                 <div class="form-group">
                     <label for="alamatKerjaWali">Alamat Kerja: </label>
-                    <input type="text" class="form-control{{ $errors->has('alamatKerjaWali') ? ' is-invalid' : '' }}" id="alamatKerjaWali" name="alamatKerjaWali" placeholder="Alamat Kerja" required>
+                    <input type="text" class="form-control{{ $errors->has('alamatKerjaWali') ? ' is-invalid' : '' }}" id="alamatKerjaWali" name="alamatKerjaWali" placeholder="Alamat Kerja">
                     @if ($errors->has('alamatKerjaWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamatKerjaWali') }}</strong>
@@ -558,7 +558,7 @@
                 </div>
                 <div class="form-group">
                     <label for="teleponKantorWali">Telepon Kantor: </label>
-                    <input type="text" class="form-control{{ $errors->has('teleponKantorWali') ? ' is-invalid' : '' }}" id="teleponKantorWali" name="teleponKantorWali" placeholder="Telepon Kantor" required>
+                    <input type="text" class="form-control{{ $errors->has('teleponKantorWali') ? ' is-invalid' : '' }}" id="teleponKantorWali" name="teleponKantorWali" placeholder="Telepon Kantor">
                     @if ($errors->has('teleponKantorWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('teleponKantorWali') }}</strong>
@@ -567,7 +567,7 @@
                 </div>
                 <div class="form-group">
                     <label for="emailWali">Email: </label>
-                    <input type="email" class="form-control{{ $errors->has('emailWali') ? ' is-invalid' : '' }}" id="emailWali" name="emailWali" placeholder="Email" required>
+                    <input type="email" class="form-control{{ $errors->has('emailWali') ? ' is-invalid' : '' }}" id="emailWali" name="emailWali" placeholder="Email">
                     @if ($errors->has('emailWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('emailWali') }}</strong>
@@ -576,7 +576,7 @@
                 </div>
                 <div class="form-group">
                     <label for="alamatRumahWali">Alamat Rumah: </label>
-                    <input type="text" class="form-control{{ $errors->has('alamatRumahWali') ? ' is-invalid' : '' }}" id="alamatRumahWali" name="alamatRumahWali" placeholder="Alamat Rumah" required>
+                    <input type="text" class="form-control{{ $errors->has('alamatRumahWali') ? ' is-invalid' : '' }}" id="alamatRumahWali" name="alamatRumahWali" placeholder="Alamat Rumah">
                     @if ($errors->has('alamatRumahWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamatRumahWali') }}</strong>
@@ -585,7 +585,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nomorHpWali">Nomor Handphone: </label>
-                    <input type="text" class="form-control{{ $errors->has('nomorHpWali') ? ' is-invalid' : '' }}" id="nomorHpWali" name="nomorHpWali" placeholder="+628..." required>
+                    <input type="text" class="form-control{{ $errors->has('nomorHpWali') ? ' is-invalid' : '' }}" id="nomorHpWali" name="nomorHpWali" placeholder="+628...">
                     @if ($errors->has('nomorHpWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('nomorHpWali') }}</strong>
@@ -605,7 +605,7 @@
                 </div>
                 <div class="form-group">
                     <label for="namaLengkapNonWali">Nama Lengkap: </label>
-                    <input type="text" class="form-control{{ $errors->has('namaLengkapNonWali') ? ' is-invalid' : '' }}" id="namaLengkapNonWali" name="namaLengkapNonWali" placeholder="Nama Lengkap" required>
+                    <input type="text" class="form-control{{ $errors->has('namaLengkapNonWali') ? ' is-invalid' : '' }}" id="namaLengkapNonWali" name="namaLengkapNonWali" placeholder="Nama Lengkap">
                     @if ($errors->has('namaLengkapNonWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('namaLengkapNonWali') }}</strong>
@@ -614,7 +614,7 @@
                 </div>
                 <div class="form-group">
                     <label for="teleponRumahNonWali">Telepon Rumah: </label>
-                    <input type="text" class="form-control{{ $errors->has('teleponRumahNonWali') ? ' is-invalid' : '' }}" id="teleponRumahNonWali" name="teleponRumahNonWali" placeholder="Telepon Rumah" required>
+                    <input type="text" class="form-control{{ $errors->has('teleponRumahNonWali') ? ' is-invalid' : '' }}" id="teleponRumahNonWali" name="teleponRumahNonWali" placeholder="Telepon Rumah">
                     @if ($errors->has('teleponRumahNonWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('teleponRumahNonWali') }}</strong>
@@ -623,7 +623,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nomorHpNonWali">Nomor Handphone: </label>
-                    <input type="text" class="form-control{{ $errors->has('nomorHpNonWali') ? ' is-invalid' : '' }}" id="nomorHpNonWali" name="nomorHpNonWali" placeholder="+628..." required>
+                    <input type="text" class="form-control{{ $errors->has('nomorHpNonWali') ? ' is-invalid' : '' }}" id="nomorHpNonWali" name="nomorHpNonWali" placeholder="+628...">
                     @if ($errors->has('nomorHpNonWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('nomorHpNonWali') }}</strong>
@@ -632,7 +632,7 @@
                 </div>
                 <div class="form-group">
                     <label for="emailNonWali">Email: </label>
-                    <input type="email" class="form-control{{ $errors->has('emailNonWali') ? ' is-invalid' : '' }}" id="emailNonWali" name="emailNonWali" placeholder="Email" required>
+                    <input type="email" class="form-control{{ $errors->has('emailNonWali') ? ' is-invalid' : '' }}" id="emailNonWali" name="emailNonWali" placeholder="Email">
                     @if ($errors->has('emailNonWali'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('emailNonWali') }}</strong>
