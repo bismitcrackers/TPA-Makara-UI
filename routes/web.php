@@ -13,17 +13,39 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
+// temporary
+Route::get('/liststudentkb', 'PageController@liststudentkb')->name('liststudentkb');
+
+Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupenghubungkb');
+
+Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
+
+Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
+
+Route::get('/successdc', 'PageController@successdc')->name('successdc');
+
+Route::get('/komentar', 'PageController@komentar')->name('komentar');
+
+Route::get('/tambahkomentar', 'PageController@tambahkomentar')->name('tambahkomentar');
 
 Auth::routes();
 
-Route::group(['prefix'=>'parent','as'=>'parent.'], function(){
+Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
+    Route::get('/home', 'HomeController@administratorHome')->name('home');
+});
+
+Route::group(['prefix'=>'orangtua','as'=>'orangtua.'], function(){
     Route::get('/home', 'HomeController@parentHome')->name('home');
 });
 
-Route::group(['prefix'=>'teacher','as'=>'teacher.'], function(){
+Route::group(['prefix'=>'guru','as'=>'guru.'], function(){
     Route::get('/home', 'HomeController@teacherHome')->name('home');
 });
 
-Route::group(['prefix'=>'headmaster','as'=>'headmaster.'], function(){
-    Route::get('/home', 'HomeController@headmasterHome')->name('home');
+Route::group(['prefix'=>'fasilitator','as'=>'fasilitator.'], function(){
+    Route::get('/home', 'HomeController@fasilitatorHome')->name('home');
+});
+
+Route::group(['prefix'=>'co-fasilitator','as'=>'cofasilitator.'], function(){
+    Route::get('/home', 'HomeController@cofasilitatorHome')->name('home');
 });
