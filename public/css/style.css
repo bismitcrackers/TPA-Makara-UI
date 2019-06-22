@@ -110,7 +110,8 @@
 
 /* register-anak */
 
-.register-anak h2{
+.register-anak h2,
+.komentar-orangtua h2{
     font-weight: bold;
     font-size: 23px;
     line-height: 25px;
