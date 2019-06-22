@@ -13,7 +13,7 @@
     <h1 class = "title">Welcome to TPA Makara UI!</h1>
     <h1 class = "sign-in">Sign In</h1>
     <form method="POST" action="{{ route('login') }}">
-        @csrf
+         {{ csrf_field() }}
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" placeholder="Email" aria-describedby="emailHelp" required>
