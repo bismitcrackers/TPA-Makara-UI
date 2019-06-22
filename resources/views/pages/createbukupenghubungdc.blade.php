@@ -91,7 +91,7 @@
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </a>
             <input type="file" id="inputfile">
-            <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center">
                 Save
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
             </button>    
