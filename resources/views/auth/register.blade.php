@@ -7,14 +7,46 @@
 @endsection
 
 @section('content')
-    <div class="container-inner">
-        <div class="picture-logo">
-           <img src="{{asset('picture/logoTPAM.png')}}" alt="Logo TPAM">
-        </div>
-        <h1 class = "title">Welcome to TPA Makara UI!</h1>
-        <div class="register-anak">
-            <h2>Data Anak</h2>
-            <h2>Taman Pengembangan Anak Makara</h2>
+    <div class="picture-logo">
+        <img src="{{asset('picture/logoTPAM.png')}}" alt="Logo TPAM">
+    </div>
+    <h1 class = "title">Welcome to TPA Makara UI!</h1>
+    <div class="register-anak">
+        <h2>Data Anak</h2>
+        <h2>Taman Pengembangan Anak Makara</h2>
+    </div>
+    <h1 class = "sign-in">Sign Up</h1>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
+        <div class="register">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email" aria-describedby="emailHelp" placeholder="Email" required>
+                @if ($errors->has('email'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Password" required>
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="repeatPassword">Repeat Password</label>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            </div>
+            <div class=button-section>
+                {{-- <a class="halo btn-primary btn" onclick = "toRegistrasiAnakFirst()" href="#">Sign Up</a> --}}
+                <button type="button" class="btn btn-primary" onclick = "toRegistrasiAnakFirst()" >
+                    Sign Up
+                </button>
+            </div>
         </div>
         <h1 class = "sign-in">Sign Up</h1>
         <form method="POST" action="{{ route('register') }}">
@@ -297,7 +329,7 @@
                     <input type="text" class="form-control{{ $errors->has('jurusanIbu') ? ' is-invalid' : '' }}" id="jurusanIbu" name="jurusanIbu" placeholder="Jurusan">
                     @if ($errors->has('jurusanIbu'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('jurusanIbu') }}</strong>
+                            <strong>{{ $errors->first('jenisKelamin') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -431,7 +463,7 @@
                     <input type="text" class="form-control{{ $errors->has('alamatKerjaAyah') ? ' is-invalid' : '' }}" id="alamatKerjaAyah" name="alamatKerjaAyah" placeholder="Alamat Kerja">
                     @if ($errors->has('alamatKerjaAyah'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('alamatKerjaAyah') }}</strong>
+                            <strong>{{ $errors->first('tempatTanggalLahir') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -626,7 +658,7 @@
                     <input type="text" class="form-control{{ $errors->has('nomorHpNonWali') ? ' is-invalid' : '' }}" id="nomorHpNonWali" name="nomorHpNonWali" placeholder="+628...">
                     @if ($errors->has('nomorHpNonWali'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('nomorHpNonWali') }}</strong>
+                            <strong>{{ $errors->first('tempatTanggalLahirIbu') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -635,20 +667,154 @@
                     <input type="email" class="form-control{{ $errors->has('emailNonWali') ? ' is-invalid' : '' }}" id="emailNonWali" name="emailNonWali" placeholder="Email">
                     @if ($errors->has('emailNonWali'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('emailNonWali') }}</strong>
+                            <strong>{{ $errors->first('tempatTanggalLahirWali') }}</strong>
                         </span>
                     @endif
                 </div>
+                <input type="text" class="form-control{{ $errors->has('tempatLahirWali') ? ' is-invalid' : '' }}" id="tempatLahirWali" name="tempatLahirWali" placeholder="" required>
+                @if ($errors->has('tempatLahirWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('tempatLahirWali') }}</strong>
+                    </span>
+                @endif
             </div>
-            <button type="submit" class="btn btn-primary" id = "final-button">
-                <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
-                Save
-            </button>
-        </form>
-        <p class="bottom-auth">Already have an account?
-            <a href="{{ route('login') }}">Login</a>
-        </p>
-    </div>
+            <div class="form-group">
+                <label for="agamaWali">Agama: </label>
+                <input type="text" class="form-control{{ $errors->has('agamaWali') ? ' is-invalid' : '' }}" id="agamaWali" name="agamaWali" placeholder="Agama" required>
+                @if ($errors->has('agamaWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('agamaWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="pendidikanTerakhirWali">Pendidikan terkahir: </label>
+                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirWali') ? ' is-invalid' : '' }}" id="pendidikanTerakhirWali" name="pendidikanTerakhirWali" placeholder="Pendidikan Terakhir" required>
+                @if ($errors->has('pendidikanTerakhirWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('pendidikanTerakhirWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="jurusanWali">Jurusan: </label>
+                <input type="text" class="form-control{{ $errors->has('jurusanWali') ? ' is-invalid' : '' }}" id="jurusanWali" name="jurusanWali" placeholder="Jurusan" required>
+                @if ($errors->has('jurusanWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('jurusanWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="pekerjaanWali">Pekerjaan: </label>
+                <input type="text" class="form-control{{ $errors->has('pekerjaanWali') ? ' is-invalid' : '' }}" id="pekerjaanWali" name="pekerjaanWali" placeholder="Pekerjaan" required>
+                @if ($errors->has('pekerjaanWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('pekerjaanWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="alamatKerjaWali">Alamat Kerja: </label>
+                <input type="text" class="form-control{{ $errors->has('alamatKerjaWali') ? ' is-invalid' : '' }}" id="alamatKerjaWali" name="alamatKerjaWali" placeholder="Alamat Kerja" required>
+                @if ($errors->has('alamatKerjaWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('alamatKerjaWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="teleponKantorWali">Telepon Kantor: </label>
+                <input type="text" class="form-control{{ $errors->has('teleponKantorWali') ? ' is-invalid' : '' }}" id="teleponKantorWali" name="teleponKantorWali" placeholder="Telepon Kantor" required>
+                @if ($errors->has('teleponKantorWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('teleponKantorWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="emailWali">Email: </label>
+                <input type="email" class="form-control{{ $errors->has('emailWali') ? ' is-invalid' : '' }}" id="emailWali" name="emailWali" placeholder="Email" required>
+                @if ($errors->has('emailWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('emailWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="alamatRumahWali">Alamat Rumah: </label>
+                <input type="text" class="form-control{{ $errors->has('alamatRumahWali') ? ' is-invalid' : '' }}" id="alamatRumahWali" name="alamatRumahWali" placeholder="Alamat Rumah" required>
+                @if ($errors->has('alamatRumahWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('alamatRumahWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="nomorHpWali">Nomor Handphone: </label>
+                <input type="text" class="form-control{{ $errors->has('nomorHpWali') ? ' is-invalid' : '' }}" id="nomorHpWali" name="nomorHpWali" placeholder="+628..." required>
+                @if ($errors->has('nomorHpWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('nomorHpWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class=button-section>
+                <a class="halo btn-primary btn" onclick = "toRegistrasiNonWali()" href="#">
+                    <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+                    Next
+                </a>
+            </div>
+        </div>
+        <div class="registrasi-non-wali">
+            <div class="form-group">
+                <label for=""><u>ANGGOTA KELUARGA YANG DAPAT DIHUBUNGI SELAIN ORANG TUA DAN WALI</u></label>
+            </div>
+            <div class="form-group">
+                <label for="namaLengkapNonWali">Nama Lengkap: </label>
+                <input type="text" class="form-control{{ $errors->has('namaLengkapNonWali') ? ' is-invalid' : '' }}" id="namaLengkapNonWali" name="namaLengkapNonWali" placeholder="Nama Lengkap" required>
+                @if ($errors->has('namaLengkapNonWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('namaLengkapNonWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="teleponRumahNonWali">Telepon Rumah: </label>
+                <input type="text" class="form-control{{ $errors->has('teleponRumahNonWali') ? ' is-invalid' : '' }}" id="teleponRumahNonWali" name="teleponRumahNonWali" placeholder="Telepon Rumah" required>
+                @if ($errors->has('teleponRumahNonWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('teleponRumahNonWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="nomorHpNonWali">Nomor Handphone: </label>
+                <input type="text" class="form-control{{ $errors->has('nomorHpNonWali') ? ' is-invalid' : '' }}" id="nomorHpNonWali" name="nomorHpNonWali" placeholder="+628..." required>
+                @if ($errors->has('nomorHpNonWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('nomorHpNonWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="emailNonWali">Email: </label>
+                <input type="email" class="form-control{{ $errors->has('emailNonWali') ? ' is-invalid' : '' }}" id="emailNonWali" name="emailNonWali" placeholder="Email" required>
+                @if ($errors->has('emailNonWali'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('emailNonWali') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id = "final-button">
+            <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
+            Save
+        </button>
+    </form>
+    <p class="bottom-auth">Already have an account?
+        <a href="{{ route('login') }}">Login</a>
+    </p>
 @endsection
 
 @section('extra-js')

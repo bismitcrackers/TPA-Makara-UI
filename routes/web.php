@@ -13,6 +13,16 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
+// temporary
+Route::get('/liststudentkb', 'PageController@liststudentkb')->name('liststudentkb');
+
+Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupenghubungkb');
+
+Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
+
+Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
+
+Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
 Auth::routes();
 
