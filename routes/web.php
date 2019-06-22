@@ -24,6 +24,8 @@ Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->
 
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
+Route::get('/komentarortu', 'PageController@komentarortu')->name('komentarortu');
+
 Auth::routes();
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
