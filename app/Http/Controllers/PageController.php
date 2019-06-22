@@ -6,23 +6,33 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    //
+
     public function index() {
-        return view('index');
+        return view('pages.index');
     }
 
-    // public function test() {
-    //     return view('pages.login');
-    // }
-    public function login(){
-        return view('pages.login');
-    }
-
-    public function register(){
-        return view('pages.register');
-    }
-
-    public function success(){
+    public function success() {
         return view('pages.success');
     }
+
+    public function liststudentkb() {
+        return view('pages.liststudentkb');
+    }
+
+    public function bukupenghubungkb() {
+        return view('pages.bukupenghubungkb');
+    }
+
+    public function bukupenghubungdc() {
+        return view('pages.bukupenghubungdc');
+    }
+
+    public function createbukupenghubungdc() {
+        return view('pages.createbukupenghubungdc');
+    }
+
+    public function successdc() {
+        return view('pages.successdc');
+    }
+    
 }

@@ -11,7 +11,7 @@
     <img src="{{asset('svg/success.svg')}}" alt="">
 </div>
     <h3 class="title-congratulations">Congratulations!</h3>
-    <h4 class="subtitle-congratulations">You have completed the registration.</h4>
+    <h4 class="subtitle-congratulations">You have completed to create the connecting’s book.</h4>
 
 @endsection
 

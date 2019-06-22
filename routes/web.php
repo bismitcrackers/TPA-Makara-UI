@@ -11,28 +11,29 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', 'PageController@index')->name('index');
-// Route::get('/test', 'PageController@test')->name('test');
-Route::get('/login', 'PageController@login')->name('login');
-Route::get('/register', 'PageController@register')->name('register');
 Route::get('/success', 'PageController@success')->name('success');
+// temporary
+Route::get('/liststudentkb', 'PageController@liststudentkb')->name('liststudentkb');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-  Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
-  Route::post('/login', 'AdminAuth\LoginController@login');
-  Route::post('/logout', 'AdminAuth\LoginController@logout')->name('logout');
+Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupenghubungkb');
 
-  Route::get('/register', 'AdminAuth\RegisterController@showRegistrationForm')->name('register');
-  Route::post('/register', 'AdminAuth\RegisterController@register');
+Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
 
-  Route::post('/password/email', 'AdminAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
-  Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset')->name('password.email');
-  Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
-  Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
+Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
 
-  Route::resource('/articles', 'ArticleController');
+Route::get('/successdc', 'PageController@successdc')->name('successdc');
+
+Auth::routes();
+
+Route::group(['prefix'=>'parent','as'=>'parent.'], function(){
+    Route::get('/home', 'HomeController@parentHome')->name('home');
+});
+
+Route::group(['prefix'=>'teacher','as'=>'teacher.'], function(){
+    Route::get('/home', 'HomeController@teacherHome')->name('home');
+});
+
+Route::group(['prefix'=>'headmaster','as'=>'headmaster.'], function(){
+    Route::get('/home', 'HomeController@headmasterHome')->name('home');
 });
