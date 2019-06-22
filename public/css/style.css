@@ -175,7 +175,7 @@
 .registrasi-wali,
 .registrasi-non-wali{
     transform: scale(0,0);
-    height: 0;  
+    height: 0;
 }
 
 .picture-logo,
@@ -205,8 +205,6 @@
 #final-button{
     display: none;
 }
-
-/* daftarsiswakb */
 
 .daftarsiswa-title{
     font-weight: bold;
@@ -458,10 +456,3 @@ button.dcbutton img{
     display:none;
     height:0;
 }
-
-
-
-
-
-    
-
