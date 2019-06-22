@@ -46,6 +46,6 @@ Route::group(['prefix'=>'fasilitator','as'=>'fasilitator.'], function(){
     Route::get('/home', 'HomeController@fasilitatorHome')->name('home');
 });
 
-Route::group(['prefix'=>'cofasilitator','as'=>'cofasilitator.'], function(){
+Route::group(['prefix'=>'co-fasilitator','as'=>'cofasilitator.'], function(){
     Route::get('/home', 'HomeController@cofasilitatorHome')->name('home');
 });

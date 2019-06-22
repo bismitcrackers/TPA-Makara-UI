@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helper\UrlHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -40,28 +41,7 @@ class LoginController extends Controller
 
     public function authenticated(Request $request)
     {
-        // Logic that determines where to send the user
-        if($request->user()->hasRole('Administrator') ||
-            $request->user()->hasRole('Koordinator') ||
-            $request->user()->hasRole('Wakil Koordinator') ||
-            $request->user()->hasRole('Staf Administrasi')){
-            return redirect('/admin/home');
-        }
-
-        if($request->user()->hasRole('Fasilitator')){
-            return redirect('/fasilitator/home');
-        }
-
-        if($request->user()->hasRole('Co-fasilitator')){
-            return redirect('/cofasilitator/home');
-        }
-
-        if($request->user()->hasRole('Guru')){
-            return redirect('/guru/home');
-        }
-
-        if($request->user()->hasRole('Orangtua')){
-            return redirect('/orangtua/home');
-        }
+        $urlRoleMap = UrlHelper::getUrlForRole($request->user()->roles()->first()->name);
+        return redirect('/' . $urlRoleMap . '/home');
     }
 }
