@@ -24,7 +24,9 @@ Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->
 
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
-Route::get('/komentarortu', 'PageController@komentarortu')->name('komentarortu');
+Route::get('/komentar', 'PageController@komentar')->name('komentar');
+
+Route::get('/tambahkomentar', 'PageController@tambahkomentar')->name('tambahkomentar');
 
 Auth::routes();
 
