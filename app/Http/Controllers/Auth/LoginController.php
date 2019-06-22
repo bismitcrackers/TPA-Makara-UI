@@ -41,16 +41,27 @@ class LoginController extends Controller
     public function authenticated(Request $request)
     {
         // Logic that determines where to send the user
-        if($request->user()->hasRole('parent')){
-            return redirect('/parent/home');
+        if($request->user()->hasRole('Administrator') ||
+            $request->user()->hasRole('Koordinator') ||
+            $request->user()->hasRole('Wakil Koordinator') ||
+            $request->user()->hasRole('Staf Administrasi')){
+            return redirect('/admin/home');
         }
 
-        if($request->user()->hasRole('teacher')){
-            return redirect('/teacher/home');
+        if($request->user()->hasRole('Fasilitator')){
+            return redirect('/fasilitator/home');
         }
 
-        if($request->user()->hasRole('headmaster')){
-            return redirect('/headmaster/home');
+        if($request->user()->hasRole('Co-fasilitator')){
+            return redirect('/cofasilitator/home');
+        }
+
+        if($request->user()->hasRole('Guru')){
+            return redirect('/guru/home');
+        }
+
+        if($request->user()->hasRole('Orangtua')){
+            return redirect('/orangtua/home');
         }
     }
 }

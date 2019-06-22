@@ -16,18 +16,28 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function administratorHome(Request $request) {
+        $request->user()->authorizeRoles(['Administrator','Staf Administrasi','Koordinator','Wakil Koordinator']);
+        return view('dashboard.administratorHome');
+    }
+
+    public function fasilitatorHome(Request $request) {
+        $request->user()->authorizeRoles(['Fasilitator']);
+        return view('dashboard.fasilitatorHome');
+    }
+
     public function teacherHome(Request $request) {
-        $request->user()->authorizeRoles(['teacher']);
+        $request->user()->authorizeRoles(['Guru']);
         return view('dashboard.teacherHome');
     }
 
-    public function headmasterHome(Request $request) {
-        $request->user()->authorizeRoles(['headmaster']);
-        return view('dashboard.headmasterHome');
+    public function cofasilitatorHome(Request $request) {
+        $request->user()->authorizeRoles(['Co-fasilitator']);
+        return view('dashboard.cofasilitatorHome');
     }
 
     public function parentHome(Request $request) {
-        $request->user()->authorizeRoles(['parent']);
+        $request->user()->authorizeRoles(['Orangtua']);
         return view('dashboard.parentHome');
     }
 }
