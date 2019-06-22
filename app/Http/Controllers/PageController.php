@@ -35,8 +35,12 @@ class PageController extends Controller
         return view('pages.successdc');
     }
 
-    public function komentarortu() {
-        return view('pages.komentarortu');
+    public function komentar() {
+        return view('pages.komentar');
+    }
+
+    public function tambahkomentar() {
+        return view('pages.tambahkomentar');
     }
     
 }
