@@ -1,18 +1,17 @@
 /* login and register */
-.container-fluid{
+.container-fluid {
     background-color: #f7f7f7;
 }
 
-.container-inner{
-    font-family:"Nunito";
+.container-inner {
+    font-family: "Nunito";
     font-style: normal;
-    line-height: 50px;
     padding: 20px;
     background: white;
 }
 
 /* Welcome to TPA Makara UI! */
-.title{
+.title {
     font-weight: bold;
     font-size: 25px;
     margin-top: 10px;
@@ -22,7 +21,7 @@
     color: #384F7D;
 }
 
-.sign-in{
+.sign-in {
     margin: 50px 0 50px;
     background: linear-gradient(227.43deg, rgba(45, 238, 249, 0.15) -34.42%, rgba(224, 132, 241, 0.15) 127.18%);
     width: 110px;
@@ -36,26 +35,26 @@
     color: #384F7D;
 }
 
-.container-inner label{
+.container-inner label {
     font-size: 19px;
     line-height: 19px;
     letter-spacing: 0.04em;
     color: #414752;
-    text-align:left;
+    text-align: left;
 }
 
-.font-basic{
+.font-basic {
     font-size: 19px;
     line-height: 19px;
     letter-spacing: 0.04em;
     color: #414752;
-    text-align:left;
+    text-align: left;
     margin-left: -20px;
 }
 
 
-.btn-primary{
-    padding:10px 20px 10px 20px;
+.btn-primary {
+    padding: 10px 20px 10px 20px;
     margin: 30px auto 30px;
     background: #2F80ED;
     border-radius: 30px;
@@ -65,13 +64,13 @@
     color: #FFFFFF;
 }
 
-.halo{
-    color:white;
+.halo {
+    color: white;
     text-decoration: none;
 }
 
-.halo:hover{
-    color:white;
+.halo:hover {
+    color: white;
     text-decoration: none;
 }
 
@@ -79,16 +78,16 @@
     margin:30px;
 } */
 
-.form-control{
+.form-control {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
     font-size: 19px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 
 }
 
-.bottom-auth{
+.bottom-auth {
     font-size: 21px;
     line-height: 22px;
     text-align: center;
@@ -96,21 +95,21 @@
     margin-bottom: 40px;
 }
 
-.picture-logo{
+.picture-logo {
     text-align: center;
 }
 
-.picture-logo img{
+.picture-logo img {
     max-width: 57%;
 }
 
-.button-section{
+.button-section {
     text-align: center;
 }
 
 /* register-anak */
 
-.register-anak h2{
+.register-anak h2 {
     font-weight: bold;
     font-size: 23px;
     line-height: 25px;
@@ -120,15 +119,15 @@
 
 }
 
-.short{
+.short {
     padding-right: 3px;
 }
 
 .correcting {
-    margin-top:18px;
+    margin-top: 18px;
 }
 
-.title-congratulations{
+.title-congratulations {
     font-weight: 600;
     font-size: 36px;
     line-height: 50px;
@@ -137,7 +136,7 @@
     color: #0066B8;
 }
 
-.subtitle-congratulations{
+.subtitle-congratulations {
     font-weight: normal;
     font-size: 20px;
     line-height: 56px;
@@ -145,17 +144,17 @@
     color: #0066B8;
 }
 
-.success{
+.success {
     margin: 185px auto 42px;
 }
 
-.subtitle-congratulations{
+.subtitle-congratulations {
     margin-bottom: 145px;
 }
 
-.ellipse{
+.ellipse {
     border-radius: 50%;
-    height:109px;
+    height: 109px;
     width: 109px;
     background: #0066B8;
     text-align: center;
@@ -172,17 +171,17 @@
 .registrasi-ibu,
 .registrasi-ayah,
 .registrasi-wali,
-.registrasi-non-wali{
-    transform: scale(0,0);
-    height: 0;  
+.registrasi-non-wali {
+    transform: scale(0, 0);
+    height: 0;
 }
 
 .picture-logo,
 .title,
 .sign-in,
 .register,
-.bottom-auth{
-    transform: scale(1,1);
+.bottom-auth {
+    transform: scale(1, 1);
     height: 100%;
 }
 
@@ -197,20 +196,139 @@
 .title,
 .sign-in,
 .register,
-.bottom-auth{
+.bottom-auth {
     transition: all 0.3s ease-in-out;
 }
 
-#final-button{
+#final-button {
     display: none;
+}
+
+/* homepage */
+
+p,
+h1,
+h2,
+h3 {
+    margin: 0;
+    line-height: 25px;
+    font-family: Nunito;
+    text-align: center;
+}
+
+#carouselExampleIndicators {
+    margin-bottom: 25px;
+}
+
+.carousel-indicators li {
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+}
+
+#homeHead,
+#homePara,
+#headerBerita,
+#headerLokasi {
+    font-style: normal;
+    color: rgba(56, 79, 125, 0.65);
+    text-align: center;
+}
+
+#homeHead,
+#headerBerita,
+#headerLokasi {
+    font-weight: 900;
+    font-size: 1.3em;
+}
+
+#homePara {
+    font-weight: normal;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+#homeVideo {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#headerBerita,
+#headerLokasi {
+    margin-top: 10px;
+    color: #414752;
+}
+
+#prgBerita {
+    font-size: 1rem;
+}
+
+#judulBerita {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+
+#garis {
+    width: 100%;
+    height: 2px;
+    background: #414752;
+}
+
+#imgBerita {
+    border-radius: 20%;
+    margin-bottom: 5px;
+
+}
+
+#beritaCont {
+    padding: 1%;
+    /* box-shadow: 1px 1px 30px grey; */
+    background-color: grey;
+    text-align: center;
+}
+
+#isiBerita {
+    background-color: #FFFFFF;
+    padding: 3%;
 }
 
 
 
+#berita {
+    background-color: grey;
+    padding: 1%;
+}
+
+#prfsTpam {
+    background-color: grey;
+}
+
+#prfsTpam div {
+    padding: 0;
+}
+
+#prfsTpam h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+}
+
+#prfsTpam,
+#jamOps,
+#almtTpam {
+    margin: 0 auto;
+}
+
+#berita,
+#prfsCont,
+#lokasiCont,
+#jamOps {
+    margin-top: 10px;
+}
 
 
 
-
-
-
-
+img {
+    max-width: 100%;
+    height: auto;
+}
