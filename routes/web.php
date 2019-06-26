@@ -32,6 +32,7 @@ Auth::routes();
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
+    Route::resource('berita', 'BeritaController');
 });
 
 Route::group(['prefix'=>'orangtua','as'=>'orangtua.'], function(){
@@ -49,3 +50,4 @@ Route::group(['prefix'=>'fasilitator','as'=>'fasilitator.'], function(){
 Route::group(['prefix'=>'co-fasilitator','as'=>'cofasilitator.'], function(){
     Route::get('/home', 'HomeController@cofasilitatorHome')->name('home');
 });
+
