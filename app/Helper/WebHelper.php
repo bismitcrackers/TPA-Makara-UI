@@ -2,7 +2,7 @@
 
 namespace App\Helper;
 
-class UrlHelper
+class WebHelper
 {
 
     public static function getUrlForRole($role)
@@ -17,6 +17,12 @@ class UrlHelper
         }
     }
 
-}
+    public static function saveImageToPublic($file, $dir)
+    {
+        $imageName = time() . '.' . $file->getClientOriginalExtension();
+        $destinationPath = public_path($dir);
+        $file->move($destinationPath, $imageName);
+        return $destinationPath . $imageName;
+    }
 
- ?>
+}

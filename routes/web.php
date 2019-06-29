@@ -20,8 +20,6 @@ Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupe
 
 Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
 
-Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
-
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
 Route::get('/komentar', 'PageController@komentar')->name('komentar');
@@ -29,6 +27,13 @@ Route::get('/komentar', 'PageController@komentar')->name('komentar');
 Route::get('/tambahkomentar', 'PageController@tambahkomentar')->name('tambahkomentar');
 
 Auth::routes();
+
+Route::group(['prefix'=>'{student_id}'], function(){
+    Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
+        Route::get('/form', 'PageController@formDailyBook')->name('form');
+        Route::post('/add', 'DailyBooksController@addDailyBooks')->name('add');
+    });
+});
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
@@ -50,4 +55,3 @@ Route::group(['prefix'=>'fasilitator','as'=>'fasilitator.'], function(){
 Route::group(['prefix'=>'co-fasilitator','as'=>'cofasilitator.'], function(){
     Route::get('/home', 'HomeController@cofasilitatorHome')->name('home');
 });
-
