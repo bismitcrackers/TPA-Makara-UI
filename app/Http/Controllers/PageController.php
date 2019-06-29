@@ -27,8 +27,8 @@ class PageController extends Controller
         return view('pages.bukupenghubungdc');
     }
 
-    public function createbukupenghubungdc() {
-        return view('pages.createbukupenghubungdc');
+    public function formDailyBook($student_id) {
+        return view('pages.createbukupenghubungdc', ['student_id' => $student_id]);
     }
 
     public function successdc() {
@@ -50,5 +50,4 @@ class PageController extends Controller
     public function abyanprofile() {
         return view('pages.abyanprofile');
     }
-    
 }

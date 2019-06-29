@@ -17,9 +17,14 @@ class Student extends Model
         'telepon_rumah', 'anak_ke', 'catatan_medis', 'penyakit_berat',
         'keadaan_khusus', 'sifat_baik', 'sifat_diperhatikan'
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function dailyBook()
+    {
+        return $this->hasMany(DailyBook::class);
     }
 }

@@ -20,8 +20,6 @@ Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupe
 
 Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
 
-Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
-
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
 Route::get('/komentar', 'PageController@komentar')->name('komentar');
@@ -34,8 +32,16 @@ Route::get('/abyanprofile', 'PageController@abyanprofile')->name('abyanprofile')
 
 Auth::routes();
 
+Route::group(['prefix'=>'{student_id}'], function(){
+    Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
+        Route::get('/form', 'PageController@formDailyBook')->name('form');
+        Route::post('/add', 'DailyBooksController@addDailyBooks')->name('add');
+    });
+});
+
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
+    Route::resource('berita', 'BeritaController');
 });
 
 Route::group(['prefix'=>'orangtua','as'=>'orangtua.'], function(){
