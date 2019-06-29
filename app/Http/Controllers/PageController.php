@@ -27,6 +27,14 @@ class PageController extends Controller
         return view('pages.bukupenghubungdc');
     }
 
+    public function bukupenghubungdcnotpublish() {
+        return view('pages.bukupenghubungdcnotpublish');
+    }
+
+    public function bukupenghubungdcortu() {
+        return view('pages.bukupenghubungdcortu');
+    }
+
     public function createbukupenghubungdc() {
         return view('pages.createbukupenghubungdc');
     }

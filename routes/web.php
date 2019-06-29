@@ -20,6 +20,10 @@ Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupe
 
 Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
 
+Route::get('/bukupenghubungdcnotpublish', 'PageController@bukupenghubungdcnotpublish')->name('bukupenghubungdcnotpublish');
+
+Route::get('/bukupenghubungdcortu', 'PageController@bukupenghubungdcortu')->name('bukupenghubungdcortu');
+
 Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
 
 Route::get('/successdc', 'PageController@successdc')->name('successdc');

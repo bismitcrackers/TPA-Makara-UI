@@ -23,7 +23,7 @@
                 <div class="col-md-8 p-0 white-background">
                     <div>
                         <div class="container-inner">
-                            <div class="mb-5">
+                            <div class="increasemarginbottom">
                                 @yield('content')
                             </div>
                             @include('layout/_footer')

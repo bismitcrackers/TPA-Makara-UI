@@ -8,12 +8,11 @@
 
 @section('content')
 
-    <h1 class = "daftarsiswa-title">
-        Daftar Tipe Kelas
-        <div class= "d-flex justify-content-center">
-            <div class="underline"></div>
-        </div>
-    </h1>
+    <div class="d-flex justify-content-center">
+        <h1 class = "daftarsiswa-title underliner">
+            Daftar Tipe Kelas
+        </h1>
+    </div>
 
 
     <div class="centerer">
