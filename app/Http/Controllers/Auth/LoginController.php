@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Helper\UrlHelper;
+use App\Helper\WebHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     public function authenticated(Request $request)
     {
-        $urlRoleMap = UrlHelper::getUrlForRole($request->user()->roles()->first()->name);
+        $urlRoleMap = WebHelper::getUrlForRole($request->user()->roles()->first()->name);
         return redirect('/' . $urlRoleMap . '/home');
     }
 }
