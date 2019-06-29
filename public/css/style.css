@@ -1,12 +1,22 @@
 /* login and register */
+
+.white-background{
+    background: white;
+    position: absolute;
+    top:0;
+    bottom:0;
+}
+
 .container-fluid {
     background-color: #f7f7f7;
+
 }
 
 .container-inner {
     font-family: "Nunito";
     font-style: normal;
     padding: 20px;
+    height:100%;
     background: white;
 }
 
@@ -165,10 +175,12 @@
 .registrasi-ibu,
 .registrasi-ayah,
 .registrasi-wali,
-.registrasi-non-wali {
-    transform: scale(0, 0);
+.registrasi-non-wali,
+.tab{
+    transform: scale(0,0);
     height: 0;
 }
+
 
 .picture-logo,
 .title,
@@ -190,7 +202,8 @@
 .title,
 .sign-in,
 .register,
-.bottom-auth {
+.bottom-auth,
+.tab{
     transition: all 0.3s ease-in-out;
 }
 
@@ -271,13 +284,19 @@ h3 {
     color: #414752;
 }
 
-.underline {
+.underline{
+    margin-top: 5px;
     height: 2px;
-    width: 280px;
     background-color: #384F7D;
 }
 
-.search-siswa {
+.underliner{
+    padding: 7px 15px;
+    border-bottom: 2px solid #384F7D;
+}
+
+
+.search-siswa{
     background: rgba(236, 239, 241, 0.64);
     border-radius: 4px;
     border: 0px;
@@ -630,6 +649,144 @@ button.dcbutton img {
     line-height: 18px;
     color: rgba(56, 79, 125, 0.8);
     margin-bottom: 0;
+}
+
+/* typeclass */
+
+.typeclass{
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 38px;
+    color: #2F80ED;
+    margin-bottom: 40px;
+}
+
+
+a.linkclass:hover h1{
+    color: rgb(34, 112, 214);
+}
+
+a.linkclass:hover{
+    text-decoration: none
+}
+
+/*profile*/
+
+.editprofile{
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    color: #FFFFFF;
+    background: linear-gradient(167.84deg, #2F80ED -21.93%, #038BF4 87.81%);
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 2px 12px;
+    transition: all .1s ease-in;
+}
+
+.editprofile:hover{
+    background: rgb(65, 175, 169)
+}
+
+
+.editprofile p{
+    text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+     margin: 0;
+}
+
+.linkeditprofile:hover{
+    text-decoration: none;
+}
+
+
+.profilelabel{
+    font-weight: bold;
+    font-size: 12px;
+    color: #000000;
+}
+
+.profilecontent{
+    font-weight: bold;
+    font-size: 12px;
+    color: #2F80ED;
+
+}
+
+.deletemb{
+    margin-bottom:0px;
+}
+
+.profilepicture{
+    max-width: 100%;
+    margin-bottom: 5px
+}
+
+.boxprofile{
+    background: rgba(196, 196, 196, 0.2);
+    margin-bottom: 30px;
+    width: 482px;
+}
+
+@media (max-width: 700.98px) {
+.margin-profile{
+    margin-left:-10px;
+}
+.margin-ortu{
+    margin-left: 0px;
+}
+}
+
+@media (min-width: 701px){
+    .margin-ortu{
+        margin-left: 20%;
+    }
+}
+
+.parent-profile{
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #006B8D;
+}
+
+.underliner-parent-profile{
+    padding: 2px 8px;
+    border-bottom: 2px solid #006B8D;;
+}
+
+/*footer nav*/
+
+.bottom-pos{
+    position:fixed;
+    bottom: 0;
+
+}
+
+.boxfooter{
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    background: #FFFFFF;
+}
+
+.nav-pane{
+    text-align:center;
+}
+
+.nav-pane p{
+    margin:0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 11px;
+    align-items: center;
+    text-align: center;
+    color: #36382E;
 }
 
 #beritaForm h2 {

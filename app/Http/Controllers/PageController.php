@@ -43,4 +43,11 @@ class PageController extends Controller
         return view('pages.tambahkomentar');
     }
 
+    public function typeclass() {
+        return view('pages.typeclass');
+    }
+
+    public function abyanprofile() {
+        return view('pages.abyanprofile');
+    }
 }
