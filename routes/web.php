@@ -28,6 +28,10 @@ Route::get('/komentar', 'PageController@komentar')->name('komentar');
 
 Route::get('/tambahkomentar', 'PageController@tambahkomentar')->name('tambahkomentar');
 
+Route::get('/typeclass', 'PageController@typeclass')->name('typeclass');
+
+Route::get('/abyanprofile', 'PageController@abyanprofile')->name('abyanprofile');
+
 Auth::routes();
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
