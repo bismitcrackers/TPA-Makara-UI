@@ -175,7 +175,7 @@
 .registrasi-ayah,
 .registrasi-wali,
 .registrasi-non-wali,
-.tab{
+{
     transform: scale(0,0);
     height: 0;
 }
