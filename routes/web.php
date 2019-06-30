@@ -13,12 +13,6 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
-// temporary
-Route::get('/liststudentkb', 'PageController@liststudentkb')->name('liststudentkb');
-
-Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupenghubungkb');
-
-Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
 
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
@@ -32,9 +26,12 @@ Route::get('/abyanprofile', 'PageController@abyanprofile')->name('abyanprofile')
 
 Auth::routes();
 
-Route::group(['prefix'=>'{student_id}'], function(){
-    Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
+Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
+    Route::get('/students/{class}', 'PageController@studentsList')->name('student');
+    Route::group(['prefix'=>'{student_id}'], function(){
         Route::get('/form', 'PageController@formDailyBook')->name('form');
+        Route::get('/date/{month}/{year}', 'PageController@selectDate')->name('date');
+        Route::get('/month', 'PageController@selectMonth')->name('month');
         Route::post('/add', 'DailyBooksController@addDailyBooks')->name('add');
     });
 });

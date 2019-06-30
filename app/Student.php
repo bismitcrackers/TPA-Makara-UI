@@ -15,7 +15,7 @@ class Student extends Model
         'user_id', 'nama_lengkap', 'nama_panggilan', 'jenis_kelamin',
         'tempat_lahir', 'tanggal_lahir', 'usia', 'agama', 'alamat_rumah',
         'telepon_rumah', 'anak_ke', 'catatan_medis', 'penyakit_berat',
-        'keadaan_khusus', 'sifat_baik', 'sifat_diperhatikan'
+        'keadaan_khusus', 'sifat_baik', 'sifat_diperhatikan', 'kelas'
     ];
 
     public function user()

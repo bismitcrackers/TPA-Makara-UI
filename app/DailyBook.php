@@ -15,7 +15,8 @@ class DailyBook extends Model
     protected $fillable = [
         'student_id', 'pembuat', 'tanggal', 'tema', 'subtema', 'snack',
         'keterangan_fisik', 'keterangan_kognitif', 'keterangan_sosial',
-        'makan_siang', 'tidur_siang', 'catatan_khusus', 'url_lampiran'
+        'makan_siang', 'tidur_siang', 'catatan_khusus', 'url_lampiran',
+        'dibaca'
     ];
 
     public function student()
