@@ -13,14 +13,6 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
-// temporary
-Route::get('/liststudentkb', 'PageController@liststudentkb')->name('liststudentkb');
-
-Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupenghubungkb');
-
-Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
-
-Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
 
 Route::get('/showbukupenghubungkb', 'PageController@showbukupenghubungkb')->name('showbukupenghubungkb');
 
@@ -32,7 +24,21 @@ Route::get('/komentar', 'PageController@komentar')->name('komentar');
 
 Route::get('/tambahkomentar', 'PageController@tambahkomentar')->name('tambahkomentar');
 
+Route::get('/typeclass', 'PageController@typeclass')->name('typeclass');
+
+Route::get('/abyanprofile', 'PageController@abyanprofile')->name('abyanprofile');
+
 Auth::routes();
+
+Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
+    Route::get('/students/{class}', 'PageController@studentsList')->name('student');
+    Route::group(['prefix'=>'{student_id}'], function(){
+        Route::get('/form', 'PageController@formDailyBook')->name('form');
+        Route::get('/date/{month}/{year}', 'PageController@selectDate')->name('date');
+        Route::get('/month', 'PageController@selectMonth')->name('month');
+        Route::post('/add', 'DailyBooksController@addDailyBooks')->name('add');
+    });
+});
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
@@ -54,4 +60,3 @@ Route::group(['prefix'=>'fasilitator','as'=>'fasilitator.'], function(){
 Route::group(['prefix'=>'co-fasilitator','as'=>'cofasilitator.'], function(){
     Route::get('/home', 'HomeController@cofasilitatorHome')->name('home');
 });
-

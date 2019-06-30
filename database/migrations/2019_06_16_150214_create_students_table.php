@@ -31,6 +31,7 @@ class CreateStudentsTable extends Migration
             $table->string('keadaan_khusus')->nullable();
             $table->string('sifat_baik')->nullable();
             $table->string('sifat_diperhatikan')->nullable();
+            $table->string('kelas')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
