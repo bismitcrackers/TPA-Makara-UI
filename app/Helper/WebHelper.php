@@ -2,6 +2,8 @@
 
 namespace App\Helper;
 
+use Carbon\Carbon;
+
 class WebHelper
 {
 
@@ -23,6 +25,22 @@ class WebHelper
         $destinationPath = public_path($dir);
         $file->move($destinationPath, $imageName);
         return $destinationPath . $imageName;
+    }
+
+    public static function getMonthListFromDate($start)
+    {
+        $start = $start->startOfMonth();
+        $end   = Carbon::today()->startOfMonth();
+        $i = 0;
+        $months = [];
+        do
+        {
+            $i = $i + 1;
+            $months[$i]['month'] = $start->format('m');
+            $months[$i]['month_name'] = $start->format('F');
+            $months[$i]['year'] = $start->format('Y');
+        } while ($start->addMonth() <= $end);
+        return $months;
     }
 
 }
