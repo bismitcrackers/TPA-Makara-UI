@@ -14,6 +14,10 @@
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
 
+Route::get('/showbukupenghubungkb', 'PageController@showbukupenghubungkb')->name('showbukupenghubungkb');
+
+Route::get('/showbukupenghubungkb2', 'PageController@showbukupenghubungkb2')->name('showbukupenghubungkb2');
+
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
 Route::get('/komentar', 'PageController@komentar')->name('komentar');

@@ -83,6 +83,15 @@ class PageController extends Controller
         return view('pages.tambahkomentar');
     }
 
+    public function showbukupenghubungkb(){
+        return view('pages.showBukupenghubungkb');
+    }
+
+    public function showbukupenghubungkb2(){
+        return view('pages.showBukupenghubungkb2');
+    }
+    
+
     public function typeclass() {
         return view('pages.typeclass');
     }

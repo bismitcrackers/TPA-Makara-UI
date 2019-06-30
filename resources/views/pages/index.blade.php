@@ -108,10 +108,10 @@
   </div>
   <div id="prfsCont">
     <div class="row" id="prfsTpam">
-      <div class="col-md-6 col-6">
+      <div class="col-md-6 ">
         <img src="{{asset('picture\fasilitas1.jpg')}}" alt="prog" class="">
       </div>
-      <div class="col-md-6 col-6" id="prfsDesc">
+      <div class="col-md-6 " id="prfsDesc">
         <h3>
           Program TPAM
         </h3>
@@ -122,12 +122,13 @@
     </div>
 
     <div class="row" id="prfsTpam">
-      <div class="col-md-6 col-6" id="prfsDesc">
+      
+      <div class="col-md-6">
+        <img src="{{asset('picture\program1.jpg')}}" alt="fasil">
+      </div>
+      <div class="col-md-6  order-first" id="prfsDesc">
         <h3>Fasilitas TPAM</h3>
         <p>TPA Makara dilengkapi dengan berbagai fasilitas bermain dan penunjang kegiatan belajar anak yang dapat mendukung tercapainya perkembangan motorik, kognitif, dan sosial emosi anak. Fasilitas yang ada disesuaikan dengan kebutuhan kelompok usia anak dan didesain seaman mungkin bagi putra-putri tercinta.</p>
-      </div>
-      <div class="col-md-6 col-6">
-        <img src="{{asset('picture\program1.jpg')}}" alt="fasil">
       </div>
     </div>
   </div>
@@ -142,15 +143,18 @@
         <div id="" class="col-md-4"></div>
     </div>
 
+  </div>
+  <div class="jamLoc">
+
     <div class="row" id="jamOps">
       <div id="logoJam" class="col-md-3">
         <img src="jam.png" alt="jam">
       </div>
       <div class="col-md">
-        <h3>
+        <h3 class="title3">
           Jam Operasional
         </h3>
-        <p>
+        <p  class="almlocp">
           Senin-jum'at : 08.00-16.30 Hrs
         </p>
       </div>
@@ -161,10 +165,10 @@
         <img src="almt.png" alt="almt">
       </div>
       <div class="col-md">
-        <h3>
+        <h3 class="title3">
           Alamat TPAM
         </h3>
-        <p>
+        <p class="almlocp">
           Gedung TPA Makara Fakultas Psikologi Universitas Indonesia
           Kampus Depok - Jawa Barat
           Telp: 021-778881082
@@ -173,8 +177,20 @@
         </p>
       </div>
     </div>
-  </div>
 
+  </div>
+  
+  <div class="pigeon">
+    <h3 id="headerLokasi">
+          Supported By
+    </h3>
+    <div class="row">
+        <div id="" class="col-md-4"></div>
+            <div id="garis" class="col-md-4"></div>
+        <div id="" class="col-md-4"></div>
+    </div>
+    <img src="{{asset('picture\pigeon.png')}}" alt="">
+  </div>
 
 </div>
 

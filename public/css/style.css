@@ -22,13 +22,15 @@
 
 /* Welcome to TPA Makara UI! */
 .title {
-    font-weight: bold;
+    font-weight: bold !important;
     font-size: 20px;
     margin-top: 10px;
     text-align: center;
     letter-spacing: 0.02em;
-    color: #384F7D;
+    color: #384F7D !important;
 }
+
+
 
 .sign-in {
     margin: 20px 0;
@@ -791,4 +793,49 @@ a.linkclass:hover{
 
 #beritaForm h2 {
     text-align: left;
+}
+
+.showbp{
+    font-weight: 900;
+    color: rgba(56, 79, 125, 0.65);
+}
+
+.title2 {
+
+    font-size: 11px;
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #384F7D;
+}
+
+.title3{
+    font-size: 1.7em;
+    font-weight: bold;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+
+}
+
+.jamLoc{
+    background-color: purple;
+    color: white;
+    text-align: left;
+}
+
+.almlocp{
+    color: white;
+    font-size: 0.7em;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.pigeon{
+    text-align: center;
+}
+
+.title4{
+    text-align: left;
+    text-decoration: underline;
 }
