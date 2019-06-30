@@ -39,6 +39,10 @@ class PageController extends Controller
         return view('pages.createbukupenghubungdc');
     }
 
+    public function publishbukupenghubungdc() {
+        return view('pages.publishbukupenghubungdc');
+    }
+
     public function successdc() {
         return view('pages.successdc');
     }

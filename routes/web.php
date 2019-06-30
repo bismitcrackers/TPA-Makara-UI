@@ -26,6 +26,8 @@ Route::get('/bukupenghubungdcortu', 'PageController@bukupenghubungdcortu')->name
 
 Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
 
+Route::get('/publishbukupenghubungdc', 'PageController@publishbukupenghubungdc')->name('publishbukupenghubungdc');
+
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
 Route::get('/komentar', 'PageController@komentar')->name('komentar');

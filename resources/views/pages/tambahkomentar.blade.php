@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-    <div class="komentar">
-        <h2>Bagian Komentar Orang Tua</h2>
-        <h2>dengan Pihak TPAM</h2>
-        <div class= "d-flex justify-content-center">
-            <div class="underline"></div>
+
+    <div class="d-flex justify-content-center">
+        <div class="komentar underliner">
+            <h2>Bagian Komentar Orang Tua</h2>
+            <h2>dengan Pihak TPAM</h2>
         </div>
     </div>
 

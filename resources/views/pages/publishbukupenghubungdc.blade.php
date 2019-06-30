@@ -14,7 +14,7 @@
         </h1>
     </div>
 
-    <form action="{{route('successdc')}}">
+    <form action="">
         <div class="tab">
             <div class="form-group">
                 <label for="pembuatdc" class="dclabel">PEMBUAT</label>
@@ -92,7 +92,7 @@
             </div>
             <input type="file" id="inputfile">
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" onclick="nextPrev(1)">
-                Save
+                Publish
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
             </button>    
         </div>        
@@ -161,6 +161,11 @@
             });
         });
     </script>
+
+    <script>
+        
+    </script>
+
 
     
 @endsection

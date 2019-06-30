@@ -13,6 +13,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
         <!-- App CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        {{-- style for datepicker --}}
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
         <title>@yield('title')</title>
         @yield('extra-css')
     </head>
@@ -40,6 +43,9 @@
         <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
         <!-- App CSS -->
         <script src="{{ asset('js/app.js') }}"></script>
+        {{-- date picker source --}}
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         @yield('extra-js')
         </div>
     </body>

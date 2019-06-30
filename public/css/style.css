@@ -95,7 +95,6 @@
     font-size: 16px;
     text-align: center;
     color: #445984;
-    margin-bottom: 40px;
 }
 
 .picture-logo{
@@ -175,9 +174,21 @@
 .registrasi-ayah,
 .registrasi-wali,
 .registrasi-non-wali,
-{
+.tab{
     transform: scale(0,0);
     height: 0;
+}
+
+input.invalid{
+    background-color: #ffdddd;
+}
+
+input.valid{
+    background-color: white !important;
+}
+
+input.invalidf{
+    background-color: #ffdddd !important
 }
 
 
@@ -203,7 +214,7 @@
 .register,
 .bottom-auth,
 .tab{
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3333s ease-in;
 }
 
 
@@ -392,11 +403,17 @@ div.bukbul:hover{
 
 /* buku create bukupenghubungdc */
 
-#tanggaldc{
- background-image: url(../svg/calendar.svg);
- background-repeat: no-repeat;
- background-position: 100% 2px;
- transition: all .2s ease;
+.subbukupenghubung-title{
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: #414752;
+}
+
+input.tanggaldc{
+ background-image: url(../svg/calendar.svg) !important;
+ background-repeat: no-repeat !important;
+ background-position: 97% 2px !important;
  
 }
 
@@ -416,14 +433,13 @@ label.dclabel{
 
 input.dcinput,
 textarea.dcinput,
-a.dcinput{
+div.dcinput{
     background: #FFFFFF;
     box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
     border-radius: 8px;
     border-bottom: 0px;
     font-weight: 900;
     color: rgba(56, 79, 125, 0.65);
-    border-radius: 8px;
     margin-bottom: 40px;
 }
 
@@ -433,7 +449,7 @@ button.dcbutton{
     text-align: center;
     font-weight: bold;
     font-size: 20px;
-    padding: 6px 40px;
+    padding: 5px 30px;
 }
 
 button.dcbutton img{
@@ -475,6 +491,7 @@ button.dcbutton img{
     display:none;
     height:0;
 }
+
 
 /* komentar */
 
