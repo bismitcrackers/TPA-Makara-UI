@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Carbon\Carbon;
+use App\Comments;
 use App\DailyBook;
 use App\Student;
 use App\Helper\WebHelper;
@@ -23,7 +24,7 @@ class PageController extends Controller
     public function studentsList($class) {
         $role = auth()->user()->roles()->first()->name;
         if ($role == 'Orangtua') {
-            return view('orangtua.home');
+            return redirect()->route('orangtua.home');
         } else if ($role == 'Co-fasilitator') {
             $kelas = 'DayCare';
         } else if ($role == 'Guru') {
@@ -53,13 +54,15 @@ class PageController extends Controller
     public function selectDate($student_id, $month, $year) {
         // $dates = DailyBook::whereMonth('created_at', '=', $month)->get();
         $dates = DB::table('daily_books')
-            ->select(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, DAY(created_at) day'))
+            ->select(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, DAY(created_at) day, id'))
+            ->where('student_id', '=', $student_id)
             ->whereYear('created_at', '=', $year)
             ->whereMonth('created_at', '=', $month)
             ->groupBy('year')
             ->groupBy('month')
             ->groupBy('month_name')
             ->groupBy('day')
+            ->groupBy('id')
             ->orderBy('year', 'desc')
             ->orderBy('month', 'desc')
             ->orderBy('day', 'desc')
@@ -75,12 +78,13 @@ class PageController extends Controller
         return view('pages.successdc');
     }
 
-    public function komentar() {
-        return view('pages.komentar');
+    public function showComments($daily_book_id) {
+        $chats = Comments::where('daily_book_id', $daily_book_id)->get();
+        return view('pages.komentar', ['chats' => $chats, 'daily_book_id' => $daily_book_id]);
     }
 
-    public function tambahkomentar() {
-        return view('pages.tambahkomentar');
+    public function sendComments($daily_book_id) {
+        return view('pages.tambahkomentar', ['daily_book_id' => $daily_book_id]);
     }
 
     public function showbukupenghubungkb(){
@@ -90,7 +94,7 @@ class PageController extends Controller
     public function showbukupenghubungkb2(){
         return view('pages.showBukupenghubungkb2');
     }
-    
+
 
     public function typeclass() {
         return view('pages.typeclass');

@@ -16,7 +16,7 @@
     <div class="centerer">
         @foreach($dates as $indexKey => $date)
         <a class="dateblock inline" href="#">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
-        <a href="">
+        <a href="{{ route('dailyBook.comments.show', ['daily_book_id' => $date->id]) }}">
             <img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc">
         </a>
         <br>

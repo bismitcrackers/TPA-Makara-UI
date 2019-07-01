@@ -15,25 +15,29 @@
         </div>
     </div>
 
+    @foreach($chats as $chat)
+    @if($chat->user == auth()->user())
     <div class="righter">
         <div class = "d-inline-flex">
             <div class="dari">
-                <p class="namapesan">You1</p>
-                <p class="contentpesan">Makin pinter anak saya:)</p>
+                <p class="namapesan">{{ $chat->user()->first()->name }}</p>
+                <p class="contentpesan">{{ $chat->message }}</p>
             </div>
         </div>
     </div>
-
+    @else
     <div>
         <div class ="d-inline-flex">
             <div class="ke">
-                <p class="namapesandark">Betti</p>
-                <p class="contentpesandark">Ya, Bu. Mari kita cetak generasi bangsa :)</p>
+                <p class="namapesandark">{{ $chat->user()->first()->name }}</p>
+                <p class="contentpesandark">{{ $chat->message }}</p>
             </div>
         </div>
     </div>
+    @endif
+    @endforeach
 
-    <a href="{{route("tambahkomentar")}}" class="tambahfoto tambahkomentar">
+    <a href="{{ route('dailyBook.comments.send', ['daily_book_id' => $daily_book_id]) }}" class="tambahfoto tambahkomentar">
         <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
         <span>Tambah Komentar</span>
     </a>
@@ -41,12 +45,12 @@
     <button  onclick="location.reload();" type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
             Done
         <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-    </button>    
+    </button>
 
-                    
+
 @endsection
-    
+
 @section('extra-js')
-    
+
 
 @endsection

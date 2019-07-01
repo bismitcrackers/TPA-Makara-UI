@@ -20,10 +20,6 @@ Route::get('/showbukupenghubungkb2', 'PageController@showbukupenghubungkb2')->na
 
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
-Route::get('/komentar', 'PageController@komentar')->name('komentar');
-
-Route::get('/tambahkomentar', 'PageController@tambahkomentar')->name('tambahkomentar');
-
 Route::get('/typeclass', 'PageController@typeclass')->name('typeclass');
 
 Route::get('/abyanprofile', 'PageController@abyanprofile')->name('abyanprofile');
@@ -32,6 +28,13 @@ Auth::routes();
 
 Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
     Route::get('/students/{class}', 'PageController@studentsList')->name('student');
+    Route::group(['prefix'=>'{daily_book_id}'], function(){
+        Route::group(['prefix'=>'comments', 'as'=>'comments.'], function(){
+            Route::get('/show', 'PageController@showComments')->name('show');
+            Route::get('/send', 'PageController@sendComments')->name('send');
+            Route::post('/add', 'DailyBooksController@addComments')->name('add');
+        });
+    });
     Route::group(['prefix'=>'{student_id}'], function(){
         Route::get('/form', 'PageController@formDailyBook')->name('form');
         Route::get('/date/{month}/{year}', 'PageController@selectDate')->name('date');
