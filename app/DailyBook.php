@@ -23,4 +23,9 @@ class DailyBook extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function comments()
+    {
+        return $this->hasOne(Comments::class);
+    }
 }

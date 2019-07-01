@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany(Parents::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
+
     /**
     * @param string|array $roles
     */

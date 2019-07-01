@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comments;
 use App\DailyBook;
 use App\Student;
 use App\Helper\WebHelper;
@@ -23,12 +24,13 @@ class DailyBooksController extends Controller
     public function addDailyBooks(Request $request, $student_id)
     {
         $user = auth()->user();
-        if ($user->roles()->first()->name == 'Orangtua') {
+        if ($user == null) {
+            return redirect()->route('index');
+        } else if ($user->roles()->first()->name == 'Orangtua') {
             return redirect()->route('orangtua.home');
         } else {
             $student = Student::where('id', $student_id)->first();
             $image = WebHelper::saveImageToPublic($request->file('lampiran'), '/picture/daily_books');
-            $dailyBook = DailyBook::where('id', $request['student'])->first();
             $dailyBook = new DailyBook;
             $dailyBook->pembuat             = $request->pembuat;
             $dailyBook->tanggal             = $request->tanggal;
@@ -48,4 +50,18 @@ class DailyBooksController extends Controller
         }
     }
 
+    public function addComments (Request $request, $daily_book_id)
+    {
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('index');
+        } else {
+            $comment = new Comments;
+            $comment->message = $request->message;
+            $comment->user()->associate($user);
+            $comment->dailyBook()->associate($daily_book_id);
+            $comment->save();
+            return redirect()->route('success');
+        }
+    }
 }
