@@ -50,5 +50,9 @@ class PageController extends Controller
     public function showbukupenghubungkb2(){
         return view('pages.showBukupenghubungkb2');
     }
+
+    public function showbukupenghubungkb3(){
+        return view('pages.showBukupenghubungkb3');
+    }
     
 }
