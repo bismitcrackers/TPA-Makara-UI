@@ -15,14 +15,21 @@
         </div>
     </h1>
 
-
     <div class="centerer">
-        <a class="linkclass" href="">
+        @if($route == 'profile')
+        <a class="linkclass" href="{{ route('profile.student', ['class' => 'DayCare']) }}">
+        @else
+        <a class="linkclass" href="{{ route('dailyBook.student', ['class' => 'DayCare']) }}">
+        @endif
             <img src="{{asset('svg/daycare.svg')}}" alt="daycare">
             <h1 class="typeclass">Daycare</h1>
         </a>
-        
-        <a class="linkclass" href="">
+
+        @if($route == 'profile')
+        <a class="linkclass" href="{{ route('profile.student', ['class' => 'KelompokBermain']) }}">
+        @else
+        <a class="linkclass" href="{{ route('dailyBook.student', ['class' => 'KelompokBermain']) }}">
+        @endif
             <img src="{{asset('svg/kelompokbermain.svg')}}" alt="kelompok bermain">
             <h1 class="typeclass">Kelompok Bermain</h1>
         </a>

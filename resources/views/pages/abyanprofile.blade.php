@@ -10,7 +10,7 @@
 
     <div class = "d-flex justify-content-center">
         <h1 class = "daftarsiswa-title underliner">
-            Abyan’s Profile        
+            {{ $student->nama_panggilan }}’s Profile
         </h1>
     </div>
 
@@ -18,54 +18,58 @@
         <div class="d-flex flex-row justify-content-around boxprofile p-3">
             <div class ="d-flex align-items-center margin-profile">
                 <div>
+                    @if($student->jenis_kelamin == 'laki-laki')
                     <img src="{{asset('svg/lakilarge.svg')}}" class="profilepicture" alt="laki">
+                    @else
+                    <img src="{{asset('svg/perempuan.svg')}}" class="profilepicture" alt="perempuan">
+                    @endif
                     <a href="#" class="linkeditprofile">
                         <div class="editprofile">
                             <p class="paragrapheditprofile">Edit Profile</p>
                         </div>
-                    </a> 
-                </div>   
+                    </a>
+                </div>
             </div>
             <div class="ml-4">
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 profilelabel mb-0">Nama</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 profilecontent mb-0 pr-0"> Abyan Althaf K. </p>
+                    <p class="col-6 p-0 profilecontent mb-0 pr-0">{{ $student->nama_lengkap }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Nama Panggilan</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Abyan</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->nama_panggilan }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Tempat</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Depok</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->tempat_lahir }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Tanggal Lahir</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">03 Januari 2015</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($student->tanggal_lahir)) }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Agama</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Islam</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->agama }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Alamat Rumah</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Orchid Residence, Jl. Dahlia 2, Blok D/34, Beji, Depok</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->alamat_rumah }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Telepon Rumah</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">-</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->telepon_rumah }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Kelas</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Kelompok Bermain</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->kelas }}</p>
                 </div>
             </div>
         </div>
@@ -73,7 +77,7 @@
 
     <div class = "d-flex justify-content-start margin-ortu">
         <h4 class = "parent-profile underliner-parent-profile">
-            Abyan Mom’s Profile      
+            {{ $student->nama_panggilan }} Mom’s Profile
         </h4>
     </div>
 
@@ -86,52 +90,52 @@
                         <div class="editprofile">
                             <p class="paragrapheditprofile">Edit Profile</p>
                         </div>
-                    </a> 
-                </div>   
+                    </a>
+                </div>
             </div>
             <div class="ml-4">
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 profilelabel mb-0">Nama</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 profilecontent mb-0 pr-0"> Dwi Ely Pradinayanti </p>
+                    <p class="col-6 p-0 profilecontent mb-0 pr-0">{{ $mom->nama_lengkap }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Tanggal Lahir</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">29 September 1982</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($mom->tanggal_lahir)) }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Pendidikan Terakhir</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">S1</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->pendidikan }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Pekerjaan</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">PNS</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->pekerjaan }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Alamat Kantor</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Kementerian Komunikasi dan Informatika</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->alamat_rumah }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Email</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">elyrisani@gmail.com</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->email }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">No. HP</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">0817 070 9404</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->no_handphone }}</p>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class = "d-flex justify-content-start margin-ortu">
         <h4 class = "parent-profile underliner-parent-profile">
-            Abyan Dad’s Profile      
+            {{ $student->nama_panggilan }} Dad’s Profile
         </h4>
     </div>
 
@@ -144,44 +148,44 @@
                         <div class="editprofile">
                             <p class="paragrapheditprofile">Edit Profile</p>
                         </div>
-                    </a> 
-                </div>   
+                    </a>
+                </div>
             </div>
             <div class="ml-4">
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 profilelabel mb-0">Nama</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 profilecontent mb-0 pr-0"> Suta Risani </p>
+                    <p class="col-6 p-0 profilecontent mb-0 pr-0">{{ $dad->nama_lengkap }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Tanggal Lahir</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">24 Maret 1982</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($dad->tanggal_lahir)) }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Pendidikan Terakhir</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">S1</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->pendidikan }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Pekerjaan</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Karyawan Swasta</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->pekerjaan }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Alamat Kantor</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">PT XL Axiata, Graha XL, Kuningan, Setiabudi, Jaksel</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->alamat_rumah }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">Email</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">Indriasuta@gmail.com</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->email }}</p>
                 </div>
                 <div class="row justify-content-center">
                     <p class="col-4 p-0 mb-0 profilelabel">No. HP</p>
                     <p class="col-2 p-0 mb-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">0819 3289 1370</p>
+                    <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->no_handphone }}</p>
                 </div>
             </div>
         </div>
@@ -189,8 +193,8 @@
 
 
 
-        
-    
+
+
 
 @endsection
 
