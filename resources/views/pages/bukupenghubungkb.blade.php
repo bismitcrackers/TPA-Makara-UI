@@ -20,86 +20,20 @@
         <input class="form-control sizer form-control-sm ml-2 border-bottom-0 inline" type="text" placeholder="Search book" aria-label="Search">
     </form>
     <div class="container">
-        <div class="row justify-content-around">
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Januari 2019</p>
-                </a>
+        @for($i = 1; $i < $end + 1; $i++)
+            @if(($i - 1) % 3 == 0)
+            <div class="row justify-content-around">
+            @endif
+                <div class="col-sm-4 bukbul">
+                    <a href="{{ route('dailyBook.date', ['student_id' => $student_id, 'month' => $months[$i]['month'], 'year' => $months[$i]['year']]) }}">
+                        <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
+                        <p>{{ $months[$i]['month_name'] . ' ' . $months[$i]['year'] }}</p>
+                    </a>
+                </div>
+            @if(($i) % 3 == 0 || $i == $end)
             </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Februari 2019</p>
-                </a>
-            </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Maret 2019</p>
-                </a>
-            </div>
-        </div>
-        <div class="row justify-content-around">
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>April 2019</p>
-                </a>
-            </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Mei 2019</p>
-                </a>
-            </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Juni 2019</p>
-                </a>
-            </div>
-        </div>
-        <div class="row justify-content-around">
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Juli 2019</p>
-                </a>
-            </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Agustus 2019</p>
-                </a>
-            </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>September 2019</p>
-                </a>
-            </div>
-        </div>
-        <div class="row justify-content-around">
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Oktober 2019</p>
-                </a>
-            </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>November 2019</p>
-                </a>
-            </div>
-            <div class="col-sm bukbul">
-                <a href="">
-                    <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
-                    <p>Desember 2019</p>
-                </a>
-            </div>
-        </div>
+            @endif
+        @endfor
     </div>
 
 

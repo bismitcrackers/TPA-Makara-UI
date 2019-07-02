@@ -19,17 +19,19 @@
     <body>
         @include('layout/_nav')
         <div class="container-fluid">
-            <div class="row ">
-                <div class="col-0 col-md-2"></div>
-                <div class="col-12 col-md-8">
-                    <div class="container-inner">
-                    @yield('content')
+            <div class="d-flex justify-content-center">
+                <div class="col-md-8 p-0 white-background">
+                    <div>
+                        <div class="container-inner">
+                            <div class="mb-5">
+                                @yield('content')
+                            </div>
+                            @include('layout/_footer')
+                        <div>
                     </div>
                 </div>
-                <div class="col-0 col-md-2"></div>
             </div>
         </div>
-        @include('layout/_footer')
         <!-- jQuery JS -->
         <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
         <!-- Popper JS -->
@@ -39,5 +41,6 @@
         <!-- App CSS -->
         <script src="{{ asset('js/app.js') }}"></script>
         @yield('extra-js')
+        </div>
     </body>
 </html>

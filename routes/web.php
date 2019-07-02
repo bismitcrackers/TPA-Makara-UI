@@ -13,14 +13,6 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
-// temporary
-Route::get('/liststudentkb', 'PageController@liststudentkb')->name('liststudentkb');
-
-Route::get('/bukupenghubungkb', 'PageController@bukupenghubungkb')->name('bukupenghubungkb');
-
-Route::get('/bukupenghubungdc', 'PageController@bukupenghubungdc')->name('bukupenghubungdc');
-
-Route::get('/createbukupenghubungdc', 'PageController@createbukupenghubungdc')->name('createbukupenghubungdc');
 
 Route::get('/showbukupenghubungkb', 'PageController@showbukupenghubungkb')->name('showbukupenghubungkb');
 
@@ -30,11 +22,31 @@ Route::get('/showbukupenghubungkb3', 'PageController@showbukupenghubungkb3')->na
 
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
-Route::get('/komentar', 'PageController@komentar')->name('komentar');
-
-Route::get('/tambahkomentar', 'PageController@tambahkomentar')->name('tambahkomentar');
 
 Auth::routes();
+
+Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
+    Route::get('/students/{class}', 'PageController@studentsList')->name('student');
+    Route::group(['prefix'=>'{daily_book_id}'], function(){
+        Route::group(['prefix'=>'comments', 'as'=>'comments.'], function(){
+            Route::get('/show', 'PageController@showComments')->name('show');
+            Route::get('/send', 'PageController@sendComments')->name('send');
+            Route::post('/add', 'DailyBooksController@addComments')->name('add');
+        });
+    });
+    Route::group(['prefix'=>'{student_id}'], function(){
+        Route::get('/form', 'PageController@formDailyBook')->name('form');
+        Route::get('/date/{month}/{year}', 'PageController@selectDate')->name('date');
+        Route::get('/month', 'PageController@selectMonth')->name('month');
+        Route::post('/add', 'DailyBooksController@addDailyBooks')->name('add');
+    });
+});
+
+Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
+    Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
+    Route::get('/students/{class}', 'PageController@studentsProfile')->name('student');
+    Route::get('/details/{student_id}', 'PageController@profileDetails')->name('details');
+});
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
@@ -56,4 +68,3 @@ Route::group(['prefix'=>'fasilitator','as'=>'fasilitator.'], function(){
 Route::group(['prefix'=>'co-fasilitator','as'=>'cofasilitator.'], function(){
     Route::get('/home', 'HomeController@cofasilitatorHome')->name('home');
 });
-

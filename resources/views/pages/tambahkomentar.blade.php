@@ -15,24 +15,25 @@
         </div>
     </div>
 
-    <form action="{{route('komentar')}}">
+    <form method="POST" action="{{ route('dailyBook.comments.add', ['$daily_book_id' => $daily_book_id]) }}">
+        {{ csrf_field() }}
         <h2 class="subbukupenghubung-title"><u>KOMENTAR</u></h2>
         <div class="form-group">
-                <textarea class="form-control dcinput" id="snackdc" rows="5" placeholder="Komentar" maxlength="150"></textarea>
+            <textarea name="message" class="form-control dcinput" id="snackdc" rows="5" placeholder="Komentar" maxlength="150"></textarea>
         </div>
 
         <div class="righter">
             <button type="submit" class="btn btn-primary dcbutton">
                     Send
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-            </button>    
+            </button>
         </div>
     </form>
 
-                    
+
 @endsection
-    
+
 @section('extra-js')
-    
+
 
 @endsection
