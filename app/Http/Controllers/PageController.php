@@ -33,7 +33,17 @@ class PageController extends Controller
             $kelas = $class;
         }
         $students = Student::where('kelas', $kelas)->get();
-        return view('pages.liststudentkb', ['students' => $students]);
+        return view('pages.liststudentkb', ['students' => $students, 'route' => 'dailyBook', 'class' => $kelas]);
+    }
+
+    public function studentsProfile($class) {
+        $role = auth()->user()->roles()->first()->description;
+        if ($role != 'Full Access') {
+            return redirect()->route('index');
+        } else {
+            $students = Student::where('kelas', $class)->get();
+            return view('pages.liststudentkb', ['students' => $students, 'route' => 'profile', 'class' => $class]);
+        }
     }
 
     public function selectMonth($student_id) {
@@ -95,12 +105,18 @@ class PageController extends Controller
         return view('pages.showBukupenghubungkb2');
     }
 
-
-    public function typeclass() {
-        return view('pages.typeclass');
+    public function selectClassProfile() {
+        return view('pages.typeclass', ['route' => 'profile']);
     }
 
-    public function abyanprofile() {
-        return view('pages.abyanprofile');
+    public function selectClassDailyBook() {
+        return view('pages.typeclass', ['route' => 'dailyBook']);
+    }
+
+    public function profileDetails($student_id) {
+        $student = Student::where('id', $student_id)->first();
+        $dad = $student->user()->first()->parents()->where('peran', 'Ayah')->first();
+        $mom = $student->user()->first()->parents()->where('peran', 'Ibu')->first();
+        return view('pages.abyanprofile', ['student' => $student, 'dad' => $dad, 'mom' => $mom]);
     }
 }

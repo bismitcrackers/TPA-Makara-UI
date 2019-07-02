@@ -20,9 +20,6 @@ Route::get('/showbukupenghubungkb2', 'PageController@showbukupenghubungkb2')->na
 
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
-Route::get('/typeclass', 'PageController@typeclass')->name('typeclass');
-
-Route::get('/abyanprofile', 'PageController@abyanprofile')->name('abyanprofile');
 
 Auth::routes();
 
@@ -41,6 +38,12 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
         Route::get('/month', 'PageController@selectMonth')->name('month');
         Route::post('/add', 'DailyBooksController@addDailyBooks')->name('add');
     });
+});
+
+Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
+    Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
+    Route::get('/students/{class}', 'PageController@studentsProfile')->name('student');
+    Route::get('/details/{student_id}', 'PageController@profileDetails')->name('details');
 });
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){

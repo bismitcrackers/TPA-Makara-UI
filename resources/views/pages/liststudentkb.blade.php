@@ -8,7 +8,7 @@
 
 @section('content')
     <h1 class = "daftarsiswa-title">
-        Daftar Siswa Daycare
+        Daftar Siswa {{ $class }}
         <div class= "d-flex justify-content-center">
             <div class="underline"></div>
         </div>
@@ -23,8 +23,16 @@
         <div class="row justify-content-around">
             @foreach($students as $student)
             <div class="col siswa">
-                <a href="{{ route('dailyBook.month', ['student_id' => $student->id]) }}">
-                    <img src="{{asset('svg/laki.svg')}}" alt="" class= "photosiswa">
+                @if($route == 'dailyBook')
+                    <a href="{{ route('dailyBook.month', ['student_id' => $student->id]) }}">
+                @else
+                    <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
+                @endif
+                @if($student->jenis_kelamin == 'laki-laki')
+                    <img src="{{ asset('svg/laki.svg') }}" alt="" class= "photosiswa">
+                @else
+                    <img src="{{ asset('svg/perempuan.svg') }}" alt="" class= "photosiswa">
+                @endif
                     <p>{{ $student->nama_lengkap }}</p>
                 </a>
             </div>
