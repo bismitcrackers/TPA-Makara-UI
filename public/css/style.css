@@ -4,7 +4,7 @@
     background: white;
     position: absolute;
     top:0;
-    bottom:0; 
+    bottom:0;
 }
 
 .increasemarginbottom{
@@ -20,16 +20,18 @@
 }
 
 /* Welcome to TPA Makara UI! */
-.title{
-    font-weight: bold;
+.title {
+    font-weight: bold !important;
     font-size: 20px;
     margin-top: 10px;
     text-align: center;
     letter-spacing: 0.02em;
-    color: #384F7D;
+    color: #384F7D !important;
 }
 
-.sign-in{
+
+
+.sign-in {
     margin: 20px 0;
     background: linear-gradient(227.43deg, rgba(45, 238, 249, 0.15) -34.42%, rgba(224, 132, 241, 0.15) 127.18%);
     width: 86px;
@@ -42,39 +44,39 @@
     color: #384F7D;
 }
 
-.container-inner label{
+.container-inner label {
     font-size: 15px;
     letter-spacing: 0.04em;
     color: #414752;
-    text-align:left;
+    text-align: left;
 }
 
-.font-basic{
+.font-basic {
     font-size: 15px;
     letter-spacing: 0.04em;
     color: #414752;
-    text-align:left;
+    text-align: left;
     margin-left: -20px;
 }
 
 
-.btn-primary{
-    padding:10px 20px 10px 20px;
+.btn-primary {
+    padding: 10px 20px 10px 20px;
     margin: 30px auto 30px;
     background: #2F80ED;
     border-radius: 30px;
     font-weight: bold;
-    font-size: 15px;       
+    font-size: 15px;
     color: #FFFFFF;
 }
 
-.halo{
-    color:white;
+.halo {
+    color: white;
     text-decoration: none;
 }
 
-.halo:hover{
-    color:white;
+.halo:hover {
+    color: white;
     text-decoration: none;
 }
 
@@ -82,37 +84,37 @@
     margin:30px;
 } */
 
-.form-control{
+.form-control {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
     font-size: 15px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 
 }
 
-.bottom-auth{
+.bottom-auth {
     font-size: 16px;
     text-align: center;
     color: #445984;
 }
 
-.picture-logo{
+.picture-logo {
     text-align: center;
 }
 
-.picture-logo img{
+.picture-logo img {
     max-width: 65%;
 }
 
-.button-section{
+.button-section {
     text-align: center;
 }
 
 /* register-anak */
 
 .register-anak h2,
-.komentar h2{
+.komentar h2 {
     font-weight: bold;
     font-size: 18px;
     text-align: center;
@@ -121,24 +123,24 @@
 
 }
 
-.short{
+.short {
     padding-right: 3px;
 }
 
 .correcting {
-    margin-top:18px;
+    margin-top: 18px;
 }
 
-.title-congratulations{
+.title-congratulations {
     font-weight: 600;
-    font-size : 36 px;
+    font-size: 36 px;
     line-height: 50px;
     text-align: center;
     letter-spacing: -0.002em;
     color: #0066B8;
 }
 
-.subtitle-congratulations{
+.subtitle-congratulations {
     font-weight: normal;
     font-size: 20px;
     line-height: 56px;
@@ -146,17 +148,17 @@
     color: #0066B8;
 }
 
-.success{
+.success {
     margin: 185px auto 42px;
 }
 
-.subtitle-congratulations{
+.subtitle-congratulations {
     margin-bottom: 145px;
 }
 
-.ellipse{
+.ellipse {
     border-radius: 50%;
-    height:109px;
+    height: 109px;
     width: 109px;
     background: #0066B8;
     text-align: center;
@@ -167,7 +169,7 @@
     line-height: 56px;
 }
 
-.register-anak,
+/* .register-anak,
 .registrasi-anak-first,
 .registrasi-anak-second,
 .registrasi-ibu,
@@ -177,7 +179,7 @@
 .tab{
     transform: scale(0,0);
     height: 0;
-}
+} */
 
 input.invalid{
     background-color: #ffdddd;
@@ -196,8 +198,8 @@ input.invalidf{
 .title,
 .sign-in,
 .register,
-.bottom-auth{
-    transform: scale(1,1);
+.bottom-auth {
+    transform: scale(1, 1);
     height: 100%;
 }
 
@@ -217,8 +219,75 @@ input.invalidf{
     transition: all 0.3333s ease-in;
 }
 
+/* #final-button {
+    display: none;
+} */
 
-.daftarsiswa-title{
+/* homepage */
+
+p,
+h1,
+h2,
+h3 {
+    margin: 0;
+    line-height: 25px;
+    font-family: Nunito;
+    text-align: center;
+}
+
+#carouselExampleIndicators {
+    margin-bottom: 25px;
+}
+
+.carousel-indicators li {
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+}
+
+#homeHead,
+#homePara,
+#headerBerita,
+#headerLokasi {
+    font-style: normal;
+    color: rgba(56, 79, 125, 0.65);
+    text-align: center;
+}
+
+#homeHead,
+#headerBerita,
+#headerLokasi {
+    font-weight: 900;
+    font-size: 1.3em;
+}
+
+#homePara {
+    font-weight: normal;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+#homeVideo {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#headerBerita,
+#headerLokasi {
+    margin-top: 10px;
+    color: #414752;
+}
+
+#prgBerita {
+    font-size: 1rem;
+}
+
+#judulBerita {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.daftarsiswa-title {
     font-weight: bold;
     font-size: 20px;
     margin: 10px auto 30px;
@@ -246,7 +315,7 @@ input.invalidf{
     margin-bottom: 12px;
 }
 
-.siswa{
+.siswa {
     font-weight: bold;
     font-size: 10px;
     text-align: center;
@@ -256,17 +325,17 @@ input.invalidf{
     transition: transform .3s ease-in-out;
 }
 
-.siswa a{
+.siswa a {
     color: #2F80ED;
 }
 
-.photosiswa{
+.photosiswa {
     width: 45%;
     height: auto;
     margin: 10px auto 12px;
 }
 
-div.siswa a:hover{
+div.siswa a:hover {
     text-decoration: none;
     color: rgb(22, 97, 197);
 }
@@ -277,7 +346,7 @@ div.siswa:hover{
 
 /* bukupenghubungkb/dc */
 
-.bukupenghubung-title{
+.bukupenghubung-title {
     font-weight: bold;
     font-size: 20px;
     margin: 10px auto 30px;
@@ -286,26 +355,26 @@ div.siswa:hover{
     color: #414752;
 }
 
-.search-bukbul{
+.search-bukbul {
     box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
     border-radius: 8px;
     max-width: 100%;
     margin-bottom: 30px;
 }
 
-.opacitydown{
+.opacitydown {
     opacity: 0.5;
 }
 
-.sizer{
+.sizer {
     width: 85%;
 }
 
-.inline{
+.inline {
     display: inline-block;
 }
 
-.bukbul{
+.bukbul {
     font-weight: 900;
     font-size: 14px;
     text-align: center;
@@ -316,17 +385,17 @@ div.siswa:hover{
 
 }
 
-.bukbul a{
+.bukbul a {
     color: rgba(56, 79, 125, 0.65);
 }
 
-.photobukbul{
+.photobukbul {
     width: 40%;
     height: auto;
     margin: 10px auto 12px;
 }
 
-div.bukbul a:hover{
+div.bukbul a:hover {
     text-decoration: none;
     color: rgb(101, 101, 101);
 }
@@ -337,7 +406,7 @@ div.bukbul:hover{
 
 /* buku penghubungdc (specific) */
 
-.dateblock{
+.dateblock {
     background: #D9EBFF;
     border-radius: 50px;
     width: 210px;
@@ -351,35 +420,97 @@ div.bukbul:hover{
     padding: 5px 15px;  
     margin: 8px auto;
     transition: transform .3s ease;
-    
+
 }
 
-.dateblock:hover{
+.dateblock:hover {
     text-decoration: none;
     color: rgb(22, 97, 197);
     transform: scaleX(1.05);
 }
 
-.centerer{
+.centerer {
     text-align: center;
 }
 
-.messagedc{
+#garis {
+    width: 100%;
+    height: 2px;
+    background: #414752;
+}
+
+#imgBerita {
+    border-radius: 20%;
+    margin-bottom: 5px;
+
+}
+
+#beritaCont {
+    padding: 1%;
+    /* box-shadow: 1px 1px 30px grey; */
+    background-color: grey;
+    text-align: center;
+}
+
+#isiBerita {
+    background-color: #FFFFFF;
+    padding: 3%;
+}
+
+
+
+#berita {
+    background-color: grey;
+    padding: 1%;
+}
+
+#prfsTpam {
+    background-color: grey;
+}
+
+#prfsTpam div {
+    padding: 0;
+}
+
+#prfsTpam h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+}
+
+#prfsTpam,
+#jamOps,
+#almtTpam {
+    margin: 0 auto;
+}
+
+#berita,
+#prfsCont,
+#lokasiCont,
+#jamOps {
+    margin-top: 10px;
+}
+
+img {
+    max-width: 100% !important;
+    height: auto;
+}
+
+.messagedc {
     transition: transform .3s ease;
 }
 
 .messagedc:hover {
-    transform: scale(1.1,1.1);
+    transform: scale(1.1, 1.1);
 }
 
-.addsign{
+.addsign {
     margin-top: 15px;
     transition: transform .3s ease;
 }
 
-.addsign:hover{
+.addsign:hover {
     transform: rotate(90deg);
-    
+
 }
 
 /* buku penghubungdc not published */
@@ -418,11 +549,11 @@ input.tanggaldc{
 }
 
 #tanggaldc:focus,
-#tanggaldc:hover{
+#tanggaldc:hover {
     background-position: 82.5%
 }
 
-label.dclabel{
+label.dclabel {
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;
@@ -443,7 +574,7 @@ div.dcinput{
     margin-bottom: 40px;
 }
 
-button.dcbutton{
+button.dcbutton {
     background: linear-gradient(167.84deg, #2F80ED -21.93%, #038BF4 87.81%);
     border-radius: 12px;
     text-align: center;
@@ -452,17 +583,17 @@ button.dcbutton{
     padding: 5px 30px;
 }
 
-button.dcbutton img{
+button.dcbutton img {
     margin-left: 15px;
 }
 
-.dcimg{
+.dcimg {
     width: 150px;
     height: auto;
     text-align: center;
 }
 
-.tambahfoto{
+.tambahfoto {
     font-weight: bold;
     font-size: 15px;
     line-height: 20px;
@@ -472,58 +603,58 @@ button.dcbutton img{
     padding: 10px;
 }
 
-.tambahfoto img{
+.tambahfoto img {
     transform: rotate();
     margin-bottom: 2px;
     margin-left: 2px;
     transition: all .2s ease-in-out;
 }
 
-.tambahfoto:hover{
-    text-decoration: none;   
+.tambahfoto:hover {
+    text-decoration: none;
 }
 
-.tambahfoto:hover img{
+.tambahfoto:hover img {
     transform: rotate(90deg);
 }
 
-#inputfile{
-    display:none;
-    height:0;
+#inputfile {
+    display: none;
+    height: 0;
 }
 
 
 /* komentar */
 
-.komentar{
+.komentar {
     margin-bottom: 30px;
 }
 
-.dari{
+.dari {
     text-align: left;
     background: linear-gradient(305.1deg, #445984 -13.6%, rgba(68, 89, 132, 0.7) 158.71%);
     border-radius: 8px;
     box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
 }
 
-.righter{
+.righter {
     text-align: right;
 }
 
 .dari,
-.ke{
+.ke {
     margin: 20px auto;
     padding: 9px;
 }
 
-.ke{
+.ke {
     background: #FFFFFF;
     box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
     border-radius: 8px;
 
 }
 
-.namapesan{
+.namapesan {
     font-weight: 900;
     font-size: 13px;
     line-height: 30px;
@@ -531,7 +662,7 @@ button.dcbutton img{
     margin-bottom: 0;
 }
 
-.contentpesan{
+.contentpesan {
     font-weight: bold;
     font-size: 10px;
     line-height: 18px;
@@ -539,7 +670,7 @@ button.dcbutton img{
     margin-bottom: 0;
 }
 
-.namapesandark{
+.namapesandark {
     font-weight: 900;
     font-size: 13px;
     line-height: 30px;
@@ -547,7 +678,7 @@ button.dcbutton img{
     margin-bottom: 0;
 }
 
-.contentpesandark{
+.contentpesandark {
     font-weight: bold;
     font-size: 10px;
     line-height: 18px;
@@ -596,7 +727,7 @@ a.linkclass:hover{
 
 .editprofile p{
     text-shadow:
-   -1px -1px 0 #000,  
+   -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
      1px 1px 0 #000;
@@ -685,4 +816,53 @@ a.linkclass:hover{
     align-items: center;
     text-align: center;
     color: #36382E;
+}
+
+#beritaForm h2 {
+    text-align: left;
+}
+
+.showbp{
+    font-weight: 900;
+    color: rgba(56, 79, 125, 0.65);
+}
+
+.title2 {
+
+    font-size: 11px;
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #384F7D;
+}
+
+.title3{
+    font-size: 1.7em;
+    font-weight: bold;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+
+}
+
+.jamLoc{
+    background-color: purple;
+    color: white;
+    text-align: left;
+}
+
+.almlocp{
+    color: white;
+    font-size: 0.7em;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.pigeon{
+    text-align: center;
+}
+
+.title4{
+    text-align: left;
+    text-decoration: underline;
 }

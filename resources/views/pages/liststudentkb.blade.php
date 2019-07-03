@@ -9,38 +9,33 @@
 @section('content')
     <div class="d-flex justify-content-center">
         <h1 class = "daftarsiswa-title underliner">
-            Daftar Siswa Daycare
+            Daftar Siswa {{$class}}
         </h1>
     </div>
     <!-- Search form -->
     <form action="">
         <input id="userInput" class="form-control search-siswa" type="search" placeholder="Cari Siswa Daycare" onkeyup="searchFunction()">
     </form>
-    <div class="row justify-content-around">
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/laki.svg')}}" alt="" class= "photosiswa">
-                <p>Abyan Althaf K</p>
-            </a>
-        </div>
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/laki.svg')}}" alt="" class= "photosiswa">
-                <p>Akhtar Rasyid A</p>
-            </a>
-        </div>
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/laki.svg')}}" alt="" class= "photosiswa">
-                <p>Akhtar Saka R</p>
-            </a>
-        </div>
-    
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/perempuan.svg')}}" alt="" class= "photosiswa">
-                <p>Anya Radhya T</p>
-            </a>
+    <div class="container">
+        {{-- minimal 2 --}}
+        {{-- font-size dikurangin --}}
+        <div class="row justify-content-around">
+            @foreach($students as $student)
+            <div class="col-4 siswa">
+                @if($route == 'dailyBook')
+                    <a href="{{ route('dailyBook.month', ['student_id' => $student->id]) }}">
+                @else
+                    <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
+                @endif
+                @if($student->jenis_kelamin == 'laki-laki')
+                    <img src="{{ asset('svg/laki.svg') }}" alt="" class= "photosiswa">
+                @else
+                    <img src="{{ asset('svg/perempuan.svg') }}" alt="" class= "photosiswa">
+                @endif
+                    <p>{{ $student->nama_lengkap }}</p>
+                </a>
+            </div>
+            @endforeach
         </div>
         <div class="col-4 siswa">
             <a href="">

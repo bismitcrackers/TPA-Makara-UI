@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endsection
 
-
 @section('content')
     <div class="picture-logo">
         <img src="{{asset('picture/logoTPAM.png')}}" alt="Logo TPAM">
@@ -668,7 +667,7 @@
 @endsection
 
 @section('extra-js')
-    {{-- <script>
+    <!-- <script>
         function toRegistrasiAnakFirst(){
             // disappear
             var listErase = new Array();
@@ -768,7 +767,7 @@
             var finalButton = document.getElementById("final-button");
             finalButton.style.display = "block";
         }
-    </script> --}}
+    </script> -->
 
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -784,9 +783,29 @@
             console.log(currentTab);
             x[currentTab].style.transform = "scale(1,1)";
             x[currentTab].style.height = "100%";
-            
+
         }
 
+
+        // function validateForm() {
+        // // This function deals with validation of the form fields
+        //     var x, y, i, valid = true;
+        //     x = document.getElementsByClassName("tab");
+        //     y = x[currentTab].getElementsByTagName("input");
+        //     // A loop that checks every input field in the current tab:
+        //     for (i = 0; i < y.length; i++) {
+        //         // If a field is empty...
+        //         if (y[i].value == "") {
+        //         // add an "invalid" class to the field:
+        //         y[i].className += " invalid";
+        //         // and set the current valid status to false:
+        //         valid = false;
+        //         console.log("false");
+        //         }
+        //     }
+        //     console.log("true");
+        //     return valid; // return the valid status
+        // }
 
         function validateForm() {
         // This function deals with validation of the form fields

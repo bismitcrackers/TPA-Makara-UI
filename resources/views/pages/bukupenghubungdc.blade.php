@@ -14,36 +14,16 @@
     </div>   
 
     <div class="centerer">
-        <a class="dateblock inline" href="#">1 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
+        @foreach($dates as $indexKey => $date)
+        <a class="dateblock inline" href="#">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
+        <a href="{{ route('dailyBook.comments.show', ['daily_book_id' => $date->id]) }}">
+            <img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2">
+        </a>
         <br>
-        <a class="dateblock inline" href="#">2 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a class="dateblock inline" href="#">3 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a class="dateblock inline" href="#">4 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a class="dateblock inline" href="#">5 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a class="dateblock inline" href="#">6 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a class="dateblock inline" href="#">7 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a class="dateblock inline" href="#">8 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a class="dateblock inline" href="#">9 April, 2019</a>
-        <a href="#"><img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2"></a>
-        <br>
-        <a href="#">
+        @endforeach
+        <a href="{{ route('dailyBook.form', ['student_id' => $student_id]) }}">
             <img src="{{asset('svg/addsign.svg')}}" alt="addsign" class="addsign">
-        </a>    
+        </a>
     </div>
 
 @endsection
