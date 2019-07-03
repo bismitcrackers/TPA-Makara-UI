@@ -40,11 +40,20 @@
             </div>
             <div class="form-group">
                 <label for="password-confirm">Repeat Password</label>
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                <input id="password-confirm" type="password" class="form-control {{$errors->has('password_confirmation') ?  ' is-invalid' : ' '}}"  name="password_confirmation" required>
+                @if ($errors->has('password_confimation'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password_confimation') }}</strong>
+                    </span>
+                @endif
             </div>
+
             <div class=button-section>
                 <button class="halo btn-primary btn" onclick = "nextPrev(1)" >Sign Up</button>
             </div>
+            <p class="bottom-auth">Already have an account?
+                <a href="{{ route('login') }}">Login</a>
+            </p>
         </div>
 
 
@@ -172,7 +181,7 @@
             </div>
             <div class="form-check">
                 <p class="font-basic">Catatan Khusus Medis:</p>
-                <input class="form-check-input{{ $errors->has('catatanMedis') ? ' is-invalid' : '' }}" type="radio" name="catatanMedis" id="tidakAda" value="tidak ada" required>
+                <input class="form-check-input{{ $errors->has('catatanMedis') ? ' is-invalid' : '' }}" type="radio" name="catatanMedis" id="tidakAda" value="tidak ada">
                 @if ($errors->has('catatanMedis'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('catatanMedis') }}</strong>
@@ -247,7 +256,7 @@
             </div>
             <div class="form-group">
                 <label for="namaLengkapIbu">Nama Lengkap: </label>
-                <input type="text" class="form-control{{ $errors->has('namaLengkapIbu') ? ' is-invalid' : '' }}" id="namaLengkapIbu" name="namaLengkapIbu" placeholder="Nama Lengkap">
+                <input type="text" class="form-control{{ $errors->has('namaLengkapIbu') ? ' is-invalid' : '' }}" id="namaLengkapIbu" name="namaLengkapIbu" placeholder="Nama Lengkap" required>
                 @if ($errors->has('namaLengkapIbu'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('namaLengkapIbu') }}</strong>
@@ -260,12 +269,12 @@
                         <label for="tempatLahirIbu" class="col-form-label">Tempat tanggal lahir:</label>
                     </div>
                     <div class="col-auto">
-                        <input type="date" class="form-control{{ $errors->has('tanggalLahirIbu') ? ' is-invalid' : '' }}" id="tanggalLahirIbu" name="tanggalLahirIbu">
+                        <input type="date" class="form-control{{ $errors->has('tanggalLahirIbu') ? ' is-invalid' : '' }}" id="tanggalLahirIbu" name="tanggalLahirIbu" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="Tempat Lahir">
+                        <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="Tempat Lahir" required>
                         @if ($errors->has('tanggalLahir'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('tanggalLahirIbu') }}</strong>
@@ -285,7 +294,7 @@
             </div>
             <div class="form-group">
                 <label for="pendidikanTerakhirIbu">Pendidikan terkahir: </label>
-                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirIbu') ? ' is-invalid' : '' }}" id="pendidikanTerakhirIbu" name="pendidikanTerakhirIbu" placeholder="Pendidikan Terakhir">
+                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirIbu') ? ' is-invalid' : '' }}" id="pendidikanTerakhirIbu" name="pendidikanTerakhirIbu" placeholder="Pendidikan Terakhir" required>
                 @if ($errors->has('pendidikanTerakhirIbu'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('pendidikanTerakhirIbu') }}</strong>
@@ -339,7 +348,7 @@
             </div>
             <div class="form-group">
                 <label for="alamatRumahIbu">Alamat Rumah: </label>
-                <input type="text" class="form-control{{ $errors->has('alamatRumahIbu') ? ' is-invalid' : '' }}" id="alamatRumahIbu" name="alamatRumahIbu" placeholder="Alamat Rumah">
+                <input type="text" class="form-control{{ $errors->has('alamatRumahIbu') ? ' is-invalid' : '' }}" id="alamatRumahIbu" name="alamatRumahIbu" placeholder="Alamat Rumah" required>
                 @if ($errors->has('alamatRumahIbu'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('alamatRumahIbu') }}</strong>
@@ -370,7 +379,7 @@
             </div>
             <div class="form-group">
                 <label for="namaLengkapAyah">Nama Lengkap: </label>
-                <input type="text" class="form-control{{ $errors->has('namaLengkapAyah') ? ' is-invalid' : '' }}" id="namaLengkapAyah" name="namaLengkapAyah" placeholder="Nama Lengkap">
+                <input type="text" class="form-control{{ $errors->has('namaLengkapAyah') ? ' is-invalid' : '' }}" id="namaLengkapAyah" name="namaLengkapAyah" placeholder="Nama Lengkap" required>
                 @if ($errors->has('namaLengkapAyah'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('namaLengkapAyah') }}</strong>
@@ -383,12 +392,12 @@
                         <label for="tempatLahirAyah" class="col-form-label">Tempat tanggal lahir:</label>
                     </div>
                     <div class="col-auto">
-                        <input type="date" class="form-control{{ $errors->has('tanggalLahirAyah') ? ' is-invalid' : '' }}" id="tanggalLahirAyah" name="tanggalLahirAyah">
+                        <input type="date" class="form-control{{ $errors->has('tanggalLahirAyah') ? ' is-invalid' : '' }}" id="tanggalLahirAyah" name="tanggalLahirAyah" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="Tempat Lahir">
+                        <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="Tempat Lahir" required>
                         @if ($errors->has('tanggalLahirAyah'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('tanggalLahirAyah') }}</strong>
@@ -408,7 +417,7 @@
             </div>
             <div class="form-group">
                 <label for="pendidikanTerakhirAyah">Pendidikan terkahir: </label>
-                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirAyah') ? ' is-invalid' : '' }}" id="pendidikanTerakhirAyah" name="pendidikanTerakhirAyah" placeholder="Pendidikan Terakhir">
+                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirAyah') ? ' is-invalid' : '' }}" id="pendidikanTerakhirAyah" name="pendidikanTerakhirAyah" placeholder="Pendidikan Terakhir" required>
                 @if ($errors->has('pendidikanTerakhirAyah'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('pendidikanTerakhirAyah') }}</strong>
@@ -448,7 +457,7 @@
             </div>
             <div class="form-group">
                 <label for="emailAyah">Email: </label>
-                <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="emailAyah" name="emailAyah" placeholder="Email">
+                <input type="email" class="form-control{{ $errors->has('emailAyah') ? ' is-invalid' : '' }}" id="emailAyah" name="emailAyah" placeholder="Email">
                 @if ($errors->has('emailAyah'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('emailAyah') }}</strong>
@@ -457,7 +466,7 @@
             </div>
             <div class="form-group">
                 <label for="alamatRumahAyah">Alamat Rumah: </label>
-                <input type="text" class="form-control{{ $errors->has('alamatRumahAyah') ? ' is-invalid' : '' }}" id="alamatRumahAyah" name="alamatRumahAyah" placeholder="Alamat Rumah">
+                <input type="text" class="form-control{{ $errors->has('alamatRumahAyah') ? ' is-invalid' : '' }}" id="alamatRumahAyah" name="alamatRumahAyah" placeholder="Alamat Rumah" required>
                 @if ($errors->has('alamatRumahAyah'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('alamatRumahAyah') }}</strong>
@@ -482,7 +491,7 @@
         </div>
 
 
-        <div class="registrasi-wali">
+        <div class="tab">
             <div class="form-group">
                 <label for=""><u>DATA WALI</u></label>
             </div>
@@ -654,10 +663,6 @@
         </div>
     </form>
 
-    <p class="bottom-auth">Already have an account?
-        <a href="{{ route('login') }}">Login</a>
-    </p>
-
 
 @endsection
 
@@ -775,6 +780,7 @@
             if (n == 1 && !validateForm()) return false;
             x[currentTab].style.display = "none";
             currentTab += n;
+            console.log(currentTab);
             x[currentTab].style.transform = "scale(1,1)";
             x[currentTab].style.height = "100%";
 
@@ -802,11 +808,105 @@
         // }
 
         function validateForm() {
-            return true;
+        // This function deals with validation of the form fields
+            var x, y, i, test, valid = true;
+            x = document.getElementsByClassName("tab");
+            y = x[currentTab].getElementsByTagName("input");
+
+            // Function that verify
+            if(y[0].name==="email"){
+                for (i = 0; i < y.length; i++) {
+                    if (y[i].value == "") {
+                        // add an "invalid" class to the field:
+                        y[i].style.background="#ffdddd";
+                        y[i].placeholder = "Input invalid!"
+                        // and set the current valid status to false:
+                        valid = false;
+                        console.log("false");
+                    }
+                    else{
+                        y[i].style.background = "white";
+                    }
+                }
+
+                if (y[0].value.search(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) == -1){
+                    y[0].style.background="#ffdddd"
+                    y[0].placeholder  = "Email invalid";
+                    valid = false;
+                    console.log("false");
+                }
+
+                if (y[1].value!=y[2].value){
+                    y[2].style.background="#ffdddd"
+                    y[2].placeholder = "Password berbeda";
+                    valid = false;
+                    console.log("false");
+                }
+                // else if (y[2].value!=""){
+                //     y[2].style.background="white";
+                // }
+                
+            }
+
+            else if(y[0].type=="radio"){
+                for (i = 0; i < y.length; i++) {
+                    if(y[i].required == true){
+                        if (y[i].value == "") {
+                            // add an "invalid" class to the field:
+                            y[i].style.background="#ffdddd";
+                            y[i].placeholder = "Input invalid!"
+                            // and set the current valid status to false:
+                            valid = false;
+                            console.log("false");
+                        }
+                        else{
+                            y[i].style.background = "white";
+                        }
+                    }
+                }
+
+                if(!(y[0].checked||y[1].checked)){
+                    y[0].style.background="#ffdddd";
+                    // and set the current valid status to false:
+                    valid = false;
+                    console.log("false");
+                }
+            }
+
+            else{
+                for (i = 0; i < y.length; i++) {
+                    if(y[i].required == true){
+                        if (y[i].value == "") {
+                            // add an "invalid" class to the field:
+                            y[i].style.background="#ffdddd";
+                            y[i].placeholder = "Input invalid!"
+                            // and set the current valid status to false:
+                            valid = false;
+                            console.log("false");
+                        }
+                        else{
+                            y[i].style.background = "white";
+                        }
+                    }
+                    
+                    else if(y[i].type=="email"){
+                        if (y[i].value==""){}
+                        else{
+                            if(y[i].value.search(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) == -1){
+                                y[i].style.background="#ffdddd"
+                                y[i].placeholder  = "Email invalid";
+                                valid = false;
+                                console.log("false");
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(valid);
+            return valid; // return the valid status
         }
 
-
-
-
+  
     </script>
+
 @endsection

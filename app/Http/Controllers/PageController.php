@@ -61,6 +61,18 @@ class PageController extends Controller
         return view('pages.bukupenghubungkb', ['months' => $months, 'student_id' => $student_id, 'end' => $end]);
     }
 
+    public function bukupenghubungdcnotpublish() {
+        return view('pages.bukupenghubungdcnotpublish');
+    }
+
+    public function bukupenghubungdcortu() {
+        return view('pages.bukupenghubungdcortu');
+    }
+
+    public function createbukupenghubungdc() {
+        return view('pages.createbukupenghubungdc');
+    }
+
     public function selectDate($student_id, $month, $year) {
         // $dates = DailyBook::whereMonth('created_at', '=', $month)->get();
         $dates = DB::table('daily_books')
@@ -82,6 +94,10 @@ class PageController extends Controller
 
     public function formDailyBook($student_id) {
         return view('pages.createbukupenghubungdc', ['student_id' => $student_id]);
+    }
+
+    public function publishbukupenghubungdc() {
+        return view('pages.publishbukupenghubungdc');
     }
 
     public function successdc() {

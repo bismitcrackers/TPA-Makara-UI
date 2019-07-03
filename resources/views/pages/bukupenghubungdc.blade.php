@@ -7,17 +7,17 @@
 @endsection
 
 @section('content')
-    <h1 class = "bukupenghubung-title">
-        Buku Penghubung
-        <div class= "d-flex justify-content-center">
-            <div class="underline"></div>
-        </div>
-    </h1>
+    <div class = "d-flex justify-content-center">
+        <h1 class = "bukupenghubung-title underliner">
+            Buku Penghubung
+        </h1>
+    </div>   
+
     <div class="centerer">
         @foreach($dates as $indexKey => $date)
         <a class="dateblock inline" href="#">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
         <a href="{{ route('dailyBook.comments.show', ['daily_book_id' => $date->id]) }}">
-            <img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc">
+            <img src="{{asset('svg/message.svg')}}" alt="msgicon" class="inline messagedc ml-2">
         </a>
         <br>
         @endforeach
