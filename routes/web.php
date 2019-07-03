@@ -18,6 +18,8 @@ Route::get('/showbukupenghubungkb', 'PageController@showbukupenghubungkb')->name
 
 Route::get('/showbukupenghubungkb2', 'PageController@showbukupenghubungkb2')->name('showbukupenghubungkb2');
 
+Route::get('/showbukupenghubungkb3', 'PageController@showbukupenghubungkb3')->name('showbukupenghubungkb3');
+
 Route::get('/successdc', 'PageController@successdc')->name('successdc');
 
 

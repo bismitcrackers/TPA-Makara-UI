@@ -105,6 +105,12 @@ class PageController extends Controller
         return view('pages.showBukupenghubungkb2');
     }
 
+<<<<<<< HEAD
+    public function showbukupenghubungkb3(){
+        return view('pages.showBukupenghubungkb3');
+    }
+    
+=======
     public function selectClassProfile() {
         return view('pages.typeclass', ['route' => 'profile']);
     }
@@ -119,4 +125,5 @@ class PageController extends Controller
         $mom = $student->user()->first()->parents()->where('peran', 'Ibu')->first();
         return view('pages.abyanprofile', ['student' => $student, 'dad' => $dad, 'mom' => $mom]);
     }
+>>>>>>> ca39fae4c187fb9aa3d27b18b38c1b935c6fe4e9
 }
