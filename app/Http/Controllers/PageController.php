@@ -71,6 +71,8 @@ class PageController extends Controller
 
     public function createbukupenghubungdc() {
         return view('pages.createbukupenghubungdc');
+    }
+
     public function selectDate($student_id, $month, $year) {
         // $dates = DailyBook::whereMonth('created_at', '=', $month)->get();
         $dates = DB::table('daily_books')
@@ -117,6 +119,10 @@ class PageController extends Controller
 
     public function showbukupenghubungkb2(){
         return view('pages.showBukupenghubungkb2');
+    }
+
+    public function showbukupenghubungkb3(){
+        return view('pages.showBukupenghubungkb3');
     }
 
     public function selectClassProfile() {

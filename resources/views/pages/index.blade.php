@@ -191,7 +191,14 @@
     </div>
     <img src="{{asset('picture\pigeon.png')}}" alt="">
   </div>
-
+  
+  <div class="row"  id="sosmed">
+    <div>
+      <img src="{{asset('svg/facebook.svg')}}" alt="">
+      <img src="{{asset('svg/instagram.svg')}}" alt="">
+      <img src="{{asset('svg/youtube.svg')}}" alt="">
+    </div>
+  </div>
 </div>
 
 
