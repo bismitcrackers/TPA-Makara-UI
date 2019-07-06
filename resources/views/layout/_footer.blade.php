@@ -7,7 +7,21 @@
                 <p>Home</p>
             </div>
         </a>
-        <a href="">
+        @if(auth()->user() == null)
+            <a href="{{ route('index') }}">
+        @elseif(auth()->user()->roles()->first()->description == 'Full Access' || auth()->user()->roles()->first()->name == 'Fasilitator')
+            <a href="{{ route('dailyBook.class') }}">
+        @elseif(auth()->user()->roles()->first()->name == 'Orangtua')
+            @if(auth()->user()->student()->first()->kelas == 'Day Care')
+            <a href="{{ route('dailyBook.dc.date.parent', ['student_id', auth()->user()->student()->first()->id]) }}">
+            @elseif(auth()->user()->student()->first()->kelas == 'Kelompok Bermain')
+            <a href="{{ route('dailyBook.dc.date.parent', ['student_id', auth()->user()->student()->first()->id]) }}">
+            @endif
+        @elseif(auth()->user()->roles()->first()->name == 'Co-fasilitator')
+            <a href="{{ route('dailyBook.dc.student') }}">
+        @elseif(auth()->user()->roles()->first()->name == 'Guru')
+            <a href="{{ route('dailyBook.kb.student') }}">
+        @endif
             <div class= "nav-pane mr-3">
                 <img src="{{asset('svg/studentbooks.svg')}}" alt="studentbooks">
                 <p>Student Book's</p>
@@ -19,10 +33,10 @@
                 <p>Notification</p>
             </div>
         </a>
-        <a href="">
+        <a href="{{ route('login') }}">
             <div class= "nav-pane mr-3">
                 <img src="{{asset('svg/studentprofile.svg')}}" alt="studentprofile">
-                <p>Notification</p>
+                <p>Student Profile</p>
             </div>
         </a>
     </nav>

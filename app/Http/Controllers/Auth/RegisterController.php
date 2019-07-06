@@ -123,6 +123,7 @@ class RegisterController extends Controller
         $mother->pendidikan       = $data['pendidikanTerakhirIbu'];
         $mother->jurusan          = $data['jurusanIbu'];
         $mother->pekerjaan        = $data['pekerjaanIbu'];
+        $mother->alamat_kantor    = $data['alamatKerjaIbu'];
         $mother->telepon_kantor   = $data['teleponKantorIbu'];
         $mother->email            = $data['emailIbu'];
         $mother->alamat_rumah     = $data['alamatRumahIbu'];
@@ -139,6 +140,7 @@ class RegisterController extends Controller
         $father->pendidikan        = $data['pendidikanTerakhirAyah'];
         $father->jurusan           = $data['jurusanAyah'];
         $father->pekerjaan         = $data['pekerjaanAyah'];
+        $father->alamat_kantor     = $data['alamatKerjaAyah'];
         $father->telepon_kantor    = $data['teleponKantorAyah'];
         $father->email             = $data['emailAyah'];
         $father->alamat_rumah      = $data['alamatRumahAyah'];
@@ -155,6 +157,7 @@ class RegisterController extends Controller
         $wali->pendidikan        = $data['pendidikanTerakhirWali'];
         $wali->jurusan           = $data['jurusanWali'];
         $wali->pekerjaan         = $data['pekerjaanWali'];
+        $wali->alamat_kantor     = $data['alamatKerjaWali'];
         $wali->telepon_kantor    = $data['teleponKantorWali'];
         $wali->email             = $data['emailWali'];
         $wali->alamat_rumah      = $data['alamatRumahWali'];

@@ -1,6 +1,6 @@
 @extends('layout/master')
 
-@section('title', 'Buku Penghubung Kelas Bermain')
+@section('title', 'Buku Penghubung ' . $class)
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -25,7 +25,11 @@
             <div class="row justify-content-around">
             @endif
                 <div class="col-sm-4 bukbul">
-                    <a href="{{ route('dailyBook.date', ['student_id' => $student_id, 'month' => $months[$i]['month'], 'year' => $months[$i]['year']]) }}">
+                    @if($class == 'Day Care')
+                    <a href="{{ route('dailyBook.dc.date', ['student_id' => $student_id, 'month' => $months[$i]['month'], 'year' => $months[$i]['year']]) }}">
+                    @elseif($class == 'Kelompok Bermain')
+                    <a href="{{ route('dailyBook.kb.date', ['student_id' => $student_id, 'month' => $months[$i]['month'], 'year' => $months[$i]['year']]) }}">
+                    @endif
                         <img src="{{asset('svg/bukbul.svg')}}" alt="" class= "photobukbul">
                         <p>{{ $months[$i]['month_name'] . ' ' . $months[$i]['year'] }}</p>
                     </a>
