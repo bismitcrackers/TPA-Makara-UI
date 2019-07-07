@@ -98,6 +98,7 @@ class RegisterController extends Controller
         $student = new Student;
         $student->nama_lengkap      = $data['namaLengkap'];
         $student->nama_panggilan    = $data['namaPanggilan'];
+        $student->kelas             = $data['kelas'];
         $student->jenis_kelamin     = $data['jenisKelamin'];
         $student->tempat_lahir      = $data['tempatLahir'];
         $student->tanggal_lahir     = $data['tanggalLahir'];

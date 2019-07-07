@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 use App\User;
+use App\Student;
+use App\Parents;
 use App\Role;
 
 class UserTableSeeder extends Seeder
@@ -71,11 +74,111 @@ class UserTableSeeder extends Seeder
         $guru->save();
         $guru->roles()->attach($role_guru);
 
-        $orangtua = new User();
-        $orangtua->name = 'Orangtua Name';
-        $orangtua->email = 'orangtua@example.com';
-        $orangtua->password = bcrypt('secret');
-        $orangtua->save();
-        $orangtua->roles()->attach($role_orangtua);
+        $kelas = array(
+            'Day Care',
+            'Kelompok Bermain',
+        );
+
+        $kota = array(
+            'Jakarta',
+            'Depok',
+            'Bogor',
+            'Tangerang',
+            'Tangerang Selatan',
+        );
+
+        $jenis_kelamin = array(
+            'laki-laki',
+            'perempuan',
+        );
+
+        $agama = array(
+            'Islam',
+            'Kristen',
+            'Hindu',
+            'Budha',
+        );
+
+        $anakKe = array(
+            '1/2',
+            '2/2',
+            '1/3',
+            '2/3',
+            '3/3',
+            '1/4',
+            '2/4',
+            '3/4',
+            '4/4',
+        );
+
+        $peran = array(
+            'Ibu',
+            'Ayah',
+            'Wali',
+            'Non-wali'
+        );
+
+        $pendidikan = array(
+            'SD',
+            'SMP',
+            'SMA',
+            'D1',
+            'D2',
+            'D3',
+            'D4',
+            'S1',
+            'S2',
+            'S3',
+        );
+
+        $faker = Faker::create('id_ID');
+
+    	for($i = 1; $i <= 80; $i++) {
+            $user = new User();
+            $user->name     = $faker->name;
+            $user->email    = $faker->email;
+            $user->password = bcrypt('secret');
+            $user->save();
+            $user->roles()->save($role_orangtua);
+
+            $student = new Student();
+            $student->nama_lengkap      = $faker->name;
+            $student->nama_panggilan    = $faker->firstName;
+            $student->kelas             = $kelas[array_rand($kelas)];
+            $student->jenis_kelamin     = $jenis_kelamin[array_rand($jenis_kelamin)];
+            $student->tempat_lahir      = $kota[array_rand($kota)];
+            $student->tanggal_lahir     = $faker->dateTime($max = 'now', $timezone = null);
+            $student->usia              = $faker->randomDigit;
+            $student->agama             = $agama[array_rand($agama)];
+            $student->alamat_rumah      = $faker->address;
+            $student->telepon_rumah     = $faker->phoneNumber;
+            $student->anak_ke           = $anakKe[array_rand($anakKe)];
+            $student->catatan_medis     = $faker->sentence;
+            $student->penyakit_berat    = $faker->word;
+            $student->keadaan_khusus    = $faker->word;
+            $student->sifat_baik        = $faker->word;
+            $student->sifat_diperhatikan= $faker->word;
+            $user->student()->save($student);
+            // $student->save();
+
+            foreach ($peran as $p) {
+                $parent = new Parents();
+                $parent->peran            = $p;
+                $parent->nama_lengkap     = $faker->name;
+                $parent->tempat_lahir     = $kota[array_rand($kota)];
+                $parent->tanggal_lahir    = $faker->dateTime($max = 'now', $timezone = null);
+                $parent->agama            = $agama[array_rand($agama)];
+                $parent->pendidikan       = $pendidikan[array_rand($pendidikan)];
+                $parent->jurusan          = $faker->word;
+                $parent->pekerjaan        = $faker->jobTitle;
+                $parent->alamat_kantor    = $faker->address;
+                $parent->telepon_kantor   = $faker->phoneNumber;
+                $parent->email            = $faker->email;
+                $parent->alamat_rumah     = $faker->address;
+                $parent->no_handphone     = $faker->phoneNumber;
+                $user->student()->save($parent);
+            }
+
+    	}
     }
 }

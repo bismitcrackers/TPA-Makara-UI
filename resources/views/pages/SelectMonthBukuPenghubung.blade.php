@@ -36,10 +36,9 @@
                 </div>
             @if(($i) % 3 == 0 || $i == $end)
             </div>
-        @if(($i) % 3 == 0 || $i == $end)
-        </div>
-        @endif
-    @endfor
+            @endif
+        @endfor
+    </div>
 
 
 @endsection
@@ -53,7 +52,7 @@
         input = document.getElementById('userInput');
         filter = input.value.toUpperCase();
         bookselect = document.getElementsByClassName("bukbul");
-    
+
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < bookselect.length; i++) {
             a = bookselect[i].getElementsByTagName("p")[0];

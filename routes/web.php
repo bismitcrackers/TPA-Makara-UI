@@ -58,7 +58,6 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
         });
     });
 });
->>>>>>> 2b57087b46b0f7aa99496d7fef9cbcc96ca346d7
 
 Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
@@ -86,7 +85,8 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
 
 Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
-    Route::get('/students/{class}', 'PageController@studentsProfile')->name('student');
+    Route::get('/students/{class}', 'PageController@studentsProfileDayCare')->name('dc.student');
+    Route::get('/students/{class}', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
     Route::get('/details/{student_id}', 'PageController@profileDetails')->name('details');
 });
 
