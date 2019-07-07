@@ -1,3 +1,4 @@
+
 @extends('layout/master')
 
 @section('title', 'Homepage')
@@ -54,10 +55,19 @@
             <div id="garis" class="col-md-4"></div>
         <div id="" class="col-md-4"></div>
     </div>
+    
+    <div id="tmbhBrt">
+      <p>
+        Tambah Berita +
+      </p>
+    </div>
 
     <div class="row" id="berita"> 
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
+          <div id="pensilBrt">
+            <img src="{{asset('svg\pensilberita.svg')}}" alt="">
+          </div>
           <div>
             <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
           </div>
@@ -73,6 +83,9 @@
       </div>  
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
+          <div id="pensilBrt">
+            <img src="{{asset('svg\pensilberita.svg')}}" alt="">
+          </div>
           <div>
             <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
           </div>
@@ -88,6 +101,9 @@
       </div>  
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
+          <div id="pensilBrt">
+            <img src="{{asset('svg\pensilberita.svg')}}" alt="">
+          </div>
           <div>
             <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
           </div>
