@@ -58,11 +58,35 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
         });
     });
 });
+>>>>>>> 2b57087b46b0f7aa99496d7fef9cbcc96ca346d7
 
 Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
     Route::get('/DayCare/students/', 'PageController@studentsProfileDayCare')->name('dc.student');
     Route::get('/KelompokBermain/students', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
+    Route::get('/details/{student_id}', 'PageController@profileDetails')->name('details');
+});
+
+Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
+    Route::get('/students/{class}', 'PageController@studentsList')->name('student');
+    Route::group(['prefix'=>'{daily_book_id}'], function(){
+        Route::group(['prefix'=>'comments', 'as'=>'comments.'], function(){
+            Route::get('/show', 'PageController@showComments')->name('show');
+            Route::get('/send', 'PageController@sendComments')->name('send');
+            Route::post('/add', 'DailyBooksController@addComments')->name('add');
+        });
+    });
+    Route::group(['prefix'=>'{student_id}'], function(){
+        Route::get('/form', 'PageController@formDailyBook')->name('form');
+        Route::get('/date/{month}/{year}', 'PageController@selectDate')->name('date');
+        Route::get('/month', 'PageController@selectMonth')->name('month');
+        Route::post('/add', 'DailyBooksController@addDailyBooks')->name('add');
+    });
+});
+
+Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
+    Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
+    Route::get('/students/{class}', 'PageController@studentsProfile')->name('student');
     Route::get('/details/{student_id}', 'PageController@profileDetails')->name('details');
 });
 

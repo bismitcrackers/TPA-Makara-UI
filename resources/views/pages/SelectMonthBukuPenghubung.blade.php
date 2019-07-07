@@ -7,17 +7,17 @@
 @endsection
 
 @section('content')
-    <h1 class = "bukupenghubung-title">
-        Buku Penghubung
-        <div class= "d-flex justify-content-center">
-            <div class="underline"></div>
-        </div>
-    </h1>
+
+    <div class = "d-flex justify-content-center">
+        <h1 class = "bukupenghubung-title underliner">
+            Buku Penghubung
+        </h1>
+    </div>
 
     <!-- Search form -->
     <form class="md-form form-sm mt-0 search-bukbul">
         <i class="fas fa-search opacitydown inline ml-2" aria-hidden="true"></i>
-        <input class="form-control sizer form-control-sm ml-2 border-bottom-0 inline" type="text" placeholder="Search book" aria-label="Search">
+        <input id = "userInput" class="form-control sizer form-control-sm ml-2 border-bottom-0 inline" type="text" placeholder="Search book" aria-label="Search" onkeyup="searchFunction()">
     </form>
     <div class="container">
         @for($i = 1; $i < $end + 1; $i++)
@@ -36,13 +36,37 @@
                 </div>
             @if(($i) % 3 == 0 || $i == $end)
             </div>
-            @endif
-        @endfor
-    </div>
+        @if(($i) % 3 == 0 || $i == $end)
+        </div>
+        @endif
+    @endfor
 
 
 @endsection
 
 @section('extra-js')
+
+<script>
+    function searchFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('userInput');
+        filter = input.value.toUpperCase();
+        bookselect = document.getElementsByClassName("bukbul");
+    
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < bookselect.length; i++) {
+            a = bookselect[i].getElementsByTagName("p")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                bookselect[i].style.display = "";
+            } else {
+                bookselect[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+
 
 @endsection
