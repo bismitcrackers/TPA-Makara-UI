@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label for="pembuatdc" class="dclabel">PEMBUAT</label>
                 @if($route == 'createDailyBookDC')
-                <input value="{{ auth()->user()->first()->name }}" name="pembuat" type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
+                <input value="{{ auth()->user()->name }}" name="pembuat" type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
                 @elseif($route == 'reviewDailyBookDC')
                 <input value="{{ $dailyBook->pembuat }}" name="pembuat" type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
                 @endif

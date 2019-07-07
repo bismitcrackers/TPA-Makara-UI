@@ -24,7 +24,7 @@ class WebHelper
         $imageName = time() . '.' . $file->getClientOriginalExtension();
         $destinationPath = public_path($dir);
         $file->move($destinationPath, $imageName);
-        return $destinationPath . $imageName;
+        return $dir . '/' . $imageName;
     }
 
     public static function getMonthListFromDate($start)

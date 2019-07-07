@@ -80,6 +80,20 @@
                 @endif
             </div>
             <div class="form-group row shorter">
+                <label for="kelas" class="col-auto mr-auto col-form-label">Kelas:</label>
+                <div class="col-auto">
+                    <select class="form-control{{ $errors->has('kelas') ? ' is-invalid' : '' }}" id="kelas" name="kelas" required>
+                        <option value="Day Care">Day Care</option>
+                        <option value="Kelompok Bermain">Kelompok Bermain</option>
+                    </select>
+                    @if ($errors->has('kelas'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('kelas') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group row shorter">
                 <label for="jenisKelamin" class="col-auto mr-auto col-form-label">Jenis Kelamin:</label>
                 <div class="col-auto">
                     <select class="form-control{{ $errors->has('jenisKelamin') ? ' is-invalid' : '' }}" id="jenisKelamin" name="jenisKelamin" required>
@@ -845,7 +859,7 @@
                 // else if (y[2].value!=""){
                 //     y[2].style.background="white";
                 // }
-                
+
             }
 
             else if(y[0].type=="radio"){
@@ -888,7 +902,7 @@
                             y[i].style.background = "white";
                         }
                     }
-                    
+
                     else if(y[i].type=="email"){
                         if (y[i].value==""){}
                         else{
@@ -906,7 +920,7 @@
             return valid; // return the valid status
         }
 
-  
+
     </script>
 
 @endsection
