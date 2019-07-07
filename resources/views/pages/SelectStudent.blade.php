@@ -17,11 +17,12 @@
         <input class="form-control search-siswa" type="search" placeholder="Cari Siswa {{ $class }}">
     </form>
     <div class="container">
-        {{-- minimal 2 --}}
-        {{-- font-size dikurangin --}}
-        <div class="row justify-content-around">
-            @foreach($students as $student)
-            <div class="col siswa">
+        <?php $i=1; ?>
+        @foreach($students as $student)
+            @if(($i - 1) % 3 == 0)
+            <div class="row justify-content-around">
+            @endif
+                <div class="col-sm-4 siswa">
                 @if($route == 'dayCareDailyBook')
                     <a href="{{ route('dailyBook.dc.month', ['student_id' => $student->id]) }}">
                 @elseif($route == 'kelompokBermainDailyBook')
@@ -32,47 +33,19 @@
                     <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
                 @endif
                 @if($student->jenis_kelamin == 'laki-laki')
-                    <img src="{{ asset('svg/laki.svg') }}" alt="" class= "photosiswa">
+                        <img src="{{ asset('svg/laki.svg') }}" alt="" class= "photosiswa">
                 @else
-                    <img src="{{ asset('svg/perempuan.svg') }}" alt="" class= "photosiswa">
+                        <img src="{{ asset('svg/perempuan.svg') }}" alt="" class= "photosiswa">
                 @endif
-                    <p>{{ $student->nama_lengkap }}</p>
-                </a>
+                        <p>{{ $student->nama_lengkap }}</p>
+                    </a>
+                </div>
+            @if(($i) % 3 == 0)
             </div>
-            @endforeach
+            @endif
+            <?php $i += 1; ?>
+        @endforeach
         </div>
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/laki.svg')}}" alt="" class= "photosiswa">
-                <p>Arkha Rayyan S</p>
-            </a>
-        </div>
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/perempuan.svg')}}" alt="" class= "photosiswa">
-                <p>Arsyad Ahmad M</p>
-            </a>
-        </div>
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/perempuan.svg')}}" alt="" class= "photosiswa">
-                <p>Arudita Saphira P</p>
-            </a>
-        </div>
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/perempuan.svg')}}" alt="" class= "photosiswa">
-                <p>Atishalula Atalandra</p>
-            </a>
-        </div>
-        <div class="col-4 siswa">
-            <a href="">
-                <img src="{{asset('svg/perempuan.svg')}}" alt="" class= "photosiswa">
-                <p>Aurora Radhya T</p>
-            </a>
-        </div>
-    </div>
-
 
 @endsection
 
@@ -85,7 +58,7 @@
         input = document.getElementById('userInput');
         filter = input.value.toUpperCase();
         siswaselect = document.getElementsByClassName("siswa");
-    
+
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < siswaselect.length; i++) {
             a = siswaselect[i].getElementsByTagName("p")[0];
