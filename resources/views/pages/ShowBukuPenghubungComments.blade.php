@@ -41,7 +41,7 @@
         <span>Tambah Komentar</span>
     </a>
 
-    <button  onclick="location.reload();" type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
+    <button onclick="location.reload();" type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
             Done
         <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
     </button>

@@ -1,6 +1,6 @@
 @extends('layout/master')
 
-@section('title', 'List Student Kelas Bermain - GURU')
+@section('title', 'List Student ' . $class . ' - GURU')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -14,17 +14,21 @@
     </div>
     <!-- Search form -->
     <form action="">
-        <input id="userInput" class="form-control search-siswa" type="search" placeholder="Cari Siswa Daycare" onkeyup="searchFunction()">
+        <input class="form-control search-siswa" type="search" placeholder="Cari Siswa {{ $class }}">
     </form>
     <div class="container">
         {{-- minimal 2 --}}
         {{-- font-size dikurangin --}}
         <div class="row justify-content-around">
             @foreach($students as $student)
-            <div class="col-4 siswa">
-                @if($route == 'dailyBook')
-                    <a href="{{ route('dailyBook.month', ['student_id' => $student->id]) }}">
-                @else
+            <div class="col siswa">
+                @if($route == 'dayCareDailyBook')
+                    <a href="{{ route('dailyBook.dc.month', ['student_id' => $student->id]) }}">
+                @elseif($route == 'kelompokBermainDailyBook')
+                    <a href="{{ route('dailyBook.kb.month', ['student_id' => $student->id]) }}">
+                @elseif($route == 'dayCareProfile')
+                    <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
+                @elseif($route == 'kelompokBermainProfile')
                     <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
                 @endif
                 @if($student->jenis_kelamin == 'laki-laki')

@@ -24,6 +24,7 @@ class CreateParentsTable extends Migration
             $table->string('pendidikan')->nullable();
             $table->string('jurusan')->nullable();
             $table->string('pekerjaan')->nullable();
+            $table->string('alamat_kantor')->nullable();
             $table->string('telepon_kantor')->nullable();
             $table->string('email')->nullable();
             $table->string('alamat_rumah')->nullable();
