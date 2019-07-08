@@ -793,10 +793,22 @@ a.linkclass:hover{
     margin-bottom: 5px
 }
 
+.sizingprof{
+    max-width: 20%;
+}
+
 .boxprofile{
     background: rgba(196, 196, 196, 0.2);
     margin-bottom: 30px;
     width: 482px;
+}
+
+.boxprofile p{
+    text-align: justify !important
+}
+
+.boxprofile p.paragrapheditprofile{
+    text-align: center !important;
 }
 
 @media (max-width: 700.98px) {
