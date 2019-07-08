@@ -55,7 +55,7 @@
         <div id="" class="col-md-4"></div>
     </div>
 
-    <div class="row" id="berita"> 
+    <div class="row" id="berita">
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
           <div>
@@ -70,7 +70,7 @@
             </p>
           </div>
         </div>
-      </div>  
+      </div>
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
           <div>
@@ -85,7 +85,7 @@
             </p>
           </div>
         </div>
-      </div>  
+      </div>
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
           <div>
@@ -100,7 +100,7 @@
             </p>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
   <div id="prfsCont">
@@ -120,7 +120,7 @@
     </div>
 
     <div class="row" id="prfsTpam">
-      
+
       <div class="col-md-6">
         <img src="{{asset('picture\program1.jpg')}}" alt="fasil">
       </div>
@@ -180,7 +180,7 @@
     </div>
 
   </div>
-  
+
   <div class="pigeon">
     <h3 id="headerLokasi">
           Supported By
@@ -194,8 +194,8 @@
       <img src="{{asset('picture\pigeon-logo.png')}}" alt="">
     </div>
   </div>
-  
-  <div class="row"  id="sosmed">
+
+  <div class="row" id="sosmed">
     <div>
       <a href="https://www.facebook.com/tpa.makara"><img src="{{asset('svg/facebook.svg')}}" alt="" ></a>  
       <a href="https://www.instagram.com/tpamakara/"><img src="{{asset('svg/instagram.svg')}}" alt="" ></a>

@@ -14,24 +14,23 @@
         </h1>
     </div>
 
-    <form method="POST" action="{{ route('dailyBook.add', ['student_id' => $student_id]) }}" enctype="multipart/form-data">
-        {{ csrf_field() }}
+    <form action="">
         <div class="tab">
             <div class="form-group">
                 <label for="pembuatdc" class="dclabel">PEMBUAT</label>
-                <input name="pembuat" type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
+                <input type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
             </div>
             <div class="form-group">
                 <label for="datepicker" class="dclabel">TANGGAL</label>
-                <input name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
+                <input type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
             </div>
             <div class="form-group">
                 <label for="temadc" class="dclabel">TEMA</label>
-                <input name="tema" type="text" class="form-control dcinput" id="temadc" aria-describedby="tema" placeholder="Tema" required>
+                <input type="text" class="form-control dcinput" id="temadc" aria-describedby="tema" placeholder="Tema" required>
             </div>
             <div class="form-group">
                 <label for="subtemadc" class="dclabel">SUBTEMA</label>
-                <input name="subtema" type="text" class="form-control dcinput" id="subtemadc" aria-describedby="subtema" placeholder="Sub Tema" required>
+                <input type="text" class="form-control dcinput" id="subtemadc" aria-describedby="subtema" placeholder="Sub Tema" required>
             </div>
             <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center" onclick = "nextPrev(1)">
                 Next
@@ -46,21 +45,21 @@
             </div>
             <div class="form-group">
                 <label for="keterangandcfisik" class="dclabel ">KETERANGAN</label>
-                <textarea name="keteranganFisik" class="form-control dcinput" id="keterangandcfisik" rows="5" placeholder="Max. 150 karakter" maxlength="150" required></textarea>
+                <textarea class="form-control dcinput" id="keterangandcfisik" rows="5" placeholder="Max. 150 karakter" maxlength="150" required></textarea>
             </div>
             <div class="centerer">
                 <img src="{{asset('svg/kognitif.svg')}}" class="dcimg" alt="kognitif">
             </div>
             <div class="form-group">
                 <label for="keterangandckognitif" class="dclabel">KETERANGAN</label>
-                <textarea name="keteranganKognitif" class="form-control dcinput" id="keterangandckognitif" rows="5" placeholder="Max. 150 karakter" maxlength="150" required></textarea>
+                <textarea class="form-control dcinput" id="keterangandckognitif" rows="5" placeholder="Max. 150 karakter" maxlength="150" required></textarea>
             </div>
             <div class="centerer">
                 <img src="{{asset('svg/sosial-emosi.svg')}}" class="dcimg" alt="sosial-emosi">
             </div>
             <div class="form-group">
                 <label for="keterangandcfisiksosialem" class="dclabel">KETERANGAN</label>
-                <textarea name="keteranganSosial" class="form-control dcinput" id="keterangandcsosialem" rows="5" placeholder="Max. 150 karakter" maxlength="150" required></textarea>
+                <textarea class="form-control dcinput" id="keterangandcsosialem" rows="5" placeholder="Max. 150 karakter" maxlength="150" required></textarea>
             </div>
             <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center" onclick="nextPrev(1)">
                 Next
@@ -72,32 +71,34 @@
             <h2 class="subbukupenghubung-title"><u>CATATAN</u></h2>
             <div class="form-group">
                 <label for="snackdc" class="dclabel ">SNACK</label>
-                <textarea name="snack" class="form-control dcinput" id="snackdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
+                <textarea class="form-control dcinput" id="snackdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
             </div>
             <div class="form-group">
                 <label for="makansiangdc" class="dclabel ">MAKAN SIANG</label>
-                <textarea name="makanSiang" class="form-control dcinput" id="makansiangdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
+                <textarea class="form-control dcinput" id="makansiangdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
             </div>
             <div class="form-group">
                 <label for="tidursiangdc" class="dclabel ">TIDUR SIANG</label>
-                <textarea name="tidurSiang" class="form-control dcinput" id="tidursiangdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
+                <textarea class="form-control dcinput" id="tidursiangdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
             </div>
             <h2 class="subbukupenghubung-title"><u>CATATAN KHUSUS</u></h2>
             <div class="form-group">
-                <textarea name="catatanKhusus" class="form-control dcinput" id="catatankhususdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
+                <textarea class="form-control dcinput" id="catatankhususdc" rows="5" placeholder="Max. 150 karakter" maxlength="150"></textarea>
             </div>
             <h2 class="subbukupenghubung-title"><u>LAMPIRAN</u></h2>
             <div href="" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
                 <span>Tambah Foto</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </div>
-            <input name="lampiran" type="file" id="inputfile">
+            <input type="file" id="inputfile">
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" onclick="nextPrev(1)">
-                Save
+                Publish
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-            </button>
-        </div>
+            </button>    
+        </div>        
     </form>
+    
+
 @endsection
 
 @section('extra-js')
@@ -160,6 +161,11 @@
             });
         });
     </script>
+
+    <script>
+        
+    </script>
+
 
     
 @endsection
