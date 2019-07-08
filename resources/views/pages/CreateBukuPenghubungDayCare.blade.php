@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label for="datepicker" class="dclabel">TANGGAL</label>
                 @if($route == 'createDailyBookDC')
-                <input name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
+                <input name="tanggal" type="date" class="form-control dcinput tanggaldc" required>
                 @elseif($route == 'reviewDailyBookDC')
                 <input value="{{ $dailyBook->tanggal }}" name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
                 @endif

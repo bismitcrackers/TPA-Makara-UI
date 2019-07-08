@@ -322,7 +322,7 @@ h3 {
 
 .siswa {
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     margin-bottom: 15px;
     max-width: 60%;
@@ -335,9 +335,9 @@ h3 {
 }
 
 .photosiswa {
-    width: 45%;
+    width: 38%;
     height: auto;
-    margin: 10px auto 12px;
+    margin: 10px auto 8px;
 }
 
 div.siswa a:hover {
