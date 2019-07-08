@@ -31,9 +31,9 @@
             <div class="form-group">
                 <label for="datepicker" class="dclabel">TANGGAL</label>
                 @if($route == 'createDailyBookDC')
-                <input name="tanggal" type="date" class="form-control dcinput tanggaldc" required>
+                <input name="tanggal" type="date" class="form-control dcinput tanggaldc" id = "datepicker" required>
                 @elseif($route == 'reviewDailyBookDC')
-                <input value="{{ $dailyBook->tanggal }}" name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
+                <input value="{{ $dailyBook->tanggal }}" name="tanggal" type="date" id = "datepicker" class="form-control dcinput tanggaldc" required>
                 @endif
             </div>
             <div class="form-group">
@@ -209,12 +209,12 @@
             $("#inputfile").click();
         }
 
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                dateFormat: "dd-mm-yy",
-                defaultDate: 0,
-            });
-        });
+        // $( function() {
+        //     $( "#datepicker" ).datepicker({
+        //         dateFormat: "dd-mm-yy",
+        //         defaultDate: 0,
+        //     });
+        // });
     </script>
 
 

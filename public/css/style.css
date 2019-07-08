@@ -574,7 +574,7 @@ img {
 }
 
 input.tanggaldc{
- background-image: url(../svg/calendar.svg) !important;
+ /* background-image: url(../svg/calendar.svg) !important; */
  background-repeat: no-repeat !important;
  background-position: 97% 2px !important;
 
