@@ -36,7 +36,7 @@ class PageController extends Controller
         if ($role == 'Orangtua') {
             return redirect()->route('orangtua.home');
         } else {
-            $students = Student::where('kelas', 'Day Care')->get();
+            $students = Student::where('kelas', 'Day Care')->orderBy('nama_lengkap')->get();
             return view('pages.SelectStudent', ['students' => $students, 'route' => 'dayCareDailyBook', 'class' => 'Day Care']);
         }
     }
@@ -49,10 +49,10 @@ class PageController extends Controller
 
     public function dayCareSelectDate($student_id, $month, $year) {
         $dates = DB::table('daily_books')
-            ->select(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, DAY(created_at) day, id'))
+            ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish'))
             ->where('student_id', '=', $student_id)
-            ->whereYear('created_at', '=', $year)
-            ->whereMonth('created_at', '=', $month)
+            ->whereYear('tanggal', '=', $year)
+            ->whereMonth('tanggal', '=', $month)
             ->groupBy('year')
             ->groupBy('month')
             ->groupBy('month_name')
@@ -67,10 +67,11 @@ class PageController extends Controller
 
     public function dayCareSelectDateParent($student_id) {
         $dates = DB::table('daily_books')
-            ->select(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, DAY(created_at) day, id'))
+            ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dibaca'))
             ->where('student_id', '=', $student_id)
-            ->whereYear('created_at', '<=', Carbon::now()->year)
-            ->whereMonth('created_at', '<=', Carbon::now()->month)
+            ->where('dipublish', '=', True)
+            ->whereYear('tanggal', '<=', Carbon::now()->year)
+            ->whereMonth('tanggal', '<=', Carbon::now()->month)
             ->groupBy('year')
             ->groupBy('month')
             ->groupBy('month_name')
@@ -79,6 +80,7 @@ class PageController extends Controller
             ->orderBy('year', 'desc')
             ->orderBy('month', 'desc')
             ->orderBy('day', 'desc')
+            ->orderBy('dibaca')
             ->get();
         return view('pages.SelectDateBukuPenghubung', ['dates' => $dates, 'student_id' => $student_id, 'class' => 'Day Care']);
     }
@@ -89,18 +91,21 @@ class PageController extends Controller
 
     public function showDailyBookDayCare($student_id, $day, $month, $year){
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
-            ->whereDay('created_at', '=', $day)
-            ->whereYear('created_at', '=', $year)
-            ->whereMonth('created_at', '=', $month)
+            ->update(['dibaca' => True]);
+        $dailyBook = DailyBook::where('student_id', '=', $student_id)
+            ->whereDay('tanggal', '=', $day)
+            ->whereYear('tanggal', '=', $year)
+            ->whereMonth('tanggal', '=', $month)
             ->first();
+        // return $dailyBook;
         return view('pages.ShowBukuPenghubungDayCare', ['student_id' => $student_id, 'dailyBook' => $dailyBook]);
     }
 
     public function reviewDailyBookDayCare($student_id, $day, $month, $year) {
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
-            ->whereDay('created_at', '=', $day)
-            ->whereYear('created_at', '=', $year)
-            ->whereMonth('created_at', '=', $month)
+            ->whereDay('tanggal', '=', $day)
+            ->whereYear('tanggal', '=', $year)
+            ->whereMonth('tanggal', '=', $month)
             ->first();
         return view('pages.CreateBukuPenghubungDayCare',['student_id' => $student_id, 'route' => 'reviewDailyBookDC', 'dailyBook' => $dailyBook, 'route' => 'reviewDailyBookDC']);
     }
@@ -112,7 +117,7 @@ class PageController extends Controller
         if ($role == 'Orangtua') {
             return redirect()->route('orangtua.home');
         } else {
-            $students = Student::where('kelas', 'Kelompok Bermain')->get();
+            $students = Student::where('kelas', 'Kelompok Bermain')->orderBy('nama_lengkap')->get();
             return view('pages.SelectStudent', ['students' => $students, 'route' => 'kelompokBermainDailyBook', 'class' => 'Kelompok Bermain']);
         }
     }
@@ -125,10 +130,10 @@ class PageController extends Controller
 
     public function kelompokBermainSelectDate($student_id, $month, $year) {
         $dates = DB::table('daily_books')
-            ->select(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, DAY(created_at) day, id'))
+            ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish'))
             ->where('student_id', '=', $student_id)
-            ->whereYear('created_at', '=', $year)
-            ->whereMonth('created_at', '=', $month)
+            ->whereYear('tanggal', '=', $year)
+            ->whereMonth('tanggal', '=', $month)
             ->groupBy('year')
             ->groupBy('month')
             ->groupBy('month_name')
@@ -143,10 +148,11 @@ class PageController extends Controller
 
     public function kelompokBermainSelectDateParent($student_id) {
         $dates = DB::table('daily_books')
-            ->select(DB::raw('YEAR(created_at) year, MONTH(created_at) month, MONTHNAME(created_at) month_name, DAY(created_at) day, id'))
+            ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dibaca'))
             ->where('student_id', '=', $student_id)
-            ->whereYear('created_at', '<=', Carbon::now()->year)
-            ->whereMonth('created_at', '<=', Carbon::now()->month)
+            ->where('dipublish', '=', True)
+            ->whereYear('tanggal', '<=', Carbon::now()->year)
+            ->whereMonth('tanggal', '<=', Carbon::now()->month)
             ->groupBy('year')
             ->groupBy('month')
             ->groupBy('month_name')
@@ -155,6 +161,7 @@ class PageController extends Controller
             ->orderBy('year', 'desc')
             ->orderBy('month', 'desc')
             ->orderBy('day', 'desc')
+            ->orderBy('dibaca')
             ->get();
         return view('pages.SelectDateBukuPenghubung', ['dates' => $dates, 'student_id' => $student_id, 'class' => 'Kelompok Bermain']);
     }
@@ -165,18 +172,20 @@ class PageController extends Controller
 
     public function showDailyBookKelompokBermain($student_id, $day, $month, $year){
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
-            ->whereDay('created_at', '=', $day)
-            ->whereYear('created_at', '=', $year)
-            ->whereMonth('created_at', '=', $month)
+            ->update(['dibaca' => True]);
+        $dailyBook = DailyBook::where('student_id', '=', $student_id)
+            ->whereDay('tanggal', '=', $day)
+            ->whereYear('tanggal', '=', $year)
+            ->whereMonth('tanggal', '=', $month)
             ->first();
         return view('pages.ShowBukuPenghubungKelompokBermain', ['student_id' => $student_id, 'dailyBook' => $dailyBook]);
     }
 
     public function reviewDailyBookKelompokBermain($student_id, $day, $month, $year) {
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
-            ->whereDay('created_at', '=', $day)
-            ->whereYear('created_at', '=', $year)
-            ->whereMonth('created_at', '=', $month)
+            ->whereDay('tanggal', '=', $day)
+            ->whereYear('tanggal', '=', $year)
+            ->whereMonth('tanggal', '=', $month)
             ->first();
         return view('pages.CreateBukuPenghubungKelompokBermain', ['student_id' => $student_id, 'route' => 'reviewDailyBookKB', 'dailyBook' => $dailyBook]);
     }
@@ -192,7 +201,7 @@ class PageController extends Controller
         // if ($role != 'Full Access') {
         //     return redirect()->route('index');
         // } else {
-            $students = Student::where('kelas', 'Day Care')->get();
+            $students = Student::where('kelas', 'Day Care')->orderBy('nama_lengkap')->get();
             return view('pages.SelectStudent', ['students' => $students, 'route' => 'dayCareProfile', 'class' => 'Day Care']);
         // }
     }
@@ -202,7 +211,7 @@ class PageController extends Controller
         // if ($role != 'Full Access') {
         //     return redirect()->route('index');
         // } else {
-            $students = Student::where('kelas', 'Kelompok Bermain')->get();
+            $students = Student::where('kelas', 'Kelompok Bermain')->orderBy('nama_lengkap')->get();
             return view('pages.SelectStudent', ['students' => $students, 'route' => 'kelompokBermainProfile', 'class' => 'Kelompok Bermain']);
         // }
     }

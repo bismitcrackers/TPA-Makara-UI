@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="pembuatdc" class="dclabel">PEMBUAT</label>
                 @if($route == 'createDailyBookKB')
-                <input value="auth()->user()->name" name="pembuat" type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
+                <input value="{{ auth()->user()->name }}" name="pembuat" type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
                 @elseif($route == 'reviewDailyBookKB')
                 <input value="{{ $dailyBook->pembuat }}" name="pembuat" type="text" class="form-control dcinput" id="pembuatdc" aria-describedby="pembuat" placeholder="Nama Pembuat" autocapitalize="words" required>
                 @endif
@@ -64,7 +64,7 @@
                 @if($route == 'createDailyBookKB')
                 <textarea name="kegiatan" class="form-control dcinput" id="snackdc" rows="5" placeholder="Catatan" maxlength="150"></textarea>
                 @elseif($route == 'reviewDailyBookKB')
-                <textarea text="{{ $dailyBook->kegiatan }}" name="kegiatan" class="form-control dcinput" id="snackdc" rows="5" placeholder="Catatan" maxlength="150"></textarea>
+                <textarea name="kegiatan" class="form-control dcinput" id="snackdc" rows="5" placeholder="Catatan" maxlength="150">{{ $dailyBook->kegiatan }}</textarea>
                 @endif
             </div>
             <h2 class="subbukupenghubung-title"><u>CATATAN KHUSUS</u></h2>
@@ -72,7 +72,7 @@
                 @if($route == 'createDailyBookKB')
                 <textarea name="catatanKhusus" class="form-control dcinput" id="catatankhususdc" rows="5" placeholder="Catatan Khusus" maxlength="150"></textarea>
                 @elseif($route == 'reviewDailyBookKB')
-                <textarea text="{{ $dailyBook->catatan_khusus }}" name="catatanKhusus" class="form-control dcinput" id="catatankhususdc" rows="5" placeholder="Catatan Khusus" maxlength="150"></textarea>
+                <textarea name="catatanKhusus" class="form-control dcinput" id="catatankhususdc" rows="5" placeholder="Catatan Khusus" maxlength="150">{{ $dailyBook->catatan_khusus }}</textarea>
                 @endif
             </div>
             <h2 class="subbukupenghubung-title"><u>LAMPIRAN</u></h2>
@@ -80,6 +80,7 @@
                 <span>Tambah Foto</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </a>
+            <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
             <input name="lampiran" type="file" id="inputfile">
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center">
                 @if($route == 'createDailyBookKB')

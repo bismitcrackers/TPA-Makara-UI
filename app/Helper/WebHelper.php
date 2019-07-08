@@ -43,4 +43,9 @@ class WebHelper
         return $months;
     }
 
+    public static function getValidatedDate($dateStr)
+    {
+        return Carbon::parse($dateStr);
+    }
+
 }

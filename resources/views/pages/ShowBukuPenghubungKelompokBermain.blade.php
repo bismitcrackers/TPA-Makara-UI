@@ -43,10 +43,22 @@
             <div class="imgbpkb">
                 <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
             </div>
-            <a href-"{{ route('dailyBook.kb.read', ['student_id' => $student_id, 'dailyBook' => $dailyBook]) }}" class="btn btn-primary dcbutton d-flex justify-content-center">
-                Okay
+            @if(auth()->user()->roles()->first()->name == 'Orangtua')
+            <a href="{{ route('orangtua.home') }}">
+            @elseif(auth()->user()->roles()->first()->name == 'Co-fasilitator')
+            <a href="{{ route('cofasilitator.home') }}">
+            @elseif(auth()->user()->roles()->first()->name == 'Guru')
+            <a href="{{ route('guru.home') }}">
+            @elseif(auth()->user()->roles()->first()->name == 'Fasilitator')
+            <a href="{{ route('fasilitator.home') }}">
+            @elseif(auth()->user()->roles()->first()->description == 'Full Access')
+            <a href="{{ route('admin.home') }}">
+            @endif
+            <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
+                    Done
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-            </a>
+            </button>
+        </a>
         </div>
 
 @endsection
