@@ -145,7 +145,7 @@
     </div>
 
   </div>
-  <div class="jamLoc">
+  <div id="tv" class="jamLoc" >
 
     <div class="row" id="jamOps">
       <div id="logoJam" class="col-md-3 col-3">
@@ -197,7 +197,7 @@
 
   <div class="row" id="sosmed">
     <div>
-      <a href="https://www.facebook.com/tpa.makara"><img src="{{asset('svg/facebook.svg')}}" alt="" ></a>  
+      <a href="https://www.facebook.com/tpa.makara"><img src="{{asset('svg/facebook.svg')}}" alt="" ></a>
       <a href="https://www.instagram.com/tpamakara/"><img src="{{asset('svg/instagram.svg')}}" alt="" ></a>
       <a href="https://youtu.be/acl3R_HxYuI"><img src="{{asset('svg/youtube.svg')}}" alt="" ></a>
     </div>

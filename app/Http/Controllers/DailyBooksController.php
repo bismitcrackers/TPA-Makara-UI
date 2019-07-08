@@ -25,7 +25,7 @@ class DailyBooksController extends Controller
     {
         $user = auth()->user();
         if ($user == null) {
-            return redirect()->route('index');
+            return redirect()->route('login');
         } else if ($user->roles()->first()->name == 'Orangtua') {
             return redirect()->route('orangtua.home');
         } else {
@@ -57,7 +57,7 @@ class DailyBooksController extends Controller
     {
         $user = auth()->user();
         if ($user == null) {
-            return redirect()->route('index');
+            return redirect()->route('login');
         } else if ($user->roles()->first()->name == 'Orangtua') {
             return redirect()->route('orangtua.home');
         } else {
@@ -84,7 +84,7 @@ class DailyBooksController extends Controller
     {
         $user = auth()->user();
         if ($user == null) {
-            return redirect()->route('index');
+            return redirect()->route('login');
         } else if ($user->roles()->first()->name == 'Orangtua') {
             return redirect()->route('orangtua.home');
         } else {
@@ -115,7 +115,7 @@ class DailyBooksController extends Controller
     {
         $user = auth()->user();
         if ($user == null) {
-            return redirect()->route('index');
+            return redirect()->route('login');
         } else if ($user->roles()->first()->name == 'Orangtua') {
             return redirect()->route('orangtua.home');
         } else {
@@ -137,20 +137,20 @@ class DailyBooksController extends Controller
         }
     }
 
-    public function isRead($student_id, $dailyBook)
-    {
-        // $student = Student::where('id', $student_id)->first();
-        $dailyBook->dibaca           = True;
-        $dailyBook->save();
-        // $student->dailyBook()->save($dailyBook);
-        return redirect()->route('orangtua.home');
-    }
+    // public function isRead($student_id, $dailyBook)
+    // {
+    //     // $student = Student::where('id', $student_id)->first();
+    //     $dailyBook->dibaca           = True;
+    //     $dailyBook->save();
+    //     // $student->dailyBook()->save($dailyBook);
+    //     return redirect()->route('orangtua.home');
+    // }
 
     public function addComments (Request $request, $daily_book_id)
     {
         $user = auth()->user();
         if ($user == null) {
-            return redirect()->route('index');
+            return redirect()->route('login');
         } else {
             $comment = new Comments;
             $comment->message = $request->message;
