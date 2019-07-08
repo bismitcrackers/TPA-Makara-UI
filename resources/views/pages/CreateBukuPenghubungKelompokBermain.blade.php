@@ -29,9 +29,9 @@
             </div>
             <div class="form-group">
                 <label for="datepicker" class="dclabel">TANGGAL</label>
-                @if($route == 'createDailyBookKB')
+                @if($route == 'createDailyBookDC')
                 <input name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
-                @elseif($route == 'reviewDailyBookKB')
+                @elseif($route == 'reviewDailyBookDC')
                 <input value="{{ $dailyBook->tanggal }}" name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
                 @endif
             </div>
@@ -80,7 +80,11 @@
                 <span>Tambah Foto</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </a>
-            <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+            @if($route == 'createDailyBookKB')
+                <img src="" alt="gmbrbuku">
+            @elseif($route == 'reviewDailyBookKB')
+                <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+            @endif
             <input name="lampiran" type="file" id="inputfile">
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center">
                 @if($route == 'createDailyBookKB')
