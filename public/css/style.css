@@ -473,14 +473,16 @@ div.bukbul:hover{
     background-color: #e1e1e1;
 }
 
+
 #prfsTpam div {
     padding: 0;
 }
-
 #prfsTpam h3 {
     font-family: 'Times New Roman', Times, serif;
     font-weight: 700;
+    margin: 0 auto 0.5em;
 }
+
 
 #prfsTpam,
 #jamOps,
@@ -495,15 +497,36 @@ div.bukbul:hover{
     margin-top: 10px;
 }
 
-#prfsDesc{
-    padding: 1.4em !important;
+#pensilBrt{
+    width: 10%;
+    position: absolute;
+    background-color: #FFFFFF;
+    right: 10.5px;
+    top: 11.5px;
+}
+
+#prfsCont #prfsDesc{
+    padding: 1.5rem;
 }
 
 img {
-    max-width: 100% !important;
+    max-width: 100%;
     height: auto;
 }
 
+
+#prfsDesc #imgCont{
+    width: 13%;
+    margin: 0 auto 1em;
+}
+
+#tmbhBrt p{
+    text-align: right;
+    font-weight: bolder;
+    color: #0066B8;
+    text-decoration: underline;
+
+}
 .messagedc {
     transition: transform .3s ease;
 }
@@ -854,6 +877,15 @@ a.linkclass:hover{
 
 }
 
+#logoJam, #logoAlmt{
+    margin: 0 auto;
+    text-align: right;
+}
+
+#logoJam img, #logoAlmt img{
+    max-width: 23%;
+}
+
 .jamLoc{
     background-color: #924583;
     color: white;
@@ -869,6 +901,11 @@ a.linkclass:hover{
 
 .pigeon{
     text-align: center;
+}
+
+.pigeon #imgCont{
+    width: 50%;
+    margin: 0 auto;
 }
 
 .title4{
@@ -890,3 +927,4 @@ a.linkclass:hover{
 #sosmed img{
     width: 20px;
 }
+

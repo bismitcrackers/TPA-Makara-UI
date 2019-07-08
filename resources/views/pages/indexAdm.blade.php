@@ -1,3 +1,4 @@
+
 @extends('layout/master')
 
 @section('title', 'Homepage')
@@ -54,10 +55,19 @@
             <div id="garis" class="col-md-4"></div>
         <div id="" class="col-md-4"></div>
     </div>
+    
+    <div id="tmbhBrt">
+      <p>
+        Tambah Berita +
+      </p>
+    </div>
 
-    <div class="row" id="berita">
+    <div class="row" id="berita"> 
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
+          <div id="pensilBrt">
+            <img src="{{asset('svg\pensilberita.svg')}}" alt="">
+          </div>
           <div>
             <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
           </div>
@@ -70,9 +80,12 @@
             </p>
           </div>
         </div>
-      </div>
+      </div>  
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
+          <div id="pensilBrt">
+            <img src="{{asset('svg\pensilberita.svg')}}" alt="">
+          </div>
           <div>
             <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
           </div>
@@ -85,9 +98,12 @@
             </p>
           </div>
         </div>
-      </div>
+      </div>  
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
+          <div id="pensilBrt">
+            <img src="{{asset('svg\pensilberita.svg')}}" alt="">
+          </div>
           <div>
             <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
           </div>
@@ -100,7 +116,7 @@
             </p>
           </div>
         </div>
-      </div>
+      </div>  
     </div>
   </div>
   <div id="prfsCont">
@@ -120,7 +136,7 @@
     </div>
 
     <div class="row" id="prfsTpam">
-
+      
       <div class="col-md-6">
         <img src="{{asset('picture\program1.jpg')}}" alt="fasil">
       </div>
@@ -180,7 +196,7 @@
     </div>
 
   </div>
-
+  
   <div class="pigeon">
     <h3 id="headerLokasi">
           Supported By
@@ -194,8 +210,8 @@
       <img src="{{asset('picture\pigeon-logo.png')}}" alt="">
     </div>
   </div>
-
-  <div class="row" id="sosmed">
+  
+  <div class="row"  id="sosmed">
     <div>
       <a href="https://www.facebook.com/tpa.makara"><img src="{{asset('svg/facebook.svg')}}" alt="" ></a>  
       <a href="https://www.instagram.com/tpamakara/"><img src="{{asset('svg/instagram.svg')}}" alt="" ></a>
