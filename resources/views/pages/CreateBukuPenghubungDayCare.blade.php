@@ -138,11 +138,13 @@
                 <span>Tambah Foto</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </div>
-            @if($route == 'createDailyBookKB')
-                <img src="" alt="gmbrbuku">
-            @elseif($route == 'reviewDailyBookKB')
-                <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
-            @endif
+            <div class="d-flex justify-content-center">
+                @if($route == 'createDailyBookKB')
+                    <img src="" alt="gmbrbuku">
+                @elseif($route == 'reviewDailyBookKB')
+                    <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+                @endif
+            </div>
             <input name="lampiran" type="file" id="inputfile">
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" onclick="nextPrev(1)">
                 @if($route == 'createDailyBookDC')

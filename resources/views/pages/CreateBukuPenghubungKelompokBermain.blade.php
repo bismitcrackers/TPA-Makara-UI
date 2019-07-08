@@ -51,7 +51,7 @@
                 <input value="{{ $dailyBook->subtema }}" name="subtema" type="text" class="form-control dcinput" id="subtemadc" aria-describedby="subtema" placeholder="Sub Tema" required>
                 @endif
             </div>
-            <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center" onclick = "nextPrev(1)">
+            <button class="btn btn-primary dcbutton d-flex justify-content-center" id = "nextbukpeng" onclick = "nextPrev(1,event)">
                 Next
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
             </button>
@@ -76,15 +76,17 @@
                 @endif
             </div>
             <h2 class="subbukupenghubung-title"><u>LAMPIRAN</u></h2>
-            <a href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
+            <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
                 <span>Tambah Foto</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
-            </a>
-            @if($route == 'createDailyBookKB')
-                <img src="" alt="gmbrbuku">
-            @elseif($route == 'reviewDailyBookKB')
-                <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
-            @endif
+            </div>
+            <div class="d-flex justify-content-center">
+                @if($route == 'createDailyBookKB')
+                    <img src="" alt="gmbrbuku">
+                @elseif($route == 'reviewDailyBookKB')
+                    <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+                @endif
+            </div>
             <input name="lampiran" type="file" id="inputfile">
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center">
                 @if($route == 'createDailyBookKB')
@@ -151,12 +153,11 @@
         $("#inputfile").click();
     }
 
-    // $( function() {
-    //     $( "#datepicker" ).datepicker({
-    //         dateFormat: "dd-mm-yy",
-    //         defaultDate: 0,
-    //     });
-    // });
+    $( function() {
+        $( "#nextbukpeng" ).keydown(function(event) {
+        event.preventDefault();
+        });
+    });
 </script>
 
 @endsection

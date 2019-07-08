@@ -174,7 +174,7 @@
     line-height: 56px;
 }
 
-/* .register-anak,
+.register-anak,
 .registrasi-anak-first,
 .registrasi-anak-second,
 .registrasi-ibu,
@@ -184,7 +184,7 @@
 .tab{
     transform: scale(0,0);
     height: 0;
-} */
+}
 
 input.invalid{
     background-color: #ffdddd;
