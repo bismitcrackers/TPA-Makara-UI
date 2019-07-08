@@ -422,7 +422,7 @@ div.bukbul:hover{
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #2F80ED;
-    padding: 5px 15px;  
+    padding: 5px 15px;
     margin: 8px auto;
     transition: transform .3s ease;
 
@@ -577,7 +577,7 @@ input.tanggaldc{
  background-image: url(../svg/calendar.svg) !important;
  background-repeat: no-repeat !important;
  background-position: 97% 2px !important;
- 
+
 }
 
 #tanggaldc:focus,
@@ -928,3 +928,25 @@ a.linkclass:hover{
     width: 20px;
 }
 
+#tv {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 20px 0;
+    padding: 20px;
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+#tv:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 15%;
+    right: 0;
+    left: 0;
+    background: inherit;
+    border-radius: 50%;
+}

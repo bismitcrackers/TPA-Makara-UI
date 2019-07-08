@@ -37,7 +37,7 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
             Route::get('/date/parent', 'PageController@dayCareSelectDateParent')->name('date.parent');
             Route::get('/review/{day}/{month}/{year}', 'PageController@reviewDailyBookDayCare')->name('review');
             Route::get('/show/{day}/{month}/{year}', 'PageController@showDailyBookDayCare')->name('show');
-            Route::get('/read/{dailyBook}', 'DailyBooksController@isReadDailyBook')->name('read');
+            // Route::get('/read/{dailyBook}', 'DailyBooksController@isReadDailyBook')->name('read');
             Route::post('/add', 'DailyBooksController@addDailyBooksDayCare')->name('add');
             Route::post('/publish/{dailyBook}', 'DailyBooksController@publishDailyBookDayCare')->name('publish');
         });
@@ -52,7 +52,7 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
             Route::get('/date/parent', 'PageController@kelompokBermainSelectDateParent')->name('date.parent');
             Route::get('/review/{day}/{month}/{year}', 'PageController@reviewDailyBookKelompokBermain')->name('review');
             Route::get('/show/{day}/{month}/{year}', 'PageController@showDailyBookKelompokBermain')->name('show');
-            Route::get('/read/{dailyBook}', 'DailyBooksController@isReadDailyBook')->name('read');
+            // Route::get('/read/{dailyBook}', 'DailyBooksController@isReadDailyBook')->name('read');
             Route::post('/add', 'DailyBooksController@addDailyBooksKelompokBermain')->name('add');
             Route::post('/publish/{dailyBook}', 'DailyBooksController@publishDailyBookKelompokBermain')->name('publish');
         });

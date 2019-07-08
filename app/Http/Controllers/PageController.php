@@ -26,12 +26,14 @@ class PageController extends Controller
 // BUKU PENGHUBUNG
 
     public function selectClassDailyBook() {
+        if (auth()->user() == null) {return redirect()->route('login');}
         return view('pages.SelectClass', ['route' => 'dailyBook']);
     }
 
 // BUKU PENGHUBUNG DAY CARE
 
     public function dayCareStudents() {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $role = auth()->user()->roles()->first()->name;
         if ($role == 'Orangtua') {
             return redirect()->route('orangtua.home');
@@ -42,12 +44,14 @@ class PageController extends Controller
     }
 
     public function dayCareSelectMonth($student_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $months = WebHelper::getMonthListFromDate(Carbon::parse('first day of January ' . Carbon::now()->year));
         $end = Carbon::today()->startOfMonth()->format('m');
         return view('pages.SelectMonthBukuPenghubung', ['months' => $months, 'student_id' => $student_id, 'end' => $end, 'class' => 'Day Care']);
     }
 
     public function dayCareSelectDate($student_id, $month, $year) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $dates = DB::table('daily_books')
             ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish'))
             ->where('student_id', '=', $student_id)
@@ -66,6 +70,7 @@ class PageController extends Controller
     }
 
     public function dayCareSelectDateParent($student_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $dates = DB::table('daily_books')
             ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dibaca'))
             ->where('student_id', '=', $student_id)
@@ -86,12 +91,17 @@ class PageController extends Controller
     }
 
     public function formDailyBookDayCare($student_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         return view('pages.CreateBukuPenghubungDayCare', ['student_id' => $student_id, 'class' => 'Day Care', 'route' => 'createDailyBookDC']);
     }
 
     public function showDailyBookDayCare($student_id, $day, $month, $year){
-        $dailyBook = DailyBook::where('student_id', '=', $student_id)
-            ->update(['dibaca' => True]);
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $role = auth()->user()->roles()->first()->name;
+        if ($role == 'Orangtua') {
+            $dailyBook = DailyBook::where('student_id', '=', $student_id)
+                ->update(['dibaca' => True]);
+        }
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
             ->whereDay('tanggal', '=', $day)
             ->whereYear('tanggal', '=', $year)
@@ -102,6 +112,7 @@ class PageController extends Controller
     }
 
     public function reviewDailyBookDayCare($student_id, $day, $month, $year) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
             ->whereDay('tanggal', '=', $day)
             ->whereYear('tanggal', '=', $year)
@@ -113,6 +124,7 @@ class PageController extends Controller
 // BUKU PENGUHUBUNG KELOMPOK BERMAIN
 
     public function kelompokBermainStudents() {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $role = auth()->user()->roles()->first()->name;
         if ($role == 'Orangtua') {
             return redirect()->route('orangtua.home');
@@ -123,12 +135,14 @@ class PageController extends Controller
     }
 
     public function kelompokBermainSelectMonth($student_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $months = WebHelper::getMonthListFromDate(Carbon::parse('first day of January ' . Carbon::now()->year));
         $end = Carbon::today()->startOfMonth()->format('m');
         return view('pages.SelectMonthBukuPenghubung', ['months' => $months, 'student_id' => $student_id, 'end' => $end, 'class' => 'Kelompok Bermain']);
     }
 
     public function kelompokBermainSelectDate($student_id, $month, $year) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $dates = DB::table('daily_books')
             ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish'))
             ->where('student_id', '=', $student_id)
@@ -147,6 +161,7 @@ class PageController extends Controller
     }
 
     public function kelompokBermainSelectDateParent($student_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $dates = DB::table('daily_books')
             ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dibaca'))
             ->where('student_id', '=', $student_id)
@@ -167,12 +182,17 @@ class PageController extends Controller
     }
 
     public function formDailyBookKelompokBermain($student_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         return view('pages.CreateBukuPenghubungKelompokBermain', ['student_id' => $student_id, 'route' => 'createDailyBookKB']);
     }
 
     public function showDailyBookKelompokBermain($student_id, $day, $month, $year){
-        $dailyBook = DailyBook::where('student_id', '=', $student_id)
-            ->update(['dibaca' => True]);
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $role = auth()->user()->roles()->first()->name;
+        if ($role == 'Orangtua') {
+            $dailyBook = DailyBook::where('student_id', '=', $student_id)
+                ->update(['dibaca' => True]);
+        }
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
             ->whereDay('tanggal', '=', $day)
             ->whereYear('tanggal', '=', $year)
@@ -182,6 +202,7 @@ class PageController extends Controller
     }
 
     public function reviewDailyBookKelompokBermain($student_id, $day, $month, $year) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
             ->whereDay('tanggal', '=', $day)
             ->whereYear('tanggal', '=', $year)
@@ -193,6 +214,7 @@ class PageController extends Controller
 // EDIT PROFILE
 
     public function selectClassProfile() {
+        if (auth()->user() == null) {return redirect()->route('login');}
         return view('pages.SelectClass', ['route' => 'profile']);
     }
 
@@ -201,8 +223,9 @@ class PageController extends Controller
         // if ($role != 'Full Access') {
         //     return redirect()->route('index');
         // } else {
-            $students = Student::where('kelas', 'Day Care')->orderBy('nama_lengkap')->get();
-            return view('pages.SelectStudent', ['students' => $students, 'route' => 'dayCareProfile', 'class' => 'Day Care']);
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $students = Student::where('kelas', 'Day Care')->orderBy('nama_lengkap')->get();
+        return view('pages.SelectStudent', ['students' => $students, 'route' => 'dayCareProfile', 'class' => 'Day Care']);
         // }
     }
 
@@ -211,12 +234,14 @@ class PageController extends Controller
         // if ($role != 'Full Access') {
         //     return redirect()->route('index');
         // } else {
-            $students = Student::where('kelas', 'Kelompok Bermain')->orderBy('nama_lengkap')->get();
-            return view('pages.SelectStudent', ['students' => $students, 'route' => 'kelompokBermainProfile', 'class' => 'Kelompok Bermain']);
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $students = Student::where('kelas', 'Kelompok Bermain')->orderBy('nama_lengkap')->get();
+        return view('pages.SelectStudent', ['students' => $students, 'route' => 'kelompokBermainProfile', 'class' => 'Kelompok Bermain']);
         // }
     }
 
     public function profileDetails($student_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $student = Student::where('id', $student_id)->first();
         $dad = $student->user()->first()->parents()->where('peran', 'Ayah')->first();
         $mom = $student->user()->first()->parents()->where('peran', 'Ibu')->first();
@@ -226,11 +251,13 @@ class PageController extends Controller
 // COMMENTS
 
     public function showComments($daily_book_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $chats = Comments::where('daily_book_id', $daily_book_id)->get();
         return view('pages.ShowBukuPenghubungComments', ['chats' => $chats, 'daily_book_id' => $daily_book_id]);
     }
 
     public function sendComments($daily_book_id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         return view('pages.PostBukuPenghubungComments', ['daily_book_id' => $daily_book_id]);
     }
 
