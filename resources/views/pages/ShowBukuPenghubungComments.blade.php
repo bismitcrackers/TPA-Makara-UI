@@ -40,11 +40,22 @@
         <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
         <span>Tambah Komentar</span>
     </a>
-
-    <button onclick="location.reload();" type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
-            Done
-        <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-    </button>
+    @if(auth()->user()->roles()->first()->name == 'Orangtua')
+    <a href="{{ route('orangtua.home') }}">
+    @elseif(auth()->user()->roles()->first()->name == 'Co-fasilitator')
+    <a href="{{ route('cofasilitator.home') }}">
+    @elseif(auth()->user()->roles()->first()->name == 'Guru')
+    <a href="{{ route('guru.home') }}">
+    @elseif(auth()->user()->roles()->first()->name == 'Fasilitator')
+    <a href="{{ route('fasilitator.home') }}">
+    @elseif(auth()->user()->roles()->first()->description == 'Full Access')
+    <a href="{{ route('admin.home') }}">
+    @endif
+        <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
+                Done
+            <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
+        </button>
+    </a>
 
 
 @endsection
