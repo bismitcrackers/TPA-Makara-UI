@@ -7,29 +7,44 @@
 @endsection
 
 @section('content')
-    <form action="/admin/berita" method="post" enctype="multipart/form-data">
+    @if($route == 'edit')
+    <form action="{{ route('admin.berita.update', ['id' => $berita->id]) }}" method="post" enctype="multipart/form-data">
+    @else
+    <form action="{{ route('admin.berita.store') }}" method="post" enctype="multipart/form-data">
+    @endif
         {{ csrf_field() }}
+        {{method_field('PATCH')}}
             <div id="beritaForm">
-                <a href="" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
+                <a href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
                     <span>Tambah Foto</span>
                     <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
                 </a>
                 <input type="file" id="inputfile" name="fotoBerita">
+                @if($route == 'edit')
                 <div class="dcinput">
-                    aaa
+                    <img src="{{ asset($berita->gambar) }}">
                 </div>
+                @endif
                 <h2 class="title">JUDUL BERITA</h2>
                 <div class="form-group">
+                    @if($route == 'edit')
+                    <textarea class="form-control dcinput" id="" name="judulBerita">{{ $berita->judul }}</textarea>
+                    @else
                     <textarea class="form-control dcinput" id="" name="judulBerita"></textarea>
+                    @endif
                 </div>
                 <h2 class="title">ISI BERITA</h2>
                 <div class="form-group ">
+                    @if($route == 'edit')
+                    <textarea class="form-control dcinput" id="" name="isiBerita">{{ $berita->isi }}</textarea>
+                    @else
                     <textarea class="form-control dcinput" id="" name="isiBerita"></textarea>
+                    @endif
                 </div>
                 <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" >
                     Save
                     <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-                </button>    
+                </button>
             </div>
     </form>
 
