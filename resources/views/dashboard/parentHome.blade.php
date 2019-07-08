@@ -4,14 +4,13 @@
 
 @section('extra-css')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            {{ config('app.name', 'TPA Makara UI') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -58,7 +57,6 @@
         </div>
     </div>
 </nav>
-
 <div class="container">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -68,13 +66,10 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{asset('svg/image1crs.svg')}}" alt="First slide">
+          <img class="d-block w-100" src="{{asset('picture/image1crs.png')}}" alt="First slide">
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="{{asset('svg/image1crs.svg')}}" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="{{asset('svg/image1crs.svg')}}" alt="Third slide">
+        <img class="d-block w-100" src="{{asset('picture/image2crs.jpg')}}" alt="Second slide">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -164,9 +159,10 @@
         <img src="{{asset('picture\fasilitas1.jpg')}}" alt="prog" class="">
       </div>
       <div class="col-md-6 " id="prfsDesc">
-        <h3>
-          Program TPAM
-        </h3>
+        <div id="imgCont">
+          <img src="{{asset('svg\graduation-cap.svg')}}" alt="">
+        </div>
+        <h3>Program TPAM</h3>
         <p>
           Program dibuat menggunakan pendekatan tematik pada setiap caturwulannya, misalnya kebun binatang, transportasi, buah-buahan dan sayur-sayuran. Aspek perkembangan anak yang distimulasi adalah motorik kasar, motorik halus, kognitif, sosial-emosi.
         </p>
@@ -179,6 +175,9 @@
         <img src="{{asset('picture\program1.jpg')}}" alt="fasil">
       </div>
       <div class="col-md-6  order-first" id="prfsDesc">
+        <div id="imgCont">
+          <img src="{{asset('svg\sand-castle.svg')}}" alt="">
+        </div>
         <h3>Fasilitas TPAM</h3>
         <p>TPA Makara dilengkapi dengan berbagai fasilitas bermain dan penunjang kegiatan belajar anak yang dapat mendukung tercapainya perkembangan motorik, kognitif, dan sosial emosi anak. Fasilitas yang ada disesuaikan dengan kebutuhan kelompok usia anak dan didesain seaman mungkin bagi putra-putri tercinta.</p>
       </div>
@@ -196,13 +195,13 @@
     </div>
 
   </div>
-  <div class="jamLoc">
+  <div id="tv" class="jamLoc" >
 
     <div class="row" id="jamOps">
-      <div id="logoJam" class="col-md-3">
-        <img src="jam.png" alt="jam">
+      <div id="logoJam" class="col-md-3 col-3">
+        <img src="{{asset('svg\clock.svg')}}" alt="jam">
       </div>
-      <div class="col-md">
+      <div class="col-md col">
         <h3 class="title3">
           Jam Operasional
         </h3>
@@ -213,10 +212,10 @@
     </div>
 
     <div class="row" id="almtTpam">
-      <div id="logoAlmt" class="col-md-3">
-        <img src="almt.png" alt="almt">
+      <div id="logoAlmt" class="col-md-3 col-3">
+        <img src="{{asset('svg\maps.svg')}}" alt="almt">
       </div>
-      <div class="col-md">
+      <div class="col-md col">
         <h3 class="title3">
           Alamat TPAM
         </h3>
@@ -241,14 +240,16 @@
             <div id="garis" class="col-md-4"></div>
         <div id="" class="col-md-4"></div>
     </div>
-    <img src="{{asset('picture\pigeon.png')}}" alt="">
+    <div id="imgCont">
+      <img src="{{asset('picture\pigeon-logo.png')}}" alt="">
+    </div>
   </div>
 
   <div class="row" id="sosmed">
     <div>
-      <img src="{{asset('svg/facebook.svg')}}" alt="">
-      <img src="{{asset('svg/instagram.svg')}}" alt="">
-      <img src="{{asset('svg/youtube.svg')}}" alt="">
+      <a href="https://www.facebook.com/tpa.makara"><img src="{{asset('svg/facebook.svg')}}" alt="" ></a>
+      <a href="https://www.instagram.com/tpamakara/"><img src="{{asset('svg/instagram.svg')}}" alt="" ></a>
+      <a href="https://youtu.be/acl3R_HxYuI"><img src="{{asset('svg/youtube.svg')}}" alt="" ></a>
     </div>
   </div>
 </div>
@@ -258,5 +259,4 @@
 @endsection
 
 @section('extra-js')
-<script src="{{ asset('js/app.js') }}" defer></script>
 @endsection
