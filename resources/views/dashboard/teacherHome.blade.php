@@ -106,51 +106,23 @@
     </div>
 
     <div class="row" id="berita">
-      <div class="col-4 col-md-4" id="beritaCont">
+        @foreach($news as $new)
+        <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
           <div>
-            <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
+            <img id="imgBerita" src="{{asset($new->gambar)}}" alt="bla">
           </div>
           <div>
             <h3 id="judulBerita">
-              Judul berita
+              {{ $new->judul }}
             </h3>
             <p id="prgBerita">
-              Isi berita
+              {{ $new->isi }}
             </p>
           </div>
         </div>
-      </div>
-      <div class="col-4 col-md-4" id="beritaCont">
-        <div id="isiBerita">
-          <div>
-            <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
-          </div>
-          <div>
-            <h3 id="judulBerita">
-              Judul berita
-            </h3>
-            <p id="prgBerita">
-              Isi berita
-            </p>
-          </div>
         </div>
-      </div>
-      <div class="col-4 col-md-4" id="beritaCont">
-        <div id="isiBerita">
-          <div>
-            <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
-          </div>
-          <div>
-            <h3 id="judulBerita">
-              Judul berita
-            </h3>
-            <p id="prgBerita">
-              Isi berita
-            </p>
-          </div>
-        </div>
-      </div>
+        @endforeach
     </div>
   </div>
   <div id="prfsCont">

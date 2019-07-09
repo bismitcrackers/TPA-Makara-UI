@@ -9,11 +9,11 @@
 @section('content')
     @if($route == 'edit')
     <form action="{{ route('admin.berita.update', ['id' => $berita->id]) }}" method="post" enctype="multipart/form-data">
+    {{method_field('PATCH')}}
     @else
     <form action="{{ route('admin.berita.store') }}" method="post" enctype="multipart/form-data">
     @endif
         {{ csrf_field() }}
-        {{method_field('PATCH')}}
             <div id="beritaForm">
                 <a href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
                     <span>Tambah Foto</span>
