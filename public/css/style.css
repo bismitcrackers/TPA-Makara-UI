@@ -292,6 +292,25 @@ h3 {
     font-size: 1.3rem;
 }
 
+#paginate{
+    text-align: center;
+}
+
+.pagination{
+    display: inline-flex;
+    margin: 0.5rem 0;
+}
+
+.pagination li a{
+    text-align: center;
+    text-decoration: none;
+    color: #2F80ED;
+}
+
+.pagination li{
+    margin: 0 5px;
+}
+
 .daftarsiswa-title {
     font-weight: bold;
     font-size: 20px;
@@ -520,11 +539,15 @@ img {
     margin: 0 auto 1em;
 }
 
-#tmbhBrt p{
+#tmbhBrt{
+    text-align: right;
+}
+
+#tmbhBrt a{
     text-align: right;
     font-weight: bolder;
     color: #0066B8;
-    text-decoration: underline;
+    text-decoration: none;
 
 }
 .messagedc {
