@@ -104,63 +104,44 @@
             <div id="garis" class="col-md-4"></div>
         <div id="" class="col-md-4"></div>
     </div>
-
+    <div id="tmbhBrt">
+      <a href="{{ route('admin.berita.create') }}">
+        Tambah Berita +
+        </a>
+    </div>
     <div class="row" id="berita">
+        @foreach($news as $new)
       <div class="col-4 col-md-4" id="beritaCont">
         <div id="isiBerita">
+            <div id="pensilBrt">
+                <a href="{{ route('admin.berita.edit', ['id' => $new->id]) }}">
+                    <img src="{{asset('svg/pensilberita.svg')}}" alt="">
+                </a>
+            </div>
           <div>
-            <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
+            <img id="imgBerita" src="{{asset($new->gambar)}}" alt="bla">
           </div>
           <div>
             <h3 id="judulBerita">
-              Judul berita
+              {{ $new->judul }}
             </h3>
             <p id="prgBerita">
-              Isi berita
+              {{ $new->isi }}
             </p>
           </div>
         </div>
       </div>
-      <div class="col-4 col-md-4" id="beritaCont">
-        <div id="isiBerita">
-          <div>
-            <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
-          </div>
-          <div>
-            <h3 id="judulBerita">
-              Judul berita
-            </h3>
-            <p id="prgBerita">
-              Isi berita
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 col-md-4" id="beritaCont">
-        <div id="isiBerita">
-          <div>
-            <img id="imgBerita" src="{{asset('picture\berita1.jpg')}}" alt="bla">
-          </div>
-          <div>
-            <h3 id="judulBerita">
-              Judul berita
-            </h3>
-            <p id="prgBerita">
-              Isi berita
-            </p>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
   <div id="prfsCont">
     <div class="row" id="prfsTpam">
       <div class="col-md-6 ">
-        <img src="{{asset('picture\fasilitas1.jpg')}}" alt="prog" class="">
+        <img src="{{ asset('picture/fasilitas1.jpg') }}" alt="prog" class="">
       </div>
       <div class="col-md-6 " id="prfsDesc">
         <div id="imgCont">
-          <img src="{{asset('svg\graduation-cap.svg')}}" alt="">
+          <img src="{{asset('svg/graduation-cap.svg')}}" alt="">
         </div>
         <h3>Program TPAM</h3>
         <p>
@@ -172,11 +153,11 @@
     <div class="row" id="prfsTpam">
 
       <div class="col-md-6">
-        <img src="{{asset('picture\program1.jpg')}}" alt="fasil">
+        <img src="{{asset('picture/program1.jpg')}}" alt="fasil">
       </div>
       <div class="col-md-6  order-first" id="prfsDesc">
         <div id="imgCont">
-          <img src="{{asset('svg\sand-castle.svg')}}" alt="">
+          <img src="{{asset('svg/sand-castle.svg')}}" alt="">
         </div>
         <h3>Fasilitas TPAM</h3>
         <p>TPA Makara dilengkapi dengan berbagai fasilitas bermain dan penunjang kegiatan belajar anak yang dapat mendukung tercapainya perkembangan motorik, kognitif, dan sosial emosi anak. Fasilitas yang ada disesuaikan dengan kebutuhan kelompok usia anak dan didesain seaman mungkin bagi putra-putri tercinta.</p>
@@ -199,7 +180,7 @@
 
     <div class="row" id="jamOps">
       <div id="logoJam" class="col-md-3 col-3">
-        <img src="{{asset('svg\clock.svg')}}" alt="jam">
+        <img src="{{asset('svg/clock.svg')}}" alt="jam">
       </div>
       <div class="col-md col">
         <h3 class="title3">
@@ -213,7 +194,7 @@
 
     <div class="row" id="almtTpam">
       <div id="logoAlmt" class="col-md-3 col-3">
-        <img src="{{asset('svg\maps.svg')}}" alt="almt">
+        <img src="{{asset('svg/maps.svg')}}" alt="almt">
       </div>
       <div class="col-md col">
         <h3 class="title3">
@@ -241,7 +222,7 @@
         <div id="" class="col-md-4"></div>
     </div>
     <div id="imgCont">
-      <img src="{{asset('picture\pigeon-logo.png')}}" alt="">
+      <img src="{{asset('picture/pigeon-logo.png')}}" alt="">
     </div>
   </div>
 
@@ -260,5 +241,4 @@
 
 @section('extra-js')
 <script src="{{ asset('js/app.js') }}" defer></script>
-
 @endsection

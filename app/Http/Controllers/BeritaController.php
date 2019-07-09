@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Berita;
+use App\Helper\WebHelper;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
@@ -15,7 +16,7 @@ class BeritaController extends Controller
     public function index()
     {
         //
-        
+
     }
 
     /**
@@ -26,7 +27,7 @@ class BeritaController extends Controller
     public function create()
     {
         //return view form
-        return view('pages.createBerita');
+        return view('pages.CreateNews', ['route' => 'create']);
     }
 
     /**
@@ -43,25 +44,14 @@ class BeritaController extends Controller
             'isiBerita' => 'required',
             'fotoBerita' => 'image|nullable|max:1999'
         ]);
-        // tambah store gambar
-        if($request->hasFile('fotoBerita')){
-            $fileName = pathinfo($request->file('fotoBerita')->getClientOriginalName(),PATHINFO_FILENAME);
-            $extension = $request->file('fotoBerita')->getClientOriginalExtension();
-            $fileNameToStore = $fileName. '_'. time(). '.'.$extension;
-            
-            $path = $request->file('fotoBerita')->storeAs('public/photos', $fileNameToStore);
-        
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-
+        $image = WebHelper::saveImageToPublic($request->file('fotoBerita'), '/picture/news');
         $berita = new Berita;
         $berita->judul = $request['judulBerita'];
         $berita->isi = $request['isiBerita'];
-        $berita->gambar = $fileNameToStore;
+        $berita->gambar = $image;
         $berita->save();
 
-        return redirect('/admin/berita');
+        return redirect()->route('success');
     }
 
     /**
@@ -74,7 +64,7 @@ class BeritaController extends Controller
     {
         //
         $berita = Berita::find($id);
-        
+
         return $berita;
     }
 
@@ -89,7 +79,7 @@ class BeritaController extends Controller
         //
         $berita = Berita::find($id);
 
-        return view('pages.createBerita')->with('berita', $berita);
+        return view('pages.CreateNews', ['berita' => $berita, 'route' => 'edit']);
     }
 
     /**
@@ -101,7 +91,8 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $berita = Berita::find($id);
 
         $this->validate($request,[
             'judulBerita' => 'required',
@@ -110,23 +101,15 @@ class BeritaController extends Controller
         ]);
         // tambah store gambar
         if($request->hasFile('fotoBerita')){
-            $fileName = pathinfo($request->file('fotoBerita')->getClientOriginalName(),PATHINFO_FILENAME);
-            $extension = $request->file('fotoBerita')->getClientOriginalExtension();
-            $fileNameToStore = $fileName. '_'. time(). '.'.$extension;
-            
-            $path = $request->file('fotoBerita')->storeAs('public/photos', $fileNameToStore);
-        
-        } else {
-            $fileNameToStore = 'noimage.jpg';
+            $image = WebHelper::saveImageToPublic($request->file('fotoBerita'), '/picture/news');
+            $berita->gambar = $image;
         }
 
-        $berita = Berita::find($id);
         $berita->judul = $request['judulBerita'];
         $berita->isi = $request['isiBerita'];
-        $berita->gambar = $fileNameToStore;
         $berita->save();
 
-        return redirect('/admin/berita');
+        return redirect()->route('success');
     }
 
     /**
@@ -141,6 +124,6 @@ class BeritaController extends Controller
         $berita = Berita::find($id);
         $berita->delete();
 
-        return redirect('/berita');
+        return redirect()->route('success');
     }
 }

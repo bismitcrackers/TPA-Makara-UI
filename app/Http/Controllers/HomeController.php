@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Berita;
 
 class HomeController extends Controller
 {
@@ -17,8 +18,9 @@ class HomeController extends Controller
     }
 
     public function administratorHome(Request $request) {
+        $news = Berita::all();
         $request->user()->authorizeRoles(['Administrator','Staf Administrasi','Koordinator','Wakil Koordinator']);
-        return view('dashboard.administratorHome');
+        return view('dashboard.administratorHome', ['news' => $news]);
     }
 
     public function fasilitatorHome(Request $request) {
