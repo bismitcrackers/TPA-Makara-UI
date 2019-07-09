@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="datepicker" class="dclabel">TANGGAL</label>
-                <input name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
+                <input name="tanggal" type="date" class="form-control dcinput tanggaldc" id="datepicker" required>
             </div>
             <div class="form-group">
                 <label for="temadc" class="dclabel">TEMA</label>
@@ -153,12 +153,12 @@
             $("#inputfile").click();
         }
 
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                dateFormat: "dd-mm-yy",
-                defaultDate: 0,
-            });
-        });
+        // $( function() {
+        //     $( "#datepicker" ).datepicker({
+        //         dateFormat: "dd-mm-yy",
+        //         defaultDate: 0,
+        //     });
+        // });
     </script>
 
     

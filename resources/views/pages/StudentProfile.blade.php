@@ -16,12 +16,12 @@
 
     <div class="d-flex justify-content-center">
         <div class="d-flex flex-row justify-content-around boxprofile p-3">
-            <div class ="d-flex align-items-center margin-profile">
+            <div class ="d-flex align-items-center margin-profile sizingprof">
                 <div>
                     @if($student->jenis_kelamin == 'laki-laki')
-                    <img src="{{asset('svg/lakilarge.svg')}}" class="profilepicture" alt="laki">
+                    <img src="{{asset('picture/laki.png')}}" class="profilepicture" alt="laki">
                     @else
-                    <img src="{{asset('svg/perempuan.svg')}}" class="profilepicture" alt="perempuan">
+                    <img src="{{asset('picture/perempuan.png')}}" class="profilepicture" alt="perempuan">
                     @endif
                     <a href="#" class="linkeditprofile">
                         <div class="editprofile">
@@ -31,42 +31,42 @@
                 </div>
             </div>
             <div class="ml-4">
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 profilelabel mb-0">Nama</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 profilecontent mb-0 pr-0"> {{ $student->nama_lengkap }} </p>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 mb-0 profilelabel">Nama Panggilan</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 mb-0 profilecontent">{{ $student->nama_panggilan }}</p>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 mb-0 profilelabel">Tempat</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 mb-0 profilecontent">{{ $student->tempat_lahir }}</p>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 mb-0 profilelabel">Tanggal Lahir</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($student->tanggal_lahir)) }}</p>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 mb-0 profilelabel">Agama</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 mb-0 profilecontent">{{ $student->agama }}</p>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 mb-0 profilelabel">Alamat Rumah</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 mb-0 profilecontent">{{ $student->alamat_rumah }}</p>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 mb-0 profilelabel">Telepon Rumah</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 mb-0 profilecontent">{{ $student->telepon_rumah }}</p>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-between">
                     <p class="col-4 p-0 mb-0 profilelabel">Kelas</p>
                     <p class="col-1 p-0 m-0">:</p>
                     <p class="col-6 p-0 mb-0 profilecontent">{{ $student->kelas }}</p>
@@ -83,9 +83,9 @@
 
     <div class="d-flex justify-content-center">
         <div class="d-flex flex-row justify-content-around boxprofile p-3">
-            <div class ="d-flex align-items-center margin-profile">
+            <div class ="d-flex align-items-center margin-profile sizingprof">
                 <div>
-                    <img src="{{asset('svg/mom.svg')}}" class="profilepicture" alt="Mom">
+                    <img src="{{asset('picture/mom.png')}}" class="profilepicture" alt="Mom">
                     <a href="#" class="linkeditprofile">
                         <div class="editprofile">
                             <p class="paragrapheditprofile">Edit Profile</p>
@@ -141,9 +141,9 @@
 
     <div class="d-flex justify-content-center">
         <div class="d-flex flex-row justify-content-around boxprofile p-3">
-            <div class ="d-flex align-items-center margin-profile">
+            <div class ="d-flex align-items-center margin-profile sizingprof">
                 <div>
-                    <img src="{{asset('svg/dad.svg')}}" class="profilepicture" alt="Dad">
+                    <img src="{{asset('picture/dad.png')}}" class="profilepicture" alt="Dad">
                     <a href="#" class="linkeditprofile">
                         <div class="editprofile">
                             <p class="paragrapheditprofile">Edit Profile</p>

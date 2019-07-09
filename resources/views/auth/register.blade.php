@@ -850,6 +850,14 @@
                     console.log("false");
                 }
 
+                //masih blm benar
+                if (y[1].length()<6){
+                    y[1].style.background="#ffdddd"
+                    y[1].placeholder = "Password kurang dari 6";
+                    valid = false;
+                    console.log("false");
+                }
+
                 if (y[1].value!=y[2].value){
                     y[2].style.background="#ffdddd"
                     y[2].placeholder = "Password berbeda";

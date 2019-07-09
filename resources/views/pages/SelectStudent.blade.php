@@ -33,9 +33,9 @@
                     <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
                 @endif
                 @if($student->jenis_kelamin == 'laki-laki')
-                        <img src="{{ asset('svg/laki.svg') }}" alt="" class= "photosiswa">
+                        <img src="{{ asset('picture/laki.png') }}" alt="" class= "photosiswa">
                 @else
-                        <img src="{{ asset('svg/perempuan.svg') }}" alt="" class= "photosiswa">
+                        <img src="{{ asset('picture/perempuan.png') }}" alt="" class= "photosiswa">
                 @endif
                         <p>{{ $student->nama_lengkap }}</p>
                     </a>

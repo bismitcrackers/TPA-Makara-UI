@@ -31,9 +31,9 @@
             <div class="form-group">
                 <label for="datepicker" class="dclabel">TANGGAL</label>
                 @if($route == 'createDailyBookDC')
-                <input name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
+                <input name="tanggal" type="date" class="form-control dcinput tanggaldc" id = "datepicker" required>
                 @elseif($route == 'reviewDailyBookDC')
-                <input value="{{ $dailyBook->tanggal }}" name="tanggal" type="text" class="form-control dcinput tanggaldc" id="datepicker" placeholder="dd-mm-yyyy" required>
+                <input value="{{ $dailyBook->tanggal }}" name="tanggal" type="date" id = "datepicker" class="form-control dcinput tanggaldc" required>
                 @endif
             </div>
             <div class="form-group">
@@ -138,11 +138,13 @@
                 <span>Tambah Foto</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </div>
-            @if($route == 'createDailyBookKB')
-                <img src="" alt="gmbrbuku">
-            @elseif($route == 'reviewDailyBookKB')
-                <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
-            @endif
+            <div class="d-flex justify-content-center">
+                @if($route == 'createDailyBookKB')
+                    <img src="" alt="gmbrbuku">
+                @elseif($route == 'reviewDailyBookKB')
+                    <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+                @endif
+            </div>
             <input name="lampiran" type="file" id="inputfile">
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" onclick="nextPrev(1)">
                 @if($route == 'createDailyBookDC')
@@ -209,12 +211,12 @@
             $("#inputfile").click();
         }
 
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                dateFormat: "dd-mm-yy",
-                defaultDate: 0,
-            });
-        });
+        // $( function() {
+        //     $( "#datepicker" ).datepicker({
+        //         dateFormat: "dd-mm-yy",
+        //         defaultDate: 0,
+        //     });
+        // });
     </script>
 
 

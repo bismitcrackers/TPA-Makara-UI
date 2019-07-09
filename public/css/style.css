@@ -174,7 +174,7 @@
     line-height: 56px;
 }
 
-/* .register-anak,
+.register-anak,
 .registrasi-anak-first,
 .registrasi-anak-second,
 .registrasi-ibu,
@@ -184,7 +184,7 @@
 .tab{
     transform: scale(0,0);
     height: 0;
-} */
+}
 
 input.invalid{
     background-color: #ffdddd;
@@ -322,7 +322,7 @@ h3 {
 
 .siswa {
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     margin-bottom: 15px;
     max-width: 60%;
@@ -335,9 +335,9 @@ h3 {
 }
 
 .photosiswa {
-    width: 45%;
+    width: 38%;
     height: auto;
-    margin: 10px auto 12px;
+    margin: 10px auto 8px;
 }
 
 div.siswa a:hover {
@@ -574,7 +574,7 @@ img {
 }
 
 input.tanggaldc{
- background-image: url(../svg/calendar.svg) !important;
+ /* background-image: url(../svg/calendar.svg) !important; */
  background-repeat: no-repeat !important;
  background-position: 97% 2px !important;
 
@@ -793,10 +793,22 @@ a.linkclass:hover{
     margin-bottom: 5px
 }
 
+.sizingprof{
+    max-width: 20%;
+}
+
 .boxprofile{
     background: rgba(196, 196, 196, 0.2);
     margin-bottom: 30px;
     width: 482px;
+}
+
+.boxprofile p{
+    text-align: justify !important
+}
+
+.boxprofile p.paragrapheditprofile{
+    text-align: center !important;
 }
 
 @media (max-width: 700.98px) {
