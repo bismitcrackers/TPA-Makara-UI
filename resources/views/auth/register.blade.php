@@ -49,7 +49,7 @@
             </div>
 
             <div class=button-section>
-                <button class="halo btn-primary btn" onclick = "nextPrev(1)" >Sign Up</button>
+                <button  class="halo btn-primary btn" onclick = "nextPrev(1)" >Sign Up</button>
             </div>
             <p class="bottom-auth">Already have an account?
                 <a href="{{ route('login') }}">Login</a>
@@ -181,7 +181,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button class="halo btn-primary btn" onclick = "nextPrev(1)" >
+                <button  class="halo btn-primary btn" onclick = "nextPrev(1)" >
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -256,7 +256,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -379,7 +379,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -497,7 +497,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -620,7 +620,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -851,7 +851,7 @@
                 }
 
                 //masih blm benar
-                if (y[1].length()<6){
+                if (y[1].length<6){
                     y[1].style.background="#ffdddd"
                     y[1].placeholder = "Password kurang dari 6";
                     valid = false;
