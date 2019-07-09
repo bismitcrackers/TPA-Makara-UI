@@ -51,7 +51,7 @@
                 <input value="{{ $dailyBook->subtema }}" name="subtema" type="text" class="form-control dcinput" id="subtemadc" aria-describedby="subtema" placeholder="Sub Tema" required>
                 @endif
             </div>
-            <button class="btn btn-primary dcbutton d-flex justify-content-center" id = "nextbukpeng" onclick = "nextPrev(1,event)">
+            <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center" id = "nextbukpeng" onclick = "nextPrev(1,event)">
                 Next
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
             </button>

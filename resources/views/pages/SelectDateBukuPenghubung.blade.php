@@ -26,16 +26,26 @@
             <?php $label2 = True; ?>
             @endif
             @if($class == 'Day Care')
+                @if($date->dibaca == True)
             <a class="dateblock inline" href="{{ route('dailyBook.dc.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
                 <p>{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</p>
                 <img src="{{asset('svg/bpcheckgreen.svg')}}" alt="checkgreen" class="ml-3">
-                {{-- green atau gray --}}
+                @else
+            <a class="dateblock dateblock-disabled inline" href="{{ route('dailyBook.dc.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                <p>{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</p>
+                <img src="{{asset('svg/bpcheckgray.svg')}}" alt="checkgreen" class="ml-3">
+                @endif
             </a>
             @elseif($class == 'Kelompok Bermain')
+                @if($date->dibaca == True)
             <a class="dateblock inline" href="{{ route('dailyBook.kb.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
                 {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
                 <img src="{{asset('svg/bpcheckgreen.svg')}}" alt="checkgreen" class="ml-3">
-                {{-- green atau gray --}}
+                @else
+            <a class="dateblock dateblock-disabled inline" href="{{ route('dailyBook.kb.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                <img src="{{asset('svg/bpcheckgray.svg')}}" alt="checkgreen" class="ml-3">
+                @endif
             </a>
             @endif
         @elseif(auth()->user()->roles()->first()->name == 'Guru' || auth()->user()->roles()->first()->name == 'Co-fasilitator')
