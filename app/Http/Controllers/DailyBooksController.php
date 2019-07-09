@@ -30,7 +30,9 @@ class DailyBooksController extends Controller
             return redirect()->route('orangtua.home');
         } else {
             $student = Student::where('id', $student_id)->first();
-            $image = WebHelper::saveImageToPublic($request->file('lampiran'), '/picture/daily_books');
+            if ($request->has('lampiran')) {
+                $image = WebHelper::saveImageToPublic($request->file('lampiran'), '/picture/daily_books');
+            }
             $tanggal = WebHelper::getValidatedDate($request->tanggal);
             $dailyBook = new DailyBook;
             $dailyBook->pembuat             = $request->pembuat;
@@ -44,7 +46,9 @@ class DailyBooksController extends Controller
             $dailyBook->makan_siang         = $request->makanSiang;
             $dailyBook->tidur_siang         = $request->tidurSiang;
             $dailyBook->catatan_khusus      = $request->catatanKhusus;
-            $dailyBook->url_lampiran        = $image;
+            if ($request->has('lampiran')) {
+                $dailyBook->url_lampiran    = $image;
+            }
             $dailyBook->kelas               = 'Day Care';
             $dailyBook->dibaca              = False;
             $dailyBook->dipublish           = False;
@@ -62,7 +66,9 @@ class DailyBooksController extends Controller
             return redirect()->route('orangtua.home');
         } else {
             $student = Student::where('id', $student_id)->first();
-            $image = WebHelper::saveImageToPublic($request->file('lampiran'), '/picture/daily_books');
+            if ($request->has('lampiran')) {
+                $image = WebHelper::saveImageToPublic($request->file('lampiran'), '/picture/daily_books');
+            }
             $tanggal = WebHelper::getValidatedDate($request->tanggal);
             $dailyBook = new DailyBook;
             $dailyBook->pembuat             = $request->pembuat;
@@ -71,7 +77,9 @@ class DailyBooksController extends Controller
             $dailyBook->subtema             = $request->subtema;
             $dailyBook->kegiatan            = $request->kegiatan;
             $dailyBook->catatan_khusus      = $request->catatanKhusus;
-            $dailyBook->url_lampiran        = $image;
+            if ($request->has('lampiran')) {
+                $dailyBook->url_lampiran        = $image;
+            }
             $dailyBook->kelas               = 'Kelompok Bermain';
             $dailyBook->dibaca              = False;
             $dailyBook->dipublish           = False;
@@ -89,23 +97,45 @@ class DailyBooksController extends Controller
             return redirect()->route('orangtua.home');
         } else {
             // $student = Student::where('id', $student_id)->first();
-            $dailyBook = DailyBook::where('id', $dailyBook)->update(
-                [
-                    'pembuat'             => $request->pembuat,
-                    'tanggal'             => $request->tanggal,
-                    'tema'                => $request->tema,
-                    'subtema'             => $request->subtema,
-                    'snack'               => $request->snack,
-                    'keterangan_fisik'    => $request->keteranganFisik,
-                    'keterangan_kognitif' => $request->keteranganKognitif,
-                    'keterangan_sosial'   => $request->keteranganSosial,
-                    'makan_siang'         => $request->makanSiang,
-                    'tidur_siang'         => $request->tidurSiang,
-                    'catatan_khusus'      => $request->catatanKhusus,
-                    'kelas'               => 'Day Care',
-                    'dipublish'           => True,
-                ]
-            );
+            if ($request->has('lampiran')) {
+                $image = WebHelper::saveImageToPublic($request->file('lampiran'), '/picture/daily_books');
+                $dailyBook = DailyBook::where('id', $dailyBook)->update(
+                    [
+                        'pembuat'             => $request->pembuat,
+                        'tanggal'             => $request->tanggal,
+                        'tema'                => $request->tema,
+                        'subtema'             => $request->subtema,
+                        'snack'               => $request->snack,
+                        'keterangan_fisik'    => $request->keteranganFisik,
+                        'keterangan_kognitif' => $request->keteranganKognitif,
+                        'keterangan_sosial'   => $request->keteranganSosial,
+                        'makan_siang'         => $request->makanSiang,
+                        'tidur_siang'         => $request->tidurSiang,
+                        'catatan_khusus'      => $request->catatanKhusus,
+                        'url_lampiran'        => $image,
+                        'kelas'               => 'Day Care',
+                        'dipublish'           => True,
+                    ]
+                );
+            } else {
+                $dailyBook = DailyBook::where('id', $dailyBook)->update(
+                    [
+                        'pembuat'             => $request->pembuat,
+                        'tanggal'             => $request->tanggal,
+                        'tema'                => $request->tema,
+                        'subtema'             => $request->subtema,
+                        'snack'               => $request->snack,
+                        'keterangan_fisik'    => $request->keteranganFisik,
+                        'keterangan_kognitif' => $request->keteranganKognitif,
+                        'keterangan_sosial'   => $request->keteranganSosial,
+                        'makan_siang'         => $request->makanSiang,
+                        'tidur_siang'         => $request->tidurSiang,
+                        'catatan_khusus'      => $request->catatanKhusus,
+                        'kelas'               => 'Day Care',
+                        'dipublish'           => True,
+                    ]
+                );
+            }
             // $student->dailyBook()->save($dailyBook);
             return redirect()->route('success');
         }
@@ -120,18 +150,35 @@ class DailyBooksController extends Controller
             return redirect()->route('orangtua.home');
         } else {
             // $student = Student::where('id', $student_id)->first();
-            $dailyBook = DailyBook::where('id', $dailyBook)->update(
-                [
-                    'pembuat'             => $request->pembuat,
-                    'tanggal'             => $request->tanggal,
-                    'tema'                => $request->tema,
-                    'subtema'             => $request->subtema,
-                    'kegiatan'            => $request->kegiatan,
-                    'catatan_khusus'      => $request->catatanKhusus,
-                    'kelas'               => 'Kelompok Bermain',
-                    'dipublish'           => True,
-                ]
-            );
+            if ($request->has('lampiran')) {
+                $image = WebHelper::saveImageToPublic($request->file('lampiran'), '/picture/daily_books');
+                $dailyBook = DailyBook::where('id', $dailyBook)->update(
+                    [
+                        'pembuat'             => $request->pembuat,
+                        'tanggal'             => $request->tanggal,
+                        'tema'                => $request->tema,
+                        'subtema'             => $request->subtema,
+                        'kegiatan'            => $request->kegiatan,
+                        'catatan_khusus'      => $request->catatanKhusus,
+                        'kelas'               => 'Kelompok Bermain',
+                        'url_lampiran'        => $image,
+                        'dipublish'           => True,
+                    ]
+                );
+            } else {
+                $dailyBook = DailyBook::where('id', $dailyBook)->update(
+                    [
+                        'pembuat'             => $request->pembuat,
+                        'tanggal'             => $request->tanggal,
+                        'tema'                => $request->tema,
+                        'subtema'             => $request->subtema,
+                        'kegiatan'            => $request->kegiatan,
+                        'catatan_khusus'      => $request->catatanKhusus,
+                        'kelas'               => 'Kelompok Bermain',
+                        'dipublish'           => True,
+                    ]
+                );
+            }
             // $student->dailyBook()->save($dailyBook);
             return redirect()->route('success');
         }

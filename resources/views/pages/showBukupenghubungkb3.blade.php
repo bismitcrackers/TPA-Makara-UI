@@ -13,7 +13,7 @@
     <div id="showBukuPeng3" class="showbp">
 
         <h2 class="title">
-            BUKU PENGUHUBUNG   
+            BUKU PENGUHUBUNG
         </h2>
 
         <div class="row">
@@ -26,20 +26,20 @@
         </h2>
         <h2 class="title2">KETERANGAN</h2>
         <div class="imgbpkb">
-            <img src="{{asset('svg/fisik.svg')}}" alt="gmbrbuku">
+            <img src="{{asset('svg/fisik.svg')}}" alt="please insert image">
         </div>
             aaa
         <h2 class="title2">KETERANGAN</h2>
         <div class="imgbpkb">
-            <img src="{{asset('svg/kognitif.svg')}}" alt="gmbrbuku">
+            <img src="{{asset('svg/kognitif.svg')}}" alt="please insert image">
         </div>
             aaa
         <h2 class="title2">KETERANGAN</h2>
         <div class="imgbpkb">
-            <img src="{{asset('svg/sosial-emosi.svg')}}" alt="gmbrbuku">
+            <img src="{{asset('svg/sosial-emosi.svg')}}" alt="please insert image">
         </div>
             aaa
-        
+
         <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" >
             NEXT
             <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">

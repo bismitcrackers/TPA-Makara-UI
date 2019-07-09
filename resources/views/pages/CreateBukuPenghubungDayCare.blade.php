@@ -139,13 +139,14 @@
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </div>
             <div class="d-flex justify-content-center">
-                @if($route == 'createDailyBookKB')
-                    <img src="" alt="gmbrbuku">
-                @elseif($route == 'reviewDailyBookKB')
-                    <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+                @if($route == 'createDailyBookDC')
+                    <img id="imgbuku" src="" alt="please insert image">
+                @elseif($route == 'reviewDailyBookDC')
+                    <img id="imgbuku" src="{{ asset($dailyBook->url_lampiran) }}" alt="please insert image">
                 @endif
             </div>
             <input name="lampiran" type="file" id="inputfile">
+
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" onclick="nextPrev(1)">
                 @if($route == 'createDailyBookDC')
                 Save
@@ -217,6 +218,22 @@
         //         defaultDate: 0,
         //     });
         // });
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#imgbuku').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#inputfile").change(function() {
+          readURL(this);
+        });
     </script>
 
 

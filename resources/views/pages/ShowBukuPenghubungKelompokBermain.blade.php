@@ -41,7 +41,7 @@
             {{ $dailyBook->catatan_khusus }}
             <h2 class="subbukupenghubung-title"><u>LAMPIRAN</u></h2>
             <div class="imgbpkb">
-                <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+                <img src="{{ asset($dailyBook->url_lampiran) }}" alt="please insert image">
             </div>
             @if(auth()->user()->roles()->first()->name == 'Orangtua')
             <a href="{{ route('orangtua.home') }}">

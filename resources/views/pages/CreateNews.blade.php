@@ -22,7 +22,11 @@
                 <input type="file" id="inputfile" name="fotoBerita">
                 @if($route == 'edit')
                 <div class="dcinput">
-                    <img src="{{ asset($berita->gambar) }}">
+                    <img id="imgbuku" src="{{ asset($berita->gambar) }}">
+                </div>
+                @else
+                <div class="dcinput">
+                    <img id="imgbuku" src="">
                 </div>
                 @endif
                 <h2 class="title">JUDUL BERITA</h2>
@@ -55,5 +59,21 @@
         function burninput(event){
             $("#inputfile").click();
         }
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#imgbuku').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#inputfile").change(function() {
+          readURL(this);
+        });
     </script>
 @endsection

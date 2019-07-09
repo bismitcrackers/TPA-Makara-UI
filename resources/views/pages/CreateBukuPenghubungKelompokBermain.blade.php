@@ -82,9 +82,9 @@
             </div>
             <div class="d-flex justify-content-center">
                 @if($route == 'createDailyBookKB')
-                    <img src="" alt="gmbrbuku">
+                    <img id="imgbuku" src="" alt="please insert image">
                 @elseif($route == 'reviewDailyBookKB')
-                    <img src="{{ asset($dailyBook->url_lampiran) }}" alt="gmbrbuku">
+                    <img id="imgbuku" src="{{ asset($dailyBook->url_lampiran) }}" alt="please insert image">
                 @endif
             </div>
             <input name="lampiran" type="file" id="inputfile">
@@ -157,6 +157,22 @@
         $( "#nextbukpeng" ).keydown(function(event) {
         event.preventDefault();
         });
+    });
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#imgbuku').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#inputfile").change(function() {
+      readURL(this);
     });
 </script>
 

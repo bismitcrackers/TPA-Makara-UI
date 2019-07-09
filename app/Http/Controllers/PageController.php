@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Carbon\Carbon;
+use App\Berita;
 use App\Comments;
 use App\DailyBook;
 use App\Student;
@@ -16,7 +17,8 @@ class PageController extends Controller
 // MAIN
 
     public function index() {
-        return view('pages.Homepage');
+        $news = Berita::all();
+        return view('pages.Homepage', ['news' => $news]);
     }
 
     public function success() {
