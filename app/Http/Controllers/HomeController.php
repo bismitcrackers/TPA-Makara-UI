@@ -18,28 +18,33 @@ class HomeController extends Controller
     }
 
     public function administratorHome(Request $request) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $news = Berita::all();
         $request->user()->authorizeRoles(['Administrator','Staf Administrasi','Koordinator','Wakil Koordinator']);
         return view('dashboard.administratorHome', ['news' => $news]);
     }
 
     public function fasilitatorHome(Request $request) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $request->user()->authorizeRoles(['Fasilitator']);
-        return view('dashboard.fasilitatorHome');
+        return view('dashboard.fasilitatorHome', ['news' => $news]);
     }
 
     public function teacherHome(Request $request) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $request->user()->authorizeRoles(['Guru']);
-        return view('dashboard.teacherHome');
+        return view('dashboard.teacherHome', ['news' => $news]);
     }
 
     public function cofasilitatorHome(Request $request) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $request->user()->authorizeRoles(['Co-fasilitator']);
-        return view('dashboard.cofasilitatorHome');
+        return view('dashboard.cofasilitatorHome', ['news' => $news]);
     }
 
     public function parentHome(Request $request) {
+        if (auth()->user() == null) {return redirect()->route('login');}
         $request->user()->authorizeRoles(['Orangtua']);
-        return view('dashboard.parentHome');
+        return view('dashboard.parentHome', ['news' => $news]);
     }
 }
