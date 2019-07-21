@@ -25,9 +25,11 @@
             <a href="{{ route('dailyBook.class') }}">
         @elseif(auth()->user()->roles()->first()->name == 'Orangtua')
             @if(auth()->user()->student()->first()->kelas == 'Day Care')
-            <a href="{{ route('dailyBook.dc.date.parent', ['student_id' => auth()->user()->student()->first()->id]) }}">
+            <!-- <a href="{{ route('dailyBook.dc.date.parent', ['student_id' => auth()->user()->student()->first()->id]) }}"> -->
+            <a href="{{ route('dailyBook.dc.month', ['student_id' => auth()->user()->student()->first()->id]) }}">
             @elseif(auth()->user()->student()->first()->kelas == 'Kelompok Bermain')
-            <a href="{{ route('dailyBook.kb.date.parent', ['student_id' => auth()->user()->student()->first()->id]) }}">
+            <!-- <a href="{{ route('dailyBook.kb.date.parent', ['student_id' => auth()->user()->student()->first()->id]) }}"> -->
+            <a href="{{ route('dailyBook.kb.month', ['student_id' => auth()->user()->student()->first()->id]) }}">
             @endif
         @elseif(auth()->user()->roles()->first()->name == 'Co-fasilitator')
             <a href="{{ route('dailyBook.dc.student') }}">
