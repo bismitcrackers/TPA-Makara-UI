@@ -124,6 +124,11 @@
         </div>
         @endforeach
     </div>
+      <div id="paginate">
+        <div>
+          {{ $news->links() }}
+        </div>
+      </div>
   </div>
   <div id="prfsCont">
     <div class="row" id="prfsTpam">
