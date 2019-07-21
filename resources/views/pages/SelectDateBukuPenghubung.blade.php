@@ -49,23 +49,71 @@
             </a>
             @endif
         @elseif(auth()->user()->roles()->first()->name == 'Guru' || auth()->user()->roles()->first()->name == 'Co-fasilitator')
-            @if($class == 'Day Care')
-            <a class="dateblock inline" href="{{ route('dailyBook.dc.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
-            @elseif($class == 'Kelompok Bermain')
-            <a class="dateblock inline" href="{{ route('dailyBook.kb.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
+            @if($label1 == False)
+            <div class="dclabel centerer readstatus">Belum Dibaca</div>
+            <?php $label1 = True; ?>
             @endif
-        @elseif(auth()->user()->roles()->first()->description == 'Full Access' || auth()->user()->roles()->first()->name == 'Fasilitator')
+            @if($label2 == False && $date->dibaca == True)
+            <div class="dclabel centerer readstatus">Sudah Dibaca</div>
+            <?php $label2 = True; ?>
+            @endif
             @if($date->dipublish == True)
                 @if($class == 'Day Care')
-                <a class="dateblock inline" href="{{ route('dailyBook.dc.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
+                <a class="dateblock inline" href="{{ route('dailyBook.dc.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgreen.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
                 @elseif($class == 'Kelompok Bermain')
-                <a class="dateblock inline" href="{{ route('dailyBook.kb.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
+                <a class="dateblock inline" href="{{ route('dailyBook.kb.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgreen.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
                 @endif
             @else
                 @if($class == 'Day Care')
-                <a style="background-color:#F2F2F2;" class="dateblock inline" href="{{ route('dailyBook.dc.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
+                <a class="dateblock dateblock-disabled inline" href="{{ route('dailyBook.dc.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgray.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
                 @elseif($class == 'Kelompok Bermain')
-                <a style="background-color:#F2F2F2;" class="dateblock inline" href="{{ route('dailyBook.kb.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">{{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}</a>
+                <a class="dateblock dateblock-disabled inline" href="{{ route('dailyBook.kb.show', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgray.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
+                @endif
+            @endif
+        @elseif(auth()->user()->roles()->first()->description == 'Full Access' || auth()->user()->roles()->first()->name == 'Fasilitator')
+            @if($label1 == False)
+            <div class="dclabel centerer readstatus">Belum Dibaca</div>
+            <?php $label1 = True; ?>
+            @endif
+            @if($label2 == False && $date->dibaca == True)
+            <div class="dclabel centerer readstatus">Sudah Dibaca</div>
+            <?php $label2 = True; ?>
+            @endif
+            @if($date->dipublish == True)
+                @if($class == 'Day Care')
+                <a class="dateblock inline" href="{{ route('dailyBook.dc.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgreen.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
+                @elseif($class == 'Kelompok Bermain')
+                <a class="dateblock inline" href="{{ route('dailyBook.kb.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgreen.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
+                @endif
+            @else
+                @if($class == 'Day Care')
+                <a style="background-color:#F2F2F2;" class="dateblock inline" href="{{ route('dailyBook.dc.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgray.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
+                @elseif($class == 'Kelompok Bermain')
+                <a style="background-color:#F2F2F2;" class="dateblock inline" href="{{ route('dailyBook.kb.review', ['student_id' => $student_id, 'day' => $date->day, 'month' => $date->month, 'year' => $date->year]) }}">
+                    {{ $date->day . ' ' . $date->month_name . ' ' . $date->year }}
+                    <img src="{{asset('svg/bpcheckgray.svg')}}" alt="checkgreen" class="ml-3">
+                </a>
                 @endif
             @endif
         @endif

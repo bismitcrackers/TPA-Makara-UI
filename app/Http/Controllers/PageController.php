@@ -54,20 +54,44 @@ class PageController extends Controller
 
     public function dayCareSelectDate($student_id, $month, $year) {
         if (auth()->user() == null) {return redirect()->route('login');}
-        $dates = DB::table('daily_books')
-            ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish'))
-            ->where('student_id', '=', $student_id)
-            ->whereYear('tanggal', '=', $year)
-            ->whereMonth('tanggal', '=', $month)
-            ->groupBy('year')
-            ->groupBy('month')
-            ->groupBy('month_name')
-            ->groupBy('day')
-            ->groupBy('id')
-            ->orderBy('year', 'desc')
-            ->orderBy('month', 'desc')
-            ->orderBy('day', 'desc')
-            ->get();
+        $role = auth()->user()->roles()->first()->name;
+        if ($role != 'Orangtua') {
+            $dates = DB::table('daily_books')
+                ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish, dibaca'))
+                ->where('student_id', '=', $student_id)
+                ->whereYear('tanggal', '=', $year)
+                ->whereMonth('tanggal', '=', $month)
+                ->groupBy('year')
+                ->groupBy('month')
+                ->groupBy('month_name')
+                ->groupBy('day')
+                ->groupBy('id')
+                ->groupBy('dibaca')
+                ->orderBy('dibaca')
+                ->orderBy('year', 'desc')
+                ->orderBy('month', 'desc')
+                ->orderBy('day', 'desc')
+                ->get();
+        } else {
+            $dates = DB::table('daily_books')
+                ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish, dibaca'))
+                ->where('student_id', '=', $student_id)
+                ->where('dipublish', '=', True)
+                ->whereYear('tanggal', '=', $year)
+                ->whereMonth('tanggal', '=', $month)
+                ->groupBy('year')
+                ->groupBy('month')
+                ->groupBy('month_name')
+                ->groupBy('day')
+                ->groupBy('id')
+                ->groupBy('dibaca')
+                ->orderBy('dibaca')
+                ->orderBy('year', 'desc')
+                ->orderBy('month', 'desc')
+                ->orderBy('day', 'desc')
+                ->get();
+        }
+
         return view('pages.SelectDateBukuPenghubung', ['dates' => $dates, 'student_id' => $student_id, 'class' => 'Day Care']);
     }
 
@@ -102,6 +126,9 @@ class PageController extends Controller
         $role = auth()->user()->roles()->first()->name;
         if ($role == 'Orangtua') {
             $dailyBook = DailyBook::where('student_id', '=', $student_id)
+                ->whereDay('tanggal', '=', $day)
+                ->whereYear('tanggal', '=', $year)
+                ->whereMonth('tanggal', '=', $month)
                 ->update(['dibaca' => True]);
         }
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
@@ -145,20 +172,43 @@ class PageController extends Controller
 
     public function kelompokBermainSelectDate($student_id, $month, $year) {
         if (auth()->user() == null) {return redirect()->route('login');}
-        $dates = DB::table('daily_books')
-            ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish'))
-            ->where('student_id', '=', $student_id)
-            ->whereYear('tanggal', '=', $year)
-            ->whereMonth('tanggal', '=', $month)
-            ->groupBy('year')
-            ->groupBy('month')
-            ->groupBy('month_name')
-            ->groupBy('day')
-            ->groupBy('id')
-            ->orderBy('year', 'desc')
-            ->orderBy('month', 'desc')
-            ->orderBy('day', 'desc')
-            ->get();
+        $role = auth()->user()->roles()->first()->name;
+        if ($role != 'Orangtua') {
+            $dates = DB::table('daily_books')
+                ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish, dibaca'))
+                ->where('student_id', '=', $student_id)
+                ->whereYear('tanggal', '=', $year)
+                ->whereMonth('tanggal', '=', $month)
+                ->groupBy('year')
+                ->groupBy('month')
+                ->groupBy('month_name')
+                ->groupBy('day')
+                ->groupBy('id')
+                ->groupBy('dibaca')
+                ->orderBy('dibaca')
+                ->orderBy('year', 'desc')
+                ->orderBy('month', 'desc')
+                ->orderBy('day', 'desc')
+                ->get();
+        } else {
+            $dates = DB::table('daily_books')
+                ->select(DB::raw('YEAR(tanggal) year, MONTH(tanggal) month, MONTHNAME(tanggal) month_name, DAY(tanggal) day, id, dipublish, dibaca'))
+                ->where('student_id', '=', $student_id)
+                ->where('dipublish', '=', True)
+                ->whereYear('tanggal', '=', $year)
+                ->whereMonth('tanggal', '=', $month)
+                ->groupBy('year')
+                ->groupBy('month')
+                ->groupBy('month_name')
+                ->groupBy('day')
+                ->groupBy('id')
+                ->groupBy('dibaca')
+                ->orderBy('dibaca')
+                ->orderBy('year', 'desc')
+                ->orderBy('month', 'desc')
+                ->orderBy('day', 'desc')
+                ->get();
+        }
         return view('pages.SelectDateBukuPenghubung', ['dates' => $dates, 'student_id' => $student_id, 'class' => 'Kelompok Bermain']);
     }
 
@@ -193,6 +243,9 @@ class PageController extends Controller
         $role = auth()->user()->roles()->first()->name;
         if ($role == 'Orangtua') {
             $dailyBook = DailyBook::where('student_id', '=', $student_id)
+                ->whereDay('tanggal', '=', $day)
+                ->whereYear('tanggal', '=', $year)
+                ->whereMonth('tanggal', '=', $month)
                 ->update(['dibaca' => True]);
         }
         $dailyBook = DailyBook::where('student_id', '=', $student_id)
