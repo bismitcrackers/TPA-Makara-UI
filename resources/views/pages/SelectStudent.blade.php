@@ -22,7 +22,7 @@
             @if(($i - 1) % 3 == 0)
             <div class="row justify-content-around">
             @endif
-                <div class="col-sm-4 siswa">
+                <div class="col-4 siswa">
                 @if($route == 'dayCareDailyBook')
                     <a href="{{ route('dailyBook.dc.month', ['student_id' => $student->id]) }}">
                 @elseif($route == 'kelompokBermainDailyBook')
@@ -37,7 +37,7 @@
                 @else
                         <img src="{{ asset('picture/perempuan.png') }}" alt="" class= "photosiswa">
                 @endif
-                        <p>{{ $student->nama_lengkap }}</p>
+                        <p class="namasiswa">{{ $student->nama_lengkap }}</p>
                     </a>
                 </div>
             @if(($i) % 3 == 0)

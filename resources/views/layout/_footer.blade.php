@@ -58,7 +58,7 @@
         @elseif(auth()->user()->roles()->first()->name == 'Orangtua')
         <a href="{{ route('profile.details', ['student_id' => auth()->user()->student()->first()->id]) }}">
         @endif
-            <div class= "nav-pane mr-3">
+            <div class= "nav-pane">
                 <img src="{{asset('svg/studentprofile.svg')}}" alt="studentprofile">
                 <p>Student Profile</p>
             </div>

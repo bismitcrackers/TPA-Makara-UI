@@ -31,21 +31,34 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Password" required>
-                @if ($errors->has('password'))
+                <div class="input-group">
+                    <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Password" required>
+                    @if ($errors->has('password'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('password') }}</strong>
                     </span>
-                @endif
-            </div>
+                    @endif
+                    <span class="input-group-btn">
+                        <button id= "show_password" class="btn btn-secondary" type="button">
+                                <span class="password-icon fa fa-eye"></span>
+                        </button>
+                    </span>
+                </div>
             <div class="form-group">
                 <label for="password-confirm">Repeat Password</label>
-                <input id="password-confirm" type="password" class="form-control {{$errors->has('password_confirmation') ?  ' is-invalid' : ' '}}"  name="password_confirmation" required>
-                @if ($errors->has('password_confimation'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('password_confimation') }}</strong>
+                <div class="input-group">
+                    <input id="password-confirm" type="password" class="form-control {{$errors->has('password_confirmation') ?  ' is-invalid' : ' '}}"  name="password_confirmation" required>
+                    @if ($errors->has('password_confimation'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password_confimation') }}</strong>
+                        </span>
+                    @endif
+                    <span class="input-group-btn">
+                        <button id= "show_password-confirm" class="btn btn-secondary" type="button">
+                                <span class="passwordconfirm-icon fa fa-eye"></span>
+                        </button>
                     </span>
-                @endif
+                </div>
             </div>
 
             <div class=button-section>
@@ -782,8 +795,41 @@
             finalButton.style.display = "block";
         }
     </script> -->
+    
 
     <script>
+
+        $(function() {
+            $("#show_password").click(
+                function toggle() {
+                    let varPas = $("#password")
+                    if (varPas.attr("type") == "password"){
+                        varPas.attr("type", "text");
+                    }
+                    else{
+                        varPas.attr("type", "password");
+                    }
+                    $(".password-icon")
+                        .toggleClass("fa-eye")
+                        .toggleClass("fa-eye-slash");
+                },
+            );
+            $("#show_password-confirm").click(
+                function toggle() {
+                    let varPas = $("#password-confirm")
+                    if (varPas.attr("type") == "password"){
+                        varPas.attr("type", "text");
+                    }
+                    else{
+                        varPas.attr("type", "password");
+                    }
+                    $(".passwordconfirm-icon")
+                        .toggleClass("fa-eye")
+                        .toggleClass("fa-eye-slash");
+                },
+            );
+        });
+
         var currentTab = 0; // Current tab is set to be the first tab (0)
         (document.getElementsByClassName("tab"))[currentTab].style.transform = "scale(1,1)";
         (document.getElementsByClassName("tab"))[currentTab].style.height = "100%";
