@@ -64,9 +64,11 @@
                 <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                     Cancel
                 </button>
-                <button type="button" class="btn btn-primary dcbutton d-flex justify-content-center">
-                    Save
-                    <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
+                <button type="button" class="btn btn-primary editbutton d-flex justify-content-center">
+                    <div class="d-flex align-items-center">
+                        <p>Save</p>
+                        <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
+                    </div>
                 </button>
             </div>
         </div>
