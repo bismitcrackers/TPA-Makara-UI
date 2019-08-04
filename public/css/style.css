@@ -1092,23 +1092,23 @@ button.editbuttoncancel {
 
 button.editbuttoncancel {
     background: linear-gradient(169.06deg, #DADADA 87.79%, #DADADA 87.8%);
-    border-radius: 12px;
+    border-radius: 20px;
     border: none;
     text-align: center;
     font-weight: bold;
     font-size: 16px;
-    padding: 5px 30px;
+    padding: 0px 30px;
     color: #414B6B;
 }
 
 button.editbutton {
     background: linear-gradient(167.84deg, #2F80ED -21.93%, #038BF4 87.81%);
     color: #FFFFFF;
-    border-radius: 12px;
+    border-radius: 20px;
     text-align: center;
     font-weight: bold;
     font-size: 16px;
-    padding: 5px 30px;
+    padding: 0px 30px;
 }
 
 button.editbutton img {
