@@ -25,6 +25,18 @@ class PageController extends Controller
         return view('pages.SuccessMessage');
     }
 
+    public function editProfileSiswa() {
+        return view('pages.EditProfileSiswa');
+    }
+
+    public function editProfileAyah() {
+        return view('pages.EditProfileAyah');
+    }
+
+    public function editProfileIbu() {
+        return view('pages.EditProfileIbu');
+    }
+
 // BUKU PENGHUBUNG
 
     public function selectClassDailyBook() {

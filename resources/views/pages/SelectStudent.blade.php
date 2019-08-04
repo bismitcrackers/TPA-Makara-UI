@@ -14,15 +14,15 @@
     </div>
     <!-- Search form -->
     <form action="">
-        <input class="form-control search-siswa" type="search" placeholder="Cari Siswa {{ $class }}">
+        <input onkeyup="searchFunction()" id = "userInput" class="form-control search-siswa" type="search" placeholder="Cari Siswa {{ $class }}">
     </form>
     <div class="container">
         <?php $i=1; ?>
+        <div class="row justify-content-around">
         @foreach($students as $student)
             @if(($i - 1) % 3 == 0)
-            <div class="row justify-content-around">
             @endif
-                <div class="col-sm-4 siswa">
+                <div class="col-4 siswa">
                 @if($route == 'dayCareDailyBook')
                     <a href="{{ route('dailyBook.dc.month', ['student_id' => $student->id]) }}">
                 @elseif($route == 'kelompokBermainDailyBook')
@@ -37,14 +37,14 @@
                 @else
                         <img src="{{ asset('picture/perempuan.png') }}" alt="" class= "photosiswa">
                 @endif
-                        <p>{{ $student->nama_lengkap }}</p>
+                        <p class="namasiswa">{{ $student->nama_lengkap }}</p>
                     </a>
                 </div>
             @if(($i) % 3 == 0)
-            </div>
             @endif
             <?php $i += 1; ?>
-        @endforeach
+            @endforeach
+        </div>
         </div>
 
 @endsection

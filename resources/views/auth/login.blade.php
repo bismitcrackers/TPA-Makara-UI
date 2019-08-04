@@ -25,12 +25,19 @@
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Password" required>
-            @if ($errors->has('password'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('password') }}</strong>
+            <div class="input-group">
+                <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="Password" required>
+                @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+                <span class="input-group-btn">
+                    <button id= "show_password" class="btn btn-secondary" type="button">
+                            <span class="password-icon fa fa-eye"></span>
+                    </button>
                 </span>
-            @endif
+            </div>
         </div>
         <div class=button-section>
             <button type="submit" class="btn btn-primary">Sign In</button>
@@ -42,5 +49,26 @@
 @endsection
 
 @section('extra-js')
+
+    <script>
+
+        $(function() {
+            $("#show_password").click(
+                function toggle() {
+                    let varPas = $("#password")
+                    if (varPas.attr("type") == "password"){
+                        varPas.attr("type", "text");
+                    }
+                    else{
+                        varPas.attr("type", "password");
+                    }
+                    $(".password-icon")
+                        .toggleClass("fa-eye")
+                        .toggleClass("fa-eye-slash");
+                },
+            );
+        });
+
+    </script>
 
 @endsection

@@ -186,6 +186,18 @@
     height: 0;
 }
 
+.fa{
+    color: rgb(66, 66, 66)
+}
+
+.btn-secondary{
+    background-color:rgba(151, 148, 148, 0) !important;
+    border:none;
+    /* border-top: none;
+    border-left: none;
+    border-right: none; */
+}
+
 input.invalid{
     background-color: #ffdddd;
 }
@@ -336,7 +348,7 @@ h3 {
 .daftarsiswa-title {
     font-weight: bold;
     font-size: 20px;
-    margin: 10px auto 30px;
+    margin: 10px auto 50px;
     text-align: center;
     letter-spacing: 0.02em;
     color: #414752;
@@ -377,8 +389,15 @@ h3 {
 
 .photosiswa {
     width: 38%;
+    min-width: 47px;
     height: auto;
     margin: 10px auto 8px;
+}
+
+@media (max-width: 575.98px){
+    p.namasiswa {
+      font-size: 10px;
+    }
 }
 
 div.siswa a:hover {
@@ -425,6 +444,7 @@ div.siswa:hover{
     font-size: 14px;
     text-align: center;
     margin-bottom: 15px;
+    padding: 0 2%;
     max-width: 60%;
     height: auto;
     transition: transform .3s ease-in-out;
@@ -436,9 +456,16 @@ div.siswa:hover{
 }
 
 .photobukbul {
-    width: 40%;
+    width: 37%;
+    min-width: 50px;
     height: auto;
     margin: 10px auto 12px;
+}
+
+@media (max-width: 575.98px){
+    p.namabukbul {
+      font-size: 12px;
+    }
 }
 
 div.bukbul a:hover {
@@ -478,6 +505,8 @@ div.bukbul:hover{
 .centerer {
     text-align: center;
 }
+
+
 
 #garis {
     width: 100%;
@@ -642,6 +671,7 @@ label.dclabel {
 input.dcinput,
 textarea.dcinput,
 div.dcinput{
+    font-size: 14px;
     background: #FFFFFF;
     box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
     border-radius: 8px;
@@ -659,6 +689,8 @@ button.dcbutton {
     font-size: 20px;
     padding: 5px 30px;
 }
+
+
 
 button.dcbutton img {
     margin-left: 15px;
@@ -767,12 +799,11 @@ button.dcbutton img {
 
 .typeclass{
     font-weight: 900;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 38px;
     color: #2F80ED;
-    margin-bottom: 40px;
+    margin-bottom: 11%;
 }
-
 
 a.linkclass:hover h1{
     color: rgb(34, 112, 214);
@@ -781,6 +812,22 @@ a.linkclass:hover h1{
 a.linkclass:hover{
     text-decoration: none
 }
+
+
+a.linkclass img{
+    width: 40%;
+}
+
+@media (max-width: 350px){
+    a.linkclass img{
+        width: 36%;
+    }
+}
+
+/* for centering typeclass items*/
+/* .vpall{
+    height: 76vh;
+} */
 
 /*profile*/
 
@@ -842,10 +889,14 @@ a.linkclass:hover{
     max-width: 20%;
 }
 
+.boxprofile-outer{
+    max-width: 100%;
+}
+
 .boxprofile{
     background: rgba(196, 196, 196, 0.2);
     margin-bottom: 30px;
-    width: 482px;
+    max-width: 482px;
 }
 
 .boxprofile p{
@@ -888,7 +939,7 @@ a.linkclass:hover{
 /*footer nav*/
 
 .boxfooter{
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -3px 15px rgba(0, 0, 0, 0.2);
     padding: 5px;
     background: #FFFFFF;
 }
@@ -1006,4 +1057,60 @@ a.linkclass:hover{
     left: 0;
     background: inherit;
     border-radius: 50%;
+}
+
+/* eidtprofilesiswa */
+label.editlabel {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(56, 79, 125, 0.8);
+}
+
+input.editinput{
+    background: #FFFFFF;
+    box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
+    border-radius: 8px;
+    border-bottom: 0px;
+    font-weight: 900;
+    color: rgba(56, 79, 125, 0.65);
+    margin-bottom: 40px;
+    font-size: 14px;
+}
+
+button.editbuttoncancel {
+    border: none;
+    background: linear-gradient(169.06deg, #DADADA 87.79%, #DADADA 87.8%);
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 11px;
+}
+
+button.editbuttoncancel {
+    background: linear-gradient(169.06deg, #DADADA 87.79%, #DADADA 87.8%);
+    border-radius: 12px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 30px;
+    color: #414B6B;
+}
+
+button.editbutton {
+    background: linear-gradient(167.84deg, #2F80ED -21.93%, #038BF4 87.81%);
+    color: #FFFFFF;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 30px;
+}
+
+button.editbutton img {
+    margin-left: 15px;
 }

@@ -13,6 +13,9 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
+Route::get('/editprofilesiswa', 'PageController@editProfileSiswa')->name('editProfileSiswa');
+Route::get('/editprofileibu', 'PageController@editProfileIbu')->name('editProfileIbu');
+Route::get('/editprofileayah', 'PageController@editProfileAyah')->name('editProfileAyah');
 
 Auth::routes();
 
