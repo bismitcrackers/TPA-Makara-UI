@@ -44,6 +44,7 @@
                         </button>
                     </span>
                 </div>
+            </div>
             <div class="form-group">
                 <label for="password-confirm">Repeat Password</label>
                 <div class="input-group">
@@ -60,9 +61,8 @@
                     </span>
                 </div>
             </div>
-
             <div class=button-section>
-                <button  class="halo btn-primary btn" onclick = "nextPrev(1)" >Sign Up</button>
+                <button type="button" class="halo btn-primary btn" onclick = "nextPrev(1)" >Sign Up</button>
             </div>
             <p class="bottom-auth">Already have an account?
                 <a href="{{ route('login') }}">Login</a>
@@ -876,6 +876,7 @@
             // Function that verify
             if(y[0].name==="email"){
                 for (i = 0; i < y.length; i++) {
+                    console.log(y[i].value)
                     if (y[i].value == "") {
                         // add an "invalid" class to the field:
                         y[i].style.background="#ffdddd";

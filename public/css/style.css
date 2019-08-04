@@ -689,6 +689,8 @@ button.dcbutton {
     padding: 5px 30px;
 }
 
+
+
 button.dcbutton img {
     margin-left: 15px;
 }
@@ -1054,4 +1056,34 @@ a.linkclass img{
     left: 0;
     background: inherit;
     border-radius: 50%;
+}
+
+/* eidtprofilesiswa */
+label.editlabel {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(56, 79, 125, 0.8);
+}
+
+input.editinput{
+    background: #FFFFFF;
+    box-shadow: 4px 12px 25px rgba(71, 55, 255, 0.08);
+    border-radius: 8px;
+    border-bottom: 0px;
+    font-weight: 900;
+    color: rgba(56, 79, 125, 0.65);
+    margin-bottom: 40px;
+}
+
+button.editbuttoncancel {
+    border: none;
+    background: linear-gradient(169.06deg, #DADADA 87.79%, #DADADA 87.8%);
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 30px;
 }
