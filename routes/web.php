@@ -96,6 +96,7 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
     Route::resource('berita', 'BeritaController');
+    Route::resource('pengumuman','PengumumanController');
 });
 
 Route::group(['prefix'=>'orangtua','as'=>'orangtua.'], function(){
