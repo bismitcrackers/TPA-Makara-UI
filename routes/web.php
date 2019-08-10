@@ -13,9 +13,6 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
-Route::get('/editprofilesiswa', 'PageController@editProfileSiswa')->name('editProfileSiswa');
-Route::get('/editprofileibu', 'PageController@editProfileIbu')->name('editProfileIbu');
-Route::get('/editprofileayah', 'PageController@editProfileAyah')->name('editProfileAyah');
 
 Auth::routes();
 
@@ -90,7 +87,15 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
     Route::get('/students', 'PageController@studentsProfileDayCare')->name('dc.student');
     Route::get('/students', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
-    Route::get('/details/{student_id}', 'PageController@profileDetails')->name('details');
+    Route::group(['prefix'=>'{student_id}','as'=>'edit.'], function(){
+        Route::get('/details', 'PageController@profileDetails')->name('details');
+        Route::get('/student', 'StudentController@editStudentProfileForm')->name('student.form');
+        Route::get('/father', 'StudentController@editFatherProfileForm')->name('father.form');
+        Route::get('/mother', 'StudentController@editMotherProfileForm')->name('mother.form');
+        Route::post('/student', 'StudentController@editStudentProfile')->name('student.post');
+        Route::post('/father', 'StudentController@editFatherProfile')->name('father.post');
+        Route::post('/mother', 'StudentController@editMotherProfile')->name('mother.post');
+    });
 });
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){

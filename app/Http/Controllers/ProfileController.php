@@ -17,7 +17,7 @@ class StudentController extends Controller
         $this->middleware('auth');
     }
 
-    public function ($student_id) {
+    public function editStudentProfileForm($student_id) {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
