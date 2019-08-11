@@ -95,6 +95,8 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
         Route::post('/student', 'StudentController@editStudentProfile')->name('student.post');
         Route::post('/father', 'StudentController@editFatherProfile')->name('father.post');
         Route::post('/mother', 'StudentController@editMotherProfile')->name('mother.post');
+        Route::post('/graduate', 'StudentController@graduateStudent')->name('graduate');
+        Route::post('/ungraduate', 'StudentController@cancelGraduateStudent')->name('ungraduate');
     });
 });
 

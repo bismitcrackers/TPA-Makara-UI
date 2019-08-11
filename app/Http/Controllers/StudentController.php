@@ -71,7 +71,7 @@ class StudentController extends Controller
         }
     }
 
-    public function editMotherProfile() {
+    public function editMotherProfile($student_id) {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
@@ -92,7 +92,7 @@ class StudentController extends Controller
         }
     }
 
-    public function editFatherProfile() {
+    public function editFatherProfile($student_id) {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
@@ -107,6 +107,34 @@ class StudentController extends Controller
                     'alamat_kantor'          => $request->alamatKerjaAyah,
                     'email'                  => $request->emailAyah,
                     'no_handphone'           => $request->nomorHpAyah,
+                ]
+            );
+            return redirect()->route('success');
+        }
+    }
+
+    public function graduateStudent($student_id) {
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else {
+            $student = Student::where('id', $student_id)->update(
+                [
+                    'lulus'                  => true,
+                ]
+            );
+            return redirect()->route('success');
+        }
+    }
+
+    public function cancelGraduateStudent($student_id) {
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else {
+            $student = Student::where('id', $student_id)->update(
+                [
+                    'lulus'                  => false,
                 ]
             );
             return redirect()->route('success');
