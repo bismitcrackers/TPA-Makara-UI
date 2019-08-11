@@ -60,7 +60,7 @@
                     <option value="kelompok bermain">Kelompok Bermain</option>
                 </select>
             </div>
-            <div class="d-flex">
+            <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                     Cancel
                 </button>

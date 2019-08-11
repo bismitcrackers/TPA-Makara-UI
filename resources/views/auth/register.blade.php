@@ -61,7 +61,7 @@
                     </span>
                 </div>
             </div>
-            <div class=button-section>
+            <div class="button-section signup">
                 <button type="button" class="halo btn-primary btn" onclick = "nextPrev(1)" >Sign Up</button>
             </div>
             <p class="bottom-auth">Already have an account?
