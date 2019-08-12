@@ -37,6 +37,20 @@ class PageController extends Controller
         return view('pages.EditProfileIbu');
     }
 
+    public function pengumumanKegiatan() {
+        return view('pages.pengumumanKegiatan');
+    }
+
+    public function ubahPengumuman() {
+        return view('pages.UbahPengumuman');
+    }
+
+    public function showPengumuman() {
+        return view('pages.ShowPengumuman');
+    }
+
+
+
 // BUKU PENGHUBUNG
 
     public function selectClassDailyBook() {

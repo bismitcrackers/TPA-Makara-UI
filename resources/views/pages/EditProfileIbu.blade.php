@@ -44,7 +44,7 @@
                     <label for="nomor telepon" class="editlabel">NO TELEPON</label>
                     <input name="nomor telepon" type="text" class="form-control editinput" id="nomor telepon" aria-describedby="Nomor Telepon" placeholder="nomor telepon" required>
             </div>
-            <div class="d-flex">
+            <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                     Cancel
                 </button>

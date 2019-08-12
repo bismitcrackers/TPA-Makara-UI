@@ -14,6 +14,13 @@
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
 
+Route::get('/editprofilesiswa', 'PageController@editProfileSiswa')->name('editProfileSiswa');
+Route::get('/editprofileibu', 'PageController@editProfileIbu')->name('editProfileIbu');
+Route::get('/editprofileayah', 'PageController@editProfileAyah')->name('editProfileAyah');
+Route::get('/pengumumankegiatan', 'PageController@pengumumanKegiatan')->name('pengumumanKegiatan');
+Route::get('/ubahpengumuman', 'PageController@ubahPengumuman')->name('ubahPengumuman');
+Route::get('/showpengumuman', 'PageController@showPengumuman')->name('showPengumuman');
+
 Auth::routes();
 
 Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
