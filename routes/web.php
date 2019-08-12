@@ -109,6 +109,11 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
+    Route::group(['prefix'=>'schedule', 'as'=>'schedule.'], function(){
+        Route::post('/add', 'JadwalController@addSchedule')->name('add');
+        Route::post('/edit', 'JadwalController@editSchedule')->name('edit');
+        Route::delete('/delete', 'JadwalController@deleteSchedule')->name('delete')
+    }
     Route::resource('berita', 'BeritaController');
     Route::resource('pengumuman','PengumumanController');
 });
