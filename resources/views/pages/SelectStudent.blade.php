@@ -19,7 +19,9 @@
 
     <div class="d-flex selectstudent-feature justify-content-between">
         <button type="button" class="btn announcement">Pengumuman</button>
-        <button type="button" class="btn btn-success schedule">Jadwal</button>
+        <a href="{{ route('profile.schedule.list', ['kelas' => $class]) }}">
+            <button type="button" class="btn btn-success schedule">Jadwal</button>
+        </a>
     </div>
 
 
