@@ -17,8 +17,7 @@ class CreateJadwalTable extends Migration
             $table->increments('id');
             $table->string('pembuat')->nullable();
             $table->string('url_lampiran')->nullable();
-            $table->date('tanggal_berlaku');
-            $table->date('tanggal_berakhir');
+            $table->string('kelas');
             $table->timestamps();
         });
     }

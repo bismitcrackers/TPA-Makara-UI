@@ -100,19 +100,12 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
     });
 });
 
-// Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
-//     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
-//     Route::get('/students', 'PageController@studentsProfileDayCare')->name('dc.student');
-//     Route::get('/students', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
-//
-// });
-
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
     Route::group(['prefix'=>'schedule', 'as'=>'schedule.'], function(){
         Route::post('/add', 'JadwalController@addSchedule')->name('add');
-        Route::post('/edit', 'JadwalController@editSchedule')->name('edit');
-        Route::delete('/delete', 'JadwalController@deleteSchedule')->name('delete');
+        Route::post('/edit/{id}', 'JadwalController@editSchedule')->name('edit');
+        Route::delete('/delete/{id}', 'JadwalController@deleteSchedule')->name('delete');
     });
     Route::resource('berita', 'BeritaController');
     Route::resource('pengumuman','PengumumanController');

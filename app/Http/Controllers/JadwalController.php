@@ -39,11 +39,10 @@ class JadwalController extends Controller
             }
             $schedule = new Jadwal;
             $schedule->pembuat             = $user->name;
+            $schedule->kelas               = $request->kelas;
             if ($request->has('lampiran')) {
                 $schedule->url_lampiran    = $image;
             }
-            $schedule->tanggal_berlaku     = new Carbon('first day of this month');
-            $schedule->tanggal_berakhir    = new Carbon('last day of this month');
             $schedule->save();
             return redirect()->route('success');
         }
@@ -69,20 +68,12 @@ class JadwalController extends Controller
                     [
                         'pembuat'             => $user->name,
                         'url_lampiran'        => $image,
-                        // 'tanggal_berlaku'     => $request->tanggalBerlaku,
-                        // 'tanggal_berakhir'    => $request->tanggalBerakhir,
-                        'tanggal_berlaku'     => new Carbon('first day of this month'),
-                        'tanggal_berakhir'    => new Carbon('last day of this month'),
                     ]
                 );
             } else {
                 $jadwal = Jadwal::where('id', $id)->update(
                     [
                         'pembuat'             => $user->name,
-                        // 'tanggal_berlaku'     => $request->tanggalBerlaku,
-                        // 'tanggal_berakhir'    => $request->tanggalBerakhir,
-                        'tanggal_berlaku'     => new Carbon('first day of this month'),
-                        'tanggal_berakhir'    => new Carbon('last day of this month'),
                     ]
                 );
             }
