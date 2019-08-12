@@ -16,7 +16,13 @@
 
     <div class = "d-flex justify-content-end">
         <div>
-            <button type="button" id = "btn-passconfirm" class="btn btn-danger pass" data-toggle="modal" data-target="#studentPassModal">Lulus</button>
+            <button type="button" id = "btn-passconfirm" class="btn btn-danger pass" data-toggle="modal" data-target="#studentPassModal">
+                @if($student->lulus)
+                    Batalkan kelulusan
+                @else
+                    Lulus
+                @endif
+            </button>
         </div>
     </div>
 
@@ -32,14 +38,29 @@
             </div>
             <div class="modal-header">
                 <h5 class="modal-title" id="studentPassModalTitle">
+                    @if($student->lulus)
+                    <p>Yakin ingin membatalkan kelulusan</p>
+                    @else
                     <p>Yakin ingin meluluskan</p>
-                    <p>Abyan Althaf K?</p>
+                    @endif
+                    <p>{{ $student->nama_lengkap }}?</p>
                 </h5>
             </div>
             <div class="modal-footer centerer">
+
                 <div class = "confirm-button">
                     <button type="button" class="btn btn-secondary editbuttoncancel" data-dismiss="modal" id = "disagree-button">Tidak</button>
-                    <button type="button" class="btn editbutton" id = "agree-button">Ya</button>
+                    @if($student->lulus)
+                    <form method="POST" action="{{ route('profile.edit.ungraduate', ['student_id' => $student->id]) }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn editbutton" id = "agree-button">Ya</button>
+                    </form>
+                    @else
+                    <form method="POST" action="{{ route('profile.edit.graduate', ['student_id' => $student->id]) }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn editbutton" id = "agree-button">Ya</button>
+                    </form>
+                    @endif
                 </div>
             </div>
             </div>
@@ -49,13 +70,21 @@
     <!-- alert agree -->
     <div class="alert alert-success" id="agree" role="alert" aria-hidden="true">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @if($student->lulus)
+        <strong>Siswa </strong>tidak diluluskan.
+        @else
         <strong>Siswa </strong>diluluskan.
+        @endif
     </div>
 
     <!-- alert disagree -->
     <div class="alert alert-danger" id="disagree" role="alert" aria-hidden="true">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Siswa </strong>tidak diluluskan.
+        @if($student->lulus)
+        <strong>Siswa </strong>tetap diluluskan.
+        @else
+        <strong>Siswa </strong>tetap tidak diluluskan.
+        @endif
     </div>
 
     <div class="d-flex justify-content-center">
