@@ -16,7 +16,13 @@
 
     <div class = "d-flex justify-content-end">
         <div>
-            <button type="button" id = "btn-passconfirm" class="btn btn-danger pass" data-toggle="modal" data-target="#studentPassModal">Lulus</button>
+            <button type="button" id = "btn-passconfirm" class="btn btn-danger pass" data-toggle="modal" data-target="#studentPassModal">
+                @if($student->lulus)
+                    Batalkan kelulusan
+                @else
+                    Lulus
+                @endif
+            </button>
         </div>
     </div>
 
@@ -32,14 +38,29 @@
             </div>
             <div class="modal-header">
                 <h5 class="modal-title" id="studentPassModalTitle">
-                    <p>Yakin ingin meluluskan</p> 
-                    <p>Abyan Althaf K?</p> 
+                    @if($student->lulus)
+                    <p>Yakin ingin membatalkan kelulusan</p>
+                    @else
+                    <p>Yakin ingin meluluskan</p>
+                    @endif
+                    <p>{{ $student->nama_lengkap }}?</p>
                 </h5>
             </div>
             <div class="modal-footer centerer">
+
                 <div class = "confirm-button">
                     <button type="button" class="btn btn-secondary editbuttoncancel" data-dismiss="modal" id = "disagree-button">Tidak</button>
-                    <button type="button" class="btn editbutton" id = "agree-button">Ya</button>
+                    @if($student->lulus)
+                    <form method="POST" action="{{ route('profile.edit.ungraduate', ['student_id' => $student->id]) }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn editbutton" id = "agree-button">Ya</button>
+                    </form>
+                    @else
+                    <form method="POST" action="{{ route('profile.edit.graduate', ['student_id' => $student->id]) }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn editbutton" id = "agree-button">Ya</button>
+                    </form>
+                    @endif
                 </div>
             </div>
             </div>
@@ -49,13 +70,21 @@
     <!-- alert agree -->
     <div class="alert alert-success" id="agree" role="alert" aria-hidden="true">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @if($student->lulus)
+        <strong>Siswa </strong>tidak diluluskan.
+        @else
         <strong>Siswa </strong>diluluskan.
+        @endif
     </div>
 
     <!-- alert disagree -->
     <div class="alert alert-danger" id="disagree" role="alert" aria-hidden="true">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Siswa </strong>tidak diluluskan.
+        @if($student->lulus)
+        <strong>Siswa </strong>tetap diluluskan.
+        @else
+        <strong>Siswa </strong>tetap tidak diluluskan.
+        @endif
     </div>
 
     <div class="d-flex justify-content-center">
@@ -67,7 +96,7 @@
                     @else
                     <img src="{{asset('picture/perempuan.png')}}" class="profilepicture" alt="perempuan">
                     @endif
-                    <a href="#" class="linkeditprofile">
+                    <a href="{{ route('profile.edit.student.form', ['student_id' => $student->id]) }}" class="linkeditprofile">
                         <div class="editprofile">
                             <p class="paragrapheditprofile">Edit Profile</p>
                         </div>
@@ -131,7 +160,7 @@
                 <div class ="d-flex align-items-center margin-profile sizingprof">
                     <div>
                         <img src="{{asset('picture/mom.png')}}" class="profilepicture" alt="Mom">
-                        <a href="#" class="linkeditprofile">
+                        <a href="{{ route('profile.edit.mother.form', ['student_id' => $student->id]) }}" class="linkeditprofile">
                             <div class="editprofile">
                                 <p class="paragrapheditprofile">Edit Profile</p>
                             </div>
@@ -191,7 +220,7 @@
                 <div class ="d-flex align-items-center margin-profile sizingprof">
                     <div>
                         <img src="{{asset('picture/dad.png')}}" class="profilepicture" alt="Dad">
-                        <a href="#" class="linkeditprofile">
+                        <a href="{{ route('profile.edit.father.form', ['student_id' => $student->id]) }}" class="linkeditprofile">
                             <div class="editprofile">
                                 <p class="paragrapheditprofile">Edit Profile</p>
                             </div>
@@ -242,7 +271,7 @@
     <div class = "parent-profile d-flex agenda-kegiatan">
             <p class = "underliner-parent-profile">Agenda Kegiatan</p>
         </div>
-    
+
         <div class="agenda-content">
             <div class = "row justify-content-around ">
                 <div class="col-sm-11 col-auto agenda">
@@ -253,11 +282,11 @@
                 </div>
             </div>
         </div>
-    
+
         <div class = "parent-profile d-flex pengumuman">
             <p class = "underliner-parent-profile">Pengumuman</p>
         </div>
-    
+
         <div class="agenda-content">
             <div class = "row justify-content-around ">
                 <div class="col-sm-11 col-auto agenda">
@@ -268,7 +297,7 @@
                 </div>
             </div>
         </div>
-    
+
 
 
 
@@ -281,7 +310,7 @@
     <script>
 
         function modalConfirm(callback){
-        
+
         $("#btn-passconfirm").on("click", function(){
             $("#studentPassModal").modal('show');
         });
@@ -290,7 +319,7 @@
             callback(true);
             $("#studentPassModal").modal('hide');
         });
-        
+
         $("#disagree-button").on("click", function(){
             callback(false);
             $("#studentPassModal").modal('hide');

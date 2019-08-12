@@ -158,7 +158,7 @@ class UserTableSeeder extends Seeder
             $student->keadaan_khusus    = $faker->word;
             $student->sifat_baik        = $faker->word;
             $student->sifat_diperhatikan= $faker->word;
-            $student->lulus             = $faker->boolean($chanceOfGettingTrue = 90);
+            $student->lulus             = $faker->boolean($chanceOfGettingTrue = 5);
             $user->student()->save($student);
             // $student->save();
 
