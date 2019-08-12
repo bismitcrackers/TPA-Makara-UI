@@ -49,6 +49,14 @@ class PageController extends Controller
         return view('pages.ShowPengumuman');
     }
 
+    public function jadwalPerBulan() {
+        return view('pages.JadwalPerBulan');
+    }
+
+    public function tambahJadwalPerBulan() {
+        return view('pages.TambahJadwalPerBulan');
+    }
+
 
 
 // BUKU PENGHUBUNG
