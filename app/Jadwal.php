@@ -15,8 +15,7 @@ class Jadwal extends Model
      * @var array
      */
     protected $fillable = [
-        'pembuat', 'url_lampiran',
-        'tanggal_berlaku', 'tanggal_berakhir'
+        'pembuat', 'url_lampiran', 'kelas'
     ];
 
 }
