@@ -20,6 +20,8 @@ Route::get('/editprofileayah', 'PageController@editProfileAyah')->name('editProf
 Route::get('/pengumumankegiatan', 'PageController@pengumumanKegiatan')->name('pengumumanKegiatan');
 Route::get('/ubahpengumuman', 'PageController@ubahPengumuman')->name('ubahPengumuman');
 Route::get('/showpengumuman', 'PageController@showPengumuman')->name('showPengumuman');
+Route::get('/jadwalperbulan', 'PageController@jadwalPerBulan')->name('jadwalPerBulan');
+Route::get('/tambahjadwalperbulan', 'PageController@tambahJadwalPerBulan')->name('tambahJadwalPerBulan');
 
 Auth::routes();
 
