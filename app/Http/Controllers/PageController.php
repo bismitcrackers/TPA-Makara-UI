@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Carbon\Carbon;
 use App\Berita;
+use App\Jadwal;
 use App\Comments;
 use App\DailyBook;
 use App\Student;
@@ -348,6 +349,20 @@ class PageController extends Controller
     public function sendComments($daily_book_id) {
         if (auth()->user() == null) {return redirect()->route('login');}
         return view('pages.PostBukuPenghubungComments', ['daily_book_id' => $daily_book_id]);
+    }
+
+// SCHEDULE
+
+    public function scheduleForm($kelas) {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $schedule = Jadwal::where('kelas', $kelas)->first();
+        return view('pages.TambahJadwalPerBulan', ['kelas' => $kelas, 'schedule' => $schedule]);
+    }
+
+    public function scheduleList($kelas) {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $schedule = Jadwal::where('kelas', $kelas)->first();
+        return view('pages.JadwalPerBulan', ['kelas' => $kelas, 'schedule' => $schedule]);
     }
 
 }

@@ -34,13 +34,13 @@ class JadwalController extends Controller
         } else if ($user->roles()->first()->name == 'Co-fasilitator') {
             return redirect()->route('cofasilitator.home');
         } else {
-            if ($request->has('lampiran')) {
+            if ($request->has('schedule')) {
                 $image = WebHelper::saveImageToPublic($request->file('schedule'), '/picture/schedule');
             }
             $schedule = new Jadwal;
             $schedule->pembuat             = $user->name;
             $schedule->kelas               = $request->kelas;
-            if ($request->has('lampiran')) {
+            if ($request->has('schedule')) {
                 $schedule->url_lampiran    = $image;
             }
             $schedule->save();
@@ -62,21 +62,13 @@ class JadwalController extends Controller
         } else if ($user->roles()->first()->name == 'Co-fasilitator') {
             return redirect()->route('cofasilitator.home');
         } else {
-            if ($request->has('lampiran')) {
+            $jadwal = Jadwal::where('kelas', $request->kelas)->first();
+            if($request->hasFile('schedule')){
                 $image = WebHelper::saveImageToPublic($request->file('schedule'), '/picture/schedule');
-                $jadwal = Jadwal::where('id', $id)->update(
-                    [
-                        'pembuat'             => $user->name,
-                        'url_lampiran'        => $image,
-                    ]
-                );
-            } else {
-                $jadwal = Jadwal::where('id', $id)->update(
-                    [
-                        'pembuat'             => $user->name,
-                    ]
-                );
+                $jadwal->url_lampiran = $image;
             }
+            $jadwal->pembuat = $user->name;
+            $jadwal->save();
             return redirect()->route('success');
         }
     }

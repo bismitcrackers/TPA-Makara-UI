@@ -72,7 +72,14 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
     Route::get('/DayCare/students/', 'PageController@studentsProfileDayCare')->name('dc.student');
     Route::get('/KelompokBermain/students', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
-    Route::group(['prefix'=>'{student_id}','as'=>'edit.'], function(){
+    Route::group(['prefix'=>'schedule','as'=>'schedule.'], function(){
+        Route::get('/{kelas}/form', 'PageController@scheduleForm')->name('form');
+        Route::get('/{kelas}/list', 'PageController@scheduleList')->name('list');
+        Route::post('/add', 'JadwalController@addSchedule')->name('add');
+        Route::post('/edit/{id}', 'JadwalController@editSchedule')->name('edit');
+        Route::delete('/delete/{id}', 'JadwalController@deleteSchedule')->name('delete');
+    });
+    Route::group(['prefix'=>'edit/{student_id}','as'=>'edit.'], function(){
         Route::get('/details', 'PageController@profileDetails')->name('details');
         Route::get('/student', 'StudentController@editStudentProfileForm')->name('student.form');
         Route::get('/father', 'StudentController@editFatherProfileForm')->name('father.form');
