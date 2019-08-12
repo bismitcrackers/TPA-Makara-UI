@@ -16,6 +16,13 @@
     <form action="">
         <input onkeyup="searchFunction()" id = "userInput" class="form-control search-siswa" type="search" placeholder="Cari Siswa {{ $class }}">
     </form>
+
+    <div class="d-flex selectstudent-feature justify-content-between">
+        <button type="button" class="btn announcement">Pengumuman</button>
+        <button type="button" class="btn btn-success schedule">Jadwal</button>
+    </div>
+
+
     <div class="container">
         <?php $i=1; ?>
         <div class="row justify-content-around">

@@ -14,6 +14,50 @@
         </h1>
     </div>
 
+    <div class = "d-flex justify-content-end">
+        <div>
+            <button type="button" id = "btn-passconfirm" class="btn btn-danger pass" data-toggle="modal" data-target="#studentPassModal">Lulus</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="studentPassModal" tabindex="-1" role="dialog" aria-labelledby="studentPassModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="close closepass" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="studentPassModalTitle">
+                    <p>Yakin ingin meluluskan</p> 
+                    <p>Abyan Althaf K?</p> 
+                </h5>
+            </div>
+            <div class="modal-footer centerer">
+                <div class = "confirm-button">
+                    <button type="button" class="btn btn-secondary editbuttoncancel" data-dismiss="modal" id = "disagree-button">Tidak</button>
+                    <button type="button" class="btn editbutton" id = "agree-button">Ya</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- alert agree -->
+    <div class="alert alert-success" id="agree" role="alert" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Siswa </strong>diluluskan.
+    </div>
+
+    <!-- alert disagree -->
+    <div class="alert alert-danger" id="disagree" role="alert" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Siswa </strong>tidak diluluskan.
+    </div>
+
     <div class="d-flex justify-content-center">
         <div class="d-flex flex-row justify-content-around boxprofile p-3">
             <div class ="d-flex align-items-center margin-profile sizingprof">
@@ -195,6 +239,36 @@
         </div>
     </div>
 
+    <div class = "parent-profile d-flex agenda-kegiatan">
+            <p class = "underliner-parent-profile">Agenda Kegiatan</p>
+        </div>
+    
+        <div class="agenda-content">
+            <div class = "row justify-content-around ">
+                <div class="col-sm-11 col-auto agenda">
+                    Kerja Bakti di Halaman TPA Makara
+                </div>
+                <div class="col-sm-1 col-auto agenda-detail">
+                        Detail
+                </div>
+            </div>
+        </div>
+    
+        <div class = "parent-profile d-flex pengumuman">
+            <p class = "underliner-parent-profile">Pengumuman</p>
+        </div>
+    
+        <div class="agenda-content">
+            <div class = "row justify-content-around ">
+                <div class="col-sm-11 col-auto agenda">
+                    Kerja Bakti di Halaman TPA Makara
+                </div>
+                <div class="col-sm-1 col-auto agenda-detail">
+                        Detail
+                </div>
+            </div>
+        </div>
+    
 
 
 
@@ -203,5 +277,40 @@
 @endsection
 
 @section('extra-js')
+
+    <script>
+
+        function modalConfirm(callback){
+        
+        $("#btn-passconfirm").on("click", function(){
+            $("#studentPassModal").modal('show');
+        });
+
+        $("#agree-button").on("click", function(){
+            callback(true);
+            $("#studentPassModal").modal('hide');
+        });
+        
+        $("#disagree-button").on("click", function(){
+            callback(false);
+            $("#studentPassModal").modal('hide');
+        });
+        };
+
+        modalConfirm(function(confirm){
+        if(confirm){
+            $("#agree").fadeTo(500, 1).slideDown(500);
+            window.setTimeout(function() {
+            $("#agree").fadeTo(500, 0).slideUp(500);
+            }, 4000)
+        }else{
+            $("#disagree").fadeTo(500, 1).slideDown(500);
+            window.setTimeout(function() {
+            $("#disagree").fadeTo(500, 0).slideUp(500);
+            }, 4000)
+        }
+        });
+
+    </script>
 
 @endsection

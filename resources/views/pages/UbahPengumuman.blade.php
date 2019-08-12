@@ -1,6 +1,6 @@
 @extends('layout/master')
 
-@section('title', 'Edit Profile Ayah')
+@section('title', 'Edit Profile Siswa')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -10,49 +10,37 @@
 
     <div class="d-flex justify-content-center">
         <h1 class = "bukupenghubung-title underliner">
-            Abyan Dad's Profile
+            Ubah Pengumuman
         </h1>
     </div>
 
     <form >
-        <div>
-            <div class="form-group">
-                <label for="nama" class="editlabel">Nama</label>
-                <input name="nama" type="text" class="form-control editinput" id="nama" aria-describedby="nama siswa" placeholder="Nama Siswa" autocapitalize="words" required>
-            </div>
-            <div class="form-group">
-                <label for="datepicker" class="editlabel">TANGGAL LAHIR</label>
-                <input name="tanggal" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
-            </div>
-            <div class="form-group">
-                    <label for="pendidikan-terakhir" class="editlabel">PENDIDIKAN TERAKHIR</label>
-                    <input name="pendidikan-terakhir" type="text" class="form-control editinput" id="pendidikan-terakhir" aria-describedby="pendidikan-terakhir" placeholder="Pendidikan Terakhir" required>
-            </div>
-            <div class="form-group">
-                <label for="pekerjaan" class="editlabel">PEKERJAAN</label>
-                <input name="pekerjaan" type="text" class="form-control editinput" id="pekerjaan" aria-describedby="pekerjaan" placeholder="Pekerjaan" required>
-            </div>
-            <div class="form-group">
-                <label for="alamat-kantor" class="editlabel">ALAMAT KANTOR</label>
-                <input name="alamat-kantor" type="text" class="form-control editinput" id="alamat-kantor" aria-describedby="alamat-kantor" placeholder="Alamat Kantor" required>
-            </div>
-            <div class="form-group">
-                <label for="email" class="editlabel">EMAIL</label>
-                <input name="email" type="email" class="form-control editinput" id="email" aria-describedby="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                    <label for="nomor telepon" class="editlabel">NO TELEPON</label>
-                    <input name="nomor telepon" type="text" class="form-control editinput" id="nomor telepon" aria-describedby="Nomor Telepon" placeholder="nomor telepon" required>
-            </div>
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
-                    Cancel
-                </button>
-                <button type="button" class="btn btn-primary editbutton d-flex justify-content-center">
+        <div class="form-group">
+            <label for="judul" class="editlabel">JUDUL</label>
+            <input name="judul" type="text" class="form-control editinput" id="judul" aria-describedby="judul" placeholder="Judul" autocapitalize="words" required>
+        </div>
+        <div class="form-group">
+            <label for="deskripsi" class="editlabel">DESKRIPSI</label>
+            <input name="deskripsi" type="text" placeholder = "Deskripsi" class="form-control editinput" id = "deskripsi" required>
+        </div>
+        <div class="form-group">
+            <label for="datepicker" class="editlabel">TANGGAL KEGIATAN</label>
+            <input name="tanggalKegiatan" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
+        </div>
+        <div class="form-group">
+            <label for="jeniskegiatan" class="editlabel">JENIS KEGIATAN</label>
+            <input name="jeniskegiatan" type="text" class="form-control editinput" id="jeniskegiatan" aria-describedby="jenis kegiatan" placeholder="Jenis Kegiatan" required>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
+                Cancel
+            </button>
+            <button type="button" class="btn btn-primary editbutton d-flex justify-content-center">
+                <div class="d-flex align-items-center">
                     <p>Save</p>
                     <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-                </button>
-            </div>
+                </div>
+            </button>
         </div>
     </form>
 @endsection
