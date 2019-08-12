@@ -20,12 +20,14 @@
         @endif
     </div>
 
+    @if($schedule == null)
     <div href="" class="tambahpengumuman d-flex justify-content-center">
         <a href="{{ route('profile.schedule.form', ['kelas' => $kelas]) }}">
             <span>Tambah Jadwal</span>
             <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
         </a>
     </div>
+    @endif
 
     @if($schedule != null)
     <div class="d-flex justify-content-center">

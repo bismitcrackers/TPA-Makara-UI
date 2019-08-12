@@ -10,6 +10,7 @@ app/storage/
 public/storage
 public/picture/daily_books
 public/picture/news
+public/picture/schedule
 public/hot
 storage/*.key
 .env.*.php
