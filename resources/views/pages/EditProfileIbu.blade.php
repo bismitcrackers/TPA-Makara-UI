@@ -10,45 +10,46 @@
 
     <div class="d-flex justify-content-center">
         <h1 class = "bukupenghubung-title underliner">
-            Abyan Mom's Profile
+             {{ $student->nama_panggilan }} Mom's Profile
         </h1>
     </div>
 
-    <form >
+    <form method="POST" action="{{ route('profile.edit.mother.post', ['student_id' => $student->id]) }}">
+        {{ csrf_field() }}
         <div>
             <div class="form-group">
                 <label for="nama" class="editlabel">Nama</label>
-                <input name="nama" type="text" class="form-control editinput" id="nama" aria-describedby="nama siswa" placeholder="Nama Siswa" autocapitalize="words" required>
+                <input value="{{ $mom->nama_lengkap }}" name="namaLengkapIbu" type="text" class="form-control editinput" id="nama" aria-describedby="nama siswa" placeholder="Nama Siswa" autocapitalize="words" required>
             </div>
             <div class="form-group">
                 <label for="datepicker" class="editlabel">TANGGAL LAHIR</label>
-                <input name="tanggal" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
+                <input value="{{ $mom->tanggal_lahir }}" name="tanggalLahirIbu" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
             </div>
             <div class="form-group">
                     <label for="pendidikan-terakhir" class="editlabel">PENDIDIKAN TERAKHIR</label>
-                    <input name="pendidikan-terakhir" type="text" class="form-control editinput" id="pendidikan-terakhir" aria-describedby="pendidikan-terakhir" placeholder="Pendidikan Terakhir" required>
+                    <input value="{{ $mom->pendidikan }}" name="pendidikanTerakhirIbu" type="text" class="form-control editinput" id="pendidikan-terakhir" aria-describedby="pendidikan-terakhir" placeholder="Pendidikan Terakhir" required>
             </div>
             <div class="form-group">
                 <label for="pekerjaan" class="editlabel">PEKERJAAN</label>
-                <input name="pekerjaan" type="text" class="form-control editinput" id="pekerjaan" aria-describedby="pekerjaan" placeholder="Pekerjaan" required>
+                <input value="{{ $mom->pekerjaan }}" name="pekerjaanIbu" type="text" class="form-control editinput" id="pekerjaan" aria-describedby="pekerjaan" placeholder="Pekerjaan" required>
             </div>
             <div class="form-group">
                 <label for="alamat-kantor" class="editlabel">ALAMAT KANTOR</label>
-                <input name="alamat-kantor" type="text" class="form-control editinput" id="alamat-kantor" aria-describedby="alamat-kantor" placeholder="Alamat Kantor" required>
+                <input value="{{ $mom->alamat_kantor }}" name="alamatKerjaIbu" type="text" class="form-control editinput" id="alamat-kantor" aria-describedby="alamat-kantor" placeholder="Alamat Kantor" required>
             </div>
             <div class="form-group">
                 <label for="email" class="editlabel">EMAIL</label>
-                <input name="email" type="email" class="form-control editinput" id="email" aria-describedby="email" placeholder="Email" required>
+                <input value="{{ $mom->email }}" name="email" type="emailIbu" class="form-control editinput" id="email" aria-describedby="email" placeholder="Email" required>
             </div>
             <div class="form-group">
                     <label for="nomor telepon" class="editlabel">NO TELEPON</label>
-                    <input name="nomor telepon" type="text" class="form-control editinput" id="nomor telepon" aria-describedby="Nomor Telepon" placeholder="nomor telepon" required>
+                    <input value="{{ $mom->no_handphone }}" name="nomorHpIbu" type="text" class="form-control editinput" id="nomor telepon" aria-describedby="Nomor Telepon" placeholder="nomor telepon" required>
             </div>
             <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                     Cancel
                 </button>
-                <button type="button" class="btn btn-primary editbutton d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary editbutton d-flex justify-content-center">
                     <p>Save</p>
                     <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
                 </button>

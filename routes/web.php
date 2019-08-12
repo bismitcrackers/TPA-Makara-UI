@@ -70,7 +70,17 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
     Route::get('/DayCare/students/', 'PageController@studentsProfileDayCare')->name('dc.student');
     Route::get('/KelompokBermain/students', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
-    Route::get('/details/{student_id}', 'PageController@profileDetails')->name('details');
+    Route::group(['prefix'=>'{student_id}','as'=>'edit.'], function(){
+        Route::get('/details', 'PageController@profileDetails')->name('details');
+        Route::get('/student', 'StudentController@editStudentProfileForm')->name('student.form');
+        Route::get('/father', 'StudentController@editFatherProfileForm')->name('father.form');
+        Route::get('/mother', 'StudentController@editMotherProfileForm')->name('mother.form');
+        Route::post('/student', 'StudentController@editStudentProfile')->name('student.post');
+        Route::post('/father', 'StudentController@editFatherProfile')->name('father.post');
+        Route::post('/mother', 'StudentController@editMotherProfile')->name('mother.post');
+        Route::post('/graduate', 'StudentController@graduateStudent')->name('graduate');
+        Route::post('/ungraduate', 'StudentController@cancelGraduateStudent')->name('ungraduate');
+    });
 });
 
 Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
@@ -90,30 +100,20 @@ Route::group(['prefix'=>'dailyBook', 'as'=>'dailyBook.'], function(){
     });
 });
 
-Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
-    Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
-    Route::get('/students', 'PageController@studentsProfileDayCare')->name('dc.student');
-    Route::get('/students', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
-    Route::group(['prefix'=>'{student_id}','as'=>'edit.'], function(){
-        Route::get('/details', 'PageController@profileDetails')->name('details');
-        Route::get('/student', 'StudentController@editStudentProfileForm')->name('student.form');
-        Route::get('/father', 'StudentController@editFatherProfileForm')->name('father.form');
-        Route::get('/mother', 'StudentController@editMotherProfileForm')->name('mother.form');
-        Route::post('/student', 'StudentController@editStudentProfile')->name('student.post');
-        Route::post('/father', 'StudentController@editFatherProfile')->name('father.post');
-        Route::post('/mother', 'StudentController@editMotherProfile')->name('mother.post');
-        Route::post('/graduate', 'StudentController@graduateStudent')->name('graduate');
-        Route::post('/ungraduate', 'StudentController@cancelGraduateStudent')->name('ungraduate');
-    });
-});
+// Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
+//     Route::get('/typeclass', 'PageController@selectClassProfile')->name('typeclass');
+//     Route::get('/students', 'PageController@studentsProfileDayCare')->name('dc.student');
+//     Route::get('/students', 'PageController@studentsProfileKelompokBermain')->name('kb.student');
+//
+// });
 
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/home', 'HomeController@administratorHome')->name('home');
     Route::group(['prefix'=>'schedule', 'as'=>'schedule.'], function(){
         Route::post('/add', 'JadwalController@addSchedule')->name('add');
         Route::post('/edit', 'JadwalController@editSchedule')->name('edit');
-        Route::delete('/delete', 'JadwalController@deleteSchedule')->name('delete')
-    }
+        Route::delete('/delete', 'JadwalController@deleteSchedule')->name('delete');
+    });
     Route::resource('berita', 'BeritaController');
     Route::resource('pengumuman','PengumumanController');
 });

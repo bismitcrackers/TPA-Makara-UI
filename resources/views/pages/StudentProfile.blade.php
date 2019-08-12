@@ -32,8 +32,8 @@
             </div>
             <div class="modal-header">
                 <h5 class="modal-title" id="studentPassModalTitle">
-                    <p>Yakin ingin meluluskan</p> 
-                    <p>Abyan Althaf K?</p> 
+                    <p>Yakin ingin meluluskan</p>
+                    <p>Abyan Althaf K?</p>
                 </h5>
             </div>
             <div class="modal-footer centerer">
@@ -67,7 +67,7 @@
                     @else
                     <img src="{{asset('picture/perempuan.png')}}" class="profilepicture" alt="perempuan">
                     @endif
-                    <a href="#" class="linkeditprofile">
+                    <a href="{{ route('profile.edit.student.form', ['student_id' => $student->id]) }}" class="linkeditprofile">
                         <div class="editprofile">
                             <p class="paragrapheditprofile">Edit Profile</p>
                         </div>
@@ -131,7 +131,7 @@
                 <div class ="d-flex align-items-center margin-profile sizingprof">
                     <div>
                         <img src="{{asset('picture/mom.png')}}" class="profilepicture" alt="Mom">
-                        <a href="#" class="linkeditprofile">
+                        <a href="{{ route('profile.edit.mother.form', ['student_id' => $student->id]) }}" class="linkeditprofile">
                             <div class="editprofile">
                                 <p class="paragrapheditprofile">Edit Profile</p>
                             </div>
@@ -191,7 +191,7 @@
                 <div class ="d-flex align-items-center margin-profile sizingprof">
                     <div>
                         <img src="{{asset('picture/dad.png')}}" class="profilepicture" alt="Dad">
-                        <a href="#" class="linkeditprofile">
+                        <a href="{{ route('profile.edit.father.form', ['student_id' => $student->id]) }}" class="linkeditprofile">
                             <div class="editprofile">
                                 <p class="paragrapheditprofile">Edit Profile</p>
                             </div>
@@ -242,7 +242,7 @@
     <div class = "parent-profile d-flex agenda-kegiatan">
             <p class = "underliner-parent-profile">Agenda Kegiatan</p>
         </div>
-    
+
         <div class="agenda-content">
             <div class = "row justify-content-around ">
                 <div class="col-sm-11 col-auto agenda">
@@ -253,11 +253,11 @@
                 </div>
             </div>
         </div>
-    
+
         <div class = "parent-profile d-flex pengumuman">
             <p class = "underliner-parent-profile">Pengumuman</p>
         </div>
-    
+
         <div class="agenda-content">
             <div class = "row justify-content-around ">
                 <div class="col-sm-11 col-auto agenda">
@@ -268,7 +268,7 @@
                 </div>
             </div>
         </div>
-    
+
 
 
 
@@ -281,7 +281,7 @@
     <script>
 
         function modalConfirm(callback){
-        
+
         $("#btn-passconfirm").on("click", function(){
             $("#studentPassModal").modal('show');
         });
@@ -290,7 +290,7 @@
             callback(true);
             $("#studentPassModal").modal('hide');
         });
-        
+
         $("#disagree-button").on("click", function(){
             callback(false);
             $("#studentPassModal").modal('hide');

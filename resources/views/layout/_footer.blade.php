@@ -56,7 +56,7 @@
         @elseif(auth()->user()->roles()->first()->name == 'Guru')
         <a href="{{ route('profile.kb.student') }}">
         @elseif(auth()->user()->roles()->first()->name == 'Orangtua')
-        <a href="{{ route('profile.details', ['student_id' => auth()->user()->student()->first()->id]) }}">
+        <a href="{{ route('profile.edit.details', ['student_id' => auth()->user()->student()->first()->id]) }}">
         @endif
             <div class= "nav-pane">
                 <img src="{{asset('svg/studentprofile.svg')}}" alt="studentprofile">

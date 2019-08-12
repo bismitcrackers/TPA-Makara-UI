@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Student;
-
+use App\Helper\WebHelper;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -23,7 +25,7 @@ class StudentController extends Controller
             return redirect()->route('login');
         } else {
             $student = Student::where('id', $student_id)->first();
-            return view('pages.EditStudentForm', ['student' => $student]);
+            return view('pages.EditProfileSiswa', ['student' => $student]);
         }
     }
 
@@ -34,7 +36,7 @@ class StudentController extends Controller
         } else {
             $student = Student::where('id', $student_id)->first();
             $mom = $student->user()->first()->parents()->where('peran', 'Ibu')->first();
-            return view('pages.EditMotherForm', ['mom' => $mom]);
+            return view('pages.EditProfileIbu', ['student' => $student, 'mom' => $mom]);
         }
     }
 
@@ -45,11 +47,11 @@ class StudentController extends Controller
         } else {
             $student = Student::where('id', $student_id)->first();
             $dad = $student->user()->first()->parents()->where('peran', 'Ayah')->first();
-            return view('pages.EditFatherForm', ['dad' => $dad]);
+            return view('pages.EditProfileAyah', ['student' => $student, 'dad' => $dad]);
         }
     }
 
-    public function editStudentProfile($student_id) {
+    public function editStudentProfile(Request $request, $student_id) {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
@@ -71,7 +73,7 @@ class StudentController extends Controller
         }
     }
 
-    public function editMotherProfile($student_id) {
+    public function editMotherProfile(Request $request, $student_id) {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
@@ -92,7 +94,7 @@ class StudentController extends Controller
         }
     }
 
-    public function editFatherProfile($student_id) {
+    public function editFatherProfile(Request $request, $student_id) {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');

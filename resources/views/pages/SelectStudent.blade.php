@@ -35,9 +35,9 @@
                 @elseif($route == 'kelompokBermainDailyBook')
                     <a href="{{ route('dailyBook.kb.month', ['student_id' => $student->id]) }}">
                 @elseif($route == 'dayCareProfile')
-                    <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
+                    <a href="{{ route('profile.edit.details', ['student_id' => $student->id]) }}">
                 @elseif($route == 'kelompokBermainProfile')
-                    <a href="{{ route('profile.details', ['student_id' => $student->id]) }}">
+                    <a href="{{ route('profile.edit.details', ['student_id' => $student->id]) }}">
                 @endif
                 @if($student->jenis_kelamin == 'laki-laki')
                         <img src="{{ asset('picture/laki.png') }}" alt="" class= "photosiswa">

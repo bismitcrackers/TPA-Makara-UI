@@ -10,61 +10,72 @@
 
     <div class="d-flex justify-content-center">
         <h1 class = "bukupenghubung-title underliner">
-            Abyan's Profile
+             {{ $student->nama_panggilan }}'s Profile
         </h1>
     </div>
 
-    <form >
+    <form method="POST" action="{{ route('profile.edit.student.post', ['student_id' => $student->id]) }}">
+        {{ csrf_field() }}
         <div>
             <div class="form-group">
                 <label for="nama" class="editlabel">NAMA</label>
-                <input name="nama" type="text" class="form-control editinput" id="nama" aria-describedby="nama siswa" placeholder="Nama Siswa" autocapitalize="words" required>
+                <input value="{{ $student->nama_lengkap }}" name="namaLengkap" type="text" class="form-control editinput" id="nama" aria-describedby="nama siswa" placeholder="Nama Siswa" autocapitalize="words" required>
             </div>
             <div class="form-group">
                 <label for="nama-panggilan" class="editlabel">NAMA PANGGILAN</label>
-                <input name="nama-panggilan" type="text" class="form-control editinput" id = "nama-panggilan" required>
+                <input value="{{ $student->nama_panggilan }}" name="namaPanggilan" type="text" class="form-control editinput" id = "nama-panggilan" required>
             </div>
             <div class="form-group">
                 <label for="jenis-kelamin" class="editlabel">JENIS KELAMIN</label>
                 <div class="col-auto">
-                    <select class="form-control" id="jenis-kelamin" name="jenis-kelamin" required>
-                        <option value="laki-laki">👦 Laki-laki</option>
+                    <select class="form-control" id="jenis-kelamin" name="jenisKelamin" required>
+                        @if( $student->jenis_kelamin == "laki-laki" )
+                        <option value="laki-laki" selected>👦 Laki-laki</option>
                         <option value="perempuan">👧 Perempuan</option>
+                        @else
+                        <option value="laki-laki">👦 Laki-laki</option>
+                        <option value="perempuan" selected>👧 Perempuan</option>
+                        @endif
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="tempat-lahir" class="editlabel">TEMPAT LAHIR</label>
-                <input name="tempat lahir" type="text" class="form-control editinput" id="tempat-lahir" aria-describedby="tempat lahir" placeholder="Tempat Lahir" required>
+                <input  value="{{ $student->tempat_lahir }}" name="tempatLahir" type="text" class="form-control editinput" id="tempat-lahir" aria-describedby="tempat lahir" placeholder="Tempat Lahir" required>
             </div>
             <div class="form-group">
                 <label for="datepicker" class="editlabel">TANGGAL LAHIR</label>
-                <input name="tanggal" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
+                <input  value="{{ $student->tanggal_lahir }}" name="tanggalLahir" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
             </div>
             <div class="form-group">
                 <label for="agama" class="editlabel">AGAMA</label>
-                <input name="agama" type="text" class="form-control editinput" id="agama" aria-describedby="agama" placeholder="Agama" required>
+                <input value="{{ $student->agama }}"  name="agama" type="text" class="form-control editinput" id="agama" aria-describedby="agama" placeholder="Agama" required>
             </div>
             <div class="form-group">
                 <label for="alamat-rumah" class="editlabel">ALAMAT RUMAH</label>
-                <input name="alamat-rumah" type="text" class="form-control editinput" id="alamat-rumah" aria-describedby="alamat-rumah" placeholder="Alamat Rumah" required>
+                <input value="{{ $student->alamat_rumah }}"  name="alamatRumah" type="text" class="form-control editinput" id="alamat-rumah" aria-describedby="alamat-rumah" placeholder="Alamat Rumah" required>
             </div>
             <div class="form-group">
                 <label for="telepon-rumah" class="editlabel">TELEPON RUMAH</label>
-                <input name="telepon-rumah" type="text" class="form-control editinput" id="telepon-rumah" aria-describedby="telepon-rumah" placeholder="Telepon Rumah" required>
+                <input value="{{ $student->telepon_rumah }}"  name="teleponRumah" type="text" class="form-control editinput" id="telepon-rumah" aria-describedby="telepon-rumah" placeholder="Telepon Rumah" required>
             </div>
             <div class="form-group">
                 <label for="kelas" class="editlabel">KELAS</label>
                 <select class="form-control" id="kelas" name="kelas" required>
-                    <option value="day care">Day Care</option>
+                    @if( $student->kelas == "Day Care" )
+                    <option value="day care" selected>Day Care</option>
                     <option value="kelompok bermain">Kelompok Bermain</option>
+                    @elseif( $student->kelas == "Kelompok Bermain" )
+                    <option value="day care">Day Care</option>
+                    <option value="kelompok bermain" selected>Kelompok Bermain</option>
+                    @endif
                 </select>
             </div>
             <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                     Cancel
                 </button>
-                <button type="button" class="btn btn-primary editbutton d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary editbutton d-flex justify-content-center">
                     <div class="d-flex align-items-center">
                         <p>Save</p>
                         <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
