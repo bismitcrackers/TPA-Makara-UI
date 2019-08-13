@@ -32,7 +32,11 @@
             <div class="modal-footer centerer">
                 <div class = "confirm-button">
                     <button type="button" class="btn btn-danger canceldelete" data-dismiss="modal" id = "disagree-button">Tidak</button>
-                    <button type="button" class="btn delete" id = "agree-button">Ya</button>
+                    <form method="POST" action="test" id="formDelete">
+                         {{ csrf_field() }}
+                         {{ method_field('DELETE') }}
+                         <button type="submit" class="btn delete" id = "agree-button">Ya</button>
+                     </form>
                 </div>
             </div>
             </div>
@@ -61,24 +65,21 @@
             <div class="col-sm-9 col-auto agenda">
                 {{ $a->judul }}
             </div>
-            <a href="{{ route('profile.pengumuman.show', ['kelas' => $kelas, 'id' => $id]) }}">
+            <a href="{{ route('profile.pengumuman.show', ['kelas' => $kelas, 'id' => $a->id]) }}">
                 <div class="col-sm-1 col-auto agenda-detail">
                     Detail
                 </div>
             </a>
             <div class="col-sm-2 col-auto centerer">
-                <a href="{{ route('profile.pengumuman.form.edit', ['kelas' => $kelas, 'id' => $id]) }}">
+                <a href="{{ route('profile.pengumuman.form.edit', ['kelas' => $kelas, 'id' => $a->id]) }}">
                     <span>
                         <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
                     </span>
                 </a>
-                <form method="POST" action="{{ route('admin.pengumuman.destroy', ['pengumuman' => $a->id]) }}">
-                     {{ csrf_field() }}
-                     {{ method_field('DELETE') }}
-                    <span class = "deleteKegiatan">
+                    <span class = "deleteKegiatan" onclick="deleteId({{ $a->id }})">
                         <img src="{{asset('svg/deleteIcon.svg')}}" alt="Delete">
                     </span>
-                </a>
+
             </div>
         </div>
     </div>
@@ -102,24 +103,20 @@
             <div class="col-sm-9 col-auto agenda">
                 {{ $p->judul }}
             </div>
-            <a href="{{ route('profile.pengumuman.show', ['kelas' => $kelas, 'id' => $id]) }}">
+            <a href="{{ route('profile.pengumuman.show', ['kelas' => $kelas, 'id' => $p->id]) }}">
                 <div class="col-sm-1 col-auto agenda-detail">
                     Detail
                 </div>
             </a>
             <div class="col-sm-2 col-auto centerer">
-                <a href="{{ route('profile.pengumuman.form.edit', ['kelas' => $kelas, 'id' => $id]) }}">
+                <a href="{{ route('profile.pengumuman.form.edit', ['kelas' => $kelas, 'id' => $p->id]) }}">
                     <span>
                         <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
                     </span>
                 </a>
-                <form method="POST" action="{{ route('admin.pengumuman.destroy', ['pengumuman' => $p->id]) }}">
-                     {{ csrf_field() }}
-                     {{ method_field('DELETE') }}
-                    <span class = "deleteKegiatan">
+                    <span class = "deleteKegiatan" onclick="deleteId({{ $p->id }})">
                         <img src="{{asset('svg/deleteIcon.svg')}}" alt="Delete">
                     </span>
-                </form>
             </div>
         </div>
     </div>
@@ -140,12 +137,20 @@
 
 @section('extra-js')
 
+<script type="text/javascript" src="{{ asset('js/pengumuman.js')}}">
+
+</script>
+
 <script>
+
     function modalConfirm(callback){
 
-        $(".deleteKegiatan").on("click", function(){
-            $("#pengumumanKegiatanModal").modal('show');
-        });
+        // $(".deleteKegiatan").on("click", function(){
+        //     var id = $(this).attr("id");
+        //     console.log(id);
+        //     $("#pengumumanKegiatanModal").modal('show');
+        //     $('#formDelete').attr('action', '{{ route("admin.pengumuman.destroy", ["pengumuman" => ' + id + ']) }}');
+        // });
 
         $("#agree-button").on("click", function(){
             callback(true);

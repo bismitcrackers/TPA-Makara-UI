@@ -46,6 +46,7 @@ class PengumumanController extends Controller
         $pengumuman->deskripsi = $request['deskripsi'];
         $pengumuman->tanggal = $request['tanggal'];
         $pengumuman->jenis = $request['jenis'];
+        $pengumuman->kelas = $request['kelas'];
         $pengumuman->save();
 
         return redirect()->route('success');
@@ -96,6 +97,7 @@ class PengumumanController extends Controller
         $pengumuman->deskripsi = $request['deskripsi'];
         $pengumuman->tanggal = $request['tanggal'];
         $pengumuman->jenis = $request['jenis'];
+        $pengumuman->kelas = $request['kelas'];
         $pengumuman->save();
 
         return redirect()->route('success');
@@ -110,10 +112,10 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        //
         $pengumuman = Pengumuman::find($id);
+        return $pengumuman;
         $pengumuman->delete();
 
-        return redirect()-route('success');
+        return redirect()->route('success');
     }
 }
