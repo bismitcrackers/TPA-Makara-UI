@@ -271,16 +271,21 @@
     <div class = "parent-profile d-flex agenda-kegiatan">
             <p class = "underliner-parent-profile">Agenda Kegiatan</p>
         </div>
-
+    
         <div class="agenda-content">
             <div class = "row justify-content-around ">
+            @foreach( $agenda as $ag ){
                 <div class="col-sm-11 col-auto agenda">
-                    Kerja Bakti di Halaman TPA Makara
+                    {{ $ag->judul }}
                 </div>
-                <div class="col-sm-1 col-auto agenda-detail">
-                        Detail
-                </div>
+                <a href="{{ route(profile.pengumuman.show, ['kelas' => $student->kelas, 'id' => $ag->id]) }}">
+                    <div class="col-sm-1 col-auto agenda-detail">
+                            Detail
+                    </div>
+                </a>
+            }@endforeach
             </div>
+            
         </div>
 
         <div class = "parent-profile d-flex pengumuman">
@@ -289,12 +294,16 @@
 
         <div class="agenda-content">
             <div class = "row justify-content-around ">
+            @foreach( $pengumuman as $p ){
                 <div class="col-sm-11 col-auto agenda">
-                    Kerja Bakti di Halaman TPA Makara
+                    {{ $p->judul }}
                 </div>
-                <div class="col-sm-1 col-auto agenda-detail">
-                        Detail
-                </div>
+                <a href="{{ route(profile.pengumuman.show, ['kelas' => $student->kelas, 'id' => $p->id]) }}">
+                    <div class="col-sm-1 col-auto agenda-detail">
+                            Detail
+                    </div>
+                </a>
+            }@endforeach
             </div>
         </div>
 

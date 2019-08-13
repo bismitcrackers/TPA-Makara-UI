@@ -336,7 +336,9 @@ class PageController extends Controller
         $student = Student::where('id', $student_id)->first();
         $dad = $student->user()->first()->parents()->where('peran', 'Ayah')->first();
         $mom = $student->user()->first()->parents()->where('peran', 'Ibu')->first();
-        return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom]);
+        $pengumuman = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Pengumuman')->get();
+        $agenda = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Agenda Kegiatan')->get();
+        return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda]);
     }
 
 // COMMENTS
