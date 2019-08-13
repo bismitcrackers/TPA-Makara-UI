@@ -79,6 +79,15 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
         Route::post('/edit/{id}', 'JadwalController@editSchedule')->name('edit');
         Route::delete('/delete/{id}', 'JadwalController@deleteSchedule')->name('delete');
     });
+    Route::group(['prefix'=>'pengumuman','as'=>'pengumuman.'], function(){
+        Route::get('/{kelas}/form/add', 'PageController@addPengumuman')->name('add');
+        Route::get('/{kelas}/form/edit/{id}', 'PageController@editPengumuman')->name('edit');
+        Route::get('/{kelas}/list', 'PageController@pengumumanList')->name('list');
+        Route::get('/{kelas}/show', 'PageController@seePengumuman')->name('show');
+        Route::post('/add', 'JadwalController@addSchedule')->name('add');
+        Route::post('/edit/{id}', 'JadwalController@editSchedule')->name('edit');
+        Route::delete('/delete/{id}', 'JadwalController@deleteSchedule')->name('delete');
+    });
     Route::group(['prefix'=>'edit/{student_id}','as'=>'edit.'], function(){
         Route::get('/details', 'PageController@profileDetails')->name('details');
         Route::get('/student', 'StudentController@editStudentProfileForm')->name('student.form');

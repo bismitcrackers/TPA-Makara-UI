@@ -365,4 +365,30 @@ class PageController extends Controller
         return view('pages.JadwalPerBulan', ['kelas' => $kelas, 'schedule' => $schedule]);
     }
 
+// PENGUMUMAN
+
+    public function pengumumanList($kelas) {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $pengumuman = Pengumuman::where('kelas', $kelas)->where('jenis', 'Pengumuman');
+        $agenda = Pengumuman::where('kelas', $kelas)->where('jenis', 'Agenda Kegiatan');
+        return view('pages.pengumumanKegiatan', ['kelas' => $kelas, 'pengumuman' => $pengumuman, 'agenda' => $agenda]);
+    }
+
+    public function addPengumuman($kelas) {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        return view('pages.ubahPengumuman', ['kelas' => $kelas, 'route' => 'add']);
+    }
+
+    public function editPengumuman($kelas, $id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $pengumuman = Pengumuman::where('id', $id);
+        return view('pages.UbahPengumuman', ['kelas' => $kelas, 'route' => 'edit', 'pengumuman' => $pengumuman]);
+    }
+
+    public function seePengumuman($kelas, $id) {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        $pengumuman = Pengumuman::where('id', $id);
+        return view('pages.ShowPengumuman', ['kelas' => $kelas, 'pengumuman' => $pengumuman]);
+    }
+
 }

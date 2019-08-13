@@ -1,6 +1,6 @@
 @extends('layout/master')
 
-@section('title', 'List Student Kelas Bermain - GURU')
+@section('title', 'List Pengumuman')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -10,7 +10,7 @@
 
     <div class="d-flex justify-content-center">
         <h1 class = "daftarsiswa-title underliner">
-            Pengumuman Kegiatan Kelompok Bermain
+            Pengumuman Kegiatan {{ $kelas }}
         </h1>
     </div>
 
@@ -55,61 +55,86 @@
         <p class = "underliner-parent-profile">Agenda Kegiatan</p>
     </div>
 
+    @foreach($agenda as $a)
     <div class="agenda-content">
         <div class = "row justify-content-around ">
             <div class="col-sm-9 col-auto agenda">
-                Kerja Bakti di Halaman TPA Makara
+                {{ $a->judul }}
             </div>
-            <div class="col-sm-1 col-auto agenda-detail">
+            <a href="{{ route('profile.pengumuman.show', ['kelas' => $kelas, 'id' => $id]) }}">
+                <div class="col-sm-1 col-auto agenda-detail">
                     Detail
-            </div>
+                </div>
+            </a>
             <div class="col-sm-2 col-auto centerer">
-                <span>
-                    <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
-                </span>
-                <span class = "deleteKegiatan">
-                    <img src="{{asset('svg/deleteIcon.svg')}}" alt="Delete">
-                </span>
+                <a href="{{ route('profile.pengumuman.edit', ['kelas' => $kelas, 'id' => $id]) }}">
+                    <span>
+                        <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
+                    </span>
+                </a>
+                <form method="POST" action="{{ route('admin.pengumuman.destroy', ['pengumuman' => $a->id]) }}">
+                     {{ csrf_field() }}
+                     {{ method_field('DELETE') }}
+                    <span class = "deleteKegiatan">
+                        <img src="{{asset('svg/deleteIcon.svg')}}" alt="Delete">
+                    </span>
+                </a>
             </div>
         </div>
     </div>
+    @endforeach
+
 
     <div href="" class="tambahpengumuman d-flex justify-content-center">
-        <span>Tambah Agenda</span>
-        <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+        <a href="{{ route('profile.pengumuman.add', ['kelas' => $kelas] ) }}">
+            <span>Tambah Agenda</span>
+            <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+        </a>
     </div>
 
     <div class = "parent-profile d-flex pengumuman">
         <p class = "underliner-parent-profile">Pengumuman</p>
     </div>
 
+    @foreach($pengumuman as $p)
     <div class="agenda-content">
         <div class = "row justify-content-around ">
             <div class="col-sm-9 col-auto agenda">
-                Kerja Bakti di Halaman TPA Makara
+                {{ $p->judul }}
             </div>
-            <div class="col-sm-1 col-auto agenda-detail">
+            <a href="{{ route('profile.pengumuman.show', ['kelas' => $kelas, 'id' => $id]) }}">
+                <div class="col-sm-1 col-auto agenda-detail">
                     Detail
-            </div>
+                </div>
+            </a>
             <div class="col-sm-2 col-auto centerer">
-                <span>
-                    <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
-                </span>
-                <span class = "deleteKegiatan">
-                    <img src="{{asset('svg/deleteIcon.svg')}}" alt="Delete">
-                </span>
+                <a href="{{ route('profile.pengumuman.edit', ['kelas' => $kelas, 'id' => $id]) }}">
+                    <span>
+                        <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
+                    </span>
+                </a>
+                <form method="POST" action="{{ route('admin.pengumuman.destroy', ['pengumuman' => $p->id]) }}">
+                     {{ csrf_field() }}
+                     {{ method_field('DELETE') }}
+                    <span class = "deleteKegiatan">
+                        <img src="{{asset('svg/deleteIcon.svg')}}" alt="Delete">
+                    </span>
+                </form>
             </div>
         </div>
     </div>
+    @endforeach
 
 
     <div href="" class="tambahpengumuman d-flex justify-content-center">
-        <span>Tambah Pengumuman</span>
-        <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+        <a href="{{ route('profile.pengumuman.add', ['kelas' => $kelas] ) }}">
+            <span>Tambah Pengumuman</span>
+            <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+        </a>
     </div>
 
 
-    
+
 
 @endsection
 
@@ -117,7 +142,7 @@
 
 <script>
     function modalConfirm(callback){
-        
+
         $(".deleteKegiatan").on("click", function(){
             $("#pengumumanKegiatanModal").modal('show');
         });
@@ -126,7 +151,7 @@
             callback(true);
             $("#pengumumanKegiatanModal").modal('hide');
         });
-        
+
         $("#disagree-button").on("click", function(){
             callback(false);
             $("#pengumumanKegiatanModal").modal('hide');
