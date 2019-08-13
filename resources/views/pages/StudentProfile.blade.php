@@ -271,23 +271,33 @@
     </div>
 
     <div class = "parent-profile d-flex agenda-kegiatan">
-            <p class = "underliner-parent-profile">Agenda Kegiatan</p>
-        </div>
-    
+        <p class = "underliner-parent-profile">Jadwal Per Bulan</p>
+    </div>
+
+    <div style="text-align:center;">
+        @if($schedule != null)
+        <img src="{{ asset($schedule->url_lampiran) }}" alt="please insert image">
+        @endif
+    </div>
+
+    <div class = "parent-profile d-flex agenda-kegiatan">
+        <p class = "underliner-parent-profile">Agenda Kegiatan</p>
+    </div>
+
         <div class="agenda-content">
             <div class = "row justify-content-around ">
-            @foreach( $agenda as $ag ){
+            @foreach( $agenda as $ag )
                 <div class="col-sm-11 col-auto agenda">
                     {{ $ag->judul }}
                 </div>
-                <a href="{{ route(profile.pengumuman.show, ['kelas' => $student->kelas, 'id' => $ag->id]) }}">
+                <a href="{{ route('profile.pengumuman.show', ['kelas' => $student->kelas, 'id' => $ag->id]) }}">
                     <div class="col-sm-1 col-auto agenda-detail">
                             Detail
                     </div>
                 </a>
-            }@endforeach
+            @endforeach
             </div>
-            
+
         </div>
 
         <div class = "parent-profile d-flex pengumuman">
@@ -296,23 +306,18 @@
 
         <div class="agenda-content">
             <div class = "row justify-content-around ">
-            @foreach( $pengumuman as $p ){
+            @foreach( $pengumuman as $p )
                 <div class="col-sm-11 col-auto agenda">
                     {{ $p->judul }}
                 </div>
-                <a href="{{ route(profile.pengumuman.show, ['kelas' => $student->kelas, 'id' => $p->id]) }}">
+                <a href="{{ route('profile.pengumuman.show', ['kelas' => $student->kelas, 'id' => $p->id]) }}">
                     <div class="col-sm-1 col-auto agenda-detail">
                             Detail
                     </div>
                 </a>
-            }@endforeach
+            @endforeach
             </div>
         </div>
-
-
-
-
-
 
 @endsection
 
