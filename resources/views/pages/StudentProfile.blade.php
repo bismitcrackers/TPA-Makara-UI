@@ -14,6 +14,7 @@
         </h1>
     </div>
 
+    @if(auth()->user()->roles()->first()->description == 'Full Access')
     <div class = "d-flex justify-content-end">
         <div>
             <button type="button" id = "btn-passconfirm" class="btn btn-danger pass" data-toggle="modal" data-target="#studentPassModal">
@@ -25,6 +26,7 @@
             </button>
         </div>
     </div>
+    @endif
 
     <!-- Modal -->
 

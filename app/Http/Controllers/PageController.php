@@ -370,6 +370,7 @@ class PageController extends Controller
 
     public function pengumumanList($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
         $pengumuman = Pengumuman::where('kelas', $kelas)->where('jenis', 'Pengumuman')->get();
         $agenda = Pengumuman::where('kelas', $kelas)->where('jenis', 'Agenda Kegiatan')->get();
         return view('pages.pengumumanKegiatan', ['kelas' => $kelas, 'pengumuman' => $pengumuman, 'agenda' => $agenda]);
@@ -377,11 +378,13 @@ class PageController extends Controller
 
     public function addPengumuman($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
         return view('pages.ubahPengumuman', ['kelas' => $kelas, 'route' => 'add']);
     }
 
     public function editPengumuman($kelas, $id) {
         if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
         $pengumuman = Pengumuman::where('id', $id)->first();
         return view('pages.UbahPengumuman', ['kelas' => $kelas, 'route' => 'edit', 'pengumuman' => $pengumuman]);
     }

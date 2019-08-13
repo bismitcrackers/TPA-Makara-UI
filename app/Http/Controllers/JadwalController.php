@@ -75,10 +75,23 @@ class JadwalController extends Controller
 
     public function deleteSchedule($id)
     {
-        $jadwal = Jadwal::find($id);
-        $jadwal->delete();
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else if ($user->roles()->first()->name == 'Orangtua') {
+            return redirect()->route('orangtua.home');
+        } else if ($user->roles()->first()->name == 'Guru') {
+            return redirect()->route('guru.home');
+        } else if ($user->roles()->first()->name == 'Fasilitator') {
+            return redirect()->route('fasilitator.home');
+        } else if ($user->roles()->first()->name == 'Co-fasilitator') {
+            return redirect()->route('cofasilitator.home');
+        } else {
+            $jadwal = Jadwal::find($id);
+            $jadwal->delete();
 
-        return redirect()->route('success');
+            return redirect()->route('success');
+        }
     }
 
 }

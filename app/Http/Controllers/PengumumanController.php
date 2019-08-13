@@ -38,18 +38,31 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'judul','deskripsi','tanggal','jenis'
-        ]);
-        $pengumuman = new Pengumuman;
-        $pengumuman->judul = $request['judul'];
-        $pengumuman->deskripsi = $request['deskripsi'];
-        $pengumuman->tanggal = $request['tanggal'];
-        $pengumuman->jenis = $request['jenis'];
-        $pengumuman->kelas = $request['kelas'];
-        $pengumuman->save();
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else if ($user->roles()->first()->name == 'Orangtua') {
+            return redirect()->route('orangtua.home');
+        } else if ($user->roles()->first()->name == 'Guru') {
+            return redirect()->route('guru.home');
+        } else if ($user->roles()->first()->name == 'Fasilitator') {
+            return redirect()->route('fasilitator.home');
+        } else if ($user->roles()->first()->name == 'Co-fasilitator') {
+            return redirect()->route('cofasilitator.home');
+        } else {
+            $this->validate($request,[
+                'judul','deskripsi','tanggal','jenis'
+            ]);
+            $pengumuman = new Pengumuman;
+            $pengumuman->judul = $request['judul'];
+            $pengumuman->deskripsi = $request['deskripsi'];
+            $pengumuman->tanggal = $request['tanggal'];
+            $pengumuman->jenis = $request['jenis'];
+            $pengumuman->kelas = $request['kelas'];
+            $pengumuman->save();
 
-        return redirect()->route('success');
+            return redirect()->route('success');
+        }
     }
 
     /**
@@ -87,21 +100,32 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $pengumuman = Pengumuman::find($id);
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else if ($user->roles()->first()->name == 'Orangtua') {
+            return redirect()->route('orangtua.home');
+        } else if ($user->roles()->first()->name == 'Guru') {
+            return redirect()->route('guru.home');
+        } else if ($user->roles()->first()->name == 'Fasilitator') {
+            return redirect()->route('fasilitator.home');
+        } else if ($user->roles()->first()->name == 'Co-fasilitator') {
+            return redirect()->route('cofasilitator.home');
+        } else {
+            $pengumuman = Pengumuman::find($id);
 
-        $this->validate($request,[
-            'judul','deskripsi','tanggal','jenis'
-        ]);
-        $pengumuman->judul = $request['judul'];
-        $pengumuman->deskripsi = $request['deskripsi'];
-        $pengumuman->tanggal = $request['tanggal'];
-        $pengumuman->jenis = $request['jenis'];
-        $pengumuman->kelas = $request['kelas'];
-        $pengumuman->save();
+            $this->validate($request,[
+                'judul','deskripsi','tanggal','jenis'
+            ]);
+            $pengumuman->judul = $request['judul'];
+            $pengumuman->deskripsi = $request['deskripsi'];
+            $pengumuman->tanggal = $request['tanggal'];
+            $pengumuman->jenis = $request['jenis'];
+            $pengumuman->kelas = $request['kelas'];
+            $pengumuman->save();
 
-        return redirect()->route('success');
-
+            return redirect()->route('success');
+        }
     }
 
     /**
@@ -112,10 +136,22 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        $pengumuman = Pengumuman::find($id);
-        return $pengumuman;
-        $pengumuman->delete();
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else if ($user->roles()->first()->name == 'Orangtua') {
+            return redirect()->route('orangtua.home');
+        } else if ($user->roles()->first()->name == 'Guru') {
+            return redirect()->route('guru.home');
+        } else if ($user->roles()->first()->name == 'Fasilitator') {
+            return redirect()->route('fasilitator.home');
+        } else if ($user->roles()->first()->name == 'Co-fasilitator') {
+            return redirect()->route('cofasilitator.home');
+        } else {
+            $pengumuman = Pengumuman::find($id);
+            $pengumuman->delete();
 
-        return redirect()->route('success');
+            return redirect()->route('success');
+        }
     }
 }
