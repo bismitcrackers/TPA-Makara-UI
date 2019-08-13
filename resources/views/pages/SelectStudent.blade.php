@@ -18,7 +18,9 @@
     </form>
 
     <div class="d-flex selectstudent-feature justify-content-between">
-        <button type="button" class="btn announcement">Pengumuman</button>
+        <a href="{{ route('profile.pengumuman.list', ['kelas' => $class]) }}">
+            <button type="button" class="btn announcement">Pengumuman</button>
+        </a>
         <a href="{{ route('profile.schedule.list', ['kelas' => $class]) }}">
             <button type="button" class="btn btn-success schedule">Jadwal</button>
         </a>

@@ -1,6 +1,6 @@
 @extends('layout/master')
 
-@section('title', 'Edit Profile Siswa')
+@section('title', 'Pengumuman Form')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -10,32 +10,55 @@
 
     <div class="d-flex justify-content-center">
         <h1 class = "bukupenghubung-title underliner">
-            Ubah Pengumuman
+            @if($route == 'add')
+                Tambah Pengumuman
+            @elseif($route == 'edit')
+                Ubah Pengumuman
+            @endif
         </h1>
     </div>
 
-    <form >
+    @if($route == 'add')
+    <form method="POST" action="{{ route('admin.pengumuman.store') }}">
+    @elseif($route == 'edit')
+    <form method="POST" action="{{ route('admin.pengumuman.update') }}">
+    {{method_field('PATCH')}}
+    @endif
+     {{ csrf_field() }}
         <div class="form-group">
             <label for="judul" class="editlabel">JUDUL</label>
-            <input name="judul" type="text" class="form-control editinput" id="judul" aria-describedby="judul" placeholder="Judul" autocapitalize="words" required>
+            <input <?php if($route=='edit') {echo 'value="{{ $pengumuman->judul }}"';} ?> name="judul" type="text" class="form-control editinput" id="judul" aria-describedby="judul" placeholder="Judul" autocapitalize="words" required>
         </div>
         <div class="form-group">
             <label for="deskripsi" class="editlabel">DESKRIPSI</label>
-            <input name="deskripsi" type="text" placeholder = "Deskripsi" class="form-control editinput" id = "deskripsi" required>
+            <input <?php if($route=='edit') {echo 'value="{{ $pengumuman->deskripsi }}"';} ?> name="deskripsi" type="text" placeholder = "Deskripsi" class="form-control editinput" id = "deskripsi" required>
         </div>
         <div class="form-group">
             <label for="datepicker" class="editlabel">TANGGAL KEGIATAN</label>
-            <input name="tanggalKegiatan" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
+            <input <?php if($route=='edit') {echo 'value="{{ $pengumuman->tanggal }}"';} ?> name="tanggal" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
         </div>
         <div class="form-group">
             <label for="jeniskegiatan" class="editlabel">JENIS KEGIATAN</label>
-            <input name="jeniskegiatan" type="text" class="form-control editinput" id="jeniskegiatan" aria-describedby="jenis kegiatan" placeholder="Jenis Kegiatan" required>
+            <div class="col-auto">
+                <select class="form-control" id="jeniskegiatan" name="jenis" required>
+                    @if($route == 'add')
+                    <option value="Pengumuman">Pengumuman</option>
+                    <option value="Agenda Kegiatan">Agenda Kegiatan</option>
+                    @elseif($pengumuman->jenis == 'Pengumuman')
+                    <option value="Pengumuman" selected>Pengumuman</option>
+                    <option value="Agenda Kegiatan">Agenda Kegiatan</option>
+                    @elseif($pengumuman->jenis == 'Agenda Kegiatan')
+                    <option value="Pengumuman">Pengumuman</option>
+                    <option value="Agenda Kegiatan" selected>Agenda Kegiatan</option>
+                    @endif
+                </select>
+            </div>
         </div>
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                 Cancel
             </button>
-            <button type="button" class="btn btn-primary editbutton d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary editbutton d-flex justify-content-center">
                 <div class="d-flex align-items-center">
                     <p>Save</p>
                     <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">

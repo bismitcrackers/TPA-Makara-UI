@@ -39,13 +39,13 @@ class PengumumanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'jdlPeng','dscPeng','tglPeng','jnsKeg'
+            'judul','deskripsi','tanggal','jenis'
         ]);
         $pengumuman = new Pengumuman;
-        $pengumuman->judul = $request['jdlPeng'];
-        $pengumuman->deskripsi = $request['dscPeng'];
-        $pengumuman->tanggal = $request['tglPeng'];
-        $pengumuman->jenis = $request['jnsKeg'];
+        $pengumuman->judul = $request['judul'];
+        $pengumuman->deskripsi = $request['deskripsi'];
+        $pengumuman->tanggal = $request['tanggal'];
+        $pengumuman->jenis = $request['jenis'];
         $pengumuman->save();
 
         return redirect()->route('success');
@@ -90,13 +90,12 @@ class PengumumanController extends Controller
         $pengumuman = Pengumuman::find($id);
 
         $this->validate($request,[
-            'jdlPeng','dscPeng','tglPeng','jnsKeg'
+            'judul','deskripsi','tanggal','jenis'
         ]);
-        $pengumuman = new Pengumuman;
-        $pengumuman->judul = $request['jdlPeng'];
-        $pengumuman->deskripsi = $request['dscPeng'];
-        $pengumuman->tanggal = $request['tglPeng'];
-        $pengumuman->jenis = $request['jnsKeg'];
+        $pengumuman->judul = $request['judul'];
+        $pengumuman->deskripsi = $request['deskripsi'];
+        $pengumuman->tanggal = $request['tanggal'];
+        $pengumuman->jenis = $request['jenis'];
         $pengumuman->save();
 
         return redirect()->route('success');

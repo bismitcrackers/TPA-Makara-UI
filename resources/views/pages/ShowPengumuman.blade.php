@@ -1,6 +1,6 @@
 @extends('layout/master')
 
-@section('title', 'Edit Profile Siswa')
+@section('title', 'Pengumuman')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -10,26 +10,26 @@
 
     <div class="d-flex justify-content-center">
         <h1 class = "bukupenghubung-title underliner">
-            Ubah Pengumuman
+            Pengumuman Kegiatan
         </h1>
     </div>
 
     <div class = "pengumuman-show">
         <p class="kegiatan-field">JUDUL</p>
         <p class="kegiatan-field-answer" id="judul">
-            Kerja Bakti Di Ruang Kelas
+            {{ $pengumuman->judul }}
         </p>
         <p class="kegiatan-field">DESKRIPSI</p>
         <p class="kegiatan-field-answer" id = "deskripsi">
-            Di himbau untuk membawa baju kotor
+            {{ $pengumuman->deskripsi }}
         </p>
         <p class="kegiatan-field">TANGGAL KEGIATAN</p>
         <p class="kegiatan-field-answer" id = "datepicker">
-            1 Agustus 2019
+            {{ $pengumuman->tanggal }}
         </p>
         <p class="kegiatan-field">JENIS KEGIATAN</p>
         <p class="kegiatan-field-answer" id="jeniskegiatan">
-            Agenda Kegiatan
+            {{ $pengumuman->jenis }}
         </p>
     </div>
 

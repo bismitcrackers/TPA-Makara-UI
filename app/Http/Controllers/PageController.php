@@ -6,6 +6,7 @@ use DB;
 use Carbon\Carbon;
 use App\Berita;
 use App\Jadwal;
+use App\Pengumuman;
 use App\Comments;
 use App\DailyBook;
 use App\Student;
