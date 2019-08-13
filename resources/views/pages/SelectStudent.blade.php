@@ -17,6 +17,7 @@
         <input onkeyup="searchFunction()" id = "userInput" class="form-control search-siswa" type="search" placeholder="Cari Siswa {{ $class }}">
     </form>
 
+    @if(auth()->user()->roles()->first()->description == 'Full Access')
     <div class="d-flex selectstudent-feature justify-content-between">
         <a href="{{ route('profile.pengumuman.list', ['kelas' => $class]) }}">
             <button type="button" class="btn announcement">Pengumuman</button>
@@ -25,7 +26,7 @@
             <button type="button" class="btn btn-success schedule">Jadwal</button>
         </a>
     </div>
-
+    @endif
 
     <div class="container">
         <?php $i=1; ?>
