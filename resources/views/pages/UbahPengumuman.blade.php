@@ -21,21 +21,21 @@
     @if($route == 'add')
     <form method="POST" action="{{ route('admin.pengumuman.store') }}">
     @elseif($route == 'edit')
-    <form method="POST" action="{{ route('admin.pengumuman.update') }}">
+    <form method="POST" action="{{ route('admin.pengumuman.update', ['pengumuman' => $pengumuman->id]) }}">
     {{method_field('PATCH')}}
     @endif
      {{ csrf_field() }}
         <div class="form-group">
             <label for="judul" class="editlabel">JUDUL</label>
-            <input <?php if($route=='edit') {echo 'value="{{ $pengumuman->judul }}"';} ?> name="judul" type="text" class="form-control editinput" id="judul" aria-describedby="judul" placeholder="Judul" autocapitalize="words" required>
+            <input <?php if($route=='edit') {echo 'value="' . $pengumuman->judul . '"';} ?> name="judul" type="text" class="form-control editinput" id="judul" aria-describedby="judul" placeholder="Judul" autocapitalize="words" required>
         </div>
         <div class="form-group">
             <label for="deskripsi" class="editlabel">DESKRIPSI</label>
-            <input <?php if($route=='edit') {echo 'value="{{ $pengumuman->deskripsi }}"';} ?> name="deskripsi" type="text" placeholder = "Deskripsi" class="form-control editinput" id = "deskripsi" required>
+            <input <?php if($route=='edit') {echo 'value="' . $pengumuman->deskripsi . '"';} ?> name="deskripsi" type="text" placeholder = "Deskripsi" class="form-control editinput" id = "deskripsi" required>
         </div>
         <div class="form-group">
             <label for="datepicker" class="editlabel">TANGGAL KEGIATAN</label>
-            <input <?php if($route=='edit') {echo 'value="{{ $pengumuman->tanggal }}"';} ?> name="tanggal" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
+            <input <?php if($route=='edit') {echo 'value="' . $pengumuman->tanggal . '"';} ?> name="tanggal" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
         </div>
         <div class="form-group">
             <label for="jeniskegiatan" class="editlabel">JENIS KEGIATAN</label>
@@ -54,6 +54,7 @@
                 </select>
             </div>
         </div>
+        <input value="{{ $kelas }}" name="kelas" type="hidden" required>
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                 Cancel
