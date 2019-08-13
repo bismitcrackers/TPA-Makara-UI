@@ -67,7 +67,7 @@
                 </div>
             </a>
             <div class="col-sm-2 col-auto centerer">
-                <a href="{{ route('profile.pengumuman.edit', ['kelas' => $kelas, 'id' => $id]) }}">
+                <a href="{{ route('profile.pengumuman.form.edit', ['kelas' => $kelas, 'id' => $id]) }}">
                     <span>
                         <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
                     </span>
@@ -86,7 +86,7 @@
 
 
     <div href="" class="tambahpengumuman d-flex justify-content-center">
-        <a href="{{ route('profile.pengumuman.add', ['kelas' => $kelas] ) }}">
+        <a href="{{ route('profile.pengumuman.form.add', ['kelas' => $kelas] ) }}">
             <span>Tambah Agenda</span>
             <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
         </a>
@@ -108,7 +108,7 @@
                 </div>
             </a>
             <div class="col-sm-2 col-auto centerer">
-                <a href="{{ route('profile.pengumuman.edit', ['kelas' => $kelas, 'id' => $id]) }}">
+                <a href="{{ route('profile.pengumuman.form.edit', ['kelas' => $kelas, 'id' => $id]) }}">
                     <span>
                         <img src="{{asset('svg/editIcon.svg')}}" alt="Edit">
                     </span>
@@ -127,7 +127,7 @@
 
 
     <div href="" class="tambahpengumuman d-flex justify-content-center">
-        <a href="{{ route('profile.pengumuman.add', ['kelas' => $kelas] ) }}">
+        <a href="{{ route('profile.pengumuman.form.add', ['kelas' => $kelas] ) }}">
             <span>Tambah Pengumuman</span>
             <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
         </a>

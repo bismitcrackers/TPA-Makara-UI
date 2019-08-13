@@ -80,8 +80,8 @@ Route::group(['prefix'=>'profile', 'as'=>'profile.'], function(){
         Route::delete('/delete/{id}', 'JadwalController@deleteSchedule')->name('delete');
     });
     Route::group(['prefix'=>'pengumuman','as'=>'pengumuman.'], function(){
-        Route::get('/{kelas}/form/add', 'PageController@addPengumuman')->name('add');
-        Route::get('/{kelas}/form/edit/{id}', 'PageController@editPengumuman')->name('edit');
+        Route::get('/{kelas}/form/add', 'PageController@addPengumuman')->name('form.add');
+        Route::get('/{kelas}/form/edit/{id}', 'PageController@editPengumuman')->name('form.edit');
         Route::get('/{kelas}/list', 'PageController@pengumumanList')->name('list');
         Route::get('/{kelas}/show', 'PageController@seePengumuman')->name('show');
         Route::post('/add', 'JadwalController@addSchedule')->name('add');
