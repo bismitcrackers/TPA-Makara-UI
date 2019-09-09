@@ -59,6 +59,10 @@ class PageController extends Controller
         return view('pages.TambahJadwalPerBulan');
     }
 
+    public function tagihanSiswa() {
+        return view('pages.tagihanSiswa');
+    }
+
 
 
 // BUKU PENGHUBUNG

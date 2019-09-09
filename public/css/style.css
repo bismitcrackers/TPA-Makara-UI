@@ -1199,24 +1199,35 @@ button.pass {
 
 .announcement{
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
     text-align: center;
     color: #FFFFFF;
     background: linear-gradient(170.87deg, #2F80ED -21.93%, #038BF4 87.81%);
     border-radius: 20px;
     border: none;
-    padding: 2px 20px;
+    padding: 2px 12px;
+}
+
+.payment{
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #FA948B;;
+    border-radius: 20px;
+    border: none;
+    padding: 2px 12px;
 }
 
 .schedule{
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
     text-align: center;
     color: #FFFFFF;
     background: #39C4A5;
     border-radius: 20px;
     border: none;
-    padding: 2px 20px;
+    padding: 2px 12px;
 }
 
 .selectstudent-feature{
@@ -1347,6 +1358,17 @@ button.pass {
 
 .tambahpdf{
     margin: 15px auto 220px !important;
+}
+
+/* tagihan siswa daycare*/
+
+.tagihan-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px auto 50px;
+    text-align: center;
+    letter-spacing: 0.02e m;
+    color: #414752;
 }
 
 

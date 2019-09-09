@@ -22,6 +22,7 @@ Route::get('/ubahpengumuman', 'PageController@ubahPengumuman')->name('ubahPengum
 Route::get('/showpengumuman', 'PageController@showPengumuman')->name('showPengumuman');
 Route::get('/jadwalperbulan', 'PageController@jadwalPerBulan')->name('jadwalPerBulan');
 Route::get('/tambahjadwalperbulan', 'PageController@tambahJadwalPerBulan')->name('tambahJadwalPerBulan');
+Route::get('/tagihansiswa', 'PageController@tagihanSiswa')->name('tagihansiswa');
 
 Auth::routes();
 
