@@ -63,6 +63,19 @@ class PageController extends Controller
         return view('pages.tagihanSiswa');
     }
 
+    public function addTagihan() {
+        return view('pages.tambahTagihan');
+    }
+
+    public function kwitansi() {
+        return view('pages.kwitansi');
+    }
+
+    public function notification() {
+        return view('pages.notification');
+    }
+
+
 
 
 // BUKU PENGHUBUNG

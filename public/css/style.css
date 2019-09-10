@@ -1199,35 +1199,47 @@ button.pass {
 
 .announcement{
     font-weight: bold;
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
     color: #FFFFFF;
     background: linear-gradient(170.87deg, #2F80ED -21.93%, #038BF4 87.81%);
     border-radius: 20px;
     border: none;
-    padding: 2px 12px;
+    padding: 2px 20px;
+    transition: all .3s ease-in
 }
 
 .payment{
     font-weight: bold;
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
     color: #FFFFFF;
     background: #FA948B;;
     border-radius: 20px;
     border: none;
-    padding: 2px 12px;
+    padding: 2px 20px;
+    transition: all .3s ease-in
 }
 
 .schedule{
     font-weight: bold;
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
     color: #FFFFFF;
     background: #39C4A5;
     border-radius: 20px;
     border: none;
-    padding: 2px 12px;
+    padding: 2px 20px;
+    transition: all .3s ease-in
+}
+
+@media (max-width: 473px){
+    .announcement,
+    .schedule,
+    .payment{
+        font-size: 11px;
+        padding: 2px 13px;
+    }
 }
 
 .selectstudent-feature{
@@ -1361,6 +1373,7 @@ button.pass {
 }
 
 /* tagihan siswa daycare*/
+/* some elements using style from studentProfile (especially for modal) */
 
 .tagihan-title {
     font-weight: bold;
@@ -1370,6 +1383,124 @@ button.pass {
     letter-spacing: 0.02e m;
     color: #414752;
 }
+
+table{
+    text-align: center;
+}
+
+th{
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #414752;
+    text-decoration: underline;
+}
+
+table td{
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgba(56, 79, 125, 0.65);
+}
+
+table th.name{
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #2F80ED;
+}
+
+table td.kwitansi{
+    font-weight: bold;
+    font-size: 12px;
+    align-items: center;
+    color: #FFFFFF;
+    line-height: 20px;
+    background: linear-gradient(169.06deg, #2F80ED -21.93%, #038BF4 87.81%);
+    border-radius: 20px;
+    padding: 2px 13px;
+}
+
+.tagihan-table{
+    text-align: center;
+}
+
+.belum-lunas{
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 20px;
+    color: #414752;
+    background: #FA948B;
+    border-radius: 50px;
+    padding: 2px 13px;
+}
+
+.lunas{
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 20px;
+    color: #414752;
+    background: #39C4A5;
+    border-radius: 50px;
+    padding: 2px 13px;
+}
+
+
+
+.add-tagihan{
+    vertical-align: middle;
+}
+
+/* kwitansi */
+/* some elements using style from tagihan siswa */
+
+.kwitansi-header img,
+.kwitansi-header div{
+    margin: 20px;
+}
+
+.kwitansi-logo{
+    width: 20%;
+}
+
+.kwitansi-address{
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #414752;
+}
+
+.kwitansi-content *{
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #414752;
+}
+
+.kwitansi-title {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 7px 100px !important;
+    margin: 20px auto 50px;
+    text-align: center;
+    letter-spacing: 0.02e m;
+    color: #414752;
+}
+
+/* notifications use style from kwitansi */
+
+
+
+
+
+
+
+
 
 
 

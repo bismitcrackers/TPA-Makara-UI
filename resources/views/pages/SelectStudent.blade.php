@@ -20,10 +20,10 @@
     @if(auth()->user()->roles()->first()->description == 'Full Access')
     <div class="d-flex selectstudent-feature justify-content-between">
         <a href="{{ route('profile.pengumuman.list', ['kelas' => $class]) }}">
-            <button type="button" class="btn announcement">Pengumuman</button>
+            <button type="button" class="btn btn-primary announcement">Pengumuman</button>
         </a>
         <a href="{{ route('tagihansiswa')}}">
-            <button type="button" class="btn payment">Pembayaran</button>
+            <button type="button" class="btn btn-warning payment">Pembayaran</button>
         </a>
         <a href="{{ route('profile.schedule.list', ['kelas' => $class]) }}">
             <button type="button" class="btn btn-success schedule">Jadwal</button>

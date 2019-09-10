@@ -319,6 +319,45 @@
             </div>
         </div>
 
+        <div class = "parent-profile d-flex pengumuman">
+            <p class = "underliner-parent-profile">Tagihan Pembayaran</p>
+        </div>
+
+    <div class = "tagihan-table d-flex table-responsive justify-content-center">
+        <table class="table table-borderless table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Jenis Tagihan</th>
+                    <th scope="col">Jumlah Tagihan</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total Tagihan</th>
+                    <th scope="col">Bukti Pembayaran</th>
+                    <th scope="col">Kwitansi</th>                       
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" class = "name">Anya Radhya T</th>
+                    <td>Uang Pangkal</td>
+                    <td>Rp 500.000</td>
+                    <td>
+                        <div class = "lunas">
+                            Lunas
+                        </div>
+                    </td>
+                    <td>Rp 500.000</td>
+                    <td>
+                        <img src="{{asset('svg/exampleBuktiPembayaran.svg')}}" alt="">
+                    </td>
+                    <td class = "kwitansi">Kwitansi</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 @endsection
 
 @section('extra-js')
@@ -326,34 +365,33 @@
     <script>
 
         function modalConfirm(callback){
+            $("#btn-passconfirm").on("click", function(){
+                $("#studentPassModal").modal('show');
+            });
 
-        $("#btn-passconfirm").on("click", function(){
-            $("#studentPassModal").modal('show');
-        });
+            $("#agree-button").on("click", function(){
+                callback(true);
+                $("#studentPassModal").modal('hide');
+            });
 
-        $("#agree-button").on("click", function(){
-            callback(true);
-            $("#studentPassModal").modal('hide');
-        });
-
-        $("#disagree-button").on("click", function(){
-            callback(false);
-            $("#studentPassModal").modal('hide');
-        });
+            $("#disagree-button").on("click", function(){
+                callback(false);
+                $("#studentPassModal").modal('hide');
+            });
         };
 
         modalConfirm(function(confirm){
-        if(confirm){
-            $("#agree").fadeTo(500, 1).slideDown(500);
-            window.setTimeout(function() {
-            $("#agree").fadeTo(500, 0).slideUp(500);
-            }, 4000)
-        }else{
-            $("#disagree").fadeTo(500, 1).slideDown(500);
-            window.setTimeout(function() {
-            $("#disagree").fadeTo(500, 0).slideUp(500);
-            }, 4000)
-        }
+            if(confirm){
+                $("#agree").fadeTo(500, 1).slideDown(500);
+                window.setTimeout(function() {
+                $("#agree").fadeTo(500, 0).slideUp(500);
+                }, 4000)
+            }else{
+                $("#disagree").fadeTo(500, 1).slideDown(500);
+                window.setTimeout(function() {
+                $("#disagree").fadeTo(500, 0).slideUp(500);
+                }, 4000)
+            }
         });
 
     </script>
