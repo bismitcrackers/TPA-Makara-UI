@@ -27,4 +27,8 @@ class Student extends Model
     {
         return $this->hasMany(DailyBook::class);
     }
+    
+    public function pembayaran(){
+        return $this->hasMany(Pembayaran::class);
+    }
 }
