@@ -338,7 +338,8 @@ class PageController extends Controller
         $mom = $student->user()->first()->parents()->where('peran', 'Ibu')->first();
         $pengumuman = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Pengumuman')->get();
         $agenda = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Agenda Kegiatan')->get();
-        return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda]);
+        $schedule = Jadwal::where('kelas', $student->kelas)->first();
+        return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda, 'schedule' => $schedule]);
     }
 
 // COMMENTS
@@ -372,6 +373,7 @@ class PageController extends Controller
 
     public function pengumumanList($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
         $pengumuman = Pengumuman::where('kelas', $kelas)->where('jenis', 'Pengumuman')->get();
         $agenda = Pengumuman::where('kelas', $kelas)->where('jenis', 'Agenda Kegiatan')->get();
         return view('pages.pengumumanKegiatan', ['kelas' => $kelas, 'pengumuman' => $pengumuman, 'agenda' => $agenda]);
@@ -379,11 +381,13 @@ class PageController extends Controller
 
     public function addPengumuman($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
         return view('pages.ubahPengumuman', ['kelas' => $kelas, 'route' => 'add']);
     }
 
     public function editPengumuman($kelas, $id) {
         if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
         $pengumuman = Pengumuman::where('id', $id)->first();
         return view('pages.UbahPengumuman', ['kelas' => $kelas, 'route' => 'edit', 'pengumuman' => $pengumuman]);
     }

@@ -119,6 +119,14 @@ class StudentController extends Controller
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
+        } else if ($user->roles()->first()->name == 'Orangtua') {
+            return redirect()->route('orangtua.home');
+        } else if ($user->roles()->first()->name == 'Guru') {
+            return redirect()->route('guru.home');
+        } else if ($user->roles()->first()->name == 'Fasilitator') {
+            return redirect()->route('fasilitator.home');
+        } else if ($user->roles()->first()->name == 'Co-fasilitator') {
+            return redirect()->route('cofasilitator.home');
         } else {
             $student = Student::where('id', $student_id)->update(
                 [
@@ -133,6 +141,14 @@ class StudentController extends Controller
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
+        } else if ($user->roles()->first()->name == 'Orangtua') {
+            return redirect()->route('orangtua.home');
+        } else if ($user->roles()->first()->name == 'Guru') {
+            return redirect()->route('guru.home');
+        } else if ($user->roles()->first()->name == 'Fasilitator') {
+            return redirect()->route('fasilitator.home');
+        } else if ($user->roles()->first()->name == 'Co-fasilitator') {
+            return redirect()->route('cofasilitator.home');
         } else {
             $student = Student::where('id', $student_id)->update(
                 [
