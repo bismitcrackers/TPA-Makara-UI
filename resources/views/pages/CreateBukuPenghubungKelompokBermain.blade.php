@@ -78,7 +78,7 @@
             <h2 class="subbukupenghubung-title"><u>LAMPIRAN</u></h2>
             <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
                 <span>Tambah Foto</span>
-                <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+                <img src="{{asset('svg/plus.svg')}}" alt="plus">
             </div>
             <div class="d-flex justify-content-center">
                 @if($route == 'createDailyBookKB')
