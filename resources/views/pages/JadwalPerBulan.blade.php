@@ -14,9 +14,15 @@
         </h1>
     </div>
 
+    <div style="margin: 0 auto; text-align: center" for="pembuatdc" class="dclabel">{{ $schedule->judul }}</div>
+
     <div style="text-align:center; margin-bottom: 220px;">
         @if($schedule != null)
-        <img src="{{ asset($schedule->url_lampiran) }}" alt="please insert image">
+            @foreach($scheduleImages as $scheduleImage)
+                <div class="dcinput">
+                    <img id="imgbuku" src="{{ asset($scheduleImage->url_lampiran) }}" alt="please insert image">
+                </div>
+            @endforeach
         @endif
     </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jadwal;
+use App\JadwalGambar;
 use App\Student;
 use App\Helper\WebHelper;
 use Illuminate\Http\Request;
@@ -34,16 +35,20 @@ class JadwalController extends Controller
         } else if ($user->roles()->first()->name == 'Co-fasilitator') {
             return redirect()->route('cofasilitator.home');
         } else {
-            if ($request->has('schedule')) {
-                $image = WebHelper::saveImageToPublic($request->file('schedule'), '/picture/schedule');
-            }
             $schedule = new Jadwal;
             $schedule->pembuat             = $user->name;
+            $schedule->judul               = $request->judul;
             $schedule->kelas               = $request->kelas;
-            if ($request->has('schedule')) {
-                $schedule->url_lampiran    = $image;
-            }
             $schedule->save();
+            if ($files=$request->file('schedules')) {
+                foreach($files as $file){
+                    $image = WebHelper::saveImageToPublic($file, '/picture/schedule');
+                    $imageSchedule = new JadwalGambar;
+                    $imageSchedule->url_lampiran = $image;
+                    $imageSchedule->jadwal()->associate($schedule);
+                    $imageSchedule->save();
+                }
+            }
             return redirect()->route('success');
         }
     }
@@ -63,12 +68,18 @@ class JadwalController extends Controller
             return redirect()->route('cofasilitator.home');
         } else {
             $jadwal = Jadwal::where('kelas', $request->kelas)->first();
-            if($request->hasFile('schedule')){
-                $image = WebHelper::saveImageToPublic($request->file('schedule'), '/picture/schedule');
-                $jadwal->url_lampiran = $image;
-            }
+            $jadwal->judul = $request->judul;
             $jadwal->pembuat = $user->name;
             $jadwal->save();
+            if($files=$request->file('schedules')){
+                foreach($files as $file){
+                    $image = WebHelper::saveImageToPublic($file, '/picture/schedule');
+                    $imageSchedule = new JadwalGambar;
+                    $imageSchedule->url_lampiran = $image;
+                    $imageSchedule->jadwal()->associate($jadwal);
+                    $imageSchedule->save();
+                }
+            }
             return redirect()->route('success');
         }
     }
@@ -88,8 +99,9 @@ class JadwalController extends Controller
             return redirect()->route('cofasilitator.home');
         } else {
             $jadwal = Jadwal::find($id);
+            $jadwalGambar = JadwalGambar::where('jadwal_id',$id);
+            $jadwalGambar->delete();
             $jadwal->delete();
-
             return redirect()->route('success');
         }
     }
