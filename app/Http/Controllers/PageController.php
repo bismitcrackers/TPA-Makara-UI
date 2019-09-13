@@ -395,7 +395,7 @@ class PageController extends Controller
     public function addPengumuman($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
         if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
-        return view('pages.ubahPengumuman', ['kelas' => $kelas, 'route' => 'add']);
+        return view('pages.UbahPengumuman', ['kelas' => $kelas, 'route' => 'add']);
     }
 
     public function editPengumuman($kelas, $id) {

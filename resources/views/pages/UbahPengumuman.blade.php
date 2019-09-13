@@ -38,6 +38,10 @@
             <input <?php if($route=='edit') {echo 'value="' . $pengumuman->tanggal . '"';} ?> name="tanggal" type="date" class="form-control editinput tanggaldc" id = "datepicker" required>
         </div>
         <div class="form-group">
+            <label for="tempat" class="editlabel">TEMPAT KEGIATAN</label>
+            <input <?php if($route=='edit') {echo 'value="' . $pengumuman->tempat . '"';} ?> name="tempat" type="text" placeholder = "Tempat" class="form-control editinput" id = "tempat" required>
+        </div>
+        <div class="form-group">
             <label for="jeniskegiatan" class="editlabel">JENIS KEGIATAN</label>
             <div class="col-auto">
                 <select class="form-control" id="jeniskegiatan" name="jenis" required>

@@ -27,6 +27,10 @@
         <p class="kegiatan-field-answer" id = "datepicker">
             {{ $pengumuman->tanggal }}
         </p>
+        <p class="kegiatan-field">TEMPAT KEGIATAN</p>
+        <p class="kegiatan-field-answer" id = "tempat">
+            {{ $pengumuman->tempat }}
+        </p>
         <p class="kegiatan-field">JENIS KEGIATAN</p>
         <p class="kegiatan-field-answer" id="jeniskegiatan">
             {{ $pengumuman->jenis }}

@@ -18,6 +18,7 @@ class CreatePengumumanTable extends Migration
             $table->string('judul');
             $table->longText('deskripsi');
             $table->date('tanggal');
+            $table->string('tempat');
             $table->string('jenis');
             $table->string('kelas');
             $table->timestamps();
