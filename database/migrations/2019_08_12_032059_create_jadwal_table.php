@@ -16,7 +16,7 @@ class CreateJadwalTable extends Migration
         Schema::create('jadwal', function (Blueprint $table) {
             $table->increments('id');
             $table->string('pembuat')->nullable();
-            $table->string('url_lampiran')->nullable();
+            $table->string('judul')->nullable();
             $table->string('kelas');
             $table->timestamps();
         });

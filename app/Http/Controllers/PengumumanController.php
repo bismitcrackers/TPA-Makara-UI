@@ -57,6 +57,7 @@ class PengumumanController extends Controller
             $pengumuman->judul = $request['judul'];
             $pengumuman->deskripsi = $request['deskripsi'];
             $pengumuman->tanggal = $request['tanggal'];
+            $pengumuman->tempat = $request['tempat'];
             $pengumuman->jenis = $request['jenis'];
             $pengumuman->kelas = $request['kelas'];
             $pengumuman->save();
@@ -120,6 +121,7 @@ class PengumumanController extends Controller
             $pengumuman->judul = $request['judul'];
             $pengumuman->deskripsi = $request['deskripsi'];
             $pengumuman->tanggal = $request['tanggal'];
+            $pengumuman->tanggal = $request['tempat'];
             $pengumuman->jenis = $request['jenis'];
             $pengumuman->kelas = $request['kelas'];
             $pengumuman->save();

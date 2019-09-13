@@ -30,13 +30,22 @@
         <textarea class="form-control" name="dscPeng" id="dscPeng"  rows="1">{{$pengumuman->deskripsi}}</textarea>
         @endif
     </div>
-    
+
     <div class="form-group">
         <label for="tglPeng">TANGGAL KEGIATAN</label>
         @if($route == 'create')
         <input type="date" class="form-control" name="tglPeng" id="tglPeng" ></textarea>
         @else
         <input type="date" class="form-control" name="tglPeng" id="tglPeng" >{{$pengumuman->tanggal}}</textarea>
+        @endif
+    </div>
+
+    <div class="form-group">
+        <label for="tglPeng">TEMPAT KEGIATAN</label>
+        @if($route == 'create')
+        <input type="text" class="form-control" name="tptPeng" id="tglPeng" ></textarea>
+        @else
+        <input type="text" class="form-control" name="tptPeng" id="tglPeng" >{{$pengumuman->tempat}}</textarea>
         @endif
     </div>
 

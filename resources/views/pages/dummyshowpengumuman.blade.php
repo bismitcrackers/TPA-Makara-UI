@@ -22,6 +22,9 @@
     {{ $pengumuman->tanggal }}
 </p>
 <p>
+    {{ $pengumuman->tempat }}
+</p>
+<p>
     {{ $pengumuman->jenis }}
 </p>
 @endforeach

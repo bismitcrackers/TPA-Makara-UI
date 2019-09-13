@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jadwal extends Model
+class JadwalGambar extends Model
 {
 
-    protected $table = 'jadwal';
+    protected $table = 'jadwal_gambar';
 
     /**
      * The attributes that are mass assignable.
@@ -15,12 +15,12 @@ class Jadwal extends Model
      * @var array
      */
     protected $fillable = [
-        'pembuat', 'judul', 'kelas'
+        'jadwal_id', 'url_lampiran'
     ];
 
-    public function jadwalGambar()
+    public function jadwal()
     {
-        return $this->hasMany(JadwalGambar::class);
+        return $this->belongsTo(Jadwal::class);
     }
 
 }

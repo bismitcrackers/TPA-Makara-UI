@@ -20,23 +20,33 @@
     <form action="{{ route('profile.schedule.edit', ['id', $schedule->id]) }}" method="post" enctype="multipart/form-data">
     @endif
         {{ csrf_field() }}
+        <div class="form-group">
+            <label for="judul" class="dclabel">JUDUL</label>
+            @if($schedule == null)
+                <input name="judul" type="text" class="form-control dcinput" id="judul" aria-describedby="judul" placeholder="" required>
+            @else
+                <input value="{{ $schedule->judul }}" name="judul" type="text" class="form-control dcinput" id="judul" aria-describedby="judul" placeholder="" required>
+            @endif
+        </div>
+
         <div href="" class="tambahfoto d-flex justify-content-center dcinput tambahpdf" onclick="burninput()">
             <span>Tambah PDF</span>
             <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
         </div>
 
-        <input name="schedule" type="file" id="inputfile">
+        <input name="schedules[]" type="file" id="inputfile" multiple>
 
         <input name="kelas" type="hidden" value="{{ $kelas }}">
 
         @if($schedule != null)
-        <div class="dcinput">
-            <img id="imgbuku" src="{{ asset($schedule->url_lampiran) }}">
+        <div class="gallery">
+        @foreach($scheduleImages as $scheduleImage)
+            <img id="imgbuku" src="{{ asset($scheduleImage->url_lampiran) }}" alt="please insert image">
+        @endforeach
         </div>
         @else
-        <div class="dcinput">
-            <img id="imgbuku" src="">
-        </div>
+            <div class="gallery">
+            </div>
         @endif
 
         <div class="d-flex justify-content-center">
@@ -61,21 +71,28 @@
             $("#inputfile").click();
    }
 
-   function readURL(input) {
-     if (input.files && input.files[0]) {
-       var reader = new FileReader();
+   var imagesPreview = function(input, placeToInsertImagePreview) {
 
-       reader.onload = function(e) {
-         $('#imgbuku').attr('src', e.target.result);
-       }
+        if (input.files) {
+            var filesAmount = input.files.length;
 
-       reader.readAsDataURL(input.files[0]);
-     }
-   }
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
 
-   $("#inputfile").change(function() {
-     readURL(this);
-   });
+                reader.onload = function(event) {
+                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('#inputfile').on('change', function() {
+        $('.gallery').html('');
+        imagesPreview(this, 'div.gallery');
+    });
 </script>
 
 @endsection

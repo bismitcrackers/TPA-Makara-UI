@@ -6,6 +6,7 @@ use DB;
 use Carbon\Carbon;
 use App\Berita;
 use App\Jadwal;
+use App\JadwalGambar;
 use App\Pengumuman;
 use App\Comments;
 use App\DailyBook;
@@ -356,6 +357,10 @@ class PageController extends Controller
         $pengumuman = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Pengumuman')->get();
         $agenda = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Agenda Kegiatan')->get();
         $schedule = Jadwal::where('kelas', $student->kelas)->first();
+        if ($schedule != null) {
+            $scheduleImages = JadwalGambar::where('jadwal_id',$schedule->id)->get();
+            return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda, 'schedule' => $schedule, 'scheduleImages' => $scheduleImages]);
+        }
         return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda, 'schedule' => $schedule]);
     }
 
@@ -377,12 +382,20 @@ class PageController extends Controller
     public function scheduleForm($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
         $schedule = Jadwal::where('kelas', $kelas)->first();
+        if ($schedule != null) {
+            $scheduleImages = JadwalGambar::where('jadwal_id',$schedule->id)->get();
+            return view('pages.TambahJadwalPerBulan', ['kelas' => $kelas, 'schedule' => $schedule, 'scheduleImages' => $scheduleImages]);
+        }
         return view('pages.TambahJadwalPerBulan', ['kelas' => $kelas, 'schedule' => $schedule]);
     }
 
     public function scheduleList($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
         $schedule = Jadwal::where('kelas', $kelas)->first();
+        if ($schedule != null) {
+            $scheduleImages = JadwalGambar::where('jadwal_id',$schedule->id)->get();
+            return view('pages.JadwalPerBulan', ['kelas' => $kelas, 'schedule' => $schedule, 'scheduleImages' => $scheduleImages]);
+        }
         return view('pages.JadwalPerBulan', ['kelas' => $kelas, 'schedule' => $schedule]);
     }
 
@@ -399,7 +412,7 @@ class PageController extends Controller
     public function addPengumuman($kelas) {
         if (auth()->user() == null) {return redirect()->route('login');}
         if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
-        return view('pages.ubahPengumuman', ['kelas' => $kelas, 'route' => 'add']);
+        return view('pages.UbahPengumuman', ['kelas' => $kelas, 'route' => 'add']);
     }
 
     public function editPengumuman($kelas, $id) {
