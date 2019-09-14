@@ -21,19 +21,24 @@ class PembayaranController extends Controller
         $this->middleware('auth');
     }
 
-    public function addTagihan(Request $request, $student_id)
+    public function addTagihan(Request $request, $kelas, $student_id)
     {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
         } else if ($user->roles()->first()->description == 'Full Access') {
             $student = Student::where('id', $student_id)->first();
-
             $tagihan = new Pembayaran;
             $tagihan->jenis_tagihan = $request->jenis_tagihan;
             $tagihan->jumlah_tagihan = $request->jumlah_tagihan;
-            $tagihan->status = "Belum Lunas";
-            $tagihan->total_tagihan->$request->total_tagihan;
+            $tagihan->status = $request->status;
+            $tagihan->deskripsi = $request->deskripsi;
+            $tagihan->bulan_tagihan = $request->bulan_tagihan;
+            if ($request->has('bukti_pembayaran')) {
+                $image = WebHelper::saveImageToPublic($request->file('bukti_pembayaran'), '/picture/pembayaran');
+                $tagihan->bukti_pembayaran = $image;
+            }
+            $tagihan->kelas = $kelas;
             $student->pembayaran()->save($tagihan);
             return redirect()->route('success');
         } else {
@@ -41,15 +46,15 @@ class PembayaranController extends Controller
         }
     }
 
-    public function editTagihan(Request $request, $student_id, $tagihan_id)
+    public function editTagihan(Request $request, $kelas, $student_id, $tagihan_id)
     {
         $user = auth()->user();
         if ($user == null) {
             return redirect()->route('login');
         } else if ($user->roles()->first()->name == 'Orangtua') {
             $student = Student::where('id', $student_id)->first();
-
             if ($request->has('bukti_pembayaran')) {
+
                 $image = WebHelper::saveImageToPublic($request->file('bukti_pembayaran'), '/picture/pembayaran');
                 $tagihan = Pembayaran::where('id', $tagihan_id)->first()->update(
                     [
@@ -57,10 +62,13 @@ class PembayaranController extends Controller
                     ]
                 );
             }
+            return redirect()->route('success');
+        } else {
+            return redirect()->route('login');
         }
     }
 
-    public function editTagihanAdmin(Request $request, $student_id, $tagihan_id)
+    public function editTagihanAdmin(Request $request, $kelas, $student_id, $tagihan_id)
     {
         $user = auth()->user();
         if ($user == null) {
@@ -73,32 +81,63 @@ class PembayaranController extends Controller
                         'jenis_tagihan' => $request->jenis_tagihan,
                         'jumlah_tagihan' => $request->jumlah_tagihan,
                         'status' => $request->status,
-                        'total_tagihan' => $request->total_tagihan,
+                        'deskripsi' => $request->deskripsi,
+                        'bulan_tagihan' => $request->bulan_tagihan,
                         'bukti_pembayaran' => $image,
                     ]
                 );
-            }
-        }
-    }
-
-    public function changeStatus(Request $request, $student_id, $tagihan_id)
-    {
-        $user = auth()->user();
-        if ($user == null) {
-            return redirect()->route('login');
-        } else if ($user->roles()->first()->description == 'Full Access') {
-            $tagihan = Pembayaran::where('id', $tagihan_id);
-            if ($tagihan->status == "Belum Lunas") {
-                $tagihan->status = "Lunas";
             } else {
-                $tagihan->status = "Belum Lunas";
+                $tagihan = Pembayaran::where('id', $tagihan_id)->update(
+                    [
+                        'jenis_tagihan' => $request->jenis_tagihan,
+                        'jumlah_tagihan' => $request->jumlah_tagihan,
+                        'status' => $request->status,
+                        'deskripsi' => $request->deskripsi,
+                        'bulan_tagihan' => $request->bulan_tagihan,
+                    ]
+                );
             }
+            return redirect()->route('success');
         } else {
             return redirect()->route('login');
         }
     }
 
-    public function deleteTagihan(Request $request, $student_id, $tagihan_id)
+    public function lunaskan(Request $request, $kelas, $student_id, $tagihan_id)
+    {
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else if ($user->roles()->first()->description == 'Full Access') {
+            $tagihan = Pembayaran::where('id', $tagihan_id)->first()->update(
+                [
+                    'status' => 'Lunas',
+                ]
+            );
+            return redirect()->route('success');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function cancelLunaskan(Request $request, $kelas, $student_id, $tagihan_id)
+    {
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else if ($user->roles()->first()->description == 'Full Access') {
+            $tagihan = Pembayaran::where('id', $tagihan_id)->first()->update(
+                [
+                    'status' => 'Belum Lunas',
+                ]
+            );
+            return redirect()->route('success');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function deleteTagihan(Request $request, $kelas, $student_id, $tagihan_id)
     {
         $user = auth()->user();
         if ($user == null) {

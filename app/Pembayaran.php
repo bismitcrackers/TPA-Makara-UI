@@ -15,7 +15,7 @@ class Pembayaran extends Model
      * @var array
      */
     protected $fillable = [
-        'student_id', 'jenis_tagihan', 'jumlah_tagihan', 'status', 'total_tagihan', 'bukti_pembayaran'
+        'student_id', 'kelas', 'jenis_tagihan', 'bulan_tagihan', 'jumlah_tagihan', 'deskripsi', 'status', 'bukti_pembayaran'
     ];
 
     public function student(){

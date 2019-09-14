@@ -103,14 +103,16 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
         Route::post('/graduate', 'StudentController@graduateStudent')->name('graduate');
         Route::post('/ungraduate', 'StudentController@cancelGraduateStudent')->name('ungraduate');
     });
-    Route::group(['prefix' => 'tagihan', 'as' => 'tagihan.'], function () {
-        Route::get('/lists', 'PageController@tagihanLists')->name('lists');
+    Route::group(['prefix' => 'tagihan/{kelas}', 'as' => 'tagihan.'], function () {
+        Route::get('/lists', 'PageController@tagihanLists')->name('list');
+        Route::get('/kwitansi/{student_id}/{tagihan_id}', 'PageController@showKwitansi')->name('kwitansi');
         Route::get('/form/add/{student_id}', 'PageController@tagihanAdd')->name('form.add');
         Route::get('/form/edit/{student_id}/{tagihan_id}', 'PageController@tagihanEdit')->name('form.edit');
         Route::post('/add/{student_id}', 'PembayaranController@addTagihan')->name('add');
         Route::post('/edit/{student_id}/{tagihan_id}', 'PembayaranController@editTagihanAdmin')->name('edit');
         Route::post('/uploadBukti/{student_id}/{tagihan_id}', 'PembayaranController@editTagihan')->name('upload');
-        Route::post('/changeStatus/{student_id}/{tagihan_id}', 'PembayaranController@changeStatus')->name('change');
+        Route::post('/lunaskan/{student_id}/{tagihan_id}', 'PembayaranController@lunaskan')->name('lunaskan');
+        Route::post('/cancelLunaskan/{student_id}/{tagihan_id}', 'PembayaranController@cancelLunaskan')->name('cancelLunaskan');
         Route::delete('/delete/{student_id}/{tagihan_id}', 'PembayaranController@deleteTagihan')->name('delete');
     });
 });

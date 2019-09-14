@@ -8,6 +8,8 @@ use App\Berita;
 use App\Jadwal;
 use App\JadwalGambar;
 use App\Pengumuman;
+use App\Pembayaran;
+use App\FormattedPembayaran;
 use App\Comments;
 use App\DailyBook;
 use App\Student;
@@ -357,11 +359,57 @@ class PageController extends Controller
         $pengumuman = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Pengumuman')->get();
         $agenda = Pengumuman::where('kelas', $student->kelas)->where('jenis', 'Agenda Kegiatan')->get();
         $schedule = Jadwal::where('kelas', $student->kelas)->first();
+
+        $tagihan = Pembayaran::where('kelas', $student->kelas)->get();
+        $formattedTagihanList = array();
+        $tagihanStudent = Pembayaran::where('student_id', $student_id)->get();
+        $count = 1;
+        $totalTagihan = 0;
+        $formattedTagihan = new FormattedPembayaran();
+        foreach ($tagihanStudent as $eachTagihan) {
+            $formattedTagihan = new FormattedPembayaran();
+            if ($count == 1) {
+                $formattedTagihan->nama_lengkap = $student->nama_lengkap;
+            } else {
+                $formattedTagihan->nama_lengkap = '';
+            }
+            $formattedTagihan->jenis_tagihan = $eachTagihan->jenis_tagihan;
+            $formattedTagihan->jumlah_tagihan = $eachTagihan->jumlah_tagihan;
+            $formattedTagihan->status = $eachTagihan->status;
+            $totalTagihan = $totalTagihan + $eachTagihan->jumlah_tagihan;
+            if ($count == $tagihanStudent->count()) {
+                $formattedTagihan->total_tagihan = $totalTagihan;
+            } else {
+                $formattedTagihan->total_tagihan = '';
+            }
+            $formattedTagihan->bukti_pembayaran = $eachTagihan->bukti_pembayaran;
+            if ($formattedTagihan->status == 'Lunas') {
+                $formattedTagihan->kwitansiCheck = true;
+            } else {
+                $formattedTagihan->kwitansiCheck = false;
+            }
+            $formattedTagihan->student_id = $student->id;
+            $formattedTagihan->tagihan_id = $eachTagihan->id;
+            array_push($formattedTagihanList, $formattedTagihan);
+            $count = $count + 1;
+        }
+        if ($formattedTagihan == new FormattedPembayaran()) {
+            $formattedTagihan->nama_lengkap = $student->nama_lengkap;
+            $formattedTagihan->jenis_tagihan = '';
+            $formattedTagihan->jumlah_tagihan = '';
+            $formattedTagihan->status = '';
+            $formattedTagihan->total_tagihan = '';
+            $formattedTagihan->bukti_pembayaran = '';
+            $formattedTagihan->kwitansiCheck = '';
+            $formattedTagihan->student_id = $student->id;
+            $formattedTagihan->tagihan_id = '';
+            array_push($formattedTagihanList, $formattedTagihan);
+        }
         if ($schedule != null) {
             $scheduleImages = JadwalGambar::where('jadwal_id',$schedule->id)->get();
-            return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda, 'schedule' => $schedule, 'scheduleImages' => $scheduleImages]);
+            return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda, 'formattedTagihanList' => $formattedTagihanList, 'schedule' => $schedule, 'scheduleImages' => $scheduleImages]);
         }
-        return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda, 'schedule' => $schedule]);
+        return view('pages.StudentProfile', ['student' => $student, 'dad' => $dad, 'mom' => $mom,'pengumuman' => $pengumuman, 'agenda' => $agenda, 'formattedTagihanList' => $formattedTagihanList, 'schedule' => $schedule]);
     }
 
 // COMMENTS
@@ -426,6 +474,98 @@ class PageController extends Controller
         if (auth()->user() == null) {return redirect()->route('login');}
         $pengumuman = Pengumuman::where('id', $id)->first();
         return view('pages.ShowPengumuman', ['kelas' => $kelas, 'pengumuman' => $pengumuman]);
+    }
+
+// PEMBAYARAN
+
+    public function tagihanLists($kelas)
+    {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
+        $students = Student::where('kelas', $kelas)->get();
+        $tagihan = Pembayaran::where('kelas', $kelas)->get();
+        $formattedTagihanList = array();
+        foreach ($students as $student) {
+            $tagihanStudent = Pembayaran::where('student_id', $student->id)->get();
+            $count = 1;
+            $totalTagihan = 0;
+            $formattedTagihan = new FormattedPembayaran();
+            foreach ($tagihanStudent as $eachTagihan) {
+                $formattedTagihan = new FormattedPembayaran();
+                if ($count == 1) {
+                    $formattedTagihan->nama_lengkap = $student->nama_lengkap;
+                } else {
+                    $formattedTagihan->nama_lengkap = '';
+                }
+                $formattedTagihan->jenis_tagihan = $eachTagihan->jenis_tagihan;
+                $formattedTagihan->jumlah_tagihan = $eachTagihan->jumlah_tagihan;
+                $formattedTagihan->status = $eachTagihan->status;
+                $totalTagihan = $totalTagihan + $eachTagihan->jumlah_tagihan;
+                if ($count == $tagihanStudent->count()) {
+                    $formattedTagihan->total_tagihan = $totalTagihan;
+                } else {
+                    $formattedTagihan->total_tagihan = '';
+                }
+                $formattedTagihan->bukti_pembayaran = $eachTagihan->bukti_pembayaran;
+                if ($formattedTagihan->status == 'Lunas') {
+                    $formattedTagihan->kwitansiCheck = true;
+                } else {
+                    $formattedTagihan->kwitansiCheck = false;
+                }
+                $formattedTagihan->student_id = $student->id;
+                $formattedTagihan->tagihan_id = $eachTagihan->id;
+                array_push($formattedTagihanList, $formattedTagihan);
+                $count = $count + 1;
+            }
+            if ($formattedTagihan == new FormattedPembayaran()) {
+                $formattedTagihan->nama_lengkap = $student->nama_lengkap;
+                $formattedTagihan->jenis_tagihan = '';
+                $formattedTagihan->jumlah_tagihan = '';
+                $formattedTagihan->status = '';
+                $formattedTagihan->total_tagihan = '';
+                $formattedTagihan->bukti_pembayaran = '';
+                $formattedTagihan->kwitansiCheck = '';
+                $formattedTagihan->student_id = $student->id;
+                $formattedTagihan->tagihan_id = '';
+                array_push($formattedTagihanList, $formattedTagihan);
+            }
+        }
+        return view('pages.tagihanSiswa', ['kelas' => $kelas, 'formattedTagihanList' => $formattedTagihanList]);
+    }
+
+    public function tagihanAdd($kelas, $student_id)
+    {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
+        return view('pages.tambahTagihan', ['kelas' => $kelas, 'student_id' => $student_id, 'route' => 'add']);
+    }
+
+    public function tagihanEdit($kelas, $student_id, $tagihan_id)
+    {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
+        $tagihan = Pembayaran::where('id', $tagihan_id)->first();
+        return view('pages.tambahTagihan', ['kelas' => $kelas, 'tagihan' => $tagihan, 'tagihan_id' => $tagihan_id, 'student_id' => $student_id, 'route' => 'edit']);
+    }
+
+    public function showKwitansi($kelas, $student_id, $tagihan_id)
+    {
+        if (auth()->user() == null) {return redirect()->route('login');}
+        if (auth()->user()->roles()->first()->description == 'Full Access' || auth()->user()->roles()->first()->name == 'Orangtua') {
+            $tagihan = Pembayaran::where('id', $tagihan_id)->first();
+            $student = Student::where('id', $student_id)->first();
+            $allTagihan = Pembayaran::where('student_id', $student_id)->where('status', 'Lunas')->where('bulan_tagihan', $tagihan->bulan_tagihan)->get();
+            $totalTagihan = 0;
+            foreach ($allTagihan as $eachTagihan) {
+                $totalTagihan = $totalTagihan + $eachTagihan->jumlah_tagihan;
+            }
+            if ($tagihan->status == 'Lunas') {
+                return view('pages.kwitansi', ['kelas' => $kelas, 'tagihan' => $tagihan, 'tagihan_id' => $tagihan_id, 'student_id' => $student_id, 'student' => $student, 'allTagihan' => $allTagihan, 'totalTagihan' => $totalTagihan]);
+            } else {
+                return redirect()->route('login');
+            }
+        }
+        return redirect()->route('login');
     }
 
 }

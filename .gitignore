@@ -11,6 +11,7 @@ public/storage
 public/picture/daily_books
 public/picture/news
 public/picture/schedule
+public/picture/pembayaran
 public/hot
 storage/*.key
 .env.*.php

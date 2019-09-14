@@ -9,9 +9,9 @@
 @section('content')
     <div class = "d-flex justify-content-center">
         <h1 class = "tagihan-title underliner">
-            Tagihan Siswa Daycare
+            Tagihan Siswa {{ $kelas }}
         </h1>
-    </div>   
+    </div>
 
     <!-- Modal -->
 
@@ -32,7 +32,11 @@
 
                 <div class = "confirm-button">
                     <button type="button" class="btn btn-secondary editbuttoncancel" data-dismiss="modal" id = "disagree-button">Tidak</button>
-                    <button type="submit" class="btn editbutton" id = "agree-button">Ya</button>
+                    <form method="POST" action="test" id="formDelete">
+                         {{ csrf_field() }}
+                         {{ method_field('DELETE') }}
+                         <button type="submit" class="btn delete" id = "agree-button">Ya</button>
+                     </form>
                 </div>
             </div>
             </div>
@@ -49,151 +53,67 @@
                     <th scope="col">Status</th>
                     <th scope="col">Total Tagihan</th>
                     <th scope="col">Bukti Pembayaran</th>
-                    <th scope="col">Kwitansi</th>            
-                    <th scope="col">action</th>            
+                    <th scope="col">Kwitansi</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row" rowspan="2" class = "name">Abyan Althaf K</th>
-                    <td>Uang Pangkal</td>
-                    <td>Rp 500.000</td>
-                    <td>
-                        <div class = "belum-lunas">
-                            Belum Lunas
-                        </div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a>
-                            <img src="{{asset('svg/tagihan-edit.svg')}}" alt="tagihan-edit">
-                        </a>
-                        <a class = "btn-passconfirm">
-                            <img src="{{asset('svg/tagihan-delete.svg')}}" alt="tagihan-delete">
-                        </a>
-                        <a href="" class = "name add-tagihan">
-                            <img src="{{ asset('svg/plus.svg') }}" alt="">
-                            <span>Tambah Tagihan</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Iuran Bulanan (2 x seminggu)</td>
-                    <td>Rp500.000</td>
-                    <td>
-                        <div class = "belum-lunas">
-                            Belum Lunas
-                        </div>
-                    </td>
-                    <td>Rp1.000.000</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a>
-                            <img src="{{asset('svg/tagihan-edit.svg')}}" alt="tagihan-edit">
-                        </a>
-                        <a class = "btn-passconfirm">
-                            <img src="{{asset('svg/tagihan-delete.svg')}}" alt="tagihan-delete">
-                        </a>
-                        <a href="" class = "name add-tagihan">
-                            <img src="{{ asset('svg/plus.svg') }}" alt="">
-                            <span>Tambah Tagihan</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row" class = "name">Anya Radhya T</th>
-                    <td>Uang Pangkal</td>
-                    <td>Rp 500.000</td>
-                    <td>
-                        <div class = "lunas">
-                            Lunas
-                            <img style = "padding-left: 4px" src="{{asset('svg/lunasarrow.svg')}}" alt="">
-                        </div>
-                    </td>
-                    <td>Rp 500.000</td>
-                    <td>
-                        <img src="{{asset('svg/exampleBuktiPembayaran.svg')}}" alt="">
-                    </td>
-                    <td></td>
-                    <td>
-                        <a>
-                            <img src="{{asset('svg/tagihan-edit.svg')}}" alt="tagihan-edit">
-                        </a>
-                        <a class = "btn-passconfirm">
-                            <img src="{{asset('svg/tagihan-delete.svg')}}" alt="tagihan-delete">
-                        </a>
-                        <a href="" class = "name add-tagihan">
-                            <img src="{{ asset('svg/plus.svg') }}" alt="">
-                            <span>Tambah Tagihan</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Akhtar Rasyid A</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a>
-                            <img src="{{asset('svg/tagihan-edit.svg')}}" alt="tagihan-edit">
-                        </a>
-                        <a class = "btn-passconfirm">
-                            <img src="{{asset('svg/tagihan-delete.svg')}}" alt="tagihan-delete">
-                        </a>
-                        <a href="" class = "name add-tagihan">
-                            <img src="{{ asset('svg/plus.svg') }}" alt="">
-                            <span>Tambah Tagihan</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Arudita Saphira P</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a>
-                            <img src="{{asset('svg/tagihan-edit.svg')}}" alt="tagihan-edit">
-                        </a>
-                        <a class = "btn-passconfirm">
-                            <img src="{{asset('svg/tagihan-delete.svg')}}" alt="tagihan-delete">
-                        </a>
-                        <a href="" class = "name add-tagihan">
-                            <img src="{{ asset('svg/plus.svg') }}" alt="">
-                            <span>Tambah Tagihan</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Akhtar Rasyid A</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a>
-                            <img src="{{asset('svg/tagihan-edit.svg')}}" alt="tagihan-edit">
-                        </a>
-                        <a class = "btn-passconfirm">
-                            <img src="{{asset('svg/tagihan-delete.svg')}}" alt="tagihan-delete">
-                        </a>
-                        <a href="" class = "name add-tagihan">
-                            <img src="{{ asset('svg/plus.svg') }}" alt="">
-                            <span>Tambah Tagihan</span>
-                        </a>
-                    </td>
-                </tr>
+                @foreach($formattedTagihanList as $formattedTagihan)
+                    <tr>
+                        <th scope="row" class = "name">{{ $formattedTagihan->nama_lengkap }}</th>
+                        <td>{{ $formattedTagihan->jenis_tagihan }}</td>
+                        <td>Rp {{ $formattedTagihan->jumlah_tagihan }}</td>
+                        <td>
+                            @if($formattedTagihan->status == '')
+
+                            @elseif($formattedTagihan->status != 'Lunas')
+                            <div class="belum-lunas">
+                                {{ $formattedTagihan->status }}
+                            </div>
+                            <form method="POST" action="{{ route('profile.tagihan.lunaskan', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
+                                {{ csrf_field() }}
+                                <button type="submit" class="lunas btn editbutton" id = "agree-button">Lunaskan</button>
+                            </form>
+                            @else
+                            <div class="lunas">
+                                {{ $formattedTagihan->status }}
+                            </div>
+                            <form method="POST" action="{{ route('profile.tagihan.cancelLunaskan', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
+                                {{ csrf_field() }}
+                                <button type="submit" class="belum-lunas btn editbutton" id = "agree-button">Batalkan Kelunasan</button>
+                            </form>
+                            @endif
+                        </td>
+                        <td>Rp {{ $formattedTagihan->total_tagihan }}</td>
+                        <td>
+                            @if($formattedTagihan->bukti_pembayaran != '')
+                                <img id="imgbuku" src="{{ asset($formattedTagihan->bukti_pembayaran) }}" alt="please insert image">
+                            @endif
+                        </td>
+                        <td>
+                            @if($formattedTagihan->kwitansiCheck)
+                            <a href="{{ route('profile.tagihan.kwitansi', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
+                                <div class="btn btn-danger">
+                                    Kwitansi
+                                </div>
+                            </a>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('profile.tagihan.form.edit', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
+                                <img src="{{ asset('svg/tagihan-edit.svg') }}" alt="tagihan-edit">
+                            </a>
+                            <a class="btn-passconfirm" onclick="deleteId('{{ $kelas }}', {{ $formattedTagihan->student_id }}, {{ $formattedTagihan->tagihan_id }})">
+                                <img src="{{ asset('svg/tagihan-delete.svg') }}" alt="tagihan-delete">
+                            </a>
+                            <a href="{{ route('profile.tagihan.form.add', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id]) }}" class = "name add-tagihan">
+                                <img src="{{ asset('svg/plus.svg') }}" alt="">
+                                <span>Tambah Tagihan</span>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+
             </tbody>
         </table>
     </div>
@@ -224,27 +144,30 @@
         <div class="col-1">Kwitansi</div>
     </div> --}}
 
-    
+
 
 @endsection
 
 @section('extra-js')
 
 <script>
-     function modalConfirm(callback){
-            $(".btn-passconfirm").on("click", function(){
-                $("#studentPassModal").modal('show');
-            });
+    function deleteId(kelas, student_id, tagihan_id) {
+        console.log(tagihan_id);
+        $('#formDelete').attr('action', 'http://localhost:8000/profile/tagihan/' + kelas  + '/delete/' + student_id + '/' + tagihan_id);
+        $("#studentPassModal").modal('show');
+    }
 
-            $("#agree-button").on("click", function(){
-                callback(true);
-                $("#studentPassModal").modal('hide');
-            });
+    function modalConfirm(callback){
 
-            $("#disagree-button").on("click", function(){
-                callback(false);
-                $("#studentPassModal").modal('hide');
-            });
+        $("#agree-button").on("click", function(){
+            callback(true);
+            $("#studentPassModal").modal('hide');
+        });
+
+        $("#disagree-button").on("click", function(){
+            callback(false);
+            $("#studentPassModal").modal('hide');
+        });
         };
 
         modalConfirm(function(confirm){
