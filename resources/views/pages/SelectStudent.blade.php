@@ -22,7 +22,7 @@
         <a href="{{ route('profile.pengumuman.list', ['kelas' => $class]) }}">
             <button type="button" class="btn btn-primary announcement">Pengumuman</button>
         </a>
-        <a href="{{ route('tagihansiswa')}}">
+        <a href="{{ route('profile.tagihan.list', ['kelas' => $class])}}">
             <button type="button" class="btn btn-warning payment">Pembayaran</button>
         </a>
         <a href="{{ route('profile.schedule.list', ['kelas' => $class]) }}">

@@ -341,25 +341,55 @@
                     <th scope="col">Status</th>
                     <th scope="col">Total Tagihan</th>
                     <th scope="col">Bukti Pembayaran</th>
-                    <th scope="col">Kwitansi</th>                       
+                    <th scope="col">Kwitansi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row" class = "name">Anya Radhya T</th>
-                    <td>Uang Pangkal</td>
-                    <td>Rp 500.000</td>
-                    <td>
-                        <div class = "lunas">
-                            Lunas
-                        </div>
-                    </td>
-                    <td>Rp 500.000</td>
-                    <td>
-                        <img src="{{asset('svg/exampleBuktiPembayaran.svg')}}" alt="">
-                    </td>
-                    <td class = "kwitansi">Kwitansi</td>
-                </tr>
+                @foreach($formattedTagihanList as $formattedTagihan)
+                    <tr>
+                        <th scope="row" class = "name">{{ $formattedTagihan->nama_lengkap }}</th>
+                        <td>{{ $formattedTagihan->jenis_tagihan }}</td>
+                        <td>Rp {{ $formattedTagihan->jumlah_tagihan }}</td>
+                        <td>
+                            @if($formattedTagihan->status == '')
+
+                            @elseif($formattedTagihan->status != 'Lunas')
+                            <div class="belum-lunas">
+                                {{ $formattedTagihan->status }}
+                            </div>
+                            @else
+                            <div class="lunas">
+                                {{ $formattedTagihan->status }}
+                            </div>
+                            @endif
+                        </td>
+                        <td>Rp {{ $formattedTagihan->total_tagihan }}</td>
+                        <td>
+                            @if($formattedTagihan->bukti_pembayaran != '')
+                                <img id="imgbuku" src="{{ asset($formattedTagihan->bukti_pembayaran) }}" alt="please insert image">
+                            @else
+                                <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
+                                    <span>Upload Bukti</span>
+                                    <img src="{{asset('svg/plus.svg')}}" alt="plus">
+                                </div>
+                                <form method="POST" action="{{ route('profile.tagihan.upload', ['kelas' => $student->kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <input name="bukti_pembayaran" type="file" id="inputfile">
+                                    <button type="submit" class="belum-lunas btn editbutton" id = "upload-button" hidden>Upload Bukti</button>
+                                </form>
+                            @endif
+                        </td>
+                        <td>
+                            @if($formattedTagihan->kwitansiCheck)
+                            <a href="{{ route('profile.tagihan.kwitansi', ['kelas' => $student->kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
+                                <div class="btn btn-danger">
+                                    Kwitansi
+                                </div>
+                            </a>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -400,6 +430,27 @@
                 $("#disagree").fadeTo(500, 0).slideUp(500);
                 }, 4000)
             }
+        });
+
+        function burninput(event){
+            $("#inputfile").click();
+        }
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              // $('#imgbuku').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#inputfile").change(function() {
+          readURL(this);
+          $("#upload-button").click();
         });
 
     </script>

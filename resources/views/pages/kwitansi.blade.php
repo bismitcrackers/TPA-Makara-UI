@@ -16,7 +16,7 @@
                 <br>
                 Fakultas Psikologi UI, Depok
                 <br>
-                Telp. 021 7888 1082/ 
+                Telp. 021 7888 1082/
                 <br>
                 0857 7170 6484
             </p>
@@ -31,25 +31,27 @@
     </div>
 
     <div class = "kwitansi-content">
-        <p>Sudah diterima dari: Orangtua Abyan</p>
+        <p>Sudah diterima dari: Orangtua {{ $student->nama_lengkap }}</p>
         <br>
         <p>Untuk pembayaran:
+            <?php $i = 1; ?>
+            @foreach($allTagihan as $eachTagihan)
             <br>
-            1. Uang Pangkal
-            <br>
-            2. Iuran Bulanan (2 x seminggu)
+            {{ $i }}. {{ $eachTagihan->jenis_tagihan }}
+            <?php $i = $i + 1; ?>
+            @endforeach
         </p>
         <br>
-        <p>Bulan: Agustus 2019</p>
+        <p>Bulan: {{ $tagihan->bulan_tagihan }}</p>
         <br>
-        <p>Jumlah: Rp1.500.000</p>
+        <p>Jumlah: {{ $totalTagihan }}</p>
         <br>
         <p>Status: Lunas</p>
     </div>
 
 
 
-    
+
 
 @endsection
 
