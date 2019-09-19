@@ -53,6 +53,12 @@ class DailyBooksController extends Controller
             $dailyBook->dibaca              = False;
             $dailyBook->dipublish           = False;
             $student->dailyBook()->save($dailyBook);
+
+            $user_id = Student::where('id', $student_id)->first()->user_id;
+            $notificationMessage = ', telah menambahkan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'dailyBook/DayCare/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
+
             return redirect()->route('success');
         }
     }
@@ -84,6 +90,12 @@ class DailyBooksController extends Controller
             $dailyBook->dibaca              = False;
             $dailyBook->dipublish           = False;
             $student->dailyBook()->save($dailyBook);
+
+            $user_id = Student::where('id', $student_id)->first()->user_id;
+            $notificationMessage = ', telah menambahkan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'dailyBook/KelompokBermain/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
+
             return redirect()->route('success');
         }
     }
@@ -137,6 +149,12 @@ class DailyBooksController extends Controller
                 );
             }
             // $student->dailyBook()->save($dailyBook);
+            $tanggal = WebHelper::getValidatedDate($request->tanggal);
+            $student = Student::where('id', $student_id)->first();
+            $notificationMessage = ', telah mengubah Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'dailyBook/DayCare/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+
             return redirect()->route('success');
         }
     }
@@ -180,6 +198,12 @@ class DailyBooksController extends Controller
                 );
             }
             // $student->dailyBook()->save($dailyBook);
+            $tanggal = WebHelper::getValidatedDate($request->tanggal);
+            $student = Student::where('id', $student_id)->first();
+            $notificationMessage = ', telah mengubah Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'dailyBook/KelompokBermain/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+
             return redirect()->route('success');
         }
     }
@@ -204,6 +228,20 @@ class DailyBooksController extends Controller
             $comment->user()->associate($user);
             $comment->dailyBook()->associate($daily_book_id);
             $comment->save();
+
+            if ($user->roles()->first()->name == 'Orangtua') {
+                $student = Student::where('user_id', $user->id)->first();
+                $notificationMessage = ', telah menambahkan komentar untuk Buku Penghubung siswa ' . $student->nama_lengkap . '! :)';
+                $notificationUrl = 'dailyBook/' . $daily_book_id . '/comments/show';
+                NotificationController::generateNotificationFromParent($user->name, $notificationMessage, $notificationUrl);
+            } else {
+                $student_id = DailyBook::where('id', $daily_book_id)->first()->student_id;
+                $student = Student::where('id', $student_id)->first();
+                $user_id = $student->user_id;
+                $notificationMessage = ', telah menambahkan komentar untuk Buku Penghubung siswa ' . $student->nama_lengkap . '! :)';
+                $notificationUrl = 'dailyBook/' . $daily_book_id . '/comments/show';
+                NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
+            }
             return redirect()->route('success');
         }
     }

@@ -40,6 +40,12 @@ class PembayaranController extends Controller
             }
             $tagihan->kelas = $kelas;
             $student->pembayaran()->save($tagihan);
+
+            $student = Student::where('id', $student_id)->first();
+            $notificationMessage = ', telah menambahkan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+
             return redirect()->route('success');
         } else {
             return redirect()->route('login');
@@ -62,6 +68,12 @@ class PembayaranController extends Controller
                     ]
                 );
             }
+
+            $student = Student::where('user_id', $user->id)->first();
+            $notificationMessage = ', telah mengupload bukti pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            NotificationController::generateNotificationFromParent($user->name, $notificationMessage, $notificationUrl);
+
             return redirect()->route('success');
         } else {
             return redirect()->route('login');
@@ -97,6 +109,12 @@ class PembayaranController extends Controller
                     ]
                 );
             }
+
+            $student = Student::where('id', $student_id)->first();
+            $notificationMessage = ', telah mengubah Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+
             return redirect()->route('success');
         } else {
             return redirect()->route('login');
@@ -114,6 +132,12 @@ class PembayaranController extends Controller
                     'status' => 'Lunas',
                 ]
             );
+
+            $student = Student::where('id', $student_id)->first();
+            $notificationMessage = ', telah mengkonfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+
             return redirect()->route('success');
         } else {
             return redirect()->route('login');
@@ -131,6 +155,12 @@ class PembayaranController extends Controller
                     'status' => 'Belum Lunas',
                 ]
             );
+
+            $student = Student::where('id', $student_id)->first();
+            $notificationMessage = ', telah membatalkan konfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+
             return redirect()->route('success');
         } else {
             return redirect()->route('login');
@@ -145,6 +175,13 @@ class PembayaranController extends Controller
         } else if ($user->roles()->first()->description == 'Full Access') {
             $tagihan = Pembayaran::where('id', $tagihan_id);
             $tagihan->delete();
+
+            $student = Student::where('id', $student_id)->first();
+            $notificationMessage = ', telah menghapus Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+
+            return redirect()->route('success');
         } else {
             return redirect()->route('login');
         }

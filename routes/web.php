@@ -145,6 +145,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('pengumuman', 'PengumumanController');
 });
 
+Route::get('/notification', 'PageController@showAllNotifications')->name('notification');
+Route::get('/notification/{id}', 'NotificationController@redirectToNotificationUrl')->name('notification.read');
+
 Route::group(['prefix' => 'orangtua', 'as' => 'orangtua.'], function () {
     Route::get('/home', 'HomeController@parentHome')->name('home');
 });

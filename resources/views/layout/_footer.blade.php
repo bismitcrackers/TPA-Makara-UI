@@ -41,7 +41,11 @@
                 <p>Student Book's</p>
             </div>
         </a>
-        <a href="">
+        @if(auth()->user() == null)
+        <a href="{{ route('login') }}">
+        @else
+        <a href="{{ route('notification') }}">
+        @endif
             <div class= "nav-pane mr-3">
                 <img src="{{asset('svg/notification.svg')}}" alt="notification">
                 <p>Notification</p>
