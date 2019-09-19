@@ -49,6 +49,9 @@ class JadwalController extends Controller
                     $imageSchedule->save();
                 }
             }
+            $notificationMessage = ', telah menambahkan jadwal "' . $request->judul . '" untuk siswa ' . $request->kelas . '! :)';
+            $notificationUrl = 'profile/schedule/' . $request->kelas . '/list';
+            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $request->kelas, $notificationUrl);
             return redirect()->route('success');
         }
     }
@@ -80,6 +83,9 @@ class JadwalController extends Controller
                     $imageSchedule->save();
                 }
             }
+            $notificationMessage = ', telah mengubah jadwal "' . $jadwal->judul . '" untuk siswa ' . $jadwal->kelas . '! :)';
+            $notificationUrl = 'profile/schedule/' . $jadwal->kelas . '/list';
+            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $jadwal->kelas, $notificationUrl);
             return redirect()->route('success');
         }
     }
@@ -100,8 +106,17 @@ class JadwalController extends Controller
         } else {
             $jadwal = Jadwal::find($id);
             $jadwalGambar = JadwalGambar::where('jadwal_id',$id);
+
+            $judul = $jadwal->judul;
+            $kelas = $jadwal->kelas;
+
             $jadwalGambar->delete();
             $jadwal->delete();
+
+            $notificationMessage = ', telah menghapus jadwal "' . $judul . '" untuk siswa ' . $kelas . '! :)';
+            $notificationUrl = 'profile/schedule/' . $kelas . '/list';
+            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $kelas, $notificationUrl);
+
             return redirect()->route('success');
         }
     }

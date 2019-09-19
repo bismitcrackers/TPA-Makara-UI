@@ -6,6 +6,7 @@ use DB;
 use Carbon\Carbon;
 use App\Berita;
 use App\Jadwal;
+use App\Notification;
 use App\JadwalGambar;
 use App\Pengumuman;
 use App\Pembayaran;
@@ -566,6 +567,16 @@ class PageController extends Controller
             }
         }
         return redirect()->route('login');
+    }
+
+// NOTIFICATION
+
+    public function showAllNotifications()
+    {
+        $notifications = Notification::whereHas('users', function ($query) {
+            $query->where('users.id', auth()->user()->id);
+        })->get();
+        return view('pages.notification', ['notifications' => $notifications]);
     }
 
 }

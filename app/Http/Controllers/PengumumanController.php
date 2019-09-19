@@ -62,6 +62,10 @@ class PengumumanController extends Controller
             $pengumuman->kelas = $request['kelas'];
             $pengumuman->save();
 
+            $notificationMessage = ', telah menambahkan ' . $request->jenis . ' "' . $request->judul . '" untuk siswa ' . $request->kelas . '! :)';
+            $notificationUrl = 'profile/pengumuman/' . $request->kelas . '/show/' . $pengumuman->id ;
+            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $request->kelas, $notificationUrl);
+
             return redirect()->route('success');
         }
     }
@@ -126,6 +130,10 @@ class PengumumanController extends Controller
             $pengumuman->kelas = $request['kelas'];
             $pengumuman->save();
 
+            $notificationMessage = ', telah mengubah ' . $pengumuman->jenis . ' "' . $pengumuman->judul . '" untuk siswa ' . $pengumuman->kelas . '! :)';
+            $notificationUrl = 'profile/pengumuman/' . $pengumuman->kelas . '/show/' . $pengumuman->id ;
+            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $pengumuman->kelas, $notificationUrl);
+
             return redirect()->route('success');
         }
     }
@@ -151,7 +159,16 @@ class PengumumanController extends Controller
             return redirect()->route('cofasilitator.home');
         } else {
             $pengumuman = Pengumuman::find($id);
+
+            $jenis = $pengumuman->jenis;
+            $judul = $pengumuman->judul;
+            $kelas = $pengumuman->kelas;
+
             $pengumuman->delete();
+
+            $notificationMessage = ', telah menghapus ' . $jenis . ' "' . $judul . '" untuk siswa ' . $kelas . '! :)';
+            $notificationUrl = 'profile/pengumuman/' . $kelas . '/list';
+            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $kelas, $notificationUrl);
 
             return redirect()->route('success');
         }

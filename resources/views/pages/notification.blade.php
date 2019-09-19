@@ -15,9 +15,15 @@
     </div>
 
     <ul class="list-group">
-        <li class="list-group-item list-group-item-success">A simple info list group item</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
+        @foreach($notifications as $notification)
+            <a href="{{ route('notification.read', ['id' => $notification->id]) }}">
+            @if($notification->is_read)
+                <li class="list-group-item">{{ $notification->sender }} {{ $notification->content }}</li>
+            @else
+                <li class="list-group-item list-group-item-success">{{ $notification->sender }} {{ $notification->content }}</li>
+            @endif
+            </a>
+        @endforeach
     </ul>
 
 @endsection
