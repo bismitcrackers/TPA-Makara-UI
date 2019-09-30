@@ -575,7 +575,9 @@ class PageController extends Controller
     {
         $notifications = Notification::whereHas('users', function ($query) {
             $query->where('users.id', auth()->user()->id);
-        })->get();
+        })
+        ->orderBy('created_at', 'desc')
+        ->get();
         return view('pages.notification', ['notifications' => $notifications]);
     }
 

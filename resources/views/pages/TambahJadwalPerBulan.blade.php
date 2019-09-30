@@ -50,9 +50,11 @@
         @endif
 
         <div class="d-flex justify-content-center">
+          <a href="{{ url()->previous() }}">
             <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                 Cancel
             </button>
+          </a>
             <button type="submit" class="btn btn-primary editbutton d-flex justify-content-center">
                 <p>Save</p>
                 <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
