@@ -60,9 +60,11 @@
         </div>
         <input value="{{ $kelas }}" name="kelas" type="hidden" required>
         <div class="d-flex justify-content-center">
+          <a href="{{ url()->previous() }}">
             <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
                 Cancel
             </button>
+          </a>
             <button type="submit" class="btn btn-primary editbutton d-flex justify-content-center">
                 <div class="d-flex align-items-center">
                     <p>Save</p>

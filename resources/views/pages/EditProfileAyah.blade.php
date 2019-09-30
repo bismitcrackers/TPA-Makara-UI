@@ -46,9 +46,11 @@
                     <input value="{{ $dad->no_handphone }}" name="nomorHpAyah" type="text" class="form-control editinput" id="nomor telepon" aria-describedby="Nomor Telepon" placeholder="nomor telepon" required>
             </div>
             <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
-                    Cancel
-                </button>
+                <a href="{{ url()->previous() }}">
+                    <button type="button" class="btn btn-primary editbuttoncancel d-flex justify-content-center">
+                      Cancel
+                    </button>
+                </a>
                 <button type="submit" class="btn btn-primary editbutton d-flex justify-content-center">
                     <p>Save</p>
                     <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
