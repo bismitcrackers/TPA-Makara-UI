@@ -47,7 +47,12 @@
         <a href="{{ route('notification') }}">
         @endif
             <div class= "nav-pane mr-3">
-                <img src="{{asset('svg/notification.svg')}}" alt="notification">
+                <div class="icon-notification">
+                    <img src="{{asset('svg/notification.svg')}}" alt="notification">
+                    @if(auth()->user() != null)
+                    <span class="num"><?php echo App\Notification::where('is_read', false)->get()->count(); ?></span>
+                    @endif
+                </div>
                 <p>Notification</p>
             </div>
         </a>
