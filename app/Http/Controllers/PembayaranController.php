@@ -110,10 +110,10 @@ class PembayaranController extends Controller
                 );
             }
 
-            $student = Student::where('id', $student_id)->first();
-            $notificationMessage = ', telah mengubah Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
-            $notificationUrl = 'profile/edit/' . $student->id . '/details';
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+            // $student = Student::where('id', $student_id)->first();
+            // $notificationMessage = ', telah mengubah Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            // $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
             return redirect()->route('success');
         } else {
@@ -133,10 +133,10 @@ class PembayaranController extends Controller
                 ]
             );
 
-            $student = Student::where('id', $student_id)->first();
-            $notificationMessage = ', telah mengkonfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
-            $notificationUrl = 'profile/edit/' . $student->id . '/details';
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+            // $student = Student::where('id', $student_id)->first();
+            // $notificationMessage = ', telah mengkonfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            // $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
             return redirect()->route('success');
         } else {
@@ -156,10 +156,10 @@ class PembayaranController extends Controller
                 ]
             );
 
-            $student = Student::where('id', $student_id)->first();
-            $notificationMessage = ', telah membatalkan konfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
-            $notificationUrl = 'profile/edit/' . $student->id . '/details';
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+            // $student = Student::where('id', $student_id)->first();
+            // $notificationMessage = ', telah membatalkan konfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            // $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
             return redirect()->route('success');
         } else {
@@ -176,10 +176,10 @@ class PembayaranController extends Controller
             $tagihan = Pembayaran::where('id', $tagihan_id);
             $tagihan->delete();
 
-            $student = Student::where('id', $student_id)->first();
-            $notificationMessage = ', telah menghapus Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
-            $notificationUrl = 'profile/edit/' . $student->id . '/details';
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+            // $student = Student::where('id', $student_id)->first();
+            // $notificationMessage = ', telah menghapus Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
+            // $notificationUrl = 'profile/edit/' . $student->id . '/details';
+            // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
             return redirect()->route('success');
         } else {
