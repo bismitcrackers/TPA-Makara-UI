@@ -94,9 +94,9 @@
             <div class ="d-flex align-items-center margin-profile sizingprof">
                 <div>
                     @if($student->jenis_kelamin == 'laki-laki')
-                    <img src="{{asset('picture/laki.png')}}" class="profilepicture" alt="laki">
+                    <img id="pp-siswa" src="{{asset('picture/laki.png')}}" class="profilepicture" alt="laki" onmouseover="hover(this);" onmouseout="unhoverboy(this);">
                     @else
-                    <img src="{{asset('picture/perempuan.png')}}" class="profilepicture" alt="perempuan">
+                    <img id="pp-siswa" src="{{asset('picture/perempuan.png')}}" class="profilepicture" alt="perempuan" onmouseover="hover(this);" onmouseout="unhovergirl(this);">
                     @endif
                     <a href="{{ route('profile.edit.student.form', ['student_id' => $student->id]) }}" class="linkeditprofile">
                         <div class="editprofile">
@@ -107,44 +107,44 @@
             </div>
             <div class="ml-4">
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 profilelabel mb-0">Nama</p>
+                    <p class="col-5 p-0 profilelabel mb-0">Nama</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 profilecontent mb-0 pr-0"> {{ $student->nama_lengkap }} </p>
+                    <p class="col-5 p-0 profilecontent mb-0 pr-0"> {{ $student->nama_lengkap }} </p>
                 </div>
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 mb-0 profilelabel">Nama Panggilan</p>
+                    <p class="col-5 p-0 mb-0 profilelabel">Nama Panggilan</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->nama_panggilan }}</p>
+                    <p class="col-5 p-0 mb-0 profilecontent">{{ $student->nama_panggilan }}</p>
                 </div>
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 mb-0 profilelabel">Tempat</p>
+                    <p class="col-5 p-0 mb-0 profilelabel">Tempat</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->tempat_lahir }}</p>
+                    <p class="col-5 p-0 mb-0 profilecontent">{{ $student->tempat_lahir }}</p>
                 </div>
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 mb-0 profilelabel">Tanggal Lahir</p>
+                    <p class="col-5 p-0 mb-0 profilelabel">Tanggal Lahir</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($student->tanggal_lahir)) }}</p>
+                    <p class="col-5 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($student->tanggal_lahir)) }}</p>
                 </div>
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 mb-0 profilelabel">Agama</p>
+                    <p class="col-5 p-0 mb-0 profilelabel">Agama</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->agama }}</p>
+                    <p class="col-5 p-0 mb-0 profilecontent">{{ $student->agama }}</p>
                 </div>
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 mb-0 profilelabel">Alamat Rumah</p>
+                    <p class="col-5 p-0 mb-0 profilelabel">Alamat Rumah</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->alamat_rumah }}</p>
+                    <p class="col-5 p-0 mb-0 profilecontent">{{ $student->alamat_rumah }}</p>
                 </div>
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 mb-0 profilelabel">Telepon Rumah</p>
+                    <p class="col-5 p-0 mb-0 profilelabel">Telepon Rumah</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->telepon_rumah }}</p>
+                    <p class="col-5 p-0 mb-0 profilecontent">{{ $student->telepon_rumah }}</p>
                 </div>
                 <div class="row justify-content-between">
-                    <p class="col-4 p-0 mb-0 profilelabel">Kelas</p>
+                    <p class="col-5 p-0 mb-0 profilelabel">Kelas</p>
                     <p class="col-1 p-0 m-0">:</p>
-                    <p class="col-6 p-0 mb-0 profilecontent">{{ $student->kelas }}</p>
+                    <p class="col-5 p-0 mb-0 profilecontent">{{ $student->kelas }}</p>
                 </div>
             </div>
         </div>
@@ -171,39 +171,39 @@
                 </div>
                 <div class="ml-4">
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 profilelabel mb-0">Nama</p>
+                        <p class="col-5 p-0 profilelabel mb-0">Nama</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 profilecontent mb-0 pr-0">{{ $mom->nama_lengkap }}</p>
+                        <p class="col-5 p-0 profilecontent mb-0 pr-0">{{ $mom->nama_lengkap }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Tanggal Lahir</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Tanggal Lahir</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($mom->tanggal_lahir)) }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($mom->tanggal_lahir)) }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Pendidikan Terakhir</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Pendidikan Terakhir</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->pendidikan }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $mom->pendidikan }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Pekerjaan</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Pekerjaan</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->pekerjaan }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $mom->pekerjaan }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Alamat Kantor</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Alamat Kantor</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->alamat_rumah }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $mom->alamat_rumah }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Email</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Email</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->email }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $mom->email }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">No. HP</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">No. HP</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $mom->no_handphone }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $mom->no_handphone }}</p>
                     </div>
                 </div>
             </div>
@@ -231,43 +231,60 @@
                 </div>
                 <div class="ml-4">
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 profilelabel mb-0">Nama</p>
+                        <p class="col-5 p-0 profilelabel mb-0">Nama</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 profilecontent mb-0 pr-0"> {{ $dad->nama_lengkap }} </p>
+                        <p class="col-5 p-0 profilecontent mb-0 pr-0"> {{ $dad->nama_lengkap }} </p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Tanggal Lahir</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Tanggal Lahir</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($dad->tanggal_lahir)) }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ date('d-m-Y', strtotime($dad->tanggal_lahir)) }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Pendidikan Terakhir</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Pendidikan Terakhir</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->pendidikan }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $dad->pendidikan }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Pekerjaan</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Pekerjaan</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->pekerjaan }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $dad->pekerjaan }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Alamat Kantor</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Alamat Kantor</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->alamat_rumah }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $dad->alamat_rumah }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">Email</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">Email</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->email }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $dad->email }}</p>
                     </div>
                     <div class="row justify-content-center">
-                        <p class="col-4 p-0 mb-0 profilelabel">No. HP</p>
+                        <p class="col-5 p-0 mb-0 profilelabel">No. HP</p>
                         <p class="col-1 p-0 m-0">:</p>
-                        <p class="col-6 p-0 mb-0 profilecontent">{{ $dad->no_handphone }}</p>
+                        <p class="col-5 p-0 mb-0 profilecontent">{{ $dad->no_handphone }}</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="dcinput">
+      <h2 class="subbukupenghubung-title"><u>Kartu Keluarga</u></h2>
+      <div class="imgbpkb">
+          <img style="width:50%;" src="{{ asset($student->foto_kk) }}" alt="please insert image">
+      </div>
+      <br>
+      <h2 class="subbukupenghubung-title"><u>KTP Ibu</u></h2>
+      <div class="imgbpkb">
+          <img style="width:50%;" src="{{ asset($mom->foto_ktp) }}" alt="please insert image">
+      </div>
+      <br>
+      <h2 class="subbukupenghubung-title"><u>KTP Ayah</u></h2>
+      <div class="imgbpkb">
+          <img style="width:50%;" src="{{ asset($dad->foto_ktp) }}" alt="please insert image">
+      </div>
     </div>
 
     <div class = "parent-profile d-flex agenda-kegiatan">
@@ -452,6 +469,18 @@
           readURL(this);
           $("#upload-button").click();
         });
+
+        function hover(element) {
+          element.setAttribute('src', "{{asset($student->foto_profile)}}");
+        }
+
+        function unhoverboy(element) {
+          element.setAttribute('src', "{{asset('picture/laki.png')}}");
+        }
+
+        function unhovergirl(element) {
+          element.setAttribute('src', "{{asset('picture/perempuan.png')}}");
+        }
 
     </script>
 

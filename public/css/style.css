@@ -734,6 +734,10 @@ button.dcbutton img {
     height: 0;
 }
 
+.inputfile {
+    display: none;
+    height: 0;
+}
 
 /* komentar */
 
@@ -1141,7 +1145,7 @@ button.pass {
 }
 
 .modal-footer{
-    justify-content: : 
+    justify-content: :
 }
 
 .closepass{
@@ -1335,7 +1339,7 @@ button.pass {
     font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: rgba(56, 79, 125, 0.8);   
+    color: rgba(56, 79, 125, 0.8);
 }
 
 .kegiatan-field-answer{
@@ -1491,17 +1495,4 @@ table td.kwitansi{
     letter-spacing: 0.02e m;
     color: #414752;
 }
-
 /* notifications use style from kwitansi */
-
-
-
-
-
-
-
-
-
-
-
-
