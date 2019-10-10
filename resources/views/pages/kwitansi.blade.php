@@ -44,7 +44,7 @@
         <br>
         <p>Bulan: {{ $tagihan->bulan_tagihan }}</p>
         <br>
-        <p>Jumlah: {{ $totalTagihan }}</p>
+        <p>Jumlah: Rp{{ number_format((float)$totalTagihan,2,',','.') }}</p>
         <br>
         <p>Status: Lunas</p>
     </div>

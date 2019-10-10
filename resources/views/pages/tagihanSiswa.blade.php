@@ -62,7 +62,7 @@
                     <tr>
                         <th scope="row" class = "name">{{ $formattedTagihan->nama_lengkap }}</th>
                         <td>{{ $formattedTagihan->jenis_tagihan }}</td>
-                        <td>Rp {{ $formattedTagihan->jumlah_tagihan }}</td>
+                        <td>Rp{{number_format((float)$formattedTagihan->jumlah_tagihan,2,',','.') }}</td>
                         <td>
                             @if($formattedTagihan->status == '')
 
@@ -84,7 +84,7 @@
                             </form>
                             @endif
                         </td>
-                        <td>Rp {{ $formattedTagihan->total_tagihan }}</td>
+                        <td>Rp{{ number_format((float)$formattedTagihan->total_tagihan,2,',','.') }}</td>
                         <td>
                             @if($formattedTagihan->bukti_pembayaran != '')
                                 <img id="imgbuku" src="{{ asset($formattedTagihan->bukti_pembayaran) }}" alt="please insert image">
