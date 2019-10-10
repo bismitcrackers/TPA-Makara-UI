@@ -6,6 +6,7 @@ use App\Parents;
 use App\Role;
 use App\Student;
 use App\User;
+use App\Helper\WebHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -26,7 +27,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    // use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
@@ -52,27 +53,27 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // public function register(Request $request)
-    // {
-    //     $this->validator($request->all())->validate();
-    //
-    //     event(new Registered($user = $this->create($request->all())));
-    //
-    //     // $this->guard()->login($user);
-    //
-    //     return $this->registered($request, $user)
-    //                     ?: redirect($this->redirectPath());
-    // }
+    public function register(Request $request)
+    {
+        $this->validator($request);
+
+        event(new Registered($user = $this->create($request)));
+
+        // $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array  $request
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(Request $request)
     {
-        return Validator::make($data, [
+        return Validator::make($request->all(), [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -81,97 +82,115 @@ class RegisterController extends Controller
     /**
      * Create a ne user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array  $request
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
         $role_orangtua = Role::where('name', 'Orangtua')->first();
 
         $user = new User;
-        $user->name     = $data['namaLengkap'];
-        $user->email    = $data['email'];
-        $user->password = bcrypt($data['password']);
+        $user->name     = $request->namaLengkap;
+        $user->email    = $request->email;
+        $user->password = bcrypt($request->password);
         $user->save();
         $user->roles()->save($role_orangtua);
 
         $student = new Student;
-        $student->nama_lengkap      = $data['namaLengkap'];
-        $student->nama_panggilan    = $data['namaPanggilan'];
-        $student->kelas             = $data['kelas'];
-        $student->jenis_kelamin     = $data['jenisKelamin'];
-        $student->tempat_lahir      = $data['tempatLahir'];
-        $student->tanggal_lahir     = $data['tanggalLahir'];
-        $student->usia              = $data['usia'];
-        $student->agama             = $data['agama'];
-        $student->alamat_rumah      = $data['alamatRumah'];
-        $student->telepon_rumah     = $data['teleponRumah'];
-        $student->anak_ke           = $data['anakKe'] . '/' . $data['anakDari'];
-        $student->catatan_medis     = $data['catatanMedis'] . ' ' . $data['keteranganMedis'];
-        $student->penyakit_berat    = $data['penyakit'];
-        $student->keadaan_khusus    = $data['keadaan'];
-        $student->sifat_baik        = $data['sifatBaik'];
-        $student->sifat_diperhatikan= $data['sifatPerhatian'];
+
+        $fotoKK = WebHelper::saveImageToPublic($request->file('fotoKK'), '/picture/fotoKK');
+        $fotoProfile = WebHelper::saveImageToPublic($request->file('fotoProfile'), '/picture/fotoProfile');
+
+        $student->nama_lengkap      = $request->namaLengkap;
+        $student->nama_panggilan    = $request->namaPanggilan;
+        $student->kelas             = $request->kelas;
+        $student->jenis_kelamin     = $request->jenisKelamin;
+        $student->tempat_lahir      = $request->tempatLahir;
+        $student->tanggal_lahir     = $request->tanggalLahir;
+        $student->usia              = $request->usia;
+        $student->agama             = $request->agama;
+        $student->alamat_rumah      = $request->alamatRumah;
+        $student->telepon_rumah     = $request->teleponRumah;
+        $student->foto_kk           = $fotoKK;
+        $student->foto_profile      = $fotoProfile;
+        $student->anak_ke           = $request->anakKe . '/' . $request->anakDari;
+        $student->catatan_medis     = $request->catatanMedis . ' ' . $request->keteranganMedis;
+        $student->penyakit_berat    = $request->penyakit;
+        $student->keadaan_khusus    = $request->keadaan;
+        $student->sifat_baik        = $request->sifatBaik;
+        $student->sifat_diperhatikan= $request->sifatPerhatian;
         $user->student()->save($student);
         // $student->save();
 
         $mother = new Parents;
+        if ($request->has('fotoKTPIbu')) {
+          $fotoKTPIbu = WebHelper::saveImageToPublic($request->file('fotoKTPIbu'), '/picture/fotoKTP');
+        }
         $mother->peran            = 'Ibu';
-        $mother->nama_lengkap     = $data['namaLengkapIbu'];
-        $mother->tempat_lahir     = $data['tempatLahirIbu'];
-        $mother->tanggal_lahir    = $data['tanggalLahirIbu'];
-        $mother->agama            = $data['agamaIbu'];
-        $mother->pendidikan       = $data['pendidikanTerakhirIbu'];
-        $mother->jurusan          = $data['jurusanIbu'];
-        $mother->pekerjaan        = $data['pekerjaanIbu'];
-        $mother->alamat_kantor    = $data['alamatKerjaIbu'];
-        $mother->telepon_kantor   = $data['teleponKantorIbu'];
-        $mother->email            = $data['emailIbu'];
-        $mother->alamat_rumah     = $data['alamatRumahIbu'];
-        $mother->no_handphone     = $data['nomorHpIbu'];
+        $mother->nama_lengkap     = $request->namaLengkapIbu;
+        $mother->tempat_lahir     = $request->tempatLahirIbu;
+        $mother->tanggal_lahir    = $request->tanggalLahirIbu;
+        $mother->agama            = $request->agamaIbu;
+        $mother->pendidikan       = $request->pendidikanTerakhirIbu;
+        $mother->jurusan          = $request->jurusanIbu;
+        $mother->pekerjaan        = $request->pekerjaanIbu;
+        $mother->alamat_kantor    = $request->alamatKerjaIbu;
+        $mother->telepon_kantor   = $request->teleponKantorIbu;
+        $mother->email            = $request->emailIbu;
+        $mother->alamat_rumah     = $request->alamatRumahIbu;
+        $mother->no_handphone     = $request->nomorHpIbu;
+        if ($request->has('fotoKTPIbu')) {
+          $mother->foto_ktp        = $fotoKTPIbu;
+        }
         $user->student()->save($mother);
         // $mother->save();
 
         $father = new Parents;
+        if ($request->has('fotoKTPAyah')) {
+          $fotoKTPAyah = WebHelper::saveImageToPublic($request->file('fotoKTPAyah'), '/picture/fotoKTP');
+        }
         $father->peran             = 'Ayah';
-        $father->nama_lengkap      = $data['namaLengkapAyah'];
-        $father->tempat_lahir      = $data['tempatLahirAyah'];
-        $father->tanggal_lahir     = $data['tanggalLahirAyah'];
-        $father->agama             = $data['agamaAyah'];
-        $father->pendidikan        = $data['pendidikanTerakhirAyah'];
-        $father->jurusan           = $data['jurusanAyah'];
-        $father->pekerjaan         = $data['pekerjaanAyah'];
-        $father->alamat_kantor     = $data['alamatKerjaAyah'];
-        $father->telepon_kantor    = $data['teleponKantorAyah'];
-        $father->email             = $data['emailAyah'];
-        $father->alamat_rumah      = $data['alamatRumahAyah'];
-        $father->no_handphone      = $data['nomorHpAyah'];
+        $father->nama_lengkap      = $request->namaLengkapAyah;
+        $father->tempat_lahir      = $request->tempatLahirAyah;
+        $father->tanggal_lahir     = $request->tanggalLahirAyah;
+        $father->agama             = $request->agamaAyah;
+        $father->pendidikan        = $request->pendidikanTerakhirAyah;
+        $father->jurusan           = $request->jurusanAyah;
+        $father->pekerjaan         = $request->pekerjaanAyah;
+        $father->alamat_kantor     = $request->alamatKerjaAyah;
+        $father->telepon_kantor    = $request->teleponKantorAyah;
+        $father->email             = $request->emailAyah;
+        $father->alamat_rumah      = $request->alamatRumahAyah;
+        $father->no_handphone      = $request->nomorHpAyah;
+        if ($request->has('fotoKTPIbu')) {
+          $father->foto_ktp          = $fotoKTPAyah;
+        }
         $user->student()->save($father);
         // $father->save();
 
         $wali = new Parents;
         $wali->peran             = 'Wali';
-        $wali->nama_lengkap      = $data['namaLengkapWali'];
-        $wali->tempat_lahir      = $data['tempatLahirWali'];
-        $wali->tanggal_lahir     = $data['tanggalLahirWali'];
-        $wali->agama             = $data['agamaWali'];
-        $wali->pendidikan        = $data['pendidikanTerakhirWali'];
-        $wali->jurusan           = $data['jurusanWali'];
-        $wali->pekerjaan         = $data['pekerjaanWali'];
-        $wali->alamat_kantor     = $data['alamatKerjaWali'];
-        $wali->telepon_kantor    = $data['teleponKantorWali'];
-        $wali->email             = $data['emailWali'];
-        $wali->alamat_rumah      = $data['alamatRumahWali'];
-        $wali->no_handphone      = $data['nomorHpWali'];
+        $wali->nama_lengkap      = $request->namaLengkapWali;
+        $wali->tempat_lahir      = $request->tempatLahirWali;
+        $wali->tanggal_lahir     = $request->tanggalLahirWali;
+        $wali->agama             = $request->agamaWali;
+        $wali->pendidikan        = $request->pendidikanTerakhirWali;
+        $wali->jurusan           = $request->jurusanWali;
+        $wali->pekerjaan         = $request->pekerjaanWali;
+        $wali->alamat_kantor     = $request->alamatKerjaWali;
+        $wali->telepon_kantor    = $request->teleponKantorWali;
+        $wali->email             = $request->emailWali;
+        $wali->alamat_rumah      = $request->alamatRumahWali;
+        $wali->no_handphone      = $request->nomorHpWali;
         $user->student()->save($wali);
         // $wali->save();
 
         $nonwali = new Parents;
         $nonwali->peran             = 'Non-wali';
-        $nonwali->nama_lengkap      = $data['namaLengkapNonWali'];
-        $nonwali->telepon_kantor    = $data['teleponRumahNonWali'];
-        $nonwali->email             = $data['emailNonWali'];
-        $nonwali->no_handphone      = $data['nomorHpNonWali'];
+        $nonwali->nama_lengkap      = $request->namaLengkapNonWali;
+        $nonwali->telepon_kantor    = $request->teleponRumahNonWali;
+        $nonwali->email             = $request->emailNonWali;
+        $nonwali->no_handphone      = $request->nomorHpNonWali;
         $user->student()->save($nonwali);
         // $nonwali->save();
 
@@ -187,5 +206,31 @@ class RegisterController extends Controller
         // $wali->user()->associate($user)->save();
         // $nonwali->user()->associate($user)->save();
         return $user;
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //
+    }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
     }
 }

@@ -29,6 +29,7 @@ class CreateParentsTable extends Migration
             $table->string('email')->nullable();
             $table->string('alamat_rumah')->nullable();
             $table->string('no_handphone')->nullable();
+            $table->string('foto_ktp')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

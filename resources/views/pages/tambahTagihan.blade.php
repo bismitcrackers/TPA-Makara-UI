@@ -28,14 +28,15 @@
                     @if($kelas == 'Kelompok Bermain')
                     <option value="Iuran Bulanan Kupu-Kupu" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Bulanan Kupu-Kupu') {echo 'selected';} ?> >Iuran Bulanan Kupu-Kupu</option>
                     <option value="Iuran Bulanan Kepompong" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Bulanan Kepompong') {echo 'selected';} ?> >Iuran Bulanan Kepompong</option>
+                    <option value="Iuran Kegiatan" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Kegiatan') {echo 'selected';} ?> >Iuran Kegiatan</option>
                     @else
                     <option value="Iuran Bulanan (2 x seminggu)" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Bulanan (2 x seminggu)') {echo 'selected';} ?> >Iuran Bulanan (2 x seminggu)</option>
                     <option value="Iuran Bulanan (3 x seminggu)" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Bulanan (3 x seminggu)') {echo 'selected';} ?> >Iuran Bulanan (3 x seminggu)</option>
                     <option value="Iuran Bulanan (5 x seminggu)" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Bulanan (5 x seminggu)') {echo 'selected';} ?> >Iuran Bulanan (5 x seminggu)</option>
-                    @endif
                     <option value="Iuran Kegiatan (2 x seminggu)" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Kegiatan (2 x seminggu)') {echo 'selected';} ?> >Iuran Kegiatan (2 x seminggu)</option>
                     <option value="Iuran Kegiatan (3 x seminggu)" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Kegiatan (3 x seminggu)') {echo 'selected';} ?> >Iuran Kegiatan (3 x seminggu)</option>
                     <option value="Iuran Kegiatan (5 x seminggu)" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Iuran Kegiatan (5 x seminggu)') {echo 'selected';} ?> >Iuran Kegiatan (5 x seminggu)</option>
+                    @endif
                     <option value="Trial" <?php if($route=='edit' && $tagihan->jenis_tagihan=='Trial') {echo 'selected';} ?> >Trial</option>
                 </select>
             </div>

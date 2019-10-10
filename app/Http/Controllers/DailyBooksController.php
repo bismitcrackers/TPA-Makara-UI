@@ -54,10 +54,10 @@ class DailyBooksController extends Controller
             $dailyBook->dipublish           = False;
             $student->dailyBook()->save($dailyBook);
 
-            $user_id = Student::where('id', $student_id)->first()->user_id;
-            $notificationMessage = ', telah menambahkan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
-            $notificationUrl = 'dailyBook/DayCare/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
+            // $user_id = Student::where('id', $student_id)->first()->user_id;
+            // $notificationMessage = ', telah menambahkan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            // $notificationUrl = 'dailyBook/DayCare/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
+            // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
 
             return redirect()->route('success');
         }
@@ -91,10 +91,10 @@ class DailyBooksController extends Controller
             $dailyBook->dipublish           = False;
             $student->dailyBook()->save($dailyBook);
 
-            $user_id = Student::where('id', $student_id)->first()->user_id;
-            $notificationMessage = ', telah menambahkan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
-            $notificationUrl = 'dailyBook/KelompokBermain/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
+            // $user_id = Student::where('id', $student_id)->first()->user_id;
+            // $notificationMessage = ', telah menambahkan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            // $notificationUrl = 'dailyBook/KelompokBermain/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
+            // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
 
             return redirect()->route('success');
         }
@@ -151,7 +151,7 @@ class DailyBooksController extends Controller
             // $student->dailyBook()->save($dailyBook);
             $tanggal = WebHelper::getValidatedDate($request->tanggal);
             $student = Student::where('id', $student_id)->first();
-            $notificationMessage = ', telah mengubah Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationMessage = ', telah mempublikasikan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
             $notificationUrl = 'dailyBook/DayCare/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
             NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
@@ -200,7 +200,7 @@ class DailyBooksController extends Controller
             // $student->dailyBook()->save($dailyBook);
             $tanggal = WebHelper::getValidatedDate($request->tanggal);
             $student = Student::where('id', $student_id)->first();
-            $notificationMessage = ', telah mengubah Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
+            $notificationMessage = ', telah mempublikasikan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
             $notificationUrl = 'dailyBook/KelompokBermain/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
             NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
