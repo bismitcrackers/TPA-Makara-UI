@@ -16,7 +16,7 @@
         <h2>Taman Pengembangan Anak Makara</h2>
     </div>
     <h1 class = "sign-in">Sign Up</h1>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data>
             {{ csrf_field() }}
 
         <div class="tab">
@@ -119,6 +119,22 @@
                         </span>
                     @endif
                 </div>
+            </div>
+            <a href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninputfotoprofile()">
+                <span>Tambah Foto Profile (Harus 2x3)</span>
+                <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+            </a>
+            <input type="file" id="inputfileFotoProfile" name="fotoProfile">
+            <div class="dcinput">
+                <img id="showFotoProfile" src="">
+            </div>
+            <a href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninputfotokk()">
+                <span>Tambah Foto KK</span>
+                <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+            </a>
+            <input type="file" id="inputfileFotoKK" name="fotoKK">
+            <div class="dcinput">
+                <img id="showFotoKK" src="">
             </div>
             <div class="form-group">
                 <div class="row">
@@ -290,6 +306,14 @@
                     </span>
                 @endif
             </div>
+            <a href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninputfotoktpibu()">
+                <span>Tambah Foto KTP Ibu</span>
+                <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+            </a>
+            <input type="file" id="inputfileFotoKTPIbu" name="fotoKTPIbu">
+            <div class="dcinput">
+                <img id="showFotoKTPIbu" src="">
+            </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-auto mr-auto">
@@ -412,6 +436,14 @@
                         <strong>{{ $errors->first('namaLengkapAyah') }}</strong>
                     </span>
                 @endif
+            </div>
+            <a href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninputfotoktpayah()">
+                <span>Tambah Foto KTP Ayah</span>
+                <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
+            </a>
+            <input type="file" id="inputfileFotoKTPAyah" name="fotoKTPAyah">
+            <div class="dcinput">
+                <img id="showFotoKTPAyah" src="">
             </div>
             <div class="form-group">
                 <div class="row">
@@ -795,7 +827,7 @@
             finalButton.style.display = "block";
         }
     </script> -->
-    
+
 
     <script>
 
@@ -974,8 +1006,93 @@
             console.log(valid);
             return valid; // return the valid status
         }
-
-
     </script>
 
+    <script>
+        function burninputfotoprofile(event){
+            $("#inputfileFotoProfile").click();
+        }
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#showFotoKK').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#inputfileFotoProfile").change(function() {
+          readURL(this);
+        });
+    </script>
+
+    <script>
+        function burninputfotoprofile(event){
+            $("#inputfileFotoKK").click();
+        }
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#showFotoKK').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#inputfileFotoKK").change(function() {
+          readURL(this);
+        });
+    </script>
+
+    <script>
+        function burninputfotoprofile(event){
+            $("#inputfileFotoKTPIbu").click();
+        }
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#showFotoKTPIbu').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#inputfileFotoKTPIbu").change(function() {
+          readURL(this);
+        });
+    </script>
+
+    <script>
+        function burninputfotoprofile(event){
+            $("#inputfileFotoKTPAyah").click();
+        }
+
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#showFotoKTPAyah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#inputfileFotoKTPAyah").change(function() {
+          readURL(this);
+        });
+    </script>
 @endsection

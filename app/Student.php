@@ -15,7 +15,8 @@ class Student extends Model
         'user_id', 'nama_lengkap', 'nama_panggilan', 'jenis_kelamin',
         'tempat_lahir', 'tanggal_lahir', 'usia', 'agama', 'alamat_rumah',
         'telepon_rumah', 'anak_ke', 'catatan_medis', 'penyakit_berat',
-        'keadaan_khusus', 'sifat_baik', 'sifat_diperhatikan', 'kelas'
+        'keadaan_khusus', 'sifat_baik', 'sifat_diperhatikan', 'kelas',
+        'foto_kk', 'foto_profile'
     ];
 
     public function user()
@@ -27,7 +28,7 @@ class Student extends Model
     {
         return $this->hasMany(DailyBook::class);
     }
-    
+
     public function pembayaran(){
         return $this->hasMany(Pembayaran::class);
     }

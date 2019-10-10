@@ -33,6 +33,8 @@ class CreateStudentsTable extends Migration
             $table->string('sifat_diperhatikan')->nullable();
             $table->string('kelas')->nullable();
             $table->boolean('lulus')->default(false);
+            $table->string('foto_kk')->nullable();
+            $table->string('foto_profile')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

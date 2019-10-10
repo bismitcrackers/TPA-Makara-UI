@@ -96,6 +96,10 @@ class RegisterController extends Controller
         $user->roles()->save($role_orangtua);
 
         $student = new Student;
+
+        $fotoKK = WebHelper::saveImageToPublic($request->file('fotoKK'), '/picture/fotoKK');
+        $fotoProfile = WebHelper::saveImageToPublic($request->file('fotoProfile'), '/picture/fotoProfile');
+
         $student->nama_lengkap      = $data['namaLengkap'];
         $student->nama_panggilan    = $data['namaPanggilan'];
         $student->kelas             = $data['kelas'];
@@ -106,6 +110,8 @@ class RegisterController extends Controller
         $student->agama             = $data['agama'];
         $student->alamat_rumah      = $data['alamatRumah'];
         $student->telepon_rumah     = $data['teleponRumah'];
+        $student->foto_kk           = $fotoKK;
+        $student->foto_profile      = $fotoProfile;
         $student->anak_ke           = $data['anakKe'] . '/' . $data['anakDari'];
         $student->catatan_medis     = $data['catatanMedis'] . ' ' . $data['keteranganMedis'];
         $student->penyakit_berat    = $data['penyakit'];
@@ -116,6 +122,9 @@ class RegisterController extends Controller
         // $student->save();
 
         $mother = new Parents;
+        if ($request->has('fotoKTPIbu')) {
+          $fotoKTPIbu = WebHelper::saveImageToPublic($request->file('fotoKTPIbu'), '/picture/fotoKTP');
+        }
         $mother->peran            = 'Ibu';
         $mother->nama_lengkap     = $data['namaLengkapIbu'];
         $mother->tempat_lahir     = $data['tempatLahirIbu'];
@@ -129,10 +138,16 @@ class RegisterController extends Controller
         $mother->email            = $data['emailIbu'];
         $mother->alamat_rumah     = $data['alamatRumahIbu'];
         $mother->no_handphone     = $data['nomorHpIbu'];
+        if ($request->has('fotoKTPIbu')) {
+          $mother->foto_ktp        = $fotoKTPIbu;
+        }
         $user->student()->save($mother);
         // $mother->save();
 
         $father = new Parents;
+        if ($request->has('fotoKTPAyah')) {
+          $fotoKTPAyah = WebHelper::saveImageToPublic($request->file('fotoKTPAyah'), '/picture/fotoKTP');
+        }
         $father->peran             = 'Ayah';
         $father->nama_lengkap      = $data['namaLengkapAyah'];
         $father->tempat_lahir      = $data['tempatLahirAyah'];
@@ -146,6 +161,9 @@ class RegisterController extends Controller
         $father->email             = $data['emailAyah'];
         $father->alamat_rumah      = $data['alamatRumahAyah'];
         $father->no_handphone      = $data['nomorHpAyah'];
+        if ($request->has('fotoKTPIbu')) {
+          $father->foto_ktp          = $fotoKTPAyah;
+        }
         $user->student()->save($father);
         // $father->save();
 
