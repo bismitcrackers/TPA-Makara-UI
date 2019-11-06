@@ -12,6 +12,9 @@ public/picture/daily_books
 public/picture/news
 public/picture/schedule
 public/picture/pembayaran
+public/picture/fotoKK
+public/picture/fotoKTP
+public/picture/fotoProfile
 public/hot
 storage/*.key
 .env.*.php

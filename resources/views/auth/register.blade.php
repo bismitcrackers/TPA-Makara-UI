@@ -210,7 +210,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button  class="halo btn-primary btn" onclick = "nextPrev(1)" >
+                <button type="button" class="halo btn-primary btn" onclick = "nextPrev(1)" >
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -285,7 +285,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button type="button" class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -299,7 +299,7 @@
             </div>
             <div class="form-group">
                 <label for="namaLengkapIbu">Nama Lengkap: </label>
-                <input type="text" class="form-control{{ $errors->has('namaLengkapIbu') ? ' is-invalid' : '' }}" id="namaLengkapIbu" name="namaLengkapIbu" placeholder="Nama Lengkap" required>
+                <input type="text" class="form-control{{ $errors->has('namaLengkapIbu') ? ' is-invalid' : '' }}" id="namaLengkapIbu" name="namaLengkapIbu" placeholder="Nama Lengkap">
                 @if ($errors->has('namaLengkapIbu'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('namaLengkapIbu') }}</strong>
@@ -310,7 +310,7 @@
                 <span>Tambah Foto KTP Ibu</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </a>
-            <input class="inputfile" type="file" id="inputfileFotoKTPIbu" name="fotoKTPIbu" required>
+            <input class="inputfile" type="file" id="inputfileFotoKTPIbu" name="fotoKTPIbu">
             <div class="dcinput">
                 <img id="showFotoKTPIbu" src="">
             </div>
@@ -320,12 +320,12 @@
                         <label for="tempatLahirIbu" class="col-form-label">Tempat tanggal lahir:</label>
                     </div>
                     <div class="col-auto">
-                        <input type="date" class="form-control{{ $errors->has('tanggalLahirIbu') ? ' is-invalid' : '' }}" id="tanggalLahirIbu" name="tanggalLahirIbu" required>
+                        <input type="date" class="form-control{{ $errors->has('tanggalLahirIbu') ? ' is-invalid' : '' }}" id="tanggalLahirIbu" name="tanggalLahirIbu">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="Tempat Lahir" required>
+                        <input type="text" class="form-control{{ $errors->has('tempatLahirIbu') ? ' is-invalid' : '' }}" id="tempatLahirIbu" name="tempatLahirIbu" placeholder="Tempat Lahir">
                         @if ($errors->has('tanggalLahir'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('tanggalLahirIbu') }}</strong>
@@ -345,7 +345,7 @@
             </div>
             <div class="form-group">
                 <label for="pendidikanTerakhirIbu">Pendidikan terkahir: </label>
-                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirIbu') ? ' is-invalid' : '' }}" id="pendidikanTerakhirIbu" name="pendidikanTerakhirIbu" placeholder="Pendidikan Terakhir" required>
+                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirIbu') ? ' is-invalid' : '' }}" id="pendidikanTerakhirIbu" name="pendidikanTerakhirIbu" placeholder="Pendidikan Terakhir">
                 @if ($errors->has('pendidikanTerakhirIbu'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('pendidikanTerakhirIbu') }}</strong>
@@ -399,7 +399,7 @@
             </div>
             <div class="form-group">
                 <label for="alamatRumahIbu">Alamat Rumah: </label>
-                <input type="text" class="form-control{{ $errors->has('alamatRumahIbu') ? ' is-invalid' : '' }}" id="alamatRumahIbu" name="alamatRumahIbu" placeholder="Alamat Rumah" required>
+                <input type="text" class="form-control{{ $errors->has('alamatRumahIbu') ? ' is-invalid' : '' }}" id="alamatRumahIbu" name="alamatRumahIbu" placeholder="Alamat Rumah">
                 @if ($errors->has('alamatRumahIbu'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('alamatRumahIbu') }}</strong>
@@ -416,7 +416,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button type="button" class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -430,7 +430,7 @@
             </div>
             <div class="form-group">
                 <label for="namaLengkapAyah">Nama Lengkap: </label>
-                <input type="text" class="form-control{{ $errors->has('namaLengkapAyah') ? ' is-invalid' : '' }}" id="namaLengkapAyah" name="namaLengkapAyah" placeholder="Nama Lengkap" required>
+                <input type="text" class="form-control{{ $errors->has('namaLengkapAyah') ? ' is-invalid' : '' }}" id="namaLengkapAyah" name="namaLengkapAyah" placeholder="Nama Lengkap">
                 @if ($errors->has('namaLengkapAyah'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('namaLengkapAyah') }}</strong>
@@ -441,7 +441,7 @@
                 <span>Tambah Foto KTP Ayah</span>
                 <img src="{{asset('svg/plus.svg')}}" alt="nextsign">
             </a>
-            <input class="inputfile" type="file" id="inputfileFotoKTPAyah" name="fotoKTPAyah" required>
+            <input class="inputfile" type="file" id="inputfileFotoKTPAyah" name="fotoKTPAyah">
             <div class="dcinput">
                 <img id="showFotoKTPAyah" src="">
             </div>
@@ -451,12 +451,12 @@
                         <label for="tempatLahirAyah" class="col-form-label">Tempat tanggal lahir:</label>
                     </div>
                     <div class="col-auto">
-                        <input type="date" class="form-control{{ $errors->has('tanggalLahirAyah') ? ' is-invalid' : '' }}" id="tanggalLahirAyah" name="tanggalLahirAyah" required>
+                        <input type="date" class="form-control{{ $errors->has('tanggalLahirAyah') ? ' is-invalid' : '' }}" id="tanggalLahirAyah" name="tanggalLahirAyah">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="Tempat Lahir" required>
+                        <input type="text" class="form-control{{ $errors->has('tempatLahirAyah') ? ' is-invalid' : '' }}" id="tempatLahirAyah" name="tempatLahirAyah" placeholder="Tempat Lahir">
                         @if ($errors->has('tanggalLahirAyah'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('tanggalLahirAyah') }}</strong>
@@ -476,7 +476,7 @@
             </div>
             <div class="form-group">
                 <label for="pendidikanTerakhirAyah">Pendidikan terkahir: </label>
-                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirAyah') ? ' is-invalid' : '' }}" id="pendidikanTerakhirAyah" name="pendidikanTerakhirAyah" placeholder="Pendidikan Terakhir" required>
+                <input type="text" class="form-control{{ $errors->has('pendidikanTerakhirAyah') ? ' is-invalid' : '' }}" id="pendidikanTerakhirAyah" name="pendidikanTerakhirAyah" placeholder="Pendidikan Terakhir">
                 @if ($errors->has('pendidikanTerakhirAyah'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('pendidikanTerakhirAyah') }}</strong>
@@ -525,7 +525,7 @@
             </div>
             <div class="form-group">
                 <label for="alamatRumahAyah">Alamat Rumah: </label>
-                <input type="text" class="form-control{{ $errors->has('alamatRumahAyah') ? ' is-invalid' : '' }}" id="alamatRumahAyah" name="alamatRumahAyah" placeholder="Alamat Rumah" required>
+                <input type="text" class="form-control{{ $errors->has('alamatRumahAyah') ? ' is-invalid' : '' }}" id="alamatRumahAyah" name="alamatRumahAyah" placeholder="Alamat Rumah">
                 @if ($errors->has('alamatRumahAyah'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('alamatRumahAyah') }}</strong>
@@ -542,7 +542,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button type="button" class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
@@ -665,7 +665,7 @@
                 @endif
             </div>
             <div class=button-section>
-                <button  class="halo btn-primary btn" onclick = "nextPrev(1)">
+                <button type="button" class="halo btn-primary btn" onclick = "nextPrev(1)">
                     <img src="{{asset('svg/checksign.svg')}}" alt="checksign">
                     Next
                 </button>
