@@ -183,7 +183,28 @@ class PembayaranController extends Controller
 
             return redirect()->route('success');
         } else {
-            return redirect()->route('login');
         }
+        return redirect()->route('login');
+    }
+
+    public function gantiTandaTangan(Request $request)
+    {
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else if ($user->roles()->first()->description == 'Full Access') {
+            if ($request->has('ttd')) {
+                $file = $request->file('ttd');
+
+                $imageName = 'ttd' . '.' . $file->getClientOriginalExtension();
+                $dir = '/picture/tandaTangan';
+                $destinationPath = public_path($dir);
+                $file->move($destinationPath, $imageName);
+
+                return redirect()->route('success');
+            }
+            return redirect()->back();
+        }
+        return redirect()->route('login');
     }
 }

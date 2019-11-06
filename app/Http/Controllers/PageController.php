@@ -23,7 +23,7 @@ class PageController extends Controller
 // MAIN
 
     public function index() {
-        $news = Berita::all();
+        $news = Berita::paginate(3);
         return view('pages.Homepage', ['news' => $news]);
     }
 

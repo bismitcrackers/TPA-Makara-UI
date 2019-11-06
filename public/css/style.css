@@ -258,7 +258,8 @@ h3 {
 
 #carouselExampleIndicators .carousel-item{
     margin-bottom: 25px;
-    height: 300px;
+    height: 40vw;
+    max-height: 300px;
 }
 
 .carousel-inner img{
@@ -300,16 +301,16 @@ h3 {
 }
 
 #homeVideo iframe{
-    width: 100%;
-    height: 100%;
+    width: 60vw;
+    height: 35vw;
 }
 
 
-@media (min-width: 420px){
+/* @media (min-width: 420px){
     #homeVideo iframe{
-        height: 500px;
+        height: 100%;
     }
-}
+} */
 
 #headerBerita,
 #headerLokasi {
@@ -983,7 +984,6 @@ a.linkclass img{
 }
 
 .title3{
-    font-size: 1.7em;
     font-weight: bold;
     color: white;
     font-family: 'Times New Roman', Times, serif;
@@ -1463,16 +1463,17 @@ table td.kwitansi{
 
 .kwitansi-header img,
 .kwitansi-header div{
-    margin: 20px;
+    margin: 5px;
 }
 
 .kwitansi-logo{
-    width: 20%;
+    width: 120px;
+    height: 80px;
 }
 
 .kwitansi-address{
     font-weight: bold;
-    font-size: 12px;
+    font-size: 8px;
     text-align: center;
     letter-spacing: 0.02em;
     color: #414752;
@@ -1496,3 +1497,42 @@ table td.kwitansi{
     color: #414752;
 }
 /* notifications use style from kwitansi */
+
+.fill {
+    object-fit: cover;
+    width: 100% !important;
+    height: 100%;
+}
+
+#imgCont img {
+    width: 150px;
+}
+
+.card-loc::before {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+
+.card-loc {
+    padding: 15px 20px;
+    margin: 0 15vw;
+    background-size: cover;
+    background-color: rgba(91, 62, 150, 0.69);
+}
+
+.lokasi-section {
+    clip-path: polygon(100% 0%, 75% 0%, 25% 0%, 0% 0%, 0% 25%, 0% 94%, 10% 96%, 23% 98%, 40% 100%, 60% 100%, 77% 98%, 90% 96%, 100% 94%, 100% 25%);
+    margin: 10px 0; background-color:rgba(91, 62, 150, 0.69); padding: 20px 0;
+}
+
+@media (max-width: 512px){
+    .card-loc {
+        margin-left: 5vw !important;
+        margin-right: 5vw !important;
+    }
+
+    .card-loc::before {
+        -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+        filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    }
+}
