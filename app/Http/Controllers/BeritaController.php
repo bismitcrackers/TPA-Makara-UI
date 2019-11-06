@@ -65,7 +65,7 @@ class BeritaController extends Controller
         //
         $berita = Berita::find($id);
 
-        return $berita;
+        return view('pages.ShowNews', ['news' => $berita]);
     }
 
     /**

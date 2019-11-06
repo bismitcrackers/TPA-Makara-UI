@@ -48,4 +48,19 @@ class WebHelper
         return Carbon::parse($dateStr);
     }
 
+    // public static function replaceImageFromPublic($newFileName, $oldFileName, $dir)
+    //     if(File::exists($filename)) {
+    //
+    //         $newFileName  = public_path('uploads/institutions/').$institution->avatar;
+    //
+    //         $imageName = time() . rand() . '.' . $file->getClientOriginalExtension();
+    //         Image::make($file)->resize(250, 205)->save( public_path('uploads/institutions/' . $filename_new ) );
+    //
+    //       //update filename to database
+    //       $institution->avatar = $filename_new;
+    //       $institution->save();
+    //       //Found existing file then delete
+    //       File::delete($filename);  // or unlink($filename);
+    //     }
+    // }
 }

@@ -49,7 +49,19 @@
         <p>Status: Lunas</p>
     </div>
 
-
+    <div align="right">
+        <img width="200px" src="{{ asset('picture/tandaTangan/ttd.png') }}">
+        @if(auth()->user()->roles()->first()->description == 'Full Access')
+            <form action="{{ route('admin.ganti.ttd') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <label for="file-ttd">Upload Only PNG</label>
+                <input type="file" name="ttd" id="file-ttd">
+                <button type="submit" class="btn btn-primary" style="border-radius:50%;" id = "final-button">
+                    ✎
+                </button>
+            </form>
+        @endif
+    </div>
 
 
 

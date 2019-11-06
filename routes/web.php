@@ -143,6 +143,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     });
     Route::resource('berita', 'BeritaController');
     Route::resource('pengumuman', 'PengumumanController');
+    Route::post('gantiTandaTangan', 'PembayaranController@gantiTandaTangan')->name('ganti.ttd');
 });
 
 Route::get('/notification', 'PageController@showAllNotifications')->name('notification');

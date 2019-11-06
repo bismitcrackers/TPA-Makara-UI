@@ -8022,6 +8022,7 @@ button.bg-dark:focus {
   -webkit-box-pack: center !important;
       -ms-flex-pack: center !important;
           justify-content: center !important;
+          margin: auto;
 }
 
 .justify-content-between {
