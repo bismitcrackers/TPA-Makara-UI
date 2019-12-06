@@ -270,23 +270,6 @@
         </div>
     </div>
 
-    <div class="dcinput">
-      <h2 class="subbukupenghubung-title"><u>Kartu Keluarga</u></h2>
-      <div class="imgbpkb">
-          <img style="width:50%;" src="{{ asset($student->foto_kk) }}" alt="please insert image">
-      </div>
-      <br>
-      <h2 class="subbukupenghubung-title"><u>KTP Ibu</u></h2>
-      <div class="imgbpkb">
-          <img style="width:50%;" src="{{ asset($mom->foto_ktp) }}" alt="please insert image">
-      </div>
-      <br>
-      <h2 class="subbukupenghubung-title"><u>KTP Ayah</u></h2>
-      <div class="imgbpkb">
-          <img style="width:50%;" src="{{ asset($dad->foto_ktp) }}" alt="please insert image">
-      </div>
-    </div>
-
     <div class = "parent-profile d-flex agenda-kegiatan">
         <p class = "underliner-parent-profile">Jadwal Per Bulan</p>
     </div>
