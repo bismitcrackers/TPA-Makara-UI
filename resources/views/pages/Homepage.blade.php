@@ -131,7 +131,7 @@
   <div class="lokasi-section container">
       <div style="background-image:url({{ asset('picture/tpamakara.png') }});" class="card-loc">
           <div style="margin: 15px 0 0 0; filter: none; -webkit-filter: none;" class="row loc">
-              <img style="width:4vh;height:4vh;" src="{{asset('svg\clock.svg')}}" alt="jam">
+              <img style="width:20px;height:20px;" src="{{asset('svg\clock.svg')}}" alt="jam">
               &nbsp;&nbsp;&nbsp;
               <h5 class="title3">
                 Jam Operasional
@@ -143,7 +143,7 @@
               </p>
           </div>
           <div style="margin: 15px 0 0 0;" class="row loc">
-              <img style="width:4vh;height:4vh;" src="{{asset('svg\maps.svg')}}" alt="jam">
+              <img style="width:20px;height:20px;" src="{{asset('svg\maps.svg')}}" alt="jam">
               &nbsp;&nbsp;&nbsp;
               <h5 class="title3">
                 Alamat TPAM
