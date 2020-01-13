@@ -51,7 +51,7 @@ class JadwalController extends Controller
             }
             $notificationMessage = ', telah menambahkan jadwal "' . $request->judul . '" untuk siswa ' . $request->kelas . '! :)';
             $notificationUrl = 'profile/schedule/' . $request->kelas . '/list';
-            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $request->kelas, $notificationUrl);
+            NotificationController::generateNotificationToSpecificClass($user->roles()->first()->name, $notificationMessage, $request->kelas, $notificationUrl);
             return redirect()->route('success');
         }
     }

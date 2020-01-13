@@ -64,7 +64,7 @@ class PengumumanController extends Controller
 
             $notificationMessage = ', telah menambahkan ' . $request->jenis . ' "' . $request->judul . '" untuk siswa ' . $request->kelas . '! :)';
             $notificationUrl = 'profile/pengumuman/' . $request->kelas . '/show/' . $pengumuman->id ;
-            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $request->kelas, $notificationUrl);
+            NotificationController::generateNotificationToSpecificClass($user->roles()->first()->name, $notificationMessage, $request->kelas, $notificationUrl);
 
             return redirect()->route('success');
         }

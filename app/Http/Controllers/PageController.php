@@ -384,13 +384,16 @@ class PageController extends Controller
                 $formattedTagihan->total_tagihan = '';
             }
             $formattedTagihan->bukti_pembayaran = $eachTagihan->bukti_pembayaran;
-            if ($formattedTagihan->status == 'Lunas') {
+            if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) != $count && $eachTagihan->tagihan_id != $tagihanStudent[$count]->tagihan_id) {
+                $formattedTagihan->kwitansiCheck = true;
+            } else if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) == $count) {
                 $formattedTagihan->kwitansiCheck = true;
             } else {
                 $formattedTagihan->kwitansiCheck = false;
             }
             $formattedTagihan->student_id = $student->id;
             $formattedTagihan->tagihan_id = $eachTagihan->id;
+            $formattedTagihan->tagihan_class_id = $eachTagihan->tagihan_id;
             array_push($formattedTagihanList, $formattedTagihan);
             $count = $count + 1;
         }
@@ -508,13 +511,16 @@ class PageController extends Controller
                     $formattedTagihan->total_tagihan = '';
                 }
                 $formattedTagihan->bukti_pembayaran = $eachTagihan->bukti_pembayaran;
-                if ($formattedTagihan->status == 'Lunas') {
+                if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) != $count && $eachTagihan->tagihan_id != $tagihanStudent[$count]->tagihan_id) {
+                    $formattedTagihan->kwitansiCheck = true;
+                } else if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) == $count) {
                     $formattedTagihan->kwitansiCheck = true;
                 } else {
                     $formattedTagihan->kwitansiCheck = false;
                 }
                 $formattedTagihan->student_id = $student->id;
                 $formattedTagihan->tagihan_id = $eachTagihan->id;
+                $formattedTagihan->tagihan_class_id = $eachTagihan->tagihan_id;
                 array_push($formattedTagihanList, $formattedTagihan);
                 $count = $count + 1;
             }

@@ -16,6 +16,7 @@ class CreatePembayaranTable extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('student_id')->unsigned();
+            $table->integer('tagihan_id')->unsigned()->default(0);
             $table->string('kelas');
             $table->string('bulan_tagihan')->nullable();
             $table->string('jenis_tagihan');
@@ -25,7 +26,6 @@ class CreatePembayaranTable extends Migration
             $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
             $table->foreign('student_id')->references('id')->on('students');
-
         });
     }
 

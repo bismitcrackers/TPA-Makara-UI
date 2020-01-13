@@ -363,20 +363,22 @@
                             </div>
                             @endif
                         </td>
-                        <td>Rp {{ $formattedTagihan->total_tagihan }}</td>
+                        <td>Rp{{ number_format((float)$formattedTagihan->total_tagihan,2,',','.') }}</td>
                         <td>
                             @if($formattedTagihan->bukti_pembayaran != '')
                                 <img id="imgbuku" src="{{ asset($formattedTagihan->bukti_pembayaran) }}" alt="please insert image">
                             @else
-                                <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
-                                    <span>Upload Bukti</span>
-                                    <img src="{{asset('svg/plus.svg')}}" alt="plus">
-                                </div>
-                                <form method="POST" action="{{ route('profile.tagihan.upload', ['kelas' => $student->kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}" enctype="multipart/form-data">
-                                    {{ csrf_field() }}
-                                    <input name="bukti_pembayaran" type="file" id="inputfile">
-                                    <button type="submit" class="belum-lunas btn editbutton" id = "upload-button" hidden>Upload Bukti</button>
-                                </form>
+                                @if($formattedTagihan->total_tagihan != '')
+                                    <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
+                                        <span>Upload Bukti</span>
+                                        <img src="{{asset('svg/plus.svg')}}" alt="plus">
+                                    </div>
+                                    <form method="POST" action="{{ route('profile.tagihan.upload', ['kelas' => $student->kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <input name="bukti_pembayaran" type="file" id="inputfile">
+                                        <button type="submit" class="belum-lunas btn editbutton" id = "upload-button" hidden>Upload Bukti</button>
+                                    </form>
+                                @endif
                             @endif
                         </td>
                         <td>

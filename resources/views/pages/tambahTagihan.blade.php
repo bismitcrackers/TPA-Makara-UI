@@ -47,7 +47,14 @@
         </div>
         <div class="form-group">
             <label for="jumlahtagihan" class="editlabel">JUMLAH TAGIHAN</label>
-            <input <?php if($route=='edit') {echo 'value="' . $tagihan->jumlah_tagihan . '"';} ?> name="jumlah_tagihan" type="number" class="form-control editinput" id="jumlahtagihan" aria-describedby="jumlahtagihan" placeholder="Jumlah Tagihan" required>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button disabled id="show_password" class="btn btn-secondary" type="button">
+                        <span class="Rp">Rp</span>
+                    </button>
+                </span>
+                <input <?php if($route=='edit') {echo 'value="' . $tagihan->jumlah_tagihan . '"';} ?> name="jumlah_tagihan" class="form-control editinput" id="jumlahtagihan" aria-describedby="jumlahtagihan" placeholder="Jumlah Tagihan" required>
+            </div>
         </div>
         <div class="form-group">
             <label for="deskripsi" class="editlabel">DESKRIPSI</label>
@@ -121,5 +128,6 @@ $("#buktipembayaran").change(function() {
 
 </script>
 
+<script type="text/javascript" src="{{ asset('js/form-tagihan.js') }}"></script>
 
 @endsection

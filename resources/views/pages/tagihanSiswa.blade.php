@@ -70,18 +70,22 @@
                             <div class="belum-lunas">
                                 {{ $formattedTagihan->status }}
                             </div>
-                            <form method="POST" action="{{ route('profile.tagihan.lunaskan', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
-                                {{ csrf_field() }}
-                                <button type="submit" class="lunas btn editbutton" id = "agree-button">Lunaskan</button>
-                            </form>
+                                @if($formattedTagihan->total_tagihan != '')
+                                <form method="POST" action="{{ route('profile.tagihan.lunaskan', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="lunas btn editbutton" id = "agree-button">Lunaskan</button>
+                                </form>
+                                @endif
                             @else
                             <div class="lunas">
                                 {{ $formattedTagihan->status }}
                             </div>
-                            <form method="POST" action="{{ route('profile.tagihan.cancelLunaskan', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
-                                {{ csrf_field() }}
-                                <button type="submit" class="belum-lunas btn editbutton" id = "agree-button">Batalkan Kelunasan</button>
-                            </form>
+                                @if($formattedTagihan->total_tagihan != '')
+                                <form method="POST" action="{{ route('profile.tagihan.cancelLunaskan', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="belum-lunas btn editbutton" id = "agree-button">Batalkan Kelunasan</button>
+                                </form>
+                                @endif
                             @endif
                         </td>
                         <td>Rp{{ number_format((float)$formattedTagihan->total_tagihan,2,',','.') }}</td>
@@ -106,10 +110,12 @@
                             <a class="btn-passconfirm" onclick="deleteId('{{ $kelas }}', {{ $formattedTagihan->student_id }}, {{ $formattedTagihan->tagihan_id }})">
                                 <img src="{{ asset('svg/tagihan-delete.svg') }}" alt="tagihan-delete">
                             </a>
+                            @if($formattedTagihan->total_tagihan != '')
                             <a href="{{ route('profile.tagihan.form.add', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id]) }}" class = "name add-tagihan">
                                 <img src="{{ asset('svg/plus.svg') }}" alt="">
                                 <span>Tambah Tagihan</span>
                             </a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
