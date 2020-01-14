@@ -146,7 +146,7 @@
                 @endif
             </div>
             <input name="lampiran" type="file" id="inputfile">
-
+            <br>
             <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" onclick="nextPrev(1)">
                 @if($route == 'createDailyBookDC')
                 Save

@@ -38,7 +38,7 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
-    
+
     /**
      * Where to redirect users after registration.
      *

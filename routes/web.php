@@ -17,6 +17,13 @@ Route::get('/success/{url?}', 'PageController@successAndRedirect')->name('succes
 
 Auth::routes();
 
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('/register', 'UserController@showAdminRegisterForm')->name('register.form');
+    Route::get('/changePassword', 'UserController@showPasswordChangeForm')->name('password.form');
+    Route::post('/register', 'UserController@submitAdminRegisterForm')->name('register.submit');
+    Route::post('/changePassword', 'UserController@submitPasswordChangeForm')->name('password.submit');
+});
+
 Route::group(['prefix' => 'dailyBook', 'as' => 'dailyBook.'], function () {
 
     Route::get('/class', 'PageController@selectClassDailyBook')->name('class');
