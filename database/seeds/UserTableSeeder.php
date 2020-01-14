@@ -74,6 +74,90 @@ class UserTableSeeder extends Seeder
         $guru->save();
         $guru->roles()->attach($role_guru);
 
+        $administrator = new User();
+        $administrator->name = 'TPA Makara Administrator';
+        $administrator->email = 'administrator@tpam.psikologi.ui.ac.id';
+        $administrator->password = bcrypt('VynsYp');
+        $administrator->save();
+        $administrator->roles()->attach($role_administrator);
+
+        $koordinator = new User();
+        $koordinator->name = 'EFRIYANI DJUWITA, S.Psi., M.Si., Psikolog';
+        $koordinator->email = 'efriyani_djuwita@tpam.psikologi.ui.ac.id';
+        $koordinator->password = bcrypt('xygSWW');
+        $koordinator->save();
+        $koordinator->roles()->attach($role_koordinator);
+
+        $wakil_koordinator = new User();
+        $wakil_koordinator->name = 'BETTI ASTRIANI, S.Psi., M.Si';
+        $wakil_koordinator->email = 'betti_astriani@tpam.psikologi.ui.ac.id';
+        $wakil_koordinator->password = bcrypt('XYX4QU');
+        $wakil_koordinator->save();
+        $wakil_koordinator->roles()->attach($role_wakil_koordinator);
+
+        $wakil_koordinator = new User();
+        $wakil_koordinator->name = 'MAULIDA KURNIASARI, S.Hum., M.Psi-T';
+        $wakil_koordinator->email = 'maulida_kurniasari@tpam.psikologi.ui.ac.id';
+        $wakil_koordinator->password = bcrypt('stmXM6');
+        $wakil_koordinator->save();
+        $wakil_koordinator->roles()->attach($role_wakil_koordinator);
+
+        $staf_administrasi = new User();
+        $staf_administrasi->name = 'FITRI IZZATI';
+        $staf_administrasi->email = 'fitri_izzati@tpam.psikologi.ui.ac.id';
+        $staf_administrasi->password = bcrypt('HSzbGh');
+        $staf_administrasi->save();
+        $staf_administrasi->roles()->attach($role_staf_administrasi);
+
+        $fasilitator = new User();
+        $fasilitator->name = 'IDA YANUARTI, S.Psi';
+        $fasilitator->email = 'ida_yanuarti@tpam.psikologi.ui.ac.id';
+        $fasilitator->password = bcrypt('U3mszt');
+        $fasilitator->save();
+        $fasilitator->roles()->attach($role_fasilitator);
+
+        $cofasilitator = new User();
+        $cofasilitator->name = 'NUR SOPHIA DEWI LESTARI, S.Mn';
+        $cofasilitator->email = 'nur_sophia_d_l@tpam.psikologi.ui.ac.id';
+        $cofasilitator->password = bcrypt('6UHfsT');
+        $cofasilitator->save();
+        $cofasilitator->roles()->attach($role_cofasilitator);
+
+        $cofasilitator = new User();
+        $cofasilitator->name = 'SUSI ROSIANA DEWI, S.Hum';
+        $cofasilitator->email = 'susi_rosiana_d@tpam.psikologi.ui.ac.id';
+        $cofasilitator->password = bcrypt('QT92d2');
+        $cofasilitator->save();
+        $cofasilitator->roles()->attach($role_cofasilitator);
+
+        $cofasilitator = new User();
+        $cofasilitator->name = 'PUTI AULIA RAHMA, S.Psi';
+        $cofasilitator->email = 'puti_aulia_r@tpam.psikologi.ui.ac.id';
+        $cofasilitator->password = bcrypt('dD82s5');
+        $cofasilitator->save();
+        $cofasilitator->roles()->attach($role_cofasilitator);
+
+        $guru = new User();
+        $guru->name = 'ANNA RATNA UTAMI, S.H.I';
+        $guru->email = 'anna_ratna_u@tpam.psikologi.ui.ac.id';
+        $guru->password = bcrypt('mV6RX9');
+        $guru->save();
+        $guru->roles()->attach($role_guru);
+
+        $guru = new User();
+        $guru->name = 'MARIANI, S.Pd';
+        $guru->email = 'mariani@tpam.psikologi.ui.ac.id';
+        $guru->password = bcrypt('YeuMNq');
+        $guru->save();
+        $guru->roles()->attach($role_guru);
+
+        $guru = new User();
+        $guru->name = 'ROSANA YUNIASIH, S.Psi';
+        $guru->email = 'rosana_yuniasih@tpam.psikologi.ui.ac.id';
+        $guru->password = bcrypt('nRJ6Rh');
+        $guru->save();
+        $guru->roles()->attach($role_guru);
+
         $kelas = array(
             'Day Care',
             'Kelompok Bermain',

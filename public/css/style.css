@@ -735,6 +735,11 @@ button.dcbutton img {
     height: 0;
 }
 
+#inputfileFotoProfil {
+    display: none;
+    height: 0;
+}
+
 .inputfile {
     display: none;
     height: 0;
@@ -1067,6 +1072,15 @@ a.linkclass img{
 
 /* eidtprofilesiswa */
 label.editlabel {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(56, 79, 125, 0.8);
+}
+
+.Rp {
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;

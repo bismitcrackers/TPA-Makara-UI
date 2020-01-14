@@ -51,8 +51,8 @@ class JadwalController extends Controller
             }
             $notificationMessage = ', telah menambahkan jadwal "' . $request->judul . '" untuk siswa ' . $request->kelas . '! :)';
             $notificationUrl = 'profile/schedule/' . $request->kelas . '/list';
-            NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $request->kelas, $notificationUrl);
-            return redirect()->route('success');
+            NotificationController::generateNotificationToSpecificClass($user->roles()->first()->name, $notificationMessage, $request->kelas, $notificationUrl);
+            return redirect()->route('successAndRedirect', ['url' => route('profile.schedule.list', ['kelas' => $schedule->kelas])]);
         }
     }
 
@@ -86,7 +86,7 @@ class JadwalController extends Controller
             // $notificationMessage = ', telah mengubah jadwal "' . $jadwal->judul . '" untuk siswa ' . $jadwal->kelas . '! :)';
             // $notificationUrl = 'profile/schedule/' . $jadwal->kelas . '/list';
             // NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $jadwal->kelas, $notificationUrl);
-            // return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.schedule.list', ['kelas' => $jadwal->kelas])]);
         }
     }
 
@@ -117,7 +117,7 @@ class JadwalController extends Controller
             // $notificationUrl = 'profile/schedule/' . $kelas . '/list';
             // NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $kelas, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.schedule.list', ['kelas' => $kelas])]);
         }
     }
 

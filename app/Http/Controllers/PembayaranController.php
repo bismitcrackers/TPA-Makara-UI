@@ -44,9 +44,9 @@ class PembayaranController extends Controller
             $student = Student::where('id', $student_id)->first();
             $notificationMessage = ', telah menambahkan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
             $notificationUrl = 'profile/edit/' . $student->id . '/details';
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+            NotificationController::generateNotificationToSpecificUser($user->roles()->first()->name, $notificationMessage, $student->user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.tagihan.list', ['kelas' => $student->kelas])]);
         } else {
             return redirect()->route('login');
         }
@@ -72,9 +72,9 @@ class PembayaranController extends Controller
             $student = Student::where('user_id', $user->id)->first();
             $notificationMessage = ', telah mengupload bukti pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
             $notificationUrl = 'profile/edit/' . $student->id . '/details';
-            NotificationController::generateNotificationFromParent($user->name, $notificationMessage, $notificationUrl);
+            NotificationController::generateNotificationFromParent('Orangtua ' . $user->name, $notificationMessage, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.edit.details', ['student_id' => $student->id])]);
         } else {
             return redirect()->route('login');
         }
@@ -109,13 +109,12 @@ class PembayaranController extends Controller
                     ]
                 );
             }
-
-            // $student = Student::where('id', $student_id)->first();
+            $student = Student::where('id', $student_id)->first();
             // $notificationMessage = ', telah mengubah Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
             // $notificationUrl = 'profile/edit/' . $student->id . '/details';
             // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.tagihan.list', ['kelas' => $student->kelas])]);
         } else {
             return redirect()->route('login');
         }
@@ -127,18 +126,29 @@ class PembayaranController extends Controller
         if ($user == null) {
             return redirect()->route('login');
         } else if ($user->roles()->first()->description == 'Full Access') {
-            $tagihan = Pembayaran::where('id', $tagihan_id)->first()->update(
-                [
-                    'status' => 'Lunas',
-                ]
-            );
+            $tagihan_list = Pembayaran::where('student_id', $student_id)->where('status', 'Belum Lunas')->get();
+            $new_tagihan_id = Pembayaran::max('tagihan_id') + 1;
+            foreach ($tagihan_list as $tagihan) {
+                $tagihan->update(
+                    [
+                        'status' => 'Lunas',
+                        'tagihan_id' => $new_tagihan_id
+                    ]
+                );
+            }
 
-            // $student = Student::where('id', $student_id)->first();
+            // $tagihan = Pembayaran::where('id', $tagihan_id)->first()->update(
+            //     [
+            //         'status' => 'Lunas',
+            //     ]
+            // );
+
+            $student = Student::where('id', $student_id)->first();
             // $notificationMessage = ', telah mengkonfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
             // $notificationUrl = 'profile/edit/' . $student->id . '/details';
             // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.tagihan.list', ['kelas' => $student->kelas])]);
         } else {
             return redirect()->route('login');
         }
@@ -153,15 +163,16 @@ class PembayaranController extends Controller
             $tagihan = Pembayaran::where('id', $tagihan_id)->first()->update(
                 [
                     'status' => 'Belum Lunas',
+                    'tagihan_id' => 0
                 ]
             );
 
-            // $student = Student::where('id', $student_id)->first();
+            $student = Student::where('id', $student_id)->first();
             // $notificationMessage = ', telah membatalkan konfirmasi pelunasan Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
             // $notificationUrl = 'profile/edit/' . $student->id . '/details';
             // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.tagihan.list', ['kelas' => $student->kelas])]);
         } else {
             return redirect()->route('login');
         }
@@ -176,15 +187,15 @@ class PembayaranController extends Controller
             $tagihan = Pembayaran::where('id', $tagihan_id);
             $tagihan->delete();
 
-            // $student = Student::where('id', $student_id)->first();
+            $student = Student::where('id', $student_id)->first();
             // $notificationMessage = ', telah menghapus Tagihan Pembayaran untuk siswa ' . $student->nama_lengkap . '! :)';
             // $notificationUrl = 'profile/edit/' . $student->id . '/details';
             // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.tagihan.list', ['kelas' => $student->kelas])]);
         } else {
+            return redirect()->route('login');
         }
-        return redirect()->route('login');
     }
 
     public function gantiTandaTangan(Request $request)
@@ -201,7 +212,6 @@ class PembayaranController extends Controller
                 $destinationPath = public_path($dir);
                 $file->move($destinationPath, $imageName);
 
-                return redirect()->route('success');
             }
             return redirect()->back();
         }

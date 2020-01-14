@@ -103,6 +103,15 @@
                             <p class="paragrapheditprofile">Edit Profile</p>
                         </div>
                     </a>
+                    <br>
+                    <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninputFotoProfil()">
+                        <span>Ubah Foto Profil</span>
+                    </div>
+                    <form method="POST" action="{{ route('profile.edit.photoProfile', ['student_id' => $student->id]) }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input name="foto_profile" type="file" id="inputfileFotoProfil">
+                        <button type="submit" class="belum-lunas btn editbutton" id = "upload-buttonFotoProfil" hidden>Ubah Foto Profil</button>
+                    </form>
                 </div>
             </div>
             <div class="ml-4">
@@ -270,23 +279,6 @@
         </div>
     </div>
 
-    <div class="dcinput">
-      <h2 class="subbukupenghubung-title"><u>Kartu Keluarga</u></h2>
-      <div class="imgbpkb">
-          <img style="width:50%;" src="{{ asset($student->foto_kk) }}" alt="please insert image">
-      </div>
-      <br>
-      <h2 class="subbukupenghubung-title"><u>KTP Ibu</u></h2>
-      <div class="imgbpkb">
-          <img style="width:50%;" src="{{ asset($mom->foto_ktp) }}" alt="please insert image">
-      </div>
-      <br>
-      <h2 class="subbukupenghubung-title"><u>KTP Ayah</u></h2>
-      <div class="imgbpkb">
-          <img style="width:50%;" src="{{ asset($dad->foto_ktp) }}" alt="please insert image">
-      </div>
-    </div>
-
     <div class = "parent-profile d-flex agenda-kegiatan">
         <p class = "underliner-parent-profile">Jadwal Per Bulan</p>
     </div>
@@ -380,20 +372,22 @@
                             </div>
                             @endif
                         </td>
-                        <td>Rp {{ $formattedTagihan->total_tagihan }}</td>
+                        <td>Rp{{ number_format((float)$formattedTagihan->total_tagihan,2,',','.') }}</td>
                         <td>
                             @if($formattedTagihan->bukti_pembayaran != '')
                                 <img id="imgbuku" src="{{ asset($formattedTagihan->bukti_pembayaran) }}" alt="please insert image">
                             @else
-                                <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
-                                    <span>Upload Bukti</span>
-                                    <img src="{{asset('svg/plus.svg')}}" alt="plus">
-                                </div>
-                                <form method="POST" action="{{ route('profile.tagihan.upload', ['kelas' => $student->kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}" enctype="multipart/form-data">
-                                    {{ csrf_field() }}
-                                    <input name="bukti_pembayaran" type="file" id="inputfile">
-                                    <button type="submit" class="belum-lunas btn editbutton" id = "upload-button" hidden>Upload Bukti</button>
-                                </form>
+                                @if($formattedTagihan->total_tagihan != '')
+                                    <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninput()">
+                                        <span>Upload Bukti</span>
+                                        <img src="{{asset('svg/plus.svg')}}" alt="plus">
+                                    </div>
+                                    <form method="POST" action="{{ route('profile.tagihan.upload', ['kelas' => $student->kelas, 'student_id' => $formattedTagihan->student_id, 'tagihan_id' => $formattedTagihan->tagihan_id]) }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <input name="bukti_pembayaran" type="file" id="inputfile">
+                                        <button type="submit" class="belum-lunas btn editbutton" id = "upload-button" hidden>Upload Bukti</button>
+                                    </form>
+                                @endif
                             @endif
                         </td>
                         <td>
@@ -453,6 +447,10 @@
             $("#inputfile").click();
         }
 
+        function burninputFotoProfil(event){
+            $("#inputfileFotoProfil").click();
+        }
+
         function readURL(input) {
           if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -469,6 +467,33 @@
           readURL(this);
           $("#upload-button").click();
         });
+
+        $("#inputfileFotoProfil").change(function() {
+          readURL(this);
+          var image = document.getElementById("inputfileFotoProfil").files[0];
+            createReader(image, function(w, h) {
+              if (w == 260 || h == 320) {
+                  $("#upload-buttonFotoProfil").click();
+            } else {
+                $('#inputfileFotoProfil').val('');
+                alert("Tolong upload foto profile dengan ukuran 2x3 (260 pixel x 320 pixel). Ukuran saat ini:" + w + " pixel x " + h + " pixel");
+              }
+            });
+        });
+
+        function createReader(file, whenReady) {
+              var reader = new FileReader;
+              reader.onload = function(evt) {
+                  var image = new Image();
+                  image.onload = function(evt) {
+                      var width = this.width;
+                      var height = this.height;
+                      if (whenReady) whenReady(width, height);
+                  };
+                  image.src = evt.target.result;
+              };
+              reader.readAsDataURL(file);
+          }
 
         function hover(element) {
           element.setAttribute('src', "{{asset($student->foto_profile)}}");

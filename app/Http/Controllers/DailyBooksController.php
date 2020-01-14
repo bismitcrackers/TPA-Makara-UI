@@ -59,7 +59,7 @@ class DailyBooksController extends Controller
             // $notificationUrl = 'dailyBook/DayCare/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
             // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('dailyBook.dc.student')]);
         }
     }
 
@@ -96,7 +96,7 @@ class DailyBooksController extends Controller
             // $notificationUrl = 'dailyBook/KelompokBermain/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
             // NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('dailyBook.kb.student')]);
         }
     }
 
@@ -153,9 +153,9 @@ class DailyBooksController extends Controller
             $student = Student::where('id', $student_id)->first();
             $notificationMessage = ', telah mempublikasikan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
             $notificationUrl = 'dailyBook/DayCare/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+            NotificationController::generateNotificationToSpecificUser($user->roles()->first()->name, $notificationMessage, $student->user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('dailyBook.dc.student')]);
         }
     }
 
@@ -202,9 +202,9 @@ class DailyBooksController extends Controller
             $student = Student::where('id', $student_id)->first();
             $notificationMessage = ', telah mempublikasikan Buku Penghubung untuk siswa ' . $student->nama_lengkap . '! :)';
             $notificationUrl = 'dailyBook/KelompokBermain/' . $student_id . '/show/' . $tanggal->day . '/' . $tanggal->month . '/' . $tanggal->year;
-            NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $student->user_id, $notificationUrl);
+            NotificationController::generateNotificationToSpecificUser($user->roles()->first()->name, $notificationMessage, $student->user_id, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('dailyBook.kb.student')]);
         }
     }
 
@@ -233,16 +233,16 @@ class DailyBooksController extends Controller
                 $student = Student::where('user_id', $user->id)->first();
                 $notificationMessage = ', telah menambahkan komentar untuk Buku Penghubung siswa ' . $student->nama_lengkap . '! :)';
                 $notificationUrl = 'dailyBook/' . $daily_book_id . '/comments/show';
-                NotificationController::generateNotificationFromParent($user->name, $notificationMessage, $notificationUrl);
+                NotificationController::generateNotificationFromParent('Orangtua ' . $user->name, $notificationMessage, $notificationUrl);
             } else {
                 $student_id = DailyBook::where('id', $daily_book_id)->first()->student_id;
                 $student = Student::where('id', $student_id)->first();
                 $user_id = $student->user_id;
                 $notificationMessage = ', telah menambahkan komentar untuk Buku Penghubung siswa ' . $student->nama_lengkap . '! :)';
                 $notificationUrl = 'dailyBook/' . $daily_book_id . '/comments/show';
-                NotificationController::generateNotificationToSpecificUser($user->name, $notificationMessage, $user_id, $notificationUrl);
+                NotificationController::generateNotificationToSpecificUser($user->roles()->first()->name, $notificationMessage, $user_id, $notificationUrl);
             }
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('dailyBook.comments.show', ['daily_book_id' => $daily_book_id])]);
         }
     }
 }

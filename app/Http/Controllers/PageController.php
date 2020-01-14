@@ -28,7 +28,11 @@ class PageController extends Controller
     }
 
     public function success() {
-        return view('pages.SuccessMessage');
+        return view('pages.SuccessMessage', ['url' => route('login')]);
+    }
+
+    public function successAndRedirect($url) {
+        return view('pages.SuccessMessage', ['url' => $url]);
     }
 
     public function editProfileSiswa() {
@@ -378,19 +382,26 @@ class PageController extends Controller
             $formattedTagihan->jumlah_tagihan = $eachTagihan->jumlah_tagihan;
             $formattedTagihan->status = $eachTagihan->status;
             $totalTagihan = $totalTagihan + $eachTagihan->jumlah_tagihan;
-            if ($count == $tagihanStudent->count()) {
+            if (count($tagihanStudent) != $count && $eachTagihan->tagihan_id != $tagihanStudent[$count]->tagihan_id) {
+                $formattedTagihan->total_tagihan = $totalTagihan;
+            } else if (count($tagihanStudent) == $count) {
                 $formattedTagihan->total_tagihan = $totalTagihan;
             } else {
                 $formattedTagihan->total_tagihan = '';
             }
             $formattedTagihan->bukti_pembayaran = $eachTagihan->bukti_pembayaran;
-            if ($formattedTagihan->status == 'Lunas') {
+            if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) != $count && $eachTagihan->tagihan_id != $tagihanStudent[$count]->tagihan_id) {
                 $formattedTagihan->kwitansiCheck = true;
+                $totalTagihan = 0;
+            } else if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) == $count) {
+                $formattedTagihan->kwitansiCheck = true;
+                $totalTagihan = 0;
             } else {
                 $formattedTagihan->kwitansiCheck = false;
             }
             $formattedTagihan->student_id = $student->id;
             $formattedTagihan->tagihan_id = $eachTagihan->id;
+            $formattedTagihan->tagihan_class_id = $eachTagihan->tagihan_id;
             array_push($formattedTagihanList, $formattedTagihan);
             $count = $count + 1;
         }
@@ -483,7 +494,7 @@ class PageController extends Controller
     {
         if (auth()->user() == null) {return redirect()->route('login');}
         if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
-        $students = Student::where('kelas', $kelas)->get();
+        $students = Student::where('kelas', $kelas)->orderBy('nama_lengkap')->get();
         $tagihan = Pembayaran::where('kelas', $kelas)->get();
         $formattedTagihanList = array();
         foreach ($students as $student) {
@@ -502,19 +513,26 @@ class PageController extends Controller
                 $formattedTagihan->jumlah_tagihan = $eachTagihan->jumlah_tagihan;
                 $formattedTagihan->status = $eachTagihan->status;
                 $totalTagihan = $totalTagihan + $eachTagihan->jumlah_tagihan;
-                if ($count == $tagihanStudent->count()) {
+                if (count($tagihanStudent) != $count && $eachTagihan->tagihan_id != $tagihanStudent[$count]->tagihan_id) {
+                    $formattedTagihan->total_tagihan = $totalTagihan;
+                } else if (count($tagihanStudent) == $count) {
                     $formattedTagihan->total_tagihan = $totalTagihan;
                 } else {
                     $formattedTagihan->total_tagihan = '';
                 }
                 $formattedTagihan->bukti_pembayaran = $eachTagihan->bukti_pembayaran;
-                if ($formattedTagihan->status == 'Lunas') {
+                if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) != $count && $eachTagihan->tagihan_id != $tagihanStudent[$count]->tagihan_id) {
                     $formattedTagihan->kwitansiCheck = true;
+                    $totalTagihan = 0;
+                } else if ($formattedTagihan->status == 'Lunas' && count($tagihanStudent) == $count) {
+                    $formattedTagihan->kwitansiCheck = true;
+                    $totalTagihan = 0;
                 } else {
                     $formattedTagihan->kwitansiCheck = false;
                 }
                 $formattedTagihan->student_id = $student->id;
                 $formattedTagihan->tagihan_id = $eachTagihan->id;
+                $formattedTagihan->tagihan_class_id = $eachTagihan->tagihan_id;
                 array_push($formattedTagihanList, $formattedTagihan);
                 $count = $count + 1;
             }
