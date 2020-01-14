@@ -13,6 +13,7 @@
 
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/success', 'PageController@success')->name('success');
+Route::get('/success/{url?}', 'PageController@successAndRedirect')->name('successAndRedirect')->where('url', '(.*)');
 
 Auth::routes();
 

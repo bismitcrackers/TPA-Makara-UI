@@ -66,7 +66,7 @@ class PengumumanController extends Controller
             $notificationUrl = 'profile/pengumuman/' . $request->kelas . '/show/' . $pengumuman->id ;
             NotificationController::generateNotificationToSpecificClass($user->roles()->first()->name, $notificationMessage, $request->kelas, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.pengumuman.list', ['kelas' => $pengumuman->kelas])]);
         }
     }
 
@@ -134,7 +134,7 @@ class PengumumanController extends Controller
             // $notificationUrl = 'profile/pengumuman/' . $pengumuman->kelas . '/show/' . $pengumuman->id ;
             // NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $pengumuman->kelas, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.pengumuman.list', ['kelas' => $pengumuman->kelas])]);
         }
     }
 
@@ -170,7 +170,7 @@ class PengumumanController extends Controller
             // $notificationUrl = 'profile/pengumuman/' . $kelas . '/list';
             // NotificationController::generateNotificationToSpecificClass($user->name, $notificationMessage, $kelas, $notificationUrl);
 
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.pengumuman.list', ['kelas' => $pengumuman->kelas])]);
         }
     }
 }

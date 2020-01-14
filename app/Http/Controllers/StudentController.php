@@ -69,7 +69,7 @@ class StudentController extends Controller
                     'kelas'                  => $request->kelas,
                 ]
             );
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.edit.details', ['student_id' => $student_id])]);
         }
     }
 
@@ -90,7 +90,7 @@ class StudentController extends Controller
                     'no_handphone'           => $request->nomorHpIbu,
                 ]
             );
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.edit.details', ['student_id' => $student_id])]);
         }
     }
 
@@ -111,7 +111,7 @@ class StudentController extends Controller
                     'no_handphone'           => $request->nomorHpAyah,
                 ]
             );
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.edit.details', ['student_id' => $student_id])]);
         }
     }
 
@@ -133,7 +133,7 @@ class StudentController extends Controller
                     'lulus'                  => true,
                 ]
             );
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.edit.details', ['student_id' => $student_id])]);
         }
     }
 
@@ -155,7 +155,7 @@ class StudentController extends Controller
                     'lulus'                  => false,
                 ]
             );
-            return redirect()->route('success');
+            return redirect()->route('successAndRedirect', ['url' => route('profile.edit.details', ['student_id' => $student_id])]);
         }
     }
 

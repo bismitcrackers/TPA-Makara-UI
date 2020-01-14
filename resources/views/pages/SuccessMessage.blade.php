@@ -7,9 +7,11 @@
 @endsection
 
 @section('content')
+<a href="{{ $url }}">
 <div class="d-flex justify-content-center success">
     <img src="{{asset('svg/success.svg')}}" alt="">
 </div>
+</a>
     <h3 class="title-congratulations">Congratulations!</h3>
     <h4 class="subtitle-congratulations">You have completed the action.</h4>
 

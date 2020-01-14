@@ -63,11 +63,11 @@
                 <label for="kelas" class="editlabel">KELAS</label>
                 <select class="form-control" id="kelas" name="kelas" required>
                     @if( $student->kelas == "Day Care" )
-                    <option value="day care" selected>Day Care</option>
-                    <option value="kelompok bermain">Kelompok Bermain</option>
+                    <option value="Day Care" selected>Day Care</option>
+                    <option value="Kelompok Bermain">Kelompok Bermain</option>
                     @elseif( $student->kelas == "Kelompok Bermain" )
-                    <option value="day care">Day Care</option>
-                    <option value="kelompok bermain" selected>Kelompok Bermain</option>
+                    <option value="Day Care">Day Care</option>
+                    <option value="Kelompok Bermain" selected>Kelompok Bermain</option>
                     @endif
                 </select>
             </div>
