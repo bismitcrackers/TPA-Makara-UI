@@ -159,4 +159,25 @@ class StudentController extends Controller
         }
     }
 
+    public function editPhotoProfileStudent(Request $request, $student_id)
+    {
+        $user = auth()->user();
+        if ($user == null) {
+            return redirect()->route('login');
+        } else {
+            $student = Student::where('id', $student_id)->first();
+            if ($request->has('foto_profile')) {
+
+                $image = WebHelper::saveImageToPublic($request->file('foto_profile'), '/picture/fotoProfile');
+                $student = Student::where('id', $student_id)->first()->update(
+                    [
+                        'foto_profile' => $image,
+                    ]
+                );
+            }
+
+            return redirect()->route('successAndRedirect', ['url' => route('profile.edit.details', ['student_id' => $student_id])]);
+        }
+    }
+
 }

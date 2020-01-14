@@ -735,6 +735,11 @@ button.dcbutton img {
     height: 0;
 }
 
+#inputfileFotoProfil {
+    display: none;
+    height: 0;
+}
+
 .inputfile {
     display: none;
     height: 0;

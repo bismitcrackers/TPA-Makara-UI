@@ -103,6 +103,15 @@
                             <p class="paragrapheditprofile">Edit Profile</p>
                         </div>
                     </a>
+                    <br>
+                    <div href="#" class="tambahfoto d-flex justify-content-center dcinput" onclick="burninputFotoProfil()">
+                        <span>Ubah Foto Profil</span>
+                    </div>
+                    <form method="POST" action="{{ route('profile.edit.photoProfile', ['student_id' => $student->id]) }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input name="foto_profile" type="file" id="inputfileFotoProfil">
+                        <button type="submit" class="belum-lunas btn editbutton" id = "upload-buttonFotoProfil" hidden>Ubah Foto Profil</button>
+                    </form>
                 </div>
             </div>
             <div class="ml-4">
@@ -438,6 +447,10 @@
             $("#inputfile").click();
         }
 
+        function burninputFotoProfil(event){
+            $("#inputfileFotoProfil").click();
+        }
+
         function readURL(input) {
           if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -454,6 +467,33 @@
           readURL(this);
           $("#upload-button").click();
         });
+
+        $("#inputfileFotoProfil").change(function() {
+          readURL(this);
+          var image = document.getElementById("inputfileFotoProfil").files[0];
+            createReader(image, function(w, h) {
+              if (w == 260 || h == 320) {
+                  $("#upload-buttonFotoProfil").click();
+            } else {
+                $('#inputfileFotoProfil').val('');
+                alert("Tolong upload foto profile dengan ukuran 2x3 (260 pixel x 320 pixel). Ukuran saat ini:" + w + " pixel x " + h + " pixel");
+              }
+            });
+        });
+
+        function createReader(file, whenReady) {
+              var reader = new FileReader;
+              reader.onload = function(evt) {
+                  var image = new Image();
+                  image.onload = function(evt) {
+                      var width = this.width;
+                      var height = this.height;
+                      if (whenReady) whenReady(width, height);
+                  };
+                  image.src = evt.target.result;
+              };
+              reader.readAsDataURL(file);
+          }
 
         function hover(element) {
           element.setAttribute('src', "{{asset($student->foto_profile)}}");

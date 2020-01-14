@@ -86,6 +86,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
         Route::post('/father', 'StudentController@editFatherProfile')->name('father.post');
         Route::post('/mother', 'StudentController@editMotherProfile')->name('mother.post');
         Route::post('/graduate', 'StudentController@graduateStudent')->name('graduate');
+        Route::post('/photo', 'StudentController@editPhotoProfileStudent')->name('photoProfile');
         Route::post('/ungraduate', 'StudentController@cancelGraduateStudent')->name('ungraduate');
     });
     Route::group(['prefix' => 'tagihan/{kelas}', 'as' => 'tagihan.'], function () {
