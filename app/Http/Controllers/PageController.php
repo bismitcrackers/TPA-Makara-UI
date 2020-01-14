@@ -28,7 +28,7 @@ class PageController extends Controller
     }
 
     public function success() {
-        return view('pages.SuccessMessage', ['url' => route('index')]);
+        return view('pages.SuccessMessage', ['url' => route('login')]);
     }
 
     public function successAndRedirect($url) {
@@ -494,7 +494,7 @@ class PageController extends Controller
     {
         if (auth()->user() == null) {return redirect()->route('login');}
         if (auth()->user()->roles()->first()->description != 'Full Access') {return redirect()->route('login');}
-        $students = Student::where('kelas', $kelas)->get();
+        $students = Student::where('kelas', $kelas)->orderBy('nama_lengkap')->get();
         $tagihan = Pembayaran::where('kelas', $kelas)->get();
         $formattedTagihanList = array();
         foreach ($students as $student) {

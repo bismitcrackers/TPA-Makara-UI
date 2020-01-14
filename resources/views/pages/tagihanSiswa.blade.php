@@ -110,12 +110,10 @@
                             <a class="btn-passconfirm" onclick="deleteId('{{ $kelas }}', {{ $formattedTagihan->student_id }}, {{ $formattedTagihan->tagihan_id }})">
                                 <img src="{{ asset('svg/tagihan-delete.svg') }}" alt="tagihan-delete">
                             </a>
-                            @if($formattedTagihan->total_tagihan != '')
                             <a href="{{ route('profile.tagihan.form.add', ['kelas' => $kelas, 'student_id' => $formattedTagihan->student_id]) }}" class = "name add-tagihan">
                                 <img src="{{ asset('svg/plus.svg') }}" alt="">
                                 <span>Tambah Tagihan</span>
                             </a>
-                            @endif
                         </td>
                     </tr>
                 @endforeach

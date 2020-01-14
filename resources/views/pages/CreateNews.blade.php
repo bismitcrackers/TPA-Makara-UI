@@ -45,10 +45,20 @@
                     <textarea class="form-control dcinput" id="" name="isiBerita"></textarea>
                     @endif
                 </div>
-                <button type="submit" class="btn btn-primary dcbutton d-flex justify-content-center" >
-                    Save
-                    <img src="{{asset('svg/nextsign.svg')}}" alt="nextsign">
-                </button>
+                <div class="d-flex justify-content-center">
+                    @if($route == 'edit')
+                        <form method="POST" action="{{ route('admin.berita.update', ['id' => $berita->id]) }}">
+                             {{ csrf_field() }}
+                             {{ method_field('DELETE') }}
+                            <button type="submit" class="btn canceldelete d-flex justify-content-center">
+                                Delete
+                            </button>
+                        </form>
+                    @endif
+                    <button type="submit" class="btn editjadwal d-flex justify-content-center">
+                        Save
+                    </button>
+                </div>
             </div>
     </form>
 
